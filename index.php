@@ -89,6 +89,7 @@ switch ($url) {
 		$ctr = new LocationController();
 		$ctr->editLocation();
 		break;
+	// maker (hãng xe)
 	case 'admin/maker':
 		$ctr = new MakerController();
 		$ctr->listMaker();
