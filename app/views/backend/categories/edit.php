@@ -47,6 +47,7 @@ require_once './app/views/backend/master/master.php';
                                     <div class="row justify-content-md-center">
                                         <div class="col-md-8">
                                             <form action="">
+                                                <input type="hidden" name="id" value="<?= $cate->id ?>">
                                                 <div class="form-group">
                                                     <label>Tên danh mục:</label>
                                                     <input type="text" class="form-control" placeholder="Tên danh mục" value="<?= $cate->name ?>">

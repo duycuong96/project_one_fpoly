@@ -16,7 +16,7 @@ require_once './app/views/backend/master/master.php';
             <div class="content">
                 <div class="page-inner">
                     <div class="page-header">
-                        <h4 class="page-title">Danh mục</h4>
+                        <h4 class="page-title">Địa điểm</h4>
                         <ul class="breadcrumbs">
                             <li class="nav-home">
                                 <a href="#">
@@ -27,7 +27,7 @@ require_once './app/views/backend/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/category' ?>">Danh mục</a>
+                                <a href="<?= ADMIN_URL . '/category' ?>">Địa điểm</a>
                             </li>
                         </ul>
                     </div>
@@ -48,12 +48,12 @@ require_once './app/views/backend/master/master.php';
                                         <div class="col-md-8">
                                             <form action="">
                                                 <div class="form-group">
-                                                    <label>Tên danh mục:</label>
-                                                    <input type="text" class="form-control" placeholder="Tên danh mục" value="">
+                                                    <label>Tên địa điểm:</label>
+                                                    <input type="text" class="form-control" placeholder="" value="">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
-												<label for="comment">Mô tả danh mục:</label>
+												<label for="comment">Mô tả:</label>
                                                     <textarea class="form-control" id="comment" rows="5">
                                                     </textarea>
 											    </div>
