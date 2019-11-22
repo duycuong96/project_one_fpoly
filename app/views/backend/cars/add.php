@@ -62,8 +62,15 @@ require_once './app/views/backend/master/master.php';
                                                 <div class="form-group">
                                                     <label for="">Địa điểm</label>
                                                     <select class="form-control" id="">
-                                                        <option>Xe máy</option>
-                                                        <option>Ô tô</option>
+                                                        <option>Hà Nội</option>
+                                                        <option>Sapa</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Hãng xe</label>
+                                                    <select class="form-control" id="">
+                                                        <option>Honda</option>
+                                                        <option>Yamaha</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
