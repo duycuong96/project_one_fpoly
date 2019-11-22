@@ -4,27 +4,27 @@
 <!-- Mirrored from preview.freethemescloud.com/oswan/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2019 16:04:25 GMT -->
 <head>
         <meta charset="utf-8">
-        <base href="<?= BASE_URL . 'public/' ?>">
+        <base href="<?= BASE_URL ?>">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>MeGo - Thuê xe du lịch tự lái</title>
         <meta name="description" content="Live Preview Of Oswan eCommerce HTML5 Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/icon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="./public/assets/img/logo/icon.png">
 		
 		<!-- all css here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="assets/css/chosen.min.css">
-        <link rel="stylesheet" href="assets/css/icofont.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-        <link rel="stylesheet" href="assets/css/bundle.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="./public/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./public/assets/css/animate.css">
+        <link rel="stylesheet" href="./public/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./public/assets/css/chosen.min.css">
+        <link rel="stylesheet" href="./public/assets/css/icofont.css">
+        <link rel="stylesheet" href="./public/assets/css/themify-icons.css">
+        <link rel="stylesheet" href="./public/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./public/assets/css/meanmenu.min.css">
+        <link rel="stylesheet" href="./public/assets/css/bundle.css">
+        <link rel="stylesheet" href="./public/assets/css/style.css">
+        <link rel="stylesheet" href="./public/assets/css/responsive.css">
+        <script src="./public/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
         <div class="wrapper">
@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-4">
                                         <div class="logo-small-device">
-                                            <a href="index.html"><img alt="" src="assets/img/logo/megologo.png"></a>
+                                            <a href="index.html"><img alt="" src="./public/assets/img/logo/megologo.png"></a>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-8">
@@ -46,8 +46,8 @@
                                             </div>
                                             <div class="menu-wrapper text-center">
                                                 <button class="menu-toggle">
-                                                    <img class="s-open" alt="" src="assets/img/icon-img/menu.png">
-                                                    <img class="s-close" alt="" src="assets/img/icon-img/menu-close.png">
+                                                    <img class="s-open" alt="" src="./public/assets/img/icon-img/menu.png">
+                                                    <img class="s-close" alt="" src="./public/assets/img/icon-img/menu-close.png">
                                                 </button>
                                                 <div class="main-menu">
                                                     <nav>
@@ -89,7 +89,7 @@
                                                 <ul>
                                                     <li class="single-shopping-cart">
                                                         <div class="shopping-cart-img">
-                                                            <a href="#"><img alt="" src="assets/img/cart/cart-1.jpg"></a>
+                                                            <a href="#"><img alt="" src="./public/assets/img/cart/cart-1.jpg"></a>
                                                         </div>
                                                         <div class="shopping-cart-title">
                                                             <h3><a href="#">Gloriori GSX 250 R </a></h3>
@@ -102,7 +102,7 @@
                                                     </li>
                                                     <li class="single-shopping-cart">
                                                         <div class="shopping-cart-img">
-                                                            <a href="#"><img alt="" src="assets/img/cart/cart-2.jpg"></a>
+                                                            <a href="#"><img alt="" src="./public/assets/img/cart/cart-2.jpg"></a>
                                                         </div>
                                                         <div class="shopping-cart-title">
                                                             <h3><a href="#">Demonissi Gori</a></h3>
@@ -115,7 +115,7 @@
                                                     </li>
                                                     <li class="single-shopping-cart">
                                                         <div class="shopping-cart-img">
-                                                            <a href="#"><img alt="" src="assets/img/cart/cart-3.jpg"></a>
+                                                            <a href="#"><img alt="" src="./public/assets/img/cart/cart-3.jpg"></a>
                                                         </div>
                                                         <div class="shopping-cart-title">
                                                             <h3><a href="#">Demonissi Gori</a></h3>
@@ -251,7 +251,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <div class="overview-img">
-                                <img class="tilter" src="assets/img/banner/banner-1.png" alt="">
+                                <img class="tilter" src="./public/assets/img/banner/banner-1.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -267,7 +267,7 @@
 
                         <div class="col-md-4">
                             <div class="banner-wrapper mb-30">
-                                <a href="#"><img src="assets/img/banner/ha-noi.jpg" alt="image"></a>
+                                <a href="#"><img src="./public/assets/img/banner/ha-noi.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>HÀ NỘI</h2>
                                 </div>
@@ -275,7 +275,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="banner-wrapper mb-30">
-                                <a href="#"><img src="assets/img/banner/sai-gon.jpg" alt="image"></a>
+                                <a href="#"><img src="./public/assets/img/banner/sai-gon.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>SÀI GÒN</h2>
                                 </div>
@@ -283,7 +283,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="banner-wrapper mb-30">
-                                <a href="#"><img src="assets/img/banner/sapa.jpg" alt="image"></a>
+                                <a href="#"><img src="./public/assets/img/banner/sapa.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>SAPA</h2>
                                 </div>
@@ -291,7 +291,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="banner-wrapper mb-30">
-                                <a href="#"><img src="assets/img/banner/ninh-binh.jpg" alt="image"></a>
+                                <a href="#"><img src="./public/assets/img/banner/ninh-binh.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>NINH BÌNH</h2>
                                 </div>
@@ -299,7 +299,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="banner-wrapper mb-30">
-                                <a href="#"><img src="assets/img/banner/phu-quoc.jpg" alt="image"></a>
+                                <a href="#"><img src="./public/assets/img/banner/phu-quoc.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>PHÚ QUỐC</h2>
                                 </div>
@@ -307,7 +307,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="banner-wrapper mb-30">
-                                <a href="#"><img src="assets/img/banner/ha-giang.jpg" alt="image"></a>
+                                <a href="#"><img src="./public/assets/img/banner/ha-giang.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>HÀ GIANG</h2>
                                 </div>
@@ -315,7 +315,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="banner-wrapper mb-30">
-                                <a href="#"><img src="assets/img/banner/da-nang.jpg" alt="image"></a>
+                                <a href="#"><img src="./public/assets/img/banner/da-nang.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>ĐÀ NẴNG</h2>
                                 </div>
@@ -323,7 +323,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="banner-wrapper mb-30">
-                                <a href="#"><img src="assets/img/banner/hue.jpg" alt="image"></a>
+                                <a href="#"><img src="./public/assets/img/banner/hue.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>HUẾ</h2>
                                 </div>
@@ -331,7 +331,7 @@
                         </div>
                         <div class="col-md-4">
                                 <div class="banner-wrapper mb-30">
-                                    <a href="#"><img src="assets/img/banner/da-lat.jpg" alt="image"></a>
+                                    <a href="#"><img src="./public/assets/img/banner/da-lat.jpg" alt="image"></a>
                                     <div class="banner-content">
                                         <h2>ĐÀ LẠT</h2>
                                     </div>
@@ -360,7 +360,7 @@
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/honda-blade.png" alt="">
+                                                <img src="./public/assets/img/product/honda-blade.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -394,7 +394,7 @@
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/honda-ware-rsx.png" alt="">
+                                                <img src="./public/assets/img/product/honda-ware-rsx.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -431,7 +431,7 @@
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/honda-future.png" alt="">
+                                                <img src="./public/assets/img/product/honda-future.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -466,7 +466,7 @@
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/honda-winner.png" alt="">
+                                                <img src="./public/assets/img/product/honda-winner.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -503,7 +503,7 @@
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/honda-air-blade.png" alt="">
+                                                <img src="./public/assets/img/product/honda-air-blade.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -538,7 +538,7 @@
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/honda-monkey.png" alt="">
+                                                <img src="./public/assets/img/product/honda-monkey.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -579,7 +579,7 @@
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/yamaha-exciter-monster.png" alt="">
+                                                <img src="./public/assets/img/product/yamaha-exciter-monster.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -614,7 +614,7 @@
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/Jupiter-GP.png" alt="">
+                                                <img src="./public/assets/img/product/Jupiter-GP.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -651,7 +651,7 @@
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/Jupiter-RC.png" alt="">
+                                                <img src="./public/assets/img/product/Jupiter-RC.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -686,7 +686,7 @@
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/Sirius-Fi-RC.png" alt="">
+                                                <img src="./public/assets/img/product/Sirius-Fi-RC.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -723,7 +723,7 @@
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/Sirius-Fi.png" alt="">
+                                                <img src="./public/assets/img/product/Sirius-Fi.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -758,7 +758,7 @@
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/Sirius-RC.png" alt="">
+                                                <img src="./public/assets/img/product/Sirius-RC.png" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -795,7 +795,7 @@
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/product-2.jpg" alt="">
+                                                <img src="./public/assets/img/product/product-2.jpg" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -830,7 +830,7 @@
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="assets/img/product/product-5.jpg" alt="">
+                                                <img src="./public/assets/img/product/product-5.jpg" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -877,8 +877,8 @@
                     <div class="newsletter-wrapper-all theme-bg-2">
                         <div class="row">
                             <div class="col-lg-5 col-12 col-md-12">
-                                <div class="newsletter-img bg-img" style="background-image: url(assets/img/banner/newsletter-bg.png)">
-                                    <img alt="image" src="assets/img/team/newsletter-img.png">
+                                <div class="newsletter-img bg-img" style="background-image: url(./public/assets/img/banner/newsletter-bg.png)">
+                                    <img alt="image" src="./public/assets/img/team/newsletter-img.png">
                                 </div>
                             </div>
                             <div class="col-lg-7 col-12 col-md-12">
@@ -910,7 +910,7 @@
                                 <div class="footer-widget mb-30">
                                     <div class="footer-logo">
                                         <a href="index.html">
-                                            <img src="assets/img/logo/megologo.png" alt="">
+                                            <img src="./public/assets/img/logo/megologo.png" alt="">
                                         </a>
                                     </div>
                                     <div class="footer-about">
@@ -983,7 +983,7 @@
                             </div>
                             <div class="col-md-4 col-12">
                                 <div class="footer-payment-method">
-                                    <a href="#"><img alt="" src="assets/img/icon-img/payment.png"></a>
+                                    <a href="#"><img alt="" src="./public/assets/img/icon-img/payment.png"></a>
                                 </div>
                             </div>
                         </div>
@@ -1005,17 +1005,17 @@
 		
 		
 		<!-- all js here -->
-        <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
-        <script src="assets/js/popper.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-        <script src="assets/js/jquery.counterup.min.js"></script>
-        <script src="assets/js/waypoints.min.js"></script>
-        <script src="assets/js/ajax-mail.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="./public/assets/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="./public/assets/js/popper.js"></script>
+        <script src="./public/assets/js/bootstrap.min.js"></script>
+        <script src="./public/assets/js/isotope.pkgd.min.js"></script>
+        <script src="./public/assets/js/imagesloaded.pkgd.min.js"></script>
+        <script src="./public/assets/js/jquery.counterup.min.js"></script>
+        <script src="./public/assets/js/waypoints.min.js"></script>
+        <script src="./public/assets/js/ajax-mail.js"></script>
+        <script src="./public/assets/js/owl.carousel.min.js"></script>
+        <script src="./public/assets/js/plugins.js"></script>
+        <script src="./public/assets/js/main.js"></script>
     </body>
 
 <!-- Mirrored from preview.freethemescloud.com/oswan/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2019 16:08:50 GMT -->

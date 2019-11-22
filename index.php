@@ -16,6 +16,7 @@ use App\Controllers\CarController;
 use App\Controllers\CategoryController;
 use App\Controllers\HomeController;
 use App\Controllers\LocationController;
+use App\Controllers\MakerController;
 use App\Controllers\UserController;
 
 switch ($url) {
@@ -61,6 +62,7 @@ switch ($url) {
 		$ctr = new AdminController();
 		$ctr->register();
 		break;
+	
 	// danh mục xe
 	case 'admin/category':
 		$ctr = new CategoryController();
@@ -86,6 +88,11 @@ switch ($url) {
 	case 'admin/location/edit':
 		$ctr = new LocationController();
 		$ctr->editLocation();
+		break;
+	// maker (hãng xe)
+	case 'admin/maker':
+		$ctr = new MakerController();
+		$ctr->listMaker();
 		break;
 	// xe
 	case 'admin/car':

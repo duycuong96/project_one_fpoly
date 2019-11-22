@@ -12,12 +12,11 @@ require_once './app/views/backend/master/master.php';
         <?php
         require_once './app/views/backend/master/sidebar.php';
         ?>
-
         <div class="main-panel">
             <div class="content">
                 <div class="page-inner">
                     <div class="page-header">
-                        <h4 class="page-title">Xe</h4>
+                        <h4 class="page-title">Địa điểm</h4>
                         <ul class="breadcrumbs">
                             <li class="nav-home">
                                 <a href="#">
@@ -28,7 +27,7 @@ require_once './app/views/backend/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/car' ?>">Xe</a>
+                                <a href="<?= ADMIN_URL . '/location' ?>">Địa điểm</a>
                             </li>
                         </ul>
                     </div>
@@ -39,7 +38,7 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         
-                                        <a href="" class="btn btn-primary btn-round ml-auto" >
+                                        <a href="<?= ADMIN_URL . "/maker/add" ?>" class="btn btn-primary btn-round ml-auto" >
                                             <i class="fa fa-plus"></i>
                                             Thêm mới
                                         </a>
@@ -52,37 +51,19 @@ require_once './app/views/backend/master/master.php';
                                         <table id="add-row" class="display table table-striped table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <th style="width:20px">Id</th>
                                                     <th>Name</th>
-<<<<<<< HEAD
-                                                    <th>Loại xe</th>
-                                                    <th>Địa điểm</th>
-                                                    <th>Hãng xe</th>
-=======
-                                                    <!-- <th>Loại xe</th> -->
-                                                    <!-- <th>Địa điểm</th> -->
-                                                    <!-- <th>Hãng xe</th> -->
->>>>>>> master
                                                     <th style="width: 10%">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach($cars as $car) :?>
+                                                <?php foreach($makers as $maker) :?>
                                                     <tr>
-                                                    <td><?= $car->id ?></td>
-                                                    <td><?= $car->name ?></td>
-<<<<<<< HEAD
-                                                    <td><?= $car->getCateName() ?></td>
-                                                    <td><?= $car->getLocaName() ?></td>
-                                                    <td><?= $car->getMakerName() ?></td>
-=======
-                                                    <!-- <td><?= $car->cate_id ?></td> -->
-                                                    <!-- <td><?= $car->location_id ?></td> -->
-                                                    <!-- <td><?= $car->maker_id ?></td> -->
->>>>>>> master
+                                                    <td><?= $maker->id ?></td>
+                                                    <td><?= $maker->name ?></td>
                                                     <td>
                                                         <div class="form-button-action">
-                                                            <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                            <a href="<?= ADMIN_URL . "/maker/edit?id=" ?><?= $maker->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                             <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
@@ -107,7 +88,6 @@ require_once './app/views/backend/master/master.php';
 
         <!-- End Custom template -->
     </div>
-    <!--   Core JS Files   -->
     <?php
     require_once './app/views/backend/master/footer.php';
     ?>

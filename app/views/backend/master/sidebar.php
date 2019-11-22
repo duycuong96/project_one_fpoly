@@ -89,12 +89,12 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a data-toggle="collapse" href="#location">
+                            <a data-toggle="collapse" href="#maker">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <p>Hãng xe</p>
                                 <span class="caret"></span>
                             </a>
-                            <div class="collapse" id="location">
+                            <div class="collapse" id="maker">
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="<?= ADMIN_URL . '/maker' ?>">
@@ -119,7 +119,7 @@
                             <div class="collapse" id="car">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL . "/car" ?>">
                                             <span class="sub-item">Danh sách</span>
                                         </a>
                                     </li>
@@ -150,6 +150,11 @@
                                             <span class="sub-item">Thêm mới</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="sub-item">Vai trò</span>
+                                        </a>
+                                    </li>
 
                                 </ul>
                             </div>
@@ -161,6 +166,28 @@
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="comments">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="">
+                                            <span class="sub-item">Danh sách</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="sub-item">Thêm mới</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a data-toggle="collapse" href="#voucher">
+                                <i class="fas fa-th-list"></i>
+                                <p>Mã giảm giá</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="voucher">
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="">
@@ -192,6 +219,50 @@
                                     <li>
                                         <a href="">
                                             <span class="sub-item">Thêm mới</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a data-toggle="collapse" href="#page">
+                                <i class="fas fa-th-list"></i>
+                                <p>Trang</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="page">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="">
+                                            <span class="sub-item">Danh sách</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="sub-item">Thêm mới</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a data-toggle="collapse" href="#setting">
+                                <i class="fas fa-th-list"></i>
+                                <p>Cấu hình khác</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="setting">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="">
+                                            <span class="sub-item">Thông tin website</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="sub-item">Bảng giá</span>
                                         </a>
                                     </li>
 

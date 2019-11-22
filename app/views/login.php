@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 require_once './app/views/frontend/master/master.php';
 ?>
@@ -83,3 +84,5 @@ require_once './app/views/frontend/master/nav.php';
 </body>
 
 </html>
+=======
+>>>>>>> master
