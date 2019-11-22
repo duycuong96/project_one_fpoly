@@ -38,7 +38,7 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         
-                                        <a href="<?= ADMIN_URL . "/location/add" ?>" class="btn btn-primary btn-round ml-auto" >
+                                        <a href="<?= ADMIN_URL . "/maker/add" ?>" class="btn btn-primary btn-round ml-auto" >
                                             <i class="fa fa-plus"></i>
                                             Thêm mới
                                         </a>
@@ -57,13 +57,13 @@ require_once './app/views/backend/master/master.php';
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach($locations as $location) :?>
+                                                <?php foreach($makers as $maker) :?>
                                                     <tr>
-                                                    <td><?= $location->id ?></td>
-                                                    <td><?= $location->name ?></td>
+                                                    <td><?= $maker->id ?></td>
+                                                    <td><?= $maker->name ?></td>
                                                     <td>
                                                         <div class="form-button-action">
-                                                            <a href="<?= ADMIN_URL . "/location/edit?id=" ?><?= $location->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                            <a href="<?= ADMIN_URL . "/maker/edit?id=" ?><?= $maker->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                             <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
