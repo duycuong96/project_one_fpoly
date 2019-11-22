@@ -7,7 +7,6 @@ require_once './app/views/frontend/master/header.php';
 <?php
 require_once './app/views/frontend/master/nav.php';
 ?>
-something
 <!-- ========================= SECTION MAIN ========================= -->
 <section class="section-main bg padding-top-lg padding-bottom-lg">
 
