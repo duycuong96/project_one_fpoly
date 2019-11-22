@@ -119,7 +119,7 @@
                             <div class="collapse" id="car">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL . "/car" ?>">
                                             <span class="sub-item">Danh sách</span>
                                         </a>
                                     </li>

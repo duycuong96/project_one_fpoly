@@ -27,7 +27,7 @@ require_once './app/views/backend/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/locationgory' ?>">Địa điểm</a>
+                                <a href="<?= ADMIN_URL . '/location' ?>">Địa điểm</a>
                             </li>
                         </ul>
                     </div>
