@@ -39,7 +39,7 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         
-                                        <a href="" class="btn btn-primary btn-round ml-auto" >
+                                        <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto" >
                                             <i class="fa fa-plus"></i>
                                             Thêm mới
                                         </a>
