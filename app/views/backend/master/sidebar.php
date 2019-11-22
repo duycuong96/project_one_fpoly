@@ -141,12 +141,12 @@
                             <div class="collapse" id="users">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/account" ?>">
                                             <span class="sub-item">Danh sách</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/account/add" ?>">
                                             <span class="sub-item">Thêm mới</span>
                                         </a>
                                     </li>
@@ -168,12 +168,12 @@
                             <div class="collapse" id="comments">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/comment" ?>">
                                             <span class="sub-item">Danh sách</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/comment/add" ?>">
                                             <span class="sub-item">Thêm mới</span>
                                         </a>
                                     </li>

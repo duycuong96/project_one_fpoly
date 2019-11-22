@@ -47,41 +47,43 @@ require_once './app/views/backend/master/master.php';
                                     <div class="row justify-content-md-center">
                                         <div class="col-md-8">
                                             <form action="">
+                                                <input type="hidden" name="id" value="<?= $user->id ?>">
                                                 <div class="form-group">
-                                                    <label>Tên:</label>
-                                                    <input type="text" class="form-control" placeholder="" value="">
+                                                    <label>Tên</label>
+                                                    <input type="text" class="form-control" placeholder="" value="<?= $user->name ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="">Loại xe</label>
-                                                    <select class="form-control" id="">
-                                                        <option>Xe máy</option>
-                                                        <option>Ô tô</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="">Địa điểm</label>
-                                                    <select class="form-control" id="">
-                                                        <option>Hà Nội</option>
-                                                        <option>Sapa</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="">Hãng xe</label>
-                                                    <select class="form-control" id="">
-                                                        <option>Honda</option>
-                                                        <option>Yamaha</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Giá:</label>
-                                                    <input type="text" class="form-control" placeholder="" value="">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" placeholder="" value="<?= $user->email ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
-
                                                 <div class="form-group">
-                                                    <label for="comment">Chi tiết:</label>
-                                                    <textarea class="form-control" id="comment" rows="5"></textarea>
+                                                    <label>Password</label>
+                                                    <input type="password" class="form-control" placeholder="" value="<?= $user->password ?>">
+                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Avatar</label>
+                                                    <input type="file" class="form-control-file" id="">
+                                                </div>
+                                                <div class="form-group">
+												<label for="exampleFormControlSelect1">Phân quyền</label>
+												<select class="form-control" id="exampleFormControlSelect1">
+													<option>Admin</option>
+													<option>Member</option>
+												</select>
+											</div>
+                                                <div class="form-check">
+                                                    <label>Trạng thái:</label><br>
+                                                    <label class="form-radio-label">
+                                                        <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                                                        <span class="form-radio-sign">Không</span>
+                                                    </label>
+                                                    <label class="form-radio-label ml-3">
+                                                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                                                        <span class="form-radio-sign">Có</span>
+                                                    </label>
                                                 </div>
 
                                                 <div class="card-action">

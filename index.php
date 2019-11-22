@@ -14,6 +14,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : '/';
 use App\Controllers\AdminController;
 use App\Controllers\CarController;
 use App\Controllers\CategoryController;
+use App\Controllers\CommentController;
 use App\Controllers\HomeController;
 use App\Controllers\LocationController;
 use App\Controllers\MakerController;
@@ -103,11 +104,34 @@ switch ($url) {
 		$ctr = new CarController();
 		$ctr->addCar();
 		break;
+	case 'admin/car/edit':
+		$ctr = new CarController();
+		$ctr->editCar();
+		break;
+
 	// tài khoản
 	case 'admin/account':
 		$ctr = new UserController();
 		$ctr->listUser();
 		break;
+	case 'admin/account/add':
+		$ctr = new UserController();
+		$ctr->addUser();
+		break;
+	case 'admin/account/edit':
+		$ctr = new UserController();
+		$ctr->editUser();
+		break;
+	// bình luận
+	case 'admin/comment':
+		$ctr = new CommentController();
+		$ctr->listComment();
+		break;
+	case 'admin/comment/edit':
+		$ctr = new CommentController();
+		$ctr->editComment();
+		break;
+	
 	default:
 		# code...
 		break;

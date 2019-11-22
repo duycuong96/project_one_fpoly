@@ -49,7 +49,7 @@ require_once './app/views/backend/master/master.php';
                                             <form action="">
                                                 <div class="form-group">
                                                     <label>Tên:</label>
-                                                    <input type="text" class="form-control" placeholder="" value="">
+                                                    <input type="text" class="form-control" placeholder="" value="<?= $car->name ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
