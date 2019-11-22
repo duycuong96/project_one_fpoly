@@ -13,6 +13,10 @@ class CarController
 		
 		include_once './app/views/backend/cars/list.php';
 	}
+	// add
+	public function addCar(){
+		include_once './app/views/backend/cars/add.php';
+	}
 	
 }
 
