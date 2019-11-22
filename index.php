@@ -99,6 +99,7 @@ switch ($url) {
 		$ctr = new CarController();
 		$ctr->listCar();
 		break;
+	
 	// tài khoản
 	case 'admin/account':
 		$ctr = new UserController();
