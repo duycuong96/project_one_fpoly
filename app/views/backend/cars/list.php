@@ -340,9 +340,9 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Name</th>
-                                                    <!-- <th>Loại xe</th>
+                                                    <th>Loại xe</th>
                                                     <th>Địa điểm</th>
-                                                    <th>Hãng xe</th> -->
+                                                    <th>Hãng xe</th>
                                                     <th style="width: 10%">Action</th>
                                                 </tr>
                                             </thead>
@@ -351,9 +351,9 @@
                                                     <tr>
                                                     <td><?= $car->id ?></td>
                                                     <td><?= $car->name ?></td>
-                                                    <!-- <td><?= $car->cate_id ?></td>
-                                                    <td><?= $car->location_id ?></td>
-                                                    <td><?= $car->maker_id ?></td> -->
+                                                    <td><?= $car->getCateName() ?></td>
+                                                    <td><?= $car->getLocaName() ?></td>
+                                                    <td><?= $car->getMakerName() ?></td>
                                                     <td>
                                                         <div class="form-button-action">
                                                             <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
