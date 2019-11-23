@@ -325,7 +325,7 @@
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         
-                                        <a href="" class="btn btn-primary btn-round ml-auto" >
+                                        <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto" >
                                             <i class="fa fa-plus"></i>
                                             Thêm mới
                                         </a>
@@ -356,7 +356,7 @@
                                                     <td><?= $car->getMakerName() ?></td>
                                                     <td>
                                                         <div class="form-button-action">
-                                                            <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                            <a href="<?php echo ADMIN_URL . '/car/edit?id=' ?><?php echo $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                             <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">

@@ -52,20 +52,20 @@ require_once './app/views/backend/master/master.php';
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Name</th>
+                                                    <th>Mã voucher</th>
                                                     <th>Email</th>
                                                     <th style="width: 10%">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach($users as $user) :?>
+                                                <?php foreach($vouchers as $voucher) :?>
                                                     <tr>
-                                                    <td><?= $user->id ?></td>
-                                                    <td><?= $user->name ?></td>
-                                                    <td><?= $user->email ?></td>
+                                                    <td><?= $voucher->id ?></td>
+                                                    <td><?= $voucher->code ?></td>
+                                                    <td><?= $voucher->email ?></td>
                                                     <td>
                                                         <div class="form-button-action">
-                                                            <a href="<?= ADMIN_URL ."/account/edit?id=" ?><?= $user->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                            <a href="<?= ADMIN_URL ."/account/edit?id=" ?><?= $voucher->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                             <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">

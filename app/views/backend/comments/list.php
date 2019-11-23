@@ -16,7 +16,7 @@ require_once './app/views/backend/master/master.php';
             <div class="content">
                 <div class="page-inner">
                     <div class="page-header">
-                        <h4 class="page-title">Tài khoản</h4>
+                        <h4 class="page-title">Bình luận</h4>
                         <ul class="breadcrumbs">
                             <li class="nav-home">
                                 <a href="#">
@@ -27,7 +27,7 @@ require_once './app/views/backend/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/account' ?>">Tài khoản</a>
+                                <a href="<?= ADMIN_URL . '/account' ?>">Bình luận</a>
                             </li>
                         </ul>
                     </div>
@@ -38,9 +38,8 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         
-                                        <a href="<?= ADMIN_URL ."/account/add" ?>" class="btn btn-primary btn-round ml-auto" >
-                                            <i class="fa fa-plus"></i>
-                                            Thêm mới
+                                        <a href="<?= ADMIN_URL ?>" class="btn btn-primary btn-round ml-auto" >
+                                            Dashboard
                                         </a>
                                     </div>
                                 </div>
@@ -52,20 +51,22 @@ require_once './app/views/backend/master/master.php';
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
+                                                    <th>Tiêu đề</th>
+                                                    <th>Sản phẩm</th>
+                                                    <th>User</th>
                                                     <th style="width: 10%">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach($users as $user) :?>
+                                                <?php foreach($comments as $comment) :?>
                                                     <tr>
-                                                    <td><?= $user->id ?></td>
-                                                    <td><?= $user->name ?></td>
-                                                    <td><?= $user->email ?></td>
+                                                    <td><?= $comment->id ?></td>
+                                                    <td><?= $comment->title ?></td>
+                                                    <td><?= $comment->product_id ?></td>
+                                                    <td><?= $comment->user_id ?></td>
                                                     <td>
                                                         <div class="form-button-action">
-                                                            <a href="<?= ADMIN_URL ."/account/edit?id=" ?><?= $user->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                            <a href="<?= ADMIN_URL ."/comment/edit?id=" ?><?= $comment->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                             <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
