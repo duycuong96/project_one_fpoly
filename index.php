@@ -137,7 +137,10 @@ switch ($url) {
 		$ctr = new VoucherController();
 		$ctr->listVoucher();
 		break;
-	
+	case 'admin/voucher/add':
+		$ctr = new VoucherController();
+		$ctr->addVoucher();
+		break;
 	default:
 		# code...
 		break;
