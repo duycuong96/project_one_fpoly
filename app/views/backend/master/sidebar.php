@@ -128,6 +128,11 @@
                                             <span class="sub-item">Thêm mới</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="<?= ADMIN_URL ."/bang-gia" ?>">
+                                            <span class="sub-item">Bảng giá xe</span>
+                                        </a>
+                                    </li>
 
                                 </ul>
                             </div>
@@ -212,12 +217,12 @@
                             <div class="collapse" id="orders">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/order" ?>">
                                             <span class="sub-item">Danh sách</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/order/add" ?>">
                                             <span class="sub-item">Thêm mới</span>
                                         </a>
                                     </li>
@@ -234,12 +239,12 @@
                             <div class="collapse" id="page">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/page" ?>">
                                             <span class="sub-item">Danh sách</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/page/add" ?>">
                                             <span class="sub-item">Thêm mới</span>
                                         </a>
                                     </li>
@@ -250,21 +255,17 @@
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#setting">
                                 <i class="fas fa-th-list"></i>
-                                <p>Cấu hình khác</p>
+                                <p>Cấu hình website</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="setting">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/setting" ?>">
                                             <span class="sub-item">Thông tin website</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="sub-item">Bảng giá</span>
-                                        </a>
-                                    </li>
+                                    
 
                                 </ul>
                             </div>

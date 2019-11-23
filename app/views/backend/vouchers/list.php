@@ -16,7 +16,7 @@ require_once './app/views/backend/master/master.php';
             <div class="content">
                 <div class="page-inner">
                     <div class="page-header">
-                        <h4 class="page-title">Tài khoản</h4>
+                        <h4 class="page-title">Voucher</h4>
                         <ul class="breadcrumbs">
                             <li class="nav-home">
                                 <a href="#">
@@ -27,7 +27,7 @@ require_once './app/views/backend/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/account' ?>">Tài khoản</a>
+                                <a href="<?= ADMIN_URL . '/account' ?>">Voucher</a>
                             </li>
                         </ul>
                     </div>
@@ -38,7 +38,7 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         
-                                        <a href="<?= ADMIN_URL ."/account/add" ?>" class="btn btn-primary btn-round ml-auto" >
+                                        <a href="<?= ADMIN_URL ."/voucher/add" ?>" class="btn btn-primary btn-round ml-auto" >
                                             <i class="fa fa-plus"></i>
                                             Thêm mới
                                         </a>
@@ -53,7 +53,8 @@ require_once './app/views/backend/master/master.php';
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Mã voucher</th>
-                                                    <th>Email</th>
+                                                    <th>Giảm giá</th>
+                                                    <th>Trạng thái</th>
                                                     <th style="width: 10%">Action</th>
                                                 </tr>
                                             </thead>
@@ -62,10 +63,11 @@ require_once './app/views/backend/master/master.php';
                                                     <tr>
                                                     <td><?= $voucher->id ?></td>
                                                     <td><?= $voucher->code ?></td>
-                                                    <td><?= $voucher->email ?></td>
+                                                    <td><?= $voucher->discount_price ?></td>  
+                                                    <td><?= $voucher->status ?></td>
                                                     <td>
                                                         <div class="form-button-action">
-                                                            <a href="<?= ADMIN_URL ."/account/edit?id=" ?><?= $voucher->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                            <a href="<?= ADMIN_URL ."/voucher/edit?id=" ?><?= $voucher->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                             <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">

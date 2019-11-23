@@ -145,6 +145,41 @@ switch ($url) {
 		$ctr = new VoucherController();
 		$ctr->editVoucher();
 		break;
+	// đơn hàng
+	case 'admin/order':
+		$ctr = new OrderController();
+		$ctr->listOrder();
+		break;
+	case 'admin/order/edit':
+		$ctr = new OrderController();
+		$ctr->editOrder();
+		break;
+	// page
+	case 'admin/page':
+		$ctr = new PageController();
+		$ctr->listPage();
+		break;
+	case 'admin/page/add':
+		$ctr = new PageController();
+		$ctr->addPage();
+	break;
+	case 'admin/page/edit':
+		$ctr = new PageController();
+		$ctr->editPage();
+	break;
+	// cấu hình website
+	case 'admin/setting':
+		$ctr = new WebSetttingController();
+		$ctr->listWebSetting();
+		break;
+	case 'admin/setting/add':
+		$ctr = new WebSetttingController();
+		$ctr->addWebSetting();
+		break;
+	case 'admmin/setting/edit':
+		$ctr = new WebSetttingController();
+		$ctr->editWebSetting();
+		break;
 	default:
 		# code...
 		break;
