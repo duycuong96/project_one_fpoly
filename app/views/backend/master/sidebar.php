@@ -190,12 +190,12 @@
                             <div class="collapse" id="voucher">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/voucher" ?>">
                                             <span class="sub-item">Danh sách</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL ."/voucher/add" ?>">
                                             <span class="sub-item">Thêm mới</span>
                                         </a>
                                     </li>

@@ -19,6 +19,7 @@ use App\Controllers\HomeController;
 use App\Controllers\LocationController;
 use App\Controllers\MakerController;
 use App\Controllers\UserController;
+use App\Controllers\VoucherController;
 
 switch ($url) {
 	// trang chủ
@@ -130,6 +131,11 @@ switch ($url) {
 	case 'admin/comment/edit':
 		$ctr = new CommentController();
 		$ctr->editComment();
+		break;
+	// mã giảm giá voucher
+	case 'admin/voucher':
+		$ctr = new VoucherController();
+		$ctr->listVoucher();
 		break;
 	
 	default:
