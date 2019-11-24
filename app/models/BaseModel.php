@@ -92,7 +92,7 @@ class BaseModel
  	public static function where($arr){
  		$model = new static();
  		$model->queryBuilder = "select * from $model->tableName where $arr[0] $arr[1] '$arr[2]'";
-
+// dd($model);
  		return $model;
  	}
 

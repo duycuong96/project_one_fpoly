@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use App\Models\User;
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\Car;
 use App\Models\Comment;
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -12,10 +12,20 @@ use PHPMailer\PHPMailer\Exception;
 
 class HomeController
 {
-	
+	// trang chủ
 	public function index(){
-
+		$menus= Category::all();
 		include_once './app/views/frontend/home/homepage.php';
+	}
+	// trang danh mục
+	public function category()
+	{
+		$menus = Category::all();
+		$id = isset($_GET['id']) == true ? $_GET['id'] : NULL;
+		$car = Car::where(['cate_id', '=', $id])->get();
+		// echo "<pre>";
+		// dd($car);
+		include_once './app/views/frontend/home/category.php';
 	}
 
 	
