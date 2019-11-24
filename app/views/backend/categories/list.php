@@ -16,7 +16,7 @@ require_once './app/views/backend/master/master.php';
             <div class="content">
                 <div class="page-inner">
                     <div class="page-header">
-                        <h4 class="page-title">Danh mục</h4>
+                        <h4 class="page-title">Loại xe</h4>
                         <ul class="breadcrumbs">
                             <li class="nav-home">
                                 <a href="#">
@@ -27,7 +27,7 @@ require_once './app/views/backend/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/category' ?>">Danh mục</a>
+                                <a href="<?= ADMIN_URL . '/category' ?>">Loại xe</a>
                             </li>
                         </ul>
                     </div>
