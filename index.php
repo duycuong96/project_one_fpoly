@@ -27,6 +27,13 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->index();
 		break;
+		// trang danh mục
+	case 'category':
+		$ctr = new HomeController();
+		$ctr->category();
+		break;
+
+
 	// trang tìm kiếm
 
 	// admin
