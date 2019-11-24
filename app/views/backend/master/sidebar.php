@@ -46,8 +46,8 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#category">
-                                <i class="fas fa-layer-group"></i>
-                                <p>Danh mục xe</p>
+                                <i class="fas fa-layer-group text-primary"></i>
+                                <p>Loại xe</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="category">
@@ -68,7 +68,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#location">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-map-marker-alt text-primary"></i>
                                 <p>Địa điểm thuê xe</p>
                                 <span class="caret"></span>
                             </a>
@@ -90,7 +90,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#maker">
-                                <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-industry text-primary"></i>
                                 <p>Hãng xe</p>
                                 <span class="caret"></span>
                             </a>
@@ -112,7 +112,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#car">
-                                <i class="fas fa-th-list"></i>
+                            <i class="fas fa-motorcycle text-primary"></i>
                                 <p>Xe</p>
                                 <span class="caret"></span>
                             </a>
@@ -139,7 +139,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#users">
-                                <i class="fas fa-th-list"></i>
+                            <i class="fas fa-user-friends text-primary"></i>
                                 <p>Tài khoản</p>
                                 <span class="caret"></span>
                             </a>
@@ -166,7 +166,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#comments">
-                                <i class="fas fa-th-list"></i>
+                            <i class="fas fa-comment-dots text-primary"></i>
                                 <p>Bình luận</p>
                                 <span class="caret"></span>
                             </a>
@@ -188,7 +188,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#voucher">
-                                <i class="fas fa-th-list"></i>
+                            <i class="fas fa-money-bill text-primary"></i>
                                 <p>Mã giảm giá</p>
                                 <span class="caret"></span>
                             </a>
@@ -210,7 +210,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#orders">
-                                <i class="fas fa-th-list"></i>
+                            <i class="fas fa-shopping-cart text-primary"></i>
                                 <p>Đơn hàng</p>
                                 <span class="caret"></span>
                             </a>
@@ -232,7 +232,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#page">
-                                <i class="fas fa-th-list"></i>
+                                <i class="fas fa-th-list text-primary"></i>
                                 <p>Trang</p>
                                 <span class="caret"></span>
                             </a>
@@ -254,7 +254,7 @@
                         </li>
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#setting">
-                                <i class="fas fa-th-list"></i>
+                            <i class="fas fa-sliders-h text-primary"></i>
                                 <p>Cấu hình website</p>
                                 <span class="caret"></span>
                             </a>
