@@ -7,7 +7,7 @@ require_once './app/views/backend/master/sidebar.php';
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
-        <h4 class="page-title">Trang</h4>
+        <h4 class="page-title">Xe</h4>
         <ul class="breadcrumbs">
           <li class="nav-home">
             <a href="#">
@@ -18,26 +18,24 @@ require_once './app/views/backend/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/page' ?>">Trang</a>
+            <a href="<?= ADMIN_URL . '/car' ?>">Xe</a>
           </li>
         </ul>
       </div>
       <div class="row">
 
         <div class="col-md-12">
-          <div class="ordersd">
-            <div class="ordersd-header">
+          <div class="card">
+            <div class="card-header">
               <div class="d-flex align-items-center">
 
-                <a href="<?= ADMIN_URL . '/page/add' ?>" class="btn btn-primary btn-round ml-auto">
+                <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto">
                   <i class="fa fa-plus"></i>
                   Thêm mới
                 </a>
               </div>
             </div>
             <div class="card-body">
-
-
               <div class="table-responsive">
                 <table id="add-row" class="display table table-striped table-hover">
                   <thead>
@@ -71,6 +69,8 @@ require_once './app/views/backend/master/sidebar.php';
                   </tbody>
                 </table>
               </div>
+
+
             </div>
           </div>
         </div>

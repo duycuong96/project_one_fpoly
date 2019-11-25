@@ -18,18 +18,18 @@ require_once './app/views/backend/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/ordersgory' ?>">Xe</a>
+            <a href="<?= ADMIN_URL . '/car' ?>">Xe</a>
           </li>
         </ul>
       </div>
       <div class="row">
 
         <div class="col-md-12">
-          <div class="ordersd">
-            <div class="ordersd-header">
+          <div class="card">
+            <div class="card-header">
               <div class="d-flex align-items-center">
 
-                <a href="<?= ADMIN_URL . '/orders/add' ?>" class="btn btn-primary btn-round ml-auto">
+                <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto">
                   <i class="fa fa-plus"></i>
                   Thêm mới
                 </a>
