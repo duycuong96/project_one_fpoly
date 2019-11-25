@@ -3,7 +3,6 @@ namespace App\Controllers;
 
 
 use App\Models\Category;
-use App\Models\Location;
 
 class CategoryController
 {
