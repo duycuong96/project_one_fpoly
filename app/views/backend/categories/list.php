@@ -37,6 +37,44 @@ require_once './app/views/backend/master/sidebar.php';
                         </div>
                         <div class="card-body">
 
+        <!-- Sidebar -->
+        <?php
+        require_once './app/views/backend/master/sidebar.php';
+        ?>
+        <div class="main-panel">
+            <div class="content">
+                <div class="page-inner">
+                    <div class="page-header">
+                        <h4 class="page-title">Loại xe</h4>
+                        <ul class="breadcrumbs">
+                            <li class="nav-home">
+                                <a href="#">
+                                    <i class="flaticon-home"></i>
+                                </a>
+                            </li>
+                            <li class="separator">
+                                <i class="flaticon-right-arrow"></i>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= ADMIN_URL . '/category' ?>">Loại xe</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex align-items-center">
+
+                                        <a href="<?= ADMIN_URL . '/category/add' ?>" class="btn btn-primary btn-round ml-auto">
+                                            <i class="fa fa-plus"></i>
+                                            Thêm mới
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
 
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">

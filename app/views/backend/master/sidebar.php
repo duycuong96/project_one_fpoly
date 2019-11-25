@@ -128,11 +128,7 @@
                                             <span class="sub-item">Thêm mới</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="<?= ADMIN_URL ."/bang-gia" ?>">
-                                            <span class="sub-item">Bảng giá xe</span>
-                                        </a>
-                                    </li>
+
 
                                 </ul>
                             </div>

@@ -37,6 +37,30 @@ require_once './app/views/backend/master/sidebar.php';
                         </div>
                         <div class="card-body">
 
+        <!-- Sidebar -->
+        <?php
+        require_once './app/views/backend/master/sidebar.php';
+        ?>
+        <div class="main-panel">
+            <div class="content">
+                <div class="page-inner">
+                    <div class="page-header">
+                        <h4 class="page-title">Hãng xe</h4>
+                        <ul class="breadcrumbs">
+                            <li class="nav-home">
+                                <a href="#">
+                                    <i class="flaticon-home"></i>
+                                </a>
+                            </li>
+                            <li class="separator">
+                                <i class="flaticon-right-arrow"></i>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= ADMIN_URL . '/location' ?>">Hãng xe</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
 
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
