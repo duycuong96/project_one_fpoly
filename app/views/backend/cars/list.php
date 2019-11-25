@@ -18,7 +18,7 @@ require_once './app/views/backend/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= ADMIN_URL . '/cargory' ?>">Xe</a>
+                        <a href="<?= ADMIN_URL . '/car' ?>">Xe</a>
                     </li>
                 </ul>
             </div>
@@ -60,10 +60,10 @@ require_once './app/views/backend/master/sidebar.php';
                                                 <td><?= $car->getMakerName() ?></td>
                                                 <td>
                                                     <div class="form-button-action">
-                                                        <a href="<?php echo ADMIN_URL . '/car/edit?id=' ?><?php echo $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                        <a href="<?= ADMIN_URL . '/car/edit?id=' . $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                                                        <a onclick="return del()" href="<?= ADMIN_URL . '/car/del?id=' . $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                     </div>

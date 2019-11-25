@@ -3,6 +3,7 @@ require_once './app/views/backend/master/master.php';
 require_once './app/views/backend/master/header.php';
 require_once './app/views/backend/master/sidebar.php';
 ?>
+<!-- body -->
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header bg-primary-gradient">
@@ -295,7 +296,6 @@ require_once './app/views/backend/master/sidebar.php';
 
 		</div>
 
-	</div>
 	<!--   Core JS Files   -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">

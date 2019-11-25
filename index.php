@@ -84,9 +84,22 @@ switch ($url) {
 		$ctr = new CategoryController();
 		$ctr->addCategory();
 		break;
+	case 'admin/category/save-add':
+		$ctr = new CategoryController();
+		$ctr->saveAddCategory();
+		break;
 	case 'admin/category/edit':
 		$ctr = new CategoryController();
 		$ctr->editCategory();
+		break;
+	case 'admin/category/save-edit':
+		$ctr = new CategoryController();
+		$ctr->editSaveCategory();
+		break;
+	case 'admin/category/del':
+		$id = $_GET['id'];
+		$ctr = new CategoryController();
+		$ctr->delCategory($id);
 		break;
 	// địa điểm cho thuê xe
 	case 'admin/location':
@@ -97,14 +110,46 @@ switch ($url) {
 		$ctr = new LocationController();
 		$ctr->addLocation();
 		break;
+	case 'admin/location/save-add':
+		$ctr = new LocationController();
+		$ctr->saveAddLocation();
+		break;
 	case 'admin/location/edit':
 		$ctr = new LocationController();
 		$ctr->editLocation();
+		break;
+	case 'admin/location/save-edit':
+		$ctr = new LocationController();
+		$ctr->saveEditLocation();
+		break;
+	case 'admin/location/del':
+		$ctr = new LocationController();
+		$ctr->delLocation($id);
 		break;
 	// maker (hãng xe)
 	case 'admin/maker':
 		$ctr = new MakerController();
 		$ctr->listMaker();
+		break;
+	case 'admin/maker/add':
+		$ctr = new MakerController();
+		$ctr->addMaker();
+		break;
+	case 'admin/maker/save-add':
+		$ctr = new MakerController();
+		$ctr->saveAddMaker();
+		break;
+	case 'admin/maker/edit':
+		$ctr = new MakerController();
+		$ctr->editMaker();
+		break;
+	case 'admin/maker/save-edit':
+		$ctr = new MakerController();
+		$ctr->saveEditMaker();
+		break;
+	case 'admin/maker/del':
+		$ctr = new MakerController();
+		$ctr->delMaker($id);
 		break;
 	// xe
 	case 'admin/car':
@@ -115,9 +160,21 @@ switch ($url) {
 		$ctr = new CarController();
 		$ctr->addCar();
 		break;
+	case 'admin/car/save-add':
+		$ctr = new CarController();
+		$ctr->saveAddCar();
+		break;
 	case 'admin/car/edit':
 		$ctr = new CarController();
 		$ctr->editCar();
+		break;
+	case 'admin/car/save-edit':
+		$ctr = new CarController();
+		$ctr->saveEditCar();
+		break;
+	case 'admin/car/del':
+		$ctr = new CarController();
+		$ctr->delCar($id);
 		break;
 
 	// tài khoản

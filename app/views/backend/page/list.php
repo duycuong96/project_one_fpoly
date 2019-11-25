@@ -7,7 +7,7 @@ require_once './app/views/backend/master/sidebar.php';
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
-        <h4 class="page-title">Xe</h4>
+        <h4 class="page-title">Trang</h4>
         <ul class="breadcrumbs">
           <li class="nav-home">
             <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/backend/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/ordersgory' ?>">Xe</a>
+            <a href="<?= ADMIN_URL . '/page' ?>">Trang</a>
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@ require_once './app/views/backend/master/sidebar.php';
             <div class="ordersd-header">
               <div class="d-flex align-items-center">
 
-                <a href="<?= ADMIN_URL . '/orders/add' ?>" class="btn btn-primary btn-round ml-auto">
+                <a href="<?= ADMIN_URL . '/page/add' ?>" class="btn btn-primary btn-round ml-auto">
                   <i class="fa fa-plus"></i>
                   Thêm mới
                 </a>
@@ -43,10 +43,8 @@ require_once './app/views/backend/master/sidebar.php';
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Logo</th>
-                      <th>address</th>
-                      <th>Hotline</th>
-                      <th>Email</th>
+                      <th>Tiêu đề</th>
+                      <th>Nội dung</th>
                       <th style="width: 10%">Action</th>
                     </tr>
                   </thead>
@@ -54,10 +52,8 @@ require_once './app/views/backend/master/sidebar.php';
                     <?php foreach ($page as $pages) : ?>
                       <tr>
                         <td><?= $pages->id ?></td>
-                        <td><img height="100px" src="<?= $pages->logo ?>" alt=""></td>
-                        <td><?= $pages->address ?></td>
-                        <td><?= $pages->hotline ?></td>
-                        <td><?= $pages->email ?></td>
+                        <td><?= $pages->title ?></td>
+                        <td><?= $pages->description ?></td>
                         <td>
                           <div class="form-button-action">
                             <a href="<?php echo ADMIN_URL . '/pages/edit?id=' ?><?php echo $pages->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">

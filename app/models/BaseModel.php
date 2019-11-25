@@ -100,7 +100,7 @@ class BaseModel
  		$model = new static();
  		$model->queryBuilder = "delete from $model->tableName
  								where id = $id";
-
+// dd($model);
 		return $model->execute();
 	}
 

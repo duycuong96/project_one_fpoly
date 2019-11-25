@@ -44,15 +44,10 @@ require_once './app/views/backend/master/sidebar.php';
                     <tr>
                       <th>#</th>
                       <th>Tên khách hàng</th>
-                      <th>Số điện thoại</th>
-                      <th>Email</th>
-                      <th>Địa chỉ</th>
                       <th>Tình trang</th>
                       <th>Tổng tiền</th>
-                      <th>Lời nhắn</th>
-                      <th>Voucher</th>
-                      <th>Số tiền được giảm</th>
-                      <th>Hình thực thanh toán</th>
+                      <th>Ngày mua</th>
+                      <th>Tình trạng</th>
                       <th style="width: 10%">Action</th>
                     </tr>
                   </thead>
@@ -61,15 +56,10 @@ require_once './app/views/backend/master/sidebar.php';
                       <tr>
                         <td><?= $order->id ?></td>
                         <td><?= $order->customer_name ?></td>
-                        <td><?= $order->customer_phone_number ?></td>
-                        <td><?= $order->customer_email ?></td>
-                        <td><?= $order->address ?></td>
                         <td><?= $order->status ?></td>
                         <td><?= $order->total_price ?></td>
-                        <td><?= $order->message ?></td>
-                        <td><?= $order->voucher_id ?></td>
-                        <td><?= $order->discount ?></td>
-                        <td><?= $order->payment_amount ?></td>
+                        <td><?= $order->created_date ?></td>
+                        <td><?= $order->status ?></td>
                         <td>
                           <div class="form-button-action">
                             <a href="<?php echo ADMIN_URL . '/order/edit?id=' ?><?php echo $order->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
