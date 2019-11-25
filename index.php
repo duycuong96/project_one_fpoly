@@ -20,6 +20,9 @@ use App\Controllers\LocationController;
 use App\Controllers\MakerController;
 use App\Controllers\UserController;
 use App\Controllers\VoucherController;
+use App\Controllers\OrderController;
+use App\Controllers\PageController;
+use App\Controllers\WebSettingController;
 
 switch ($url) {
 	// trang chủ
@@ -176,15 +179,15 @@ switch ($url) {
 	break;
 	// cấu hình website
 	case 'admin/setting':
-		$ctr = new WebSetttingController();
+		$ctr = new WebSettingController();
 		$ctr->listWebSetting();
 		break;
 	case 'admin/setting/add':
-		$ctr = new WebSetttingController();
+		$ctr = new WebSettingController();
 		$ctr->addWebSetting();
 		break;
 	case 'admmin/setting/edit':
-		$ctr = new WebSetttingController();
+		$ctr = new WebSettingController();
 		$ctr->editWebSetting();
 		break;
 	default:
