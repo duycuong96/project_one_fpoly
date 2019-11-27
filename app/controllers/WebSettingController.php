@@ -12,9 +12,9 @@ class WebSettingController
   public function listWebSetting()
   {
     // dd(1);
-    $page = WebSetting::all();
+    $setting = WebSetting::all();
 
-    include_once './app/views/backend/page/list.php';
+    include_once './app/views/backend/setting/list.php';
   }
   // thêm mới
   public function addUser()

@@ -7,7 +7,7 @@ require_once './app/views/backend/master/sidebar.php';
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Danh mục</h4>
+                <h4 class="page-title">Địa điểm</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/backend/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= ADMIN_URL . '/category' ?>">Danh mục</a>
+                        <a href="<?= ADMIN_URL . '/location' ?>">Địa điểm</a>
                     </li>
                 </ul>
             </div>
@@ -29,52 +29,13 @@ require_once './app/views/backend/master/sidebar.php';
                         <div class="card-header">
                             <div class="d-flex align-items-center">
 
-                                <a href="<?= ADMIN_URL . '/category/add' ?>" class="btn btn-primary btn-round ml-auto">
+                                <a href="<?= ADMIN_URL . "/location/add" ?>" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
                                 </a>
                             </div>
                         </div>
                         <div class="card-body">
-
-        <!-- Sidebar -->
-        <?php
-        require_once './app/views/backend/master/sidebar.php';
-        ?>
-        <div class="main-panel">
-            <div class="content">
-                <div class="page-inner">
-                    <div class="page-header">
-                        <h4 class="page-title">Loại xe</h4>
-                        <ul class="breadcrumbs">
-                            <li class="nav-home">
-                                <a href="#">
-                                    <i class="flaticon-home"></i>
-                                </a>
-                            </li>
-                            <li class="separator">
-                                <i class="flaticon-right-arrow"></i>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/category' ?>">Loại xe</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="d-flex align-items-center">
-
-                                        <a href="<?= ADMIN_URL . '/category/add' ?>" class="btn btn-primary btn-round ml-auto">
-                                            <i class="fa fa-plus"></i>
-                                            Thêm mới
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-
 
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
@@ -92,11 +53,11 @@ require_once './app/views/backend/master/sidebar.php';
                                                 <td><?= $cate->id ?></td>
                                                 <td><?= $cate->name ?></td>
                                                 <td>
-                                                    <?php if($cate->show_menu == 1){
-                                                        echo "Hiện";
-                                                    }else{
-                                                        echo "Ẩn";
-                                                    } ?>
+                                                    <?php if ($cate->show_menu == 1) {
+                                                            echo "Hiện";
+                                                        } else {
+                                                            echo "Ẩn";
+                                                        } ?>
                                                 </td>
                                                 <td>
                                                     <div class="form-button-action">
@@ -115,6 +76,7 @@ require_once './app/views/backend/master/sidebar.php';
                                     </tbody>
                                 </table>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -122,6 +84,7 @@ require_once './app/views/backend/master/sidebar.php';
         </div>
     </div>
 </div>
+
 <!-- End Custom template -->
 <?php
 require_once './app/views/backend/master/footer.php';

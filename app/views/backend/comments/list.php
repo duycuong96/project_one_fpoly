@@ -36,7 +36,6 @@ require_once './app/views/backend/master/sidebar.php';
                         </div>
                         <div class="card-body">
 
-
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
@@ -45,16 +44,36 @@ require_once './app/views/backend/master/sidebar.php';
                                             <th>Tiêu đề</th>
                                             <th>Sản phẩm</th>
                                             <th>User</th>
+                                            <!-- <th>Hiện/ẩn</th> -->
+                                            <th>đánh giá</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
-                                    </thead>
+                                    </thead><i class="flaticon-home"></i>
                                     <tbody>
                                         <?php foreach ($comments as $comment) : ?>
                                             <tr>
                                                 <td><?= $comment->id ?></td>
                                                 <td><?= $comment->title ?></td>
-                                                <td><?= $comment->product_id ?></td>
-                                                <td><?= $comment->user_id ?></td>
+                                                <td><?= $comment->getCarName() ?></td>
+                                                <td><?= $comment->getUserName() ?></td>
+                                                <td>
+                                                    <?php
+                                                        for ($i = 1; $i <= 5; $i++) {
+                                                            if ($comment->rating >= $i) {
+                                                                $star = "public/icon/star.png";
+                                                            } 
+                                                            // else if (!is_int($comment->rating)) {
+                                                            //     $star = "public/icon/half-star.png";
+                                                            // }
+                                                             else if ($comment->rating < $i) {
+                                                                $star = "public/icon/star-o.png";
+                                                            }
+                                                            ?>
+                                                        <img src="<?= $star ?>" alt="">
+                                                    <?php
+                                                        }
+                                                        ?>
+                                                </td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="<?= ADMIN_URL . "/comment/edit?id=" ?><?= $comment->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
