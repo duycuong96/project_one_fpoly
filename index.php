@@ -199,6 +199,10 @@ switch ($url) {
 		$ctr = new CommentController();
 		$ctr->editComment();
 		break;
+	case 'admin/comment/save-edit':
+		$ctr = new CommentController();
+		$ctr->editSaveComment();
+		break;
 	// mã giảm giá voucher
 	case 'admin/voucher':
 		$ctr = new VoucherController();
