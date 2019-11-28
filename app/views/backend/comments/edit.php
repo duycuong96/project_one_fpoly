@@ -41,13 +41,12 @@ require_once './app/views/backend/master/sidebar.php';
                     <input type="hidden" name="id" value="<?= $comment->id ?>">
                     <div class="form-group">
                       <label>Tên khách hàng:</label>
-                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->getUserName() ?>">
+                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->getUserName() ?>" readonly>
                       <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                     </div>
                     <div class="form-group">
                       <label for="comment">Tên xe</label>
                       <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->getCarName() ?>">
-                      <textarea name="description" class="form-control" id="comment" rows="5"><?= $comment->getCarName() ?></textarea>
                     </div>
                     <div class="form-group">
                       <label for="comment">Tên đề</label>
@@ -60,17 +59,17 @@ require_once './app/views/backend/master/sidebar.php';
                     <div class="form-check">
                       <label>Hiển thị bình luận</label><br>
                       <label class="form-radio-label">
-                        <input class="form-radio-input" type="radio" name="show_menu" value="2" <?php
-                                                                                                if ($comment->status == 2) {
-                                                                                                  echo 'checked';
-                                                                                                } ?>>
+                        <input class="form-radio-input" type="radio" name="status" value="2" <?php
+                                                                                              if ($comment->status == 2) {
+                                                                                                echo 'checked';
+                                                                                              } ?>>
                         <span class="form-radio-sign">Không</span>
                       </label>
                       <label class="form-radio-label ml-3">
-                        <input class="form-radio-input" type="radio" name="show_menu" value="1" <?php
-                                                                                                if ($comment->status == 1) {
-                                                                                                  echo 'checked';
-                                                                                                } ?>>
+                        <input class="form-radio-input" type="radio" name="status" value="1" <?php
+                                                                                              if ($comment->status == 1) {
+                                                                                                echo 'checked';
+                                                                                              } ?>>
                         <span class="form-radio-sign">Có</span>
                       </label>
                     </div>
