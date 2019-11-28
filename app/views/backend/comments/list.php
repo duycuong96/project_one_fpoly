@@ -44,47 +44,57 @@ require_once './app/views/backend/master/sidebar.php';
                                             <th>Tiêu đề</th>
                                             <th>Sản phẩm</th>
                                             <th>User</th>
-                                            <!-- <th>Hiện/ẩn</th> -->
                                             <th>đánh giá</th>
+                                            <th>Hiện/ẩn</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
-                                    </thead><i class="flaticon-home"></i>
+                                    </thead>
                                     <tbody>
                                         <?php foreach ($comments as $comment) : ?>
-                                            <tr>
-                                                <td><?= $comment->id ?></td>
-                                                <td><?= $comment->title ?></td>
-                                                <td><?= $comment->getCarName() ?></td>
-                                                <td><?= $comment->getUserName() ?></td>
-                                                <td>
-                                                    <?php
-                                                        for ($i = 1; $i <= 5; $i++) {
-                                                            if ($comment->rating >= $i) {
-                                                                $star = "public/icon/star.png";
-                                                            } 
-                                                            // else if (!is_int($comment->rating)) {
-                                                            //     $star = "public/icon/half-star.png";
-                                                            // }
-                                                             else if ($comment->rating < $i) {
-                                                                $star = "public/icon/star-o.png";
+                                            <form action="<?= ADMIN_URL . '/comment/save-edit' ?>" method="post">
+                                                <input type="hidden" name="id" value="<?= $comment->id ?>">
+                                                <tr>
+                                                    <td><?= $comment->id ?></td>
+                                                    <td><?= $comment->title ?></td>
+                                                    <td><?= $comment->getCarName() ?></td>
+                                                    <td><?= $comment->getUserName() ?></td>
+                                                    <td>
+                                                        <?php
+                                                            for ($i = 1; $i <= 5; $i++) {
+                                                                if ($comment->rating >= $i) {
+                                                                    $star = "public/icon/star.png";
+                                                                }
+                                                                // else if (!is_int($comment->rating)) {
+                                                                //     $star = "public/icon/half-star.png";
+                                                                // }
+                                                                else if ($comment->rating < $i) {
+                                                                    $star = "public/icon/star-o.png";
+                                                                }
+                                                                ?>
+                                                            <img src="<?= $star ?>" alt="">
+                                                        <?php
                                                             }
                                                             ?>
-                                                        <img src="<?= $star ?>" alt="">
-                                                    <?php
-                                                        }
-                                                        ?>
-                                                </td>
-                                                <td>
-                                                    <div class="form-button-action">
-                                                        <a href="<?= ADMIN_URL . "/comment/edit?id=" ?><?= $comment->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
-                                                            <i class="fa fa-times"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                    <td>
+                                                        <?php if($comment->status == 1){
+                                                            echo "Hiện";
+                                                        }else {
+                                                            echo "Ẩn";
+                                                        } ?>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-button-action">
+                                                            <a href="<?= ADMIN_URL . "/comment/edit?id=" ?><?= $comment->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                                                                <i class="fa fa-times"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </form>
                                         <?php endforeach ?>
 
 
