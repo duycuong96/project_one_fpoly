@@ -27,13 +27,14 @@ class CommentController
 	public function editSaveComment()
 	{
 		$id = isset($_POST['id']) == true ? $_POST['id'] : "";
-		dd($id);
 		$status = isset($_POST['status']) == true ? $_POST['status'] : "";
-		$data = compact('show_menu');
+		// dd($status);
+		$data = compact('status');
 		$model = new Comment();
 		$model = Comment::where(['id', '=', $id])->first();
+		// dd($data);
 		$model->update($data);
-		header("Location: ../commnent/list.php");
+		header("Location: ../comment/edit?id=$id");
 	}
 	
 }
