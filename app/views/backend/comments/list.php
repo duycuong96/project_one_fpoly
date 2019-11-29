@@ -38,6 +38,7 @@ require_once './app/views/backend/master/sidebar.php';
 
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
+                                    
                                     <thead>
                                         <tr>
                                             <th>#</th>

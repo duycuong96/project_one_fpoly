@@ -46,15 +46,15 @@ require_once './app/views/backend/master/sidebar.php';
                     </div>
                     <div class="form-group">
                       <label for="comment">Tên xe</label>
-                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->getCarName() ?>">
+                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->getCarName() ?>" readonly>
                     </div>
                     <div class="form-group">
                       <label for="comment">Tên đề</label>
-                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->title ?>">
+                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->title ?>" readonly>
                     </div>
                     <div class="form-group">
                       <label for="comment">Tên xe</label>
-                      <textarea name="description" class="form-control" id="comment" rows="5"><?= $comment->content ?></textarea>
+                      <textarea name="description" class="form-control" id="comment" rows="5" readonly><?= $comment->content ?></textarea>
                     </div>
                     <div class="form-check">
                       <label>Hiển thị bình luận</label><br>
