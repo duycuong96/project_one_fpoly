@@ -17,6 +17,11 @@ class UserController
 	public function addUser(){
 		include_once './app/views/backend/users/add.php';
 	}
+	public function saveAddUser(){
+		$name = isset($_POST['name']) == true ? $_POST['name']: "";
+		$email = isset($_POST['email']) == true ? $_POST['email']: "";
+		$password = isset($_POST['password']) == true ? $_POST['password']: "";
+	}
 	// sửa
 	public function editUser(){
 		$id = isset($_GET['id']) ? $_GET['id'] : null;

@@ -23,6 +23,8 @@ use App\Controllers\VoucherController;
 use App\Controllers\OrderController;
 use App\Controllers\PageController;
 use App\Controllers\WebSettingController;
+use App\Controllers\RoleController;
+use App\Models\User;
 
 switch ($url) {
 	// trang chủ
@@ -186,9 +188,34 @@ switch ($url) {
 		$ctr = new UserController();
 		$ctr->addUser();
 		break;
+	case 'admin/account/save-add':
+		$ctr = new UserController();
+		$ctr->saveAddUser();
+		break;
 	case 'admin/account/edit':
 		$ctr = new UserController();
 		$ctr->editUser();
+		break;
+	// vai trò
+	case 'admin/role':
+		$ctr = new RoleController();
+		$ctr->listRole();
+		break;
+	case 'admin/role/add':
+		$ctr = new RoleController();
+		$ctr->addRole();
+		break;
+	case 'admin/role/save-add':
+		$ctr = new RoleController();
+		$ctr->saveAddRole();
+		break;
+	case 'admin/role/edit':
+		$ctr = new RoleController();
+		$ctr->editRole();
+		break;
+	case 'admin/role/save-edit':
+		$ctr = new RoleController();
+		$ctr->saveEditRole();
 		break;
 	// bình luận
 	case 'admin/comment':
