@@ -298,11 +298,24 @@ switch ($url) {
 		$ctr = new WebSettingController();
 		$ctr->addWebSetting();
 		break;
-	case 'admmin/setting/edit':
+	case 'admin/setting/save-add':
+		$ctr = new WebSettingController();
+		$ctr->SaveAddWebSetting();
+		break;
+	case 'admin/setting/edit':
 		$ctr = new WebSettingController();
 		$ctr->editWebSetting();
 		break;
-	default:
+	case 'admin/setting/save-edit':
+		$ctr = new WebSettingController();
+		$ctr->saveEditWebSetting();
+		break;
+	case 'admin/setting/del':
+		$id = $_GET['id'];
+		$ctr = new WebSettingController();
+		$ctr->delWebSetting($id);
+		break;
+
 		# code...
 		break;
 }
