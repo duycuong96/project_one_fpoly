@@ -65,7 +65,7 @@ require_once './app/views/backend/master/sidebar.php';
                                                         <a href="<?= ADMIN_URL . "/role/edit?id=" ?><?= $role->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                                                        <a onclick="return del()" href="<?= ADMIN_URL . '/role/del?id=' . $role->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                     </div>

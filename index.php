@@ -225,6 +225,10 @@ switch ($url) {
 		$ctr = new RoleController();
 		$ctr->saveEditRole();
 		break;
+	case 'admin/role/del':
+		$ctr = new RoleController();
+		$ctr->delRole($id);
+		break;
 	// bình luận
 	case 'admin/comment':
 		$ctr = new CommentController();
