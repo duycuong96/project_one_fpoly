@@ -196,6 +196,14 @@ switch ($url) {
 		$ctr = new UserController();
 		$ctr->editUser();
 		break;
+	case 'admin/account/save-edit':
+		$ctr = new UserController();
+		$ctr->saveEditUser();
+		break;
+	case 'admin/account/del':
+		$ctr = new UserController();
+		$ctr->delUser($id);
+		break;
 	// vai trò
 	case 'admin/role':
 		$ctr = new RoleController();

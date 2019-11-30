@@ -45,6 +45,7 @@ require_once './app/views/backend/master/sidebar.php';
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Vai trò</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -54,12 +55,13 @@ require_once './app/views/backend/master/sidebar.php';
                                                 <td><?= $user->id ?></td>
                                                 <td><?= $user->name ?></td>
                                                 <td><?= $user->email ?></td>
+                                                <td><?= $user->getRoleName() ?></td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="<?= ADMIN_URL . "/account/edit?id=" ?><?= $user->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                                                        <a onclick="return del()" href="<?= ADMIN_URL . '/account/del?id=' . $user->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                     </div>
