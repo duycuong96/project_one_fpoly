@@ -239,6 +239,10 @@ switch ($url) {
 		$ctr = new VoucherController();
 		$ctr->addVoucher();
 		break;
+	case 'admin/voucher/save-add':
+		$ctr = new VoucherController();
+		$ctr->SaveAddVoucher();
+		break;
 	case 'admin/voucher/edit':
 		$ctr = new VoucherController();
 		$ctr->editVoucher();
@@ -261,10 +265,22 @@ switch ($url) {
 		$ctr = new PageController();
 		$ctr->addPage();
 	break;
+	case 'admin/page/save-add':
+		$ctr = new PageController();
+		$ctr->saveAddPage();
+		break;
 	case 'admin/page/edit':
 		$ctr = new PageController();
 		$ctr->editPage();
 	break;
+	case 'admin/page/save-edit':
+		$ctr = new PageController();
+		$ctr->SaveEditPage();
+		break;
+	case 'admin/page/del':
+		$ctr = new PageController();
+		$ctr->delPage($id);
+		break;
 	// cấu hình website
 	case 'admin/setting':
 		$ctr = new WebSettingController();

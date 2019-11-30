@@ -41,12 +41,12 @@ class CarController
 		if ($image['size'] > 0) {
 			$filename = $image['name'];
 			$filename = uniqid() . "-" . $filename;
-			move_uploaded_file($image['tmp_name'], "public/images/" . $filename);
-			$filePath = "./public/images/cars/" . $filename;
+			move_uploaded_file($image['tmp_name'], 'public/assets/img/cars/' . $filename);
+			// $filePath = "public/images/cars/" . $filename;
 		}
 		// dd($filePath);
 		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail');
-		$data['feature_image'] = $filePath;
+		$data['feature_image'] = $filename;
 		$model = new Car();
 		$model->insert($data);
 		header('Location: ../car');
@@ -89,17 +89,17 @@ class CarController
 		if ($images['size'] > 0) {
 			$filename = $images['name'];
 			$filename = uniqid() . "-" . $filename;
-			move_uploaded_file($images['tmp_name'], "public/images/" . $filename);
-			$filePath = "./public/images/cars/" . $filename;
+			move_uploaded_file($images['tmp_name'], "public/assets/img/cars/" . $filename);
+			// $filePath = "./public/images/cars/" . $filename;
 		}
 		// dd($filePath);
 		if ($images['size'] > 0) {
 			$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail');
-			$data['feature_image'] = $filePath;
+			$data['feature_image'] = $filename;
 		} else {
 			$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail', 'image');
 		}
-		dd($data);
+		// dd($data);
 		$model = new Car();
 		$model = Car::where(['id', '=', $id])->first();
 		$model->update($data);

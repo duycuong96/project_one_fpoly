@@ -45,6 +45,8 @@ require_once './app/views/backend/master/sidebar.php';
                                             <th>#</th>
                                             <th>Mã voucher</th>
                                             <th>Giảm giá</th>
+                                            <th>Ngày bắt đầu</th>
+                                            <th>Ngày kết thúc</th>
                                             <th>Trạng thái</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
@@ -55,7 +57,15 @@ require_once './app/views/backend/master/sidebar.php';
                                                 <td><?= $voucher->id ?></td>
                                                 <td><?= $voucher->code ?></td>
                                                 <td><?= $voucher->discount_price ?></td>
-                                                <td><?= $voucher->status ?></td>
+                                                <td><?= $voucher->start_time ?></td>
+                                                <td><?= $voucher->end_time ?></td>
+                                                <td><?php
+                                                        if ($voucher->status == 1) {
+                                                            echo "Đã kích hoạt";
+                                                        } else {
+                                                            echo "Chưa kích hoạt";
+                                                        }
+                                                        ?></td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="<?= ADMIN_URL . "/voucher/edit?id=" ?><?= $voucher->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">

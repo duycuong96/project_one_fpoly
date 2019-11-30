@@ -49,6 +49,7 @@ class CategoryController
 
 	public function delCategory($id)
 	{
+		$id = $_GET['id'];
 		$cate=Category::destroy($id);
 		header('Location: ../category');
 	}

@@ -18,7 +18,7 @@ require_once './app/views/backend/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/car' ?>">Page</a>
+            <a href="<?= ADMIN_URL . '/page' ?>">Page</a>
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@ require_once './app/views/backend/master/sidebar.php';
             <div class="card-header">
               <div class="d-flex align-items-center">
 
-                <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto">
+                <a href="<?= ADMIN_URL . '/page/add' ?>" class="btn btn-primary btn-round ml-auto">
                   <i class="fa fa-plus"></i>
                   Thêm mới
                 </a>
@@ -54,10 +54,10 @@ require_once './app/views/backend/master/sidebar.php';
                         <td><?= $pages->description ?></td>
                         <td>
                           <div class="form-button-action">
-                            <a href="<?php echo ADMIN_URL . '/pages/edit?id=' ?><?php echo $pages->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                            <a href="<?php echo ADMIN_URL . '/page/edit?id=' ?><?php echo $pages->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                               <i class="fa fa-edit"></i>
                             </a>
-                            <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                            <a onclick="return del()" href="<?= ADMIN_URL . '/page/del?id=' . $pages->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
                               <i class="fa fa-times"></i>
                             </a>
                           </div>
