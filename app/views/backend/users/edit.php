@@ -46,21 +46,21 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-body">
                                     <div class="row justify-content-md-center">
                                         <div class="col-md-8">
-                                            <form action="">
+                                            <form  action="<?= ADMIN_URL . "/account/save-edit" ?>" method="POST" enctype="multipart/form-data">
                                                 <input type="hidden" name="id" value="<?= $user->id ?>">
                                                 <div class="form-group">
                                                     <label>Tên</label>
-                                                    <input type="text" class="form-control" placeholder="" value="<?= $user->name ?>">
+                                                    <input type="text" class="form-control" placeholder="" name="name" value="<?= $user->name ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="" value="<?= $user->email ?>">
+                                                    <input type="text" class="form-control" placeholder="" name="email" value="<?= $user->email ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="password" class="form-control" placeholder="" value="<?= $user->password ?>">
+                                                    <input type="password" class="form-control" placeholder="" name="password" value="<?= $user->password ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
@@ -70,21 +70,27 @@ require_once './app/views/backend/master/master.php';
                                                 <img src="<?= AVATAR_URL . $user->avatar ?>" alt="" id="image" width="50%">
                                                 <div class="form-group">
 												<label for="exampleFormControlSelect1">Phân quyền</label>
-												<select class="form-control" id="exampleFormControlSelect1">
-													<option>Admin</option>
-													<option>Member</option>
+												<select class="form-control"  name="role_id" >
+                                                    <?php foreach ($roles as $role ) { ?>
+                                                        <?php if($role->id == $user->role_id) { ?>
+                                                            <option value="<?= $role->id ?>" selected > <?= $role->name ?> </option>
+                                                        <?php } else { ?>
+                                                            <option value="<?= $role->id ?>"> <?= $role->name ?> </option>
+                                                        <?php } ?>
+                                                    <?php } ?>
 												</select>
 											</div>
-                                                <div class="form-check">
+                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>
-                                                    <label class="form-radio-label">
-                                                        <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
-                                                        <span class="form-radio-sign">Không</span>
-                                                    </label>
                                                     <label class="form-radio-label ml-3">
-                                                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                                                        <span class="form-radio-sign">Có</span>
+                                                        <input class="form-radio-input" type="radio" name="status" value="1" <?php  if($user->status == 1){ echo 'checked';} ?>>
+                                                        <span class="form-radio-sign">Kích hoạt</span>
                                                     </label>
+                                                    <label class="form-radio-label">
+                                                        <input class="form-radio-input" type="radio" name="status" value="0" <?php  if($user->status == 0){ echo 'checked';} ?> >
+                                                        <span class="form-radio-sign">Chưa kích hoạt</span>
+                                                    </label>
+                                                    
                                                 </div>
 
                                                 <div class="card-action">
