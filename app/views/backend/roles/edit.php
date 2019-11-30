@@ -57,13 +57,12 @@ require_once './app/views/backend/master/master.php';
 
                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>
-
                                                     <label class="form-radio-label">
-                                                        <input class="form-radio-input" type="radio" name="status" value="0" >
+                                                        <input class="form-radio-input" type="radio" name="status" value="0" <?php  if($role->status == 0){ echo 'checked';} ?> >
                                                         <span class="form-radio-sign">Không kích hoạt</span>
                                                     </label>
                                                     <label class="form-radio-label ml-3">
-                                                        <input class="form-radio-input" type="radio" name="status" value="1">
+                                                        <input class="form-radio-input" type="radio" name="status" value="1" <?php if($role->status == 1){ echo 'checked';} ?>  >
                                                         <span class="form-radio-sign">Kích hoạt</span>
                                                     </label>
                                                 </div>
