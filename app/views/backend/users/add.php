@@ -16,7 +16,7 @@ require_once './app/views/backend/master/master.php';
             <div class="content">
                 <div class="page-inner">
                     <div class="page-header">
-                        <h4 class="page-title">Địa điểm</h4>
+                        <h4 class="page-title">Tài khoản</h4>
                         <ul class="breadcrumbs">
                             <li class="nav-home">
                                 <a href="#">
@@ -27,7 +27,7 @@ require_once './app/views/backend/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/category' ?>">Địa điểm</a>
+                                <a href="<?= ADMIN_URL . '/category' ?>">Tài khoản</a>
                             </li>
                         </ul>
                     </div>
@@ -46,7 +46,7 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-body">
                                     <div class="row justify-content-md-center">
                                         <div class="col-md-8">
-                                            <form action="<?= ADMIN_URL . "/account/save-add" ?>" method="POST">
+                                            <form action="<?= ADMIN_URL . "/account/save-add" ?>" method="POST" enctype="multipart/form-data">
                                                 <div class="form-group">
                                                     <label>Tên</label>
                                                     <input type="text" class="form-control" placeholder="" value="" name="name">
@@ -69,20 +69,24 @@ require_once './app/views/backend/master/master.php';
                                                 <div class="form-group">
 												<label>Phân quyền</label>
 												<select class="form-control" name="role_id" >
-													<option>Admin</option>
-													<option>Member</option>
+                                                    <?php foreach($roles as $role) : ?>
+                                                        <option value="<?= $role->id ?>">
+                                                        <?= $role->name ?>
+                                                        </option>
+                                                    <?php endforeach ?>
 												</select>
 											</div>
                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>
-                                                    <label class="form-radio-label">
-                                                        <input class="form-radio-input" type="radio" name="status" value="" checked="">
-                                                        <span class="form-radio-sign">Không</span>
-                                                    </label>
                                                     <label class="form-radio-label ml-3">
-                                                        <input class="form-radio-input" type="radio" name="status" value="">
-                                                        <span class="form-radio-sign">Có</span>
+                                                        <input class="form-radio-input" type="radio" name="status" value="1" checked="">
+                                                        <span class="form-radio-sign">Kích hoạt</span>
                                                     </label>
+                                                    <label class="form-radio-label">
+                                                        <input class="form-radio-input" type="radio" name="status" value="0" >
+                                                        <span class="form-radio-sign">Chưa kích hoạt</span>
+                                                    </label>
+                                                    
                                                 </div>
 
                                                 <div class="card-action">

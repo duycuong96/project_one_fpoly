@@ -92,9 +92,9 @@ require_once './app/views/backend/master/sidebar.php';
                                         </div>
                                         <div class="form-group">
                                             <label>Ảnh:</label>
-                                            <img style="height:100px;margin: 1% 2%;" src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
+                                            <img id="image" style="height:200px;margin: 1% 2%;" src="<?= IMAGE_URL . $car->feature_image ?>" alt="" >
                                             <input type="hidden" name="feature_image" value="<?= $car->feature_image ?>">
-                                            <input type="file" name="feature_images" class="form-control" placeholder="" value="">
+                                            <input id="img" type="file" name="feature_images" class="form-control" placeholder="" value="" onchange="changeImg(this)">
                                             <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                         </div>
                                         <div class="form-group">

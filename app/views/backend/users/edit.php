@@ -65,8 +65,9 @@ require_once './app/views/backend/master/master.php';
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">Avatar</label>
-                                                    <input type="file" class="form-control-file" id="">
+                                                    <input id="img" type="file" class="form-control" name="avatar" onchange="changeImg(this)">
                                                 </div>
+                                                <img src="<?= AVATAR_URL . $user->avatar ?>" alt="" id="image" width="50%">
                                                 <div class="form-group">
 												<label for="exampleFormControlSelect1">Phân quyền</label>
 												<select class="form-control" id="exampleFormControlSelect1">
