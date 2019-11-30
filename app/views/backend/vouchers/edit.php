@@ -54,8 +54,17 @@ require_once './app/views/backend/master/master.php';
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
+                                                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                                        <label for="aaaaaaaa"></label>
+                                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
+                                                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label>Thời gian bắt đầu:</label>
-                                                    <input type="date" class="form-control" placeholder="" value="<?= $voucher->start_time ?>">
+                                                    <input id="datepicker" class="form-control" placeholder="" value="<?= $voucher->start_time ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
@@ -68,18 +77,23 @@ require_once './app/views/backend/master/master.php';
                                                     <input type="text" class="form-control" placeholder="Nhập tiền giảm giá" value="<?= $voucher->discount_price ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Số lượng mã</label>
+                                                    <input type="text" name="used_count" class="form-control" placeholder="Nhập số lượng mã giảm giá" value="<?= $voucher->used_count ?>">
+                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                </div>
                                                 <div class="form-check">
-												<label>Trạng thái:</label><br>
-												<label class="form-radio-label">
-													<input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
-													<span class="form-radio-sign">Chưa kích hoạt</span>
-												</label>
-												<label class="form-radio-label ml-3">
-													<input class="form-radio-input" type="radio" name="optionsRadios" value="">
-													<span class="form-radio-sign">Kích hoạt</span>
-												</label>
-											</div>
-                                                
+                                                    <label>Trạng thái:</label><br>
+                                                    <label class="form-radio-label">
+                                                        <input class="form-radio-input" type="radio" name="optionsRadios" value="2" checked="">
+                                                        <span class="form-radio-sign">Chưa kích hoạt</span>
+                                                    </label>
+                                                    <label class="form-radio-label ml-3">
+                                                        <input class="form-radio-input" type="radio" name="optionsRadios" value="1">
+                                                        <span class="form-radio-sign">Kích hoạt</span>
+                                                    </label>
+                                                </div>
+
                                                 <div class="card-action">
                                                     <button class="btn btn-success">Cập nhật</button>
                                                     <button class="btn btn-danger">Trở lại</button>
@@ -96,7 +110,17 @@ require_once './app/views/backend/master/master.php';
             </div>
         </div>
 
-    <!-- End Custom template -->
-    <?php
-    require_once './app/views/backend/master/footer.php';
-    ?>
+        <script type="text/javascript">
+            $(function() {
+                $('#datetimepicker1').datetimepicker({
+                    format: 'yyyy-mm-dd hh:ii',
+                    format: "yyy-mm-dd",
+                    startDate: "2019-11-29",
+                    endDate: "2019-11-31"
+                });
+            });
+        </script>
+        <!-- End Custom template -->
+        <?php
+        require_once './app/views/backend/master/footer.php';
+        ?>
