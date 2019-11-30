@@ -77,7 +77,8 @@ require_once './app/views/backend/master/sidebar.php';
                                         </div>
                                         <div class="form-group">
                                             <label>Ảnh:</label>
-                                            <input type="file" name="feature_image" class="form-control" placeholder="" value="">
+                                            <input id="img" type="file" name="feature_image" class="form-control" placeholder="" value="" onchange="changeImg(this)">
+                                            <img id="image" class="thumbnail" width="50%" height="">
                                             <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                         </div>
                                         <div class="form-group">
