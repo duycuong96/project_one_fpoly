@@ -7,7 +7,7 @@ require_once './app/views/backend/master/sidebar.php';
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
-        <h4 class="page-title">Trang</h4>
+        <h4 class="page-title">Cài đặt Website</h4>
         <ul class="breadcrumbs">
           <li class="nav-home">
             <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/backend/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/page' ?>">Trang</a>
+            <a href="<?= ADMIN_URL . '/setting' ?>">Cài đặt Website</a>
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@ require_once './app/views/backend/master/sidebar.php';
             <div class="card-header">
               <div class="d-flex align-items-center">
 
-                <a href="<?= ADMIN_URL . '/page' ?>" class="btn btn-primary btn-round ml-auto">
+                <a href="<?= ADMIN_URL . '/setting' ?>" class="btn btn-primary btn-round ml-auto">
                   Danh sách
                 </a>
               </div>
@@ -37,16 +37,25 @@ require_once './app/views/backend/master/sidebar.php';
             <div class="card-body">
               <div class="row justify-content-md-center">
                 <div class="col-md-8">
-                  <form action="<?= ADMIN_URL . '/page/save-edit' ?>" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?= $page->id ?>">
+                  <form action="<?= ADMIN_URL . '/setting/save-edit' ?>" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="<?= $setting->id ?>">
                     <div class="form-group">
-                      <label>Tiêu đề</label>
-                      <input name="tilte" type="text" class="form-control" placeholder="" value="<?= $page->title ?>">
-                      <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                      <label for="">Logo</label>
+                      <img style="height:100px;margin: 1% 2%;" src="<?= IMAGE_URL . $setting->logo ?>" alt="">
+                      <input type="hidden" name="logo" value="<?= $setting->logo ?>">
+                      <input name="logoTwo" type="file" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label for="comment">Nội dung</label>
-                      <textarea name="description" class="form-control" id="comment" rows="5"><?= $page->description ?></textarea>
+                      <label for="">Email</label>
+                      <input name="email" type="text" class="form-control" placeholder="" value="<?= $setting->email ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Địa chỉ</label>
+                      <input name="address" type="text" class="form-control" placeholder="" value="<?= $setting->address ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Hotline</label>
+                      <input name="hotline" type="text" class="form-control" placeholder="" value="<?= $setting->hotline ?>">
                     </div>
 
                     <div class="card-action">
