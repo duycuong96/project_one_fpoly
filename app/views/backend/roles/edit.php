@@ -46,42 +46,24 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-body">
                                     <div class="row justify-content-md-center">
                                         <div class="col-md-8">
-                                            <form action="<?= ADMIN_URL . "/account/save-add" ?>" method="POST">
+                                            <form action="<?= ADMIN_URL . '/role/save-edit' ?>" method="POST">
+                                                <input type="hidden" name="id" value="<?= $role->id ?>" >
                                                 <div class="form-group">
                                                     <label>Tên</label>
-                                                    <input type="text" class="form-control" placeholder="" value="" name="name">
+                                                    <input type="text" class="form-control" placeholder="" value="<?= $role->name ?>" name="name">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="" value="" name="email">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Password</label>
-                                                    <input type="text" class="form-control" placeholder="" value="" name="password">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="">Avatar</label>
-                                                    <input type="file" class="form-control-file" id="" name="avatar">
-                                                </div>
-                                                <div class="form-group">
-												<label>Phân quyền</label>
-												<select class="form-control" name="role_id" >
-													<option>Admin</option>
-													<option>Member</option>
-												</select>
-											</div>
+
+
                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>
                                                     <label class="form-radio-label">
-                                                        <input class="form-radio-input" type="radio" name="status" value="" checked="">
-                                                        <span class="form-radio-sign">Không</span>
+                                                        <input class="form-radio-input" type="radio" name="status" value="0" <?php  if($role->status == 0){ echo 'checked';} ?> >
+                                                        <span class="form-radio-sign">Không kích hoạt</span>
                                                     </label>
                                                     <label class="form-radio-label ml-3">
-                                                        <input class="form-radio-input" type="radio" name="status" value="">
-                                                        <span class="form-radio-sign">Có</span>
+                                                        <input class="form-radio-input" type="radio" name="status" value="1" <?php if($role->status == 1){ echo 'checked';} ?>  >
+                                                        <span class="form-radio-sign">Kích hoạt</span>
                                                     </label>
                                                 </div>
 

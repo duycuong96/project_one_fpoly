@@ -152,7 +152,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="<?= ADMIN_URL . '/role' ?>">
                                             <span class="sub-item">Vai trò</span>
                                         </a>
                                     </li>

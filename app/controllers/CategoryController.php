@@ -43,6 +43,7 @@ class CategoryController
 		$model = new Category();
 		$model = Category::where(['id', '=', $id])->first();
 		$model->update($data);
+		// var_dump($model);die;
 		header("Location: ../category/edit?id=$id");
 	}
 
