@@ -37,14 +37,22 @@ require_once './app/views/backend/master/sidebar.php';
             <div class="card-body">
               <div class="row justify-content-md-center">
                 <div class="col-md-8">
-                  <form action="<?= ADMIN_URL . '/page/save-add' ?>" method="post" enctype="multipart/form-data">
+                  <form action="<?= ADMIN_URL . '/setting/save-add' ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                      <label for="">Tiêu đề</label>
-                      <input name="title" type="text" class="form-control" placeholder="" value="">
+                      <label for="">Logo</label>
+                      <input name="logo" type="file" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label for="">Nội dung</label>
-                      <textarea name="description" class="form-control" id="comment" rows="5"></textarea>
+                      <label for="">Email</label>
+                      <input name="email" type="text" class="form-control" placeholder="" value="">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Địa chỉ</label>
+                      <input name="address" type="text" class="form-control" placeholder="" value="">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Hotline</label>
+                      <input name="hotline" type="text" class="form-control" placeholder="" value="">
                     </div>
 
                     <div class="card-action">

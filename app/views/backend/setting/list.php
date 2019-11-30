@@ -52,16 +52,16 @@ require_once './app/views/backend/master/sidebar.php';
                     <?php foreach ($setting as $settings) : ?>
                       <tr>
                         <td><?= $settings->id ?></td>
-                        <td><img height="100%" src="<?= $settings->logo ?>" alt=""></td>
+                        <td><img height="100%" src="<?= IMAGE_URL . $settings->logo ?>" alt=""></td>
                         <td><?= $settings->address ?></td>
                         <td><?= $settings->hotline ?></td>
                         <td><?= $settings->email ?></td>
                         <td>
                           <div class="form-button-action">
-                            <a href="<?php echo ADMIN_URL . '/setting/edit?id=' . $setting->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                            <a href="<?= ADMIN_URL . '/setting/edit?id=' . $settings->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                               <i class="fa fa-edit"></i>
                             </a>
-                            <a href="<?php echo ADMIN_URL . '/setting/edit?id=' . $setting->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                            <a onclick=" return del()" href="<?= ADMIN_URL . '/setting/del?id=' . $settings->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
                               <i class="fa fa-times"></i>
                             </a>
                           </div>

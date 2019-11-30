@@ -54,7 +54,7 @@ require_once './app/views/backend/master/sidebar.php';
                         <td><?= $pages->description ?></td>
                         <td>
                           <div class="form-button-action">
-                            <a href="<?php echo ADMIN_URL . '/page/edit?id=' ?><?php echo $pages->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                            <a href="<?= ADMIN_URL . '/page/edit?id=' . $pages->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                               <i class="fa fa-edit"></i>
                             </a>
                             <a onclick="return del()" href="<?= ADMIN_URL . '/page/del?id=' . $pages->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">

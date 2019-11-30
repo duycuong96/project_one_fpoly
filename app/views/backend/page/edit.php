@@ -41,7 +41,7 @@ require_once './app/views/backend/master/sidebar.php';
                     <input type="hidden" name="id" value="<?= $page->id ?>">
                     <div class="form-group">
                       <label>Tiêu đề</label>
-                      <input name="tilte" type="text" class="form-control" placeholder="" value="<?= $page->title ?>">
+                      <input name="title" type="text" class="form-control" placeholder="" value="<?= $page->title ?>">
                       <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                     </div>
                     <div class="form-group">
