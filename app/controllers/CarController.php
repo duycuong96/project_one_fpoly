@@ -101,7 +101,7 @@ class CarController
 		}
 		// dd($data);
 		$model = new Car();
-		$model = Car::where(['id', '=', $id])->first();
+		$model->id = $id;
 		$model->update($data);
 		header("Location: ../car/edit?id=$id");
 	}
