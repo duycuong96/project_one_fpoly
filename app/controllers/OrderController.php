@@ -14,19 +14,14 @@ class OrderController
 		
 		include_once './app/views/backend/orders/list.php';
 	}
-	// thêm mới
-	public function addUser(){
-		include_once './app/views/backend/users/add.php';
-	}
-	// sửa
-	public function editUser(){
+	// Cập nhật
+	public function editOrder(){
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
-		$user = Order::where(['id', '=', $id])->first();
-		if(!$user){
-			header('location: ' . ADMIN_URL);
+		$order = Order::where(['id', '=', $id])->first();
+		if(!$order){
+			header("location: ../order/edit?id=$id");
         	die;
 		}
-		include_once './app/views/backend/users/edit.php';
 	}
 	
 }

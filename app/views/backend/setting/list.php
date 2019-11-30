@@ -18,7 +18,7 @@ require_once './app/views/backend/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/car' ?>">Cài đặt Website</a>
+            <a href="<?= ADMIN_URL . '/setting' ?>">Cài đặt Website</a>
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@ require_once './app/views/backend/master/sidebar.php';
             <div class="card-header">
               <div class="d-flex align-items-center">
 
-                <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto">
+                <a href="<?= ADMIN_URL . '/setting/add' ?>" class="btn btn-primary btn-round ml-auto">
                   <i class="fa fa-plus"></i>
                   Thêm mới
                 </a>
@@ -52,16 +52,16 @@ require_once './app/views/backend/master/sidebar.php';
                     <?php foreach ($setting as $settings) : ?>
                       <tr>
                         <td><?= $settings->id ?></td>
-                        <td><img heig src="<?= $settings->logo ?>" alt=""></td>
+                        <td><img height="100%" src="<?= $settings->logo ?>" alt=""></td>
                         <td><?= $settings->address ?></td>
                         <td><?= $settings->hotline ?></td>
                         <td><?= $settings->email ?></td>
                         <td>
                           <div class="form-button-action">
-                            <a href="<?php echo ADMIN_URL . '/setting/edit?id=' ?><?php echo $setting->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                            <a href="<?php echo ADMIN_URL . '/setting/edit?id=' . $setting->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                               <i class="fa fa-edit"></i>
                             </a>
-                            <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                            <a href="<?php echo ADMIN_URL . '/setting/edit?id=' . $setting->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
                               <i class="fa fa-times"></i>
                             </a>
                           </div>
