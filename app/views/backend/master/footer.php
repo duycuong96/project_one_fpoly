@@ -4,8 +4,10 @@
             return confirm('Bạn có muốn xóa không ?');
         }
     </script>
+    
+    
     <!--   Core JS Files   -->
-    <script src="./public/assets/js/core/jquery.3.2.1.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
     <script src="./public/assets/js/core/popper.min.js"></script>
     <script src="./public/assets/js/core/bootstrap.min.js"></script>
     <!-- jQuery UI -->
@@ -22,9 +24,7 @@
     <script src="./public/assets/js/setting-demo2.js"></script>
     <!--  -->
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-
+    <script src="./public/assets/js/bootstrap-datepicker.js"></script>
 
     <script>
         // thay ảnh
@@ -94,7 +94,6 @@
     </script>
 
     <!-- end footer -->
-
 
 
 
