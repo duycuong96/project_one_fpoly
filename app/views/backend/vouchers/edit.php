@@ -54,22 +54,14 @@ require_once './app/views/backend/master/master.php';
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                                        <label for="aaaaaaaa"></label>
-                                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
-                                                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
                                                     <label>Thời gian bắt đầu:</label>
-                                                    <input id="datepicker" class="form-control" placeholder="" value="<?= $voucher->start_time ?>">
+                                                  
+                                                    <input type="text" id="timeCheckIn" class="form-control" value="<?= $voucher->start_time ?>" />
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian kết thúc:</label>
-                                                    <input type="date" class="form-control" placeholder="" value="">
+                                                    <input type="text" id="timeCheckOut" class="form-control" value="<?= $voucher->end_time ?>" />
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
@@ -103,8 +95,8 @@ require_once './app/views/backend/master/master.php';
                                     </div>
 
                                 </div>
-                            </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

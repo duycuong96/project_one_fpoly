@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="./public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/assets/css/atlantis.min.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="./public/assets/css/demo.css">
+    <!-- <link rel="stylesheet" href="./public/assets/css/demo.css"> -->
+    <link href="https://thichchiase.com/demo/date-range-picker/Date%20range%20picker%20sample_files/datepicker.css" rel="stylesheet" />
 
 </head>

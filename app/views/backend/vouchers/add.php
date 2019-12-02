@@ -24,14 +24,14 @@
             }
         });
     </script>
-   
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="./public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/assets/css/atlantis.min.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!-- <link rel="stylesheet" href="./public/assets/css/demo.css"> -->
     <link href="https://thichchiase.com/demo/date-range-picker/Date%20range%20picker%20sample_files/datepicker.css" rel="stylesheet" />
-        
+
 </head>
 
 <body>
@@ -121,30 +121,30 @@
                                                     <button class="btn btn-danger">Trở lại</button>
                                                 </div>
                                                 <div class="container" style="padding-top:20px">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        Date range picker sample
-                    </div>
-                    <div class="panel-body">
-                        <table class="table">
-                            <tr>
-                                <td>Check In:</td>
-                                <td>
-                                    <input type="text" id="timeCheckIn" class="form-control" />
-                                </td>
-                                <td>Check Out:</td>
-                                <td>
-                                    <input type="text" id="timeCheckOut" class="form-control" />
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8 col-md-offset-2">
+                                                            <div class="panel panel-primary">
+                                                                <div class="panel-heading">
+                                                                    Date range picker sample
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <table class="table">
+                                                                        <tr>
+                                                                            <td>Check In:</td>
+                                                                            <td>
+                                                                                <input type="text" id="timeCheckIn" class="form-control" />
+                                                                            </td>
+                                                                            <td>Check Out:</td>
+                                                                            <td>
+                                                                                <input type="text" id="timeCheckOut" class="form-control" />
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -156,68 +156,68 @@
                 </div>
             </div>
         </div>
-       
+
         <!-- End Custom template -->
         <!-- footer -->
         <script>
-        function del() {
-            return confirm('Bạn có muốn xóa không ?');
-        }
-    </script>
-    
-    
-    <!--   Core JS Files   -->
-   <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-    <script src="./public/assets/js/core/popper.min.js"></script>
-    <script src="./public/assets/js/core/bootstrap.min.js"></script>
-    <!-- jQuery UI -->
-    <script src="./public/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="./public/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-
-    <!-- jQuery Scrollbar -->
-    <script src="./public/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-    <!-- Datatables -->
-    <script src="./public/assets/js/plugin/datatables/datatables.min.js"></script>
-    <!-- Atlantis JS -->
-    <script src="./public/assets/js/atlantis.min.js"></script>
-    <!-- Atlantis DEMO methods, don't include it in your project! -->
-    <script src="./public/assets/js/setting-demo2.js"></script>
-    <!--  -->
-
-    <script src="./public/assets/js/bootstrap-datepicker.js"></script>
-
-    <script src="https://thichchiase.com/demo/date-range-picker/Date%20range%20picker%20sample_files/bootstrap-datepicker.js"></script>
-    <!-- end footer -->
-    <script>
-        $(function () {
-            'use strict';
-            var nowTemp = new Date();
-            var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
-            var checkin = $('#timeCheckIn').datepicker({
-                onRender: function (date) {
-                    return date.valueOf() < now.valueOf() ? 'disabled' : '';
-                }
-            }).on('changeDate', function (ev) {
-                if (ev.date.valueOf() > checkout.date.valueOf()) {
-                    var newDate = new Date(ev.date)
-                    newDate.setDate(newDate.getDate() + 1);
-                    checkout.setValue(newDate);
-                }
-                checkin.hide();
-                $('#timeCheckOut')[0].focus();
-            }).data('datepicker');
-            var checkout = $('#timeCheckOut').datepicker({
-                onRender: function (date) {
-                    return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-                }
-            }).on('changeDate', function (ev) {
-                checkout.hide();
-            }).data('datepicker');
-        });
-    </script>
+            function del() {
+                return confirm('Bạn có muốn xóa không ?');
+            }
+        </script>
 
 
-    </body>
+        <!--   Core JS Files   -->
+        <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+        <script src="./public/assets/js/core/popper.min.js"></script>
+        <script src="./public/assets/js/core/bootstrap.min.js"></script>
+        <!-- jQuery UI -->
+        <script src="./public/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="./public/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-    </html>
+        <!-- jQuery Scrollbar -->
+        <script src="./public/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+        <!-- Datatables -->
+        <script src="./public/assets/js/plugin/datatables/datatables.min.js"></script>
+        <!-- Atlantis JS -->
+        <script src="./public/assets/js/atlantis.min.js"></script>
+        <!-- Atlantis DEMO methods, don't include it in your project! -->
+        <script src="./public/assets/js/setting-demo2.js"></script>
+        <!--  -->
+
+        <script src="./public/assets/js/bootstrap-datepicker.js"></script>
+
+        <script src="https://thichchiase.com/demo/date-range-picker/Date%20range%20picker%20sample_files/bootstrap-datepicker.js"></script>
+        <!-- end footer -->
+        <script>
+            $(function() {
+                'use strict';
+                var nowTemp = new Date();
+                var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+                var checkin = $('#timeCheckIn').datepicker({
+                    onRender: function(date) {
+                        return date.valueOf() < now.valueOf() ? 'disabled' : '';
+                    }
+                }).on('changeDate', function(ev) {
+                    if (ev.date.valueOf() > checkout.date.valueOf()) {
+                        var newDate = new Date(ev.date)
+                        newDate.setDate(newDate.getDate() + 1);
+                        checkout.setValue(newDate);
+                    }
+                    checkin.hide();
+                    $('#timeCheckOut')[0].focus();
+                }).data('datepicker');
+                var checkout = $('#timeCheckOut').datepicker({
+                    onRender: function(date) {
+                        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+                    }
+                }).on('changeDate', function(ev) {
+                    checkout.hide();
+                }).data('datepicker');
+            });
+        </script>
+
+
+</body>
+
+</html>
