@@ -259,6 +259,14 @@ switch ($url) {
 		$ctr = new VoucherController();
 		$ctr->editVoucher();
 		break;
+	case 'admin/voucher/save-edit':
+		$ctr = new VoucherController();
+		$ctr->saveEditVoucher();
+		break;
+	case 'admin/voucher/del':
+		$ctr = new VoucherController();
+		$ctr->delVoucher($id);
+		break;
 	// đơn hàng
 	case 'admin/order':
 		$ctr = new OrderController();
