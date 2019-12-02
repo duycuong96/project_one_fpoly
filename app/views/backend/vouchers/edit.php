@@ -46,42 +46,37 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-body">
                                     <div class="row justify-content-md-center">
                                         <div class="col-md-8">
-                                            <form action="">
+                                            <form action="<?= ADMIN_URL . '/voucher/save-edit' ?>" method="post">
                                                 <input type="hidden" name="id" value="<?= $voucher->id ?>">
                                                 <div class="form-group">
                                                     <label>Mã voucher:</label>
-                                                    <input type="text" class="form-control" placeholder="" value="<?= $voucher->code ?>">
+                                                    <input type="text" class="form-control" placeholder="" name="code"value="<?= $voucher->code ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian bắt đầu:</label>
                                                   
-                                                    <input type="text" id="timeCheckIn" class="form-control" value="<?= $voucher->start_time ?>" />
+                                                    <input type="text" id="timeCheckIn" class="form-control" name="start_time" value="<?= $voucher->start_time ?>" />
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian kết thúc:</label>
-                                                    <input type="text" id="timeCheckOut" class="form-control" value="<?= $voucher->end_time ?>" />
+                                                    <input type="text" id="timeCheckOut" class="form-control" name="end_time" value="<?= $voucher->end_time ?>" />
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Giảm giá:</label>
-                                                    <input type="text" class="form-control" placeholder="Nhập tiền giảm giá" value="<?= $voucher->discount_price ?>">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Số lượng mã</label>
-                                                    <input type="text" name="used_count" class="form-control" placeholder="Nhập số lượng mã giảm giá" value="<?= $voucher->used_count ?>">
+                                                    <input type="text" class="form-control" placeholder="Nhập tiền giảm giá" name="discount_price" value="<?= $voucher->discount_price ?>">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>
                                                     <label class="form-radio-label">
-                                                        <input class="form-radio-input" type="radio" name="optionsRadios" value="2" checked="">
-                                                        <span class="form-radio-sign">Chưa kích hoạt</span>
+                                                        <input class="form-radio-input" type="radio" name="status" value="0" <?php  if($voucher->status == 0){ echo 'checked';} ?> >
+                                                        <span class="form-radio-sign">Không kích hoạt</span>
                                                     </label>
                                                     <label class="form-radio-label ml-3">
-                                                        <input class="form-radio-input" type="radio" name="optionsRadios" value="1">
+                                                        <input class="form-radio-input" type="radio" name="status" value="1" <?php if($voucher->status == 1){ echo 'checked';} ?>  >
                                                         <span class="form-radio-sign">Kích hoạt</span>
                                                     </label>
                                                 </div>
@@ -102,16 +97,7 @@ require_once './app/views/backend/master/master.php';
             </div>
         </div>
 
-        <script type="text/javascript">
-            $(function() {
-                $('#datetimepicker1').datetimepicker({
-                    format: 'yyyy-mm-dd hh:ii',
-                    format: "yyy-mm-dd",
-                    startDate: "2019-11-29",
-                    endDate: "2019-11-31"
-                });
-            });
-        </script>
+
         <!-- End Custom template -->
         <?php
         require_once './app/views/backend/master/footer.php';
