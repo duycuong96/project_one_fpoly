@@ -24,7 +24,7 @@ use App\Controllers\OrderController;
 use App\Controllers\PageController;
 use App\Controllers\WebSettingController;
 use App\Controllers\RoleController;
-use App\Models\User;
+use App\Controllers\LoginController;
 
 switch ($url) {
 	// trang chủ
@@ -40,7 +40,11 @@ switch ($url) {
 
 
 	// trang tìm kiếm
-
+	// login admin
+	case 'admin/login':
+		$ctr = new LoginController();
+		$ctr->loginAdmin();
+		break;
 	// admin
 	case 'admin':
 		// checkLogin();
@@ -276,6 +280,11 @@ switch ($url) {
 		$ctr = new OrderController();
 		$ctr->editOrder();
 		break;
+	case 'admin/order/save-edit':
+		$ctr = new OrderController();
+		$ctr->saveEditOrder();
+		break;
+	
 	// page
 	case 'admin/page':
 		$ctr = new PageController();
