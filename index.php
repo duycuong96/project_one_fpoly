@@ -276,6 +276,11 @@ switch ($url) {
 		$ctr = new OrderController();
 		$ctr->editOrder();
 		break;
+	case 'admin/order/save-edit':
+		$ctr = new OrderController();
+		$ctr->saveEditOrder();
+		break;
+	
 	// page
 	case 'admin/page':
 		$ctr = new PageController();
