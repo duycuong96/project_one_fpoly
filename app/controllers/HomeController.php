@@ -5,6 +5,8 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Car;
 use App\Models\Comment;
+use App\Models\Location;
+use App\Models\Maker;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -14,8 +16,32 @@ class HomeController
 {
 	// trang chủ
 	public function index(){
-		$menus= Category::all();
+		$make= Maker::all();
+		$loca = Location::where(['show_location', '=', '1'])->get();
+		$cate= Category::all();
+		$car= Car::all();
 		include_once './app/views/frontend/home/homepage.php';
+	}
+	public function login(){
+		include_once './app/views/login.php';
+	}
+	public function postLogin()
+	{
+		$email = isset($_POST['email']) == true ? $_POST['email'] : "";
+		$password = isset($_POST['password']) == true ? $_POST['password'] : "";
+		$model = User::where(['email', '=', $email])->first();
+		// dd($model);
+		$user = $model->email;
+		$pass_sql = $model->password;
+		// dd($pass_sql);
+		if($model != null && password_verify($password, $pass_sql)) {
+			header("Location: ./");
+		}
+		else {
+			echo "thất bại";
+		}
+
+		
 	}
 	// trang danh mục
 	public function category()

@@ -13,7 +13,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
-
     <!-- end input time -->
 
     <!-- Fonts and icons -->
@@ -32,10 +31,12 @@
             }
         });
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+   
     <!-- CSS Files -->
     <link rel="stylesheet" href="./public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/assets/css/atlantis.min.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="./public/assets/css/demo.css">
+    <!-- <link rel="stylesheet" href="./public/assets/css/demo.css"> -->
+    <link href="https://thichchiase.com/demo/date-range-picker/Date%20range%20picker%20sample_files/datepicker.css" rel="stylesheet" />
+
 </head>

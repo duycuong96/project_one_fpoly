@@ -45,6 +45,8 @@ class UserController
 	}
 	// sửa
 	public function editUser(){
+
+		$roles = Role::all();
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		$user = User::where(['id', '=', $id])->first();
 		if(!$user){
@@ -52,6 +54,32 @@ class UserController
         	die;
 		}
 		include_once './app/views/backend/users/edit.php';
+	}
+	public function saveEditUser(){
+
+		$id = isset($_POST['id']) == true ? $_POST['id']: "";
+		$name = isset($_POST['name']) == true ? $_POST['name']: "";
+		$email = isset($_POST['email']) == true ? $_POST['email']: "";
+		$password = isset($_POST['password']) == true ? $_POST['password']: "";
+		$role_id = isset($_POST['role_id']) == true ? $_POST['role_id']: "";
+		$status = isset($_POST['status']) == true ? $_POST['status']: "";
+
+		$avatar = $_FILES['avatar'];
+
+		if ($avatar['size'] > 0) {
+			$filename = $avatar['name'];
+			$filename = uniqid() . "-" . $filename;
+			move_uploaded_file($avatar['tmp_name'], 'public/assets/img/users/' . $filename);
+		}
+
+		$data = compact('name', 'email', 'password', 'role_id', 'status');
+		$data['avatar'] = $filename;
+		// var_dump($data);die;
+		$model = new User();
+		$model->id = $id;
+		$model->update($data);
+
+		header('location: ' . ADMIN_URL . '/account');
 	}
 
 	// xóa

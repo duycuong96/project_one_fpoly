@@ -83,7 +83,7 @@ class CarController
 		$price = isset($_POST['price']) == true ? $_POST['price'] : "";
 		$detail = isset($_POST['detail']) == true ? $_POST['detail'] : "";
 		$image = isset($_POST['feature_image']) == true ? $_POST['feature_image'] : "";
-		
+		// dd($id);
 		$images = $_FILES['feature_images'];
 		$filePath = "";
 		if ($images['size'] > 0) {
