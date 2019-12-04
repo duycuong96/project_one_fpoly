@@ -17,7 +17,7 @@ class CarController
 		$loca = Location::all();
 		$maker = Makers::all();
 		
-		include_once './app/views/backend/cars/list.php';
+		include_once './app/views/admin/cars/list.php';
 	}
 	// add
 	public function addCar()
@@ -25,7 +25,7 @@ class CarController
 		$cate = Category::all();
 		$loca = Location::all();
 		$maker = Makers::all();
-		include_once './app/views/backend/cars/add.php';
+		include_once './app/views/admin/cars/add.php';
 	}
 	public function saveAddCar()
 	{
@@ -64,14 +64,14 @@ class CarController
 			header('location: ../car');
         	die;
 		}
-		include_once './app/views/backend/cars/edit.php';
+		include_once './app/views/admin/cars/edit.php';
 	}
 	public function saveEditMaker()
 	{
 		$cate = Category::all();
 		$loca = Location::all();
 		$maker = Makers::all();
-		include_once './app/views/backend/cars/add.php';
+		include_once './app/views/admin/cars/add.php';
 	}
 	public function saveEditCar()
 	{

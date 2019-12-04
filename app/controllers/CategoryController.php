@@ -11,11 +11,11 @@ class CategoryController
 	public function listCategory(){	
 		$categories = Category::all();
 		
-		include_once './app/views/backend/categories/list.php';
+		include_once './app/views/admin/categories/list.php';
 	}
 
 	public function addCategory(){
-		include_once './app/views/backend/categories/add.php';
+		include_once './app/views/admin/categories/add.php';
 	}
 	public function saveAddCategory(){
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";

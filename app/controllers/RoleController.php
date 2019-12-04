@@ -10,11 +10,11 @@ class RoleController
 	// list
 	public function listRole(){	
 		$roles = Role::all();
-		include_once './app/views/backend/roles/list.php';
+		include_once './app/views/admin/roles/list.php';
 	}
 	// thêm mới
 	public function addRole(){
-		include_once './app/views/backend/roles/add.php';
+		include_once './app/views/admin/roles/add.php';
     }
     public function saveAddRole(){
         $name = isset($_POST['name']) == true ? $_POST['name']: "";
@@ -34,7 +34,7 @@ class RoleController
 			header('location: ' . ADMIN_URL);
         	die;
 		}
-		include_once './app/views/backend/roles/edit.php';
+		include_once './app/views/admin/roles/edit.php';
     }
     public function saveEditRole(){
         $id = isset($_POST['id']) == true ? $_POST['id']: "";

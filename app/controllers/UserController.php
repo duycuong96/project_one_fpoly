@@ -12,12 +12,12 @@ class UserController
 	public function listUser(){	
 		$users = User::all();
 		
-		include_once './app/views/backend/users/list.php';
+		include_once './app/views/admin/users/list.php';
 	}
 	// thêm mới
 	public function addUser(){
 		$roles = Role::all();
-		include_once './app/views/backend/users/add.php';
+		include_once './app/views/admin/users/add.php';
 	}
 	public function saveAddUser(){
 		$name = isset($_POST['name']) == true ? $_POST['name']: "";
@@ -26,16 +26,21 @@ class UserController
 		$role_id = isset($_POST['role_id']) == true ? $_POST['role_id']: "";
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
 
-		$avatar = $_FILES['avatar'];
+		$avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar']: "";
+		
 
 		if ($avatar['size'] > 0) {
 			$filename = $avatar['name'];
 			$filename = uniqid() . "-" . $filename;
 			move_uploaded_file($avatar['tmp_name'], 'public/assets/img/users/' . $filename);
 		}
+		// mã hóa mật khẩu
+		$hashpassword = password_hash($password, PASSWORD_DEFAULT);
 
-		$data = compact('name', 'email', 'password', 'role_id', 'status');
+		$data = compact('name', 'email', 'role_id', 'status');
+		$data['password'] = $hashpassword;
 		$data['avatar'] = $filename;
+		$data['created_at'] = date_format(date_create(), 'Y-m-d H:i:s');
 		// var_dump($data);die;
 		$model = new User();
 		$model->insert($data);
@@ -53,7 +58,7 @@ class UserController
 			header('location: ' . ADMIN_URL);
         	die;
 		}
-		include_once './app/views/backend/users/edit.php';
+		include_once './app/views/admin/users/edit.php';
 	}
 	public function saveEditUser(){
 
@@ -64,16 +69,19 @@ class UserController
 		$role_id = isset($_POST['role_id']) == true ? $_POST['role_id']: "";
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
 
-		$avatar = $_FILES['avatar'];
+		$avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar']: "";
 
 		if ($avatar['size'] > 0) {
 			$filename = $avatar['name'];
 			$filename = uniqid() . "-" . $filename;
 			move_uploaded_file($avatar['tmp_name'], 'public/assets/img/users/' . $filename);
 		}
-
-		$data = compact('name', 'email', 'password', 'role_id', 'status');
+		// mã hóa mật khẩu
+		$hashpassword = password_hash($password, PASSWORD_DEFAULT);
+		$data = compact('name', 'email', 'role_id', 'status');
+		$data['password'] = $hashpassword;
 		$data['avatar'] = $filename;
+		$data['updated_at'] = date_format(date_create(), 'Y-m-d H:i:s');
 		// var_dump($data);die;
 		$model = new User();
 		$model->id = $id;
@@ -91,5 +99,3 @@ class UserController
 	}
 	
 }
-
- ?>
