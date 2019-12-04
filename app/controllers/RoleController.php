@@ -48,6 +48,12 @@ class RoleController
 
         header('location: ' . ADMIN_URL . '/role' );
     }
+    // xóa
+    public function delRole($id){
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+		$role = Role::destroy($id);
+		header('location: ' . ADMIN_URL . '/role');
+    }
 	
 }
 

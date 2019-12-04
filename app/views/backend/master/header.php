@@ -5,7 +5,7 @@
             <div class="logo-header" data-background-color="blue">
 
                 <a href="" class="logo">
-                    <img src="./public/assets/img/logo-mego.png" alt="navbar brand" class="navbar-brand">
+                    <img src="<?= BASE_URL . '/public/assets/img/logo/logo-mego.png' ?>" alt="navbar brand" class="navbar-brand">
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
@@ -48,7 +48,7 @@
                         <li class="nav-item dropdown hidden-caret">
                             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="./public/assets/img/profile.jpg" alt=".." class="avatar-img rounded-circle">
+                                    <img src="<?= BASE_URL . '/public/assets/img/logo/icon.png' ?>" alt=".." class="avatar-img rounded-circle">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-user animated fadeIn">

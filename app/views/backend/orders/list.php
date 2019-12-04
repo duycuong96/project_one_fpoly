@@ -18,7 +18,7 @@ require_once './app/views/backend/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/car' ?>">Đơn hàng</a>
+            <a href="<?= ADMIN_URL . '/order' ?>">Đơn hàng</a>
           </li>
         </ul>
       </div>
@@ -29,9 +29,8 @@ require_once './app/views/backend/master/sidebar.php';
             <div class="card-header">
               <div class="d-flex align-items-center">
 
-                <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto">
-                  <i class="fa fa-plus"></i>
-                  Thêm mới
+                <a href="<?= ADMIN_URL ?>" class="btn btn-primary btn-round ml-auto">
+                  Dashboard
                 </a>
               </div>
             </div>
@@ -44,10 +43,9 @@ require_once './app/views/backend/master/sidebar.php';
                     <tr>
                       <th>#</th>
                       <th>Tên khách hàng</th>
-                      <th>Tình trang</th>
                       <th>Tổng tiền</th>
                       <th>Ngày mua</th>
-                      <th>Tình trạng</th>
+                      <th>Trạng thái</th>
                       <th style="width: 10%">Action</th>
                     </tr>
                   </thead>
@@ -56,7 +54,6 @@ require_once './app/views/backend/master/sidebar.php';
                       <tr>
                         <td><?= $order->id ?></td>
                         <td><?= $order->customer_name ?></td>
-                        <td><?= $order->status ?></td>
                         <td><?= $order->total_price ?></td>
                         <td><?= $order->created_date ?></td>
                         <td><?= $order->status ?></td>
@@ -65,9 +62,9 @@ require_once './app/views/backend/master/sidebar.php';
                             <a href="<?php echo ADMIN_URL . '/order/edit?id=' ?><?php echo $order->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                               <i class="fa fa-edit"></i>
                             </a>
-                            <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                            <!-- <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
                               <i class="fa fa-times"></i>
-                            </a>
+                            </a> -->
                           </div>
                         </td>
                       </tr>

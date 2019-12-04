@@ -24,7 +24,7 @@ use App\Controllers\OrderController;
 use App\Controllers\PageController;
 use App\Controllers\WebSettingController;
 use App\Controllers\RoleController;
-use App\Models\User;
+use App\Controllers\LoginController;
 
 switch ($url) {
 	// trang chủ
@@ -49,7 +49,11 @@ switch ($url) {
 
 
 	// trang tìm kiếm
-
+	// login admin
+	case 'admin/login':
+		$ctr = new LoginController();
+		$ctr->loginAdmin();
+		break;
 	// admin
 	case 'admin':
 		// checkLogin();
@@ -234,6 +238,10 @@ switch ($url) {
 		$ctr = new RoleController();
 		$ctr->saveEditRole();
 		break;
+	case 'admin/role/del':
+		$ctr = new RoleController();
+		$ctr->delRole($id);
+		break;
 	// bình luận
 	case 'admin/comment':
 		$ctr = new CommentController();
@@ -264,6 +272,14 @@ switch ($url) {
 		$ctr = new VoucherController();
 		$ctr->editVoucher();
 		break;
+	case 'admin/voucher/save-edit':
+		$ctr = new VoucherController();
+		$ctr->saveEditVoucher();
+		break;
+	case 'admin/voucher/del':
+		$ctr = new VoucherController();
+		$ctr->delVoucher($id);
+		break;
 	// đơn hàng
 	case 'admin/order':
 		$ctr = new OrderController();
@@ -273,6 +289,11 @@ switch ($url) {
 		$ctr = new OrderController();
 		$ctr->editOrder();
 		break;
+	case 'admin/order/save-edit':
+		$ctr = new OrderController();
+		$ctr->saveEditOrder();
+		break;
+	
 	// page
 	case 'admin/page':
 		$ctr = new PageController();

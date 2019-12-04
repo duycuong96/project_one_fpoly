@@ -46,36 +46,33 @@ require_once './app/views/backend/master/master.php';
                                 <div class="card-body">
                                     <div class="row justify-content-md-center">
                                         <div class="col-md-8">
-                                            <form action="<?= ADMIN_URL . '/voucher/save-add'  ?>" method="post">
+                                            <form action="<?= ADMIN_URL . '/voucher/save-add' ?>" method="post">
+
                                                 <div class="form-group">
                                                     <label>Mã voucher:</label>
-                                                    <input type="text" name="code" class="form-control" placeholder="" value="">
+                                                    <input type="text" class="form-control" placeholder="" value="" name="code" >
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian bắt đầu:</label>
-                                                    <input type="date" name="start_time" class="form-control" placeholder="" value="">
+                                                  
+                                                    <input type="text" id="timeCheckIn"  name="start_time" class="form-control" value="" />
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian kết thúc:</label>
-                                                    <input type="date" name="end_time" class="form-control" placeholder="" value="">
+                                                    <input type="text" id="timeCheckOut" name="end_time" class="form-control" value="" />
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Giảm giá:</label>
-                                                    <input type="text" name="discount_price" class="form-control" placeholder="Nhập tiền giảm giá" value="">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Số lượng mã</label>
-                                                    <input type="text" name="used_count" class="form-control" placeholder="Nhập số lượng mã giảm giá" value="">
+                                                    <input type="text" class="form-control" placeholder="Nhập tiền giảm giá" name="discount_price" value="">
                                                     <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
                                                 </div>
                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>
                                                     <label class="form-radio-label">
-                                                        <input class="form-radio-input" type="radio" name="status" value="2" checked="">
+                                                        <input class="form-radio-input" type="radio" name="status" value="0" checked="">
                                                         <span class="form-radio-sign">Chưa kích hoạt</span>
                                                     </label>
                                                     <label class="form-radio-label ml-3">
@@ -93,12 +90,13 @@ require_once './app/views/backend/master/master.php';
                                     </div>
 
                                 </div>
-                            </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+
 
         <!-- End Custom template -->
         <?php
