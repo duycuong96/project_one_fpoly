@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-4">
                                 <div class="logo-small-device">
-                                    <a href="index.html"><img alt="" src="./public/assets/img/logo/megologo.png"></a>
+                                    <a href="<?= BASE_URL ?>"><img alt="" src="./public/assets/img/logo/megologo.png"></a>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-8 col-8">
@@ -55,20 +55,20 @@
                                         <div class="main-menu">
                                             <nav>
                                                 <ul>
-                                                    <li><a href="">Trang chủ</a></li>
-                                                    <li><a href="">loại xe</a>
+                                                    <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
+                                                    <li><a href="categorys">loại xe</a>
                                                         <ul>
                                                             <?php
                                                             foreach ($cate as $cates) { ?>
-                                                                <li><a href=""><?= $cates->name ?></a></li>
+                                                                <li><a href="<?= BASE_URL . 'category?id=' . $cates->id ?>"><?= $cates->name ?></a></li>
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
                                                     <li><a href="">Hãng xe</a>
                                                         <ul>
                                                             <?php
-                                                            foreach ($make as $makes) { ?>
-                                                                <li><a href=""><?= $makes->name ?></a></li>
+                                                            foreach ($maker as $makers) { ?>
+                                                                <li><a href="<?= BASE_URL . 'maker?id=' . $makers->id ?>"><?= $makers->name ?></a></li>
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
@@ -300,17 +300,15 @@
                     <div class="tab-content jump">
                         <div class="tab-pane active" id="home1">
                             <div class="product-slider-active owl-carousel">
-                                <?php foreach ($car as $cars) { ?>
+                                <?php foreach ($cars as $car) { ?>
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="<?= IMAGE_URL . $cars->feature_image ?>" alt="">
+                                                <img src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
-                                                    <li><?= $cars->getCateName(); ?></li>
-                                                    <li>PETROL</li>
-                                                    <li>250 CC</li>
+                                                    <li><?= $car->getCateName(); ?></li>
                                                 </ul>
                                             </div>
                                             <div class="product-action">
@@ -326,26 +324,11 @@
                                             </div>
                                             <div class="product-content-wrapper">
                                                 <div class="product-title-spreed">
-                                                    <h4><a href="product-details.html"><?= $cars->name ?></a></h4>
-                                                    <span>
-                                                        <?php
-                                                            for ($i = 1; $i <= 5; $i++) {
-                                                                if ($cars->rating >= $i) {
-                                                                    echo "<i class='fas fa-star text-warning'></i>";
-                                                                }
-                                                                // else if (!is_int($cars->rating)) {
-                                                                //     echo "public/icon/half-star.png";
-                                                                // }
-                                                                else if ($cars->rating < $i) {
-                                                                    echo "<i class='far fa-star text-warning'></i>";
-                                                                }
-                                                                ?>
-                                                        <?php
-                                                            }
-                                                            ?></span>
+                                                    <h4><a href="product-details.html"><?= $car->name ?></a></h4>
+                                                    <span><?= $car->getLocaName() ?></span>
                                                 </div>
                                                 <div class="product-price">
-                                                    <span><?= $cars->price ?> đ/ngày</span>
+                                                    <span><?= $car->price ?> đ/ngày</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -356,11 +339,11 @@
                         </div>
                         <div class="tab-pane" id="home2">
                             <div class="product-slider-active owl-carousel">
-                                <?php foreach ($car as $cars) { ?>
+                                <?php foreach ($cars as $car) { ?>
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
                                             <a href="product-details.html">
-                                                <img src="<?= IMAGE_URL . $cars->feature_image ?>" alt="">
+                                                <img src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
@@ -383,7 +366,7 @@
                                             </div>
                                             <div class="product-content-wrapper">
                                                 <div class="product-title-spreed">
-                                                    <h4><a href="product-details.html"><?= $cars->name ?></a></h4>
+                                                    <h4><a href="product-details.html"><?= $car->name ?></a></h4>
                                                     <span>150 CC</span>
                                                 </div>
                                                 <div class="product-price">
@@ -437,7 +420,7 @@
                         <div class="col-lg-4 col-md-4 col-12">
                             <div class="footer-widget mb-30">
                                 <div class="footer-logo">
-                                    <a href="index.html">
+                                    <a href="<?= BASE_URL ?>">
                                         <img src="./public/assets/img/logo/megologo.png" alt="">
                                     </a>
                                 </div>

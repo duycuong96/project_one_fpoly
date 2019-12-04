@@ -40,8 +40,7 @@
               </a>
             </div>
             <div class="footer-about">
-              <p><span>MEGO</span> là website trực tuyến cho thuê và chia sẻ xe máy tự lái dành cho
-                các khách du lịch </p>
+              <p><span>MEGO</span> là website trực tuyến cho thuê và chia sẻ xe máy tự lái dành cho các khách du lịch trong nước </p>
             </div>
           </div>
         </div>
@@ -56,6 +55,8 @@
                 <li><a href="">Liên hệ</a></li>
                 <li><a href="">Bảng giá</a></li>
                 <li><a href="">Chính sách</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">Hướng dẫn</a></li>
 
               </ul>
             </div>
@@ -80,7 +81,8 @@
                   <span>Số điện thoại</span>
                 </div>
                 <div class="food-info-content">
-                  <p>+84 123456789</p>
+                  <p>+090 12568 369 987</p>
+                  <p>+090 12568 369 987</p>
                 </div>
               </div>
               <div class="food-address">

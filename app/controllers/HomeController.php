@@ -16,10 +16,10 @@ class HomeController
 {
 	// trang chủ
 	public function index(){
-		$make= Maker::all();
+		$maker= Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate= Category::all();
-		$car= Car::all();
+		$cars= Car::all();
 		include_once './app/views/frontend/home/homepage.php';
 	}
 	public function login(){
@@ -44,15 +44,57 @@ class HomeController
 		
 	}
 	// trang danh mục
+	public function categorys()
+	{
+		$maker = Maker::all();
+		$loca = Location::where(['show_location', '=', '1'])->get();
+		$cate = Category::all();
+		$cars = $car = Car::all();
+		// echo "<pre>";
+		// dd($car);
+		include_once './app/views/frontend/home/category.php';
+	}
 	public function category()
 	{
-		$menus = Category::all();
-		$id = isset($_GET['id']) == true ? $_GET['id'] : NULL;
-		$car = Car::where(['cate_id', '=', $id])->get();
+		$id = isset($_GET['id']) == true ? $_GET['id'] : "";
+		$maker = Maker::all();
+		$loca = Location::where(['show_location', '=', '1'])->get();
+		$cate = Category::all();
+		$cars = Car::where(['cate_id', '=', $id])->get();
+		// dd($cars);
+		// echo "<pre>";
+		// dd($car);
+		include_once './app/views/frontend/home/category.php';
+	}
+	public function makers()
+	{
+		$id = isset($_GET['id']) == true ? $_GET['id'] : "";
+		$maker = Maker::all();
+		$loca = Location::where(['show_location', '=', '1'])->get();
+		$cate = Category::all();
+		$car = Car::all();
+
+		$cars = Car::where(['maker_id', '=',$id])->get();
+		// dd($makers);
 		// echo "<pre>";
 		// dd($car);
 		include_once './app/views/client/home/category.php';
 	}
+	public function locations()
+	{
+		$id = isset($_GET['id']) == true ? $_GET['id'] : "";
+		$maker = Maker::all();
+		$loca = Location::where(['show_location', '=', '1'])->get();
+		$cate = Category::all();
+		$car = Car::all();
+
+		$cars = Car::where(['location_id', '=', $id])->get();
+		// dd($makers);
+		// echo "<pre>";
+		// dd($car);
+		include_once './app/views/frontend/home/category.php';
+	}
+
 
 	
 	public function mailForm(){
