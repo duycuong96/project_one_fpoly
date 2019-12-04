@@ -11,7 +11,7 @@ class CommentController
 	public function listComment(){	
 		$comments = Comment::all();
 		
-		include_once './app/views/backend/comments/list.php';
+		include_once './app/views/admin/comments/list.php';
 	}
 	// edit
 	public function editComment(){
@@ -21,7 +21,7 @@ class CommentController
 			header('location: ' . ADMIN_URL);
         	die;
 		}
-		include_once './app/views/backend/comments/edit.php';
+		include_once './app/views/admin/comments/edit.php';
 	}
 
 	public function editSaveComment()

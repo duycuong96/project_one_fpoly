@@ -14,7 +14,7 @@ class OrderController
 		// dd(1);
 		$orders = Order::all();
 		
-		include_once './app/views/backend/orders/list.php';
+		include_once './app/views/admin/orders/list.php';
 	}
 	// Cập nhật
 	public function editOrder(){
@@ -27,7 +27,7 @@ class OrderController
 		if($order != ""){
 			$orderDetail = OrderDetail::where(['order_id','=', $order->id])->get();
 		}
-		include_once './app/views/backend/orders/edit.php';
+		include_once './app/views/admin/orders/edit.php';
 	}
 	public function saveEditOrder(){
 		

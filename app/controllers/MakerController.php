@@ -11,12 +11,12 @@ class MakerController
 	// list
 	public function listMaker(){
         $makers = Maker::all();
-        include_once './app/views/backend/makers/list.php';
+        include_once './app/views/admin/makers/list.php';
     }
     // thêm mới
     public function addMaker()
     {
-        include_once './app/views/backend/makers/add.php';
+        include_once './app/views/admin/makers/add.php';
     }
     public function saveAddMaker()
     {
@@ -33,7 +33,7 @@ class MakerController
     {
         $id = $_GET['id'];
         $maker = Maker::where(['id', '=', $id])->first();
-        include_once './app/views/backend/makers/edit.php';
+        include_once './app/views/admin/makers/edit.php';
     }
     public function saveEditMaker()
     {

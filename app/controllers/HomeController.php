@@ -51,13 +51,13 @@ class HomeController
 		$car = Car::where(['cate_id', '=', $id])->get();
 		// echo "<pre>";
 		// dd($car);
-		include_once './app/views/frontend/home/category.php';
+		include_once './app/views/client/home/category.php';
 	}
 
 	
 	public function mailForm(){
 		$menus = Category::where(['show_menu', '=', 1])->get();
-		include_once './app/views/frontend/home/mail-form.php';
+		include_once './app/views/client/home/mail-form.php';
 	}
 	public function sendMail(){
 		$name = $_POST['name'];

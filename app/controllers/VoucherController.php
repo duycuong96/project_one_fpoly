@@ -11,11 +11,11 @@ class VoucherController
 	public function listVoucher(){	
 		$vouchers = Voucher::all();
 		
-		include_once './app/views/backend/vouchers/list.php';
+		include_once './app/views/admin/vouchers/list.php';
 	}
 	// thêm mới
 	public function addVoucher(){
-		include_once './app/views/backend/vouchers/add.php';
+		include_once './app/views/admin/vouchers/add.php';
 	}
 	public function saveAddVoucher(){
 		$code = isset($_POST['code']) == true ? $_POST['code'] : "";
@@ -49,7 +49,7 @@ class VoucherController
 			header('location: ' . ADMIN_URL);
         	die;
 		}
-		include_once './app/views/backend/vouchers/edit.php';
+		include_once './app/views/admin/vouchers/edit.php';
 	}
 	public function saveEditVoucher(){
 		$id = isset($_POST['id']) == true ? $_POST['id'] : "";
