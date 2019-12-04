@@ -1,16 +1,16 @@
 <?php
-require_once './app/views/backend/master/master.php';
+require_once './app/views/admin/master/master.php';
 ?>
 
 <body>
     <div class="wrapper">
         <?php
-        require_once './app/views/backend/master/header.php';
+        require_once './app/views/admin/master/header.php';
         ?>
 
         <!-- Sidebar -->
         <?php
-        require_once './app/views/backend/master/sidebar.php';
+        require_once './app/views/admin/master/sidebar.php';
         ?>
         <div class="main-panel">
             <div class="content">
@@ -221,5 +221,5 @@ require_once './app/views/backend/master/master.php';
 
         <!-- End Custom template -->
         <?php
-        require_once './app/views/backend/master/footer.php';
+        require_once './app/views/admin/master/footer.php';
         ?>

@@ -1,7 +1,7 @@
 <?php
-require_once './app/views/backend/master/master.php';
-require_once './app/views/backend/master/header.php';
-require_once './app/views/backend/master/sidebar.php';
+require_once './app/views/admin/master/master.php';
+require_once './app/views/admin/master/header.php';
+require_once './app/views/admin/master/sidebar.php';
 ?>
 <!-- body -->
 		<div class="main-panel">
@@ -324,5 +324,5 @@ require_once './app/views/backend/master/sidebar.php';
       }
     </script>
 	<?php
-	require_once './app/views/backend/master/footer.php';
+	require_once './app/views/admin/master/footer.php';
 	?>
