@@ -1,87 +1,50 @@
-<?php
-require_once './app/views/backend/master/master.php';
+<!doctype html>
+<html lang="en">
 
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-?>
-<!-- body -->
-<div class="">
-	<div class="content">
-		<div class="panel-header bg-primary-gradient">
-			<div class="page-inner py-5">
+	<title>Floating labels example for Bootstrap</title>
 
-			</div>
-		</div>
-		<div class="page-inner mt--5">
-			<div class="row row-card-no-pd mt--2">
-				<div class="col-sm-12 col-md-12">
-					<div class="card card-stats card-round">
-						<div class="card-body ">
-							<div class="row">
-								<div class="col-12">
-									<h1 class="text-center text-primary">Đăng nhập</h1>
-								</div>
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/floating-labels/">
 
-							</div>
-						</div>
-					</div>
-				</div>
+	<!-- Bootstrap core CSS -->
+	<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+	<!-- Custom styles for this template -->
+	<link href="https://getbootstrap.com/docs/4.0/examples/floating-labels/floating-labels.css" rel="stylesheet">
+</head>
 
-			</div>
+<body>
+	<form class="form-signin" action="<?= ADMIN_URL . '/post-login' ?>" method="POST">
+		<div class="text-center mb-4">
+			<img class="mb-4" src="<?= BASE_URL . '/public/assets/img/logo/icon.png' ?>" alt="">
+			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
 
 		</div>
-		<div class="page-inner">
 
-
-			<div class="row">
-				<div class="col-md-12">
-					<div class="card">
-						<div class="card-header">
-							<div class="card-title">Biểu đồ doanh thu</div>
-						</div>
-						<div class="card-body">
-							<div id="curve_chart" style="height: 500px"></div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
+		<div class="form-label-group">
+			<input type="email" id="inputEmail" class="form-control" name="email" placeholder="Địa chỉ email" >
+			<label for="inputEmail">Email của bạn</label>
 		</div>
-	</div>
 
-</div>
+		<div class="form-label-group">
+			<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
+			<label for="inputPassword">Password</label>
+		</div>
 
-<!--   Core JS Files   -->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-	google.charts.load('current', {
-		'packages': ['corechart']
-	});
-	google.charts.setOnLoadCallback(drawChart);
+		<div class="checkbox mb-3">
+			<label>
+				<input type="checkbox" value="remember-me"> Nhớ mật khẩu
+			</label>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
+		<p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2020</p>
+	</form>
+</body>
 
-	function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-			['Year', 'Doanh thu'],
-			['2004', 1000],
-			['2005', 1170],
-			['2006', 660],
-			['2007', 1030]
-		]);
-
-		var options = {
-			title: 'Doanh thu năm 2019',
-			curveType: 'function',
-			legend: {
-				position: 'bottom'
-			}
-		};
-
-		var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-		chart.draw(data, options);
-	}
-</script>
-<?php
-require_once './app/views/backend/master/footer.php';
-?>
+</html>
