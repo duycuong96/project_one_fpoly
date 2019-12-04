@@ -11,11 +11,11 @@ class LocationController
 	// list
 	public function listLocation(){	
 		$locations = Location::all();
-		include_once './app/views/backend/locations/list.php';
+		include_once './app/views/admin/locations/list.php';
 	}
 	// thêm mới
 	public function addLocation(){
-		include_once './app/views/backend/locations/add.php';
+		include_once './app/views/admin/locations/add.php';
 	}
 	public function saveAddLocation()
 	{
@@ -32,7 +32,7 @@ class LocationController
 	public function editLocation(){
 		$id = $_GET['id'];
 		$location = Location::where(['id','=',$id])->first();
-		include_once './app/views/backend/locations/edit.php';
+		include_once './app/views/admin/locations/edit.php';
 	}
 	public function saveEditLocation()
 	{

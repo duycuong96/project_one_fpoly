@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 class AdminController{
 
     public function index(){
-        include_once './app/views/backend/home/home.php';
+        include_once './app/views/admin/home/home.php';
     }
 
 

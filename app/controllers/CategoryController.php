@@ -11,11 +11,11 @@ class CategoryController
 	public function listCategory(){	
 		$categories = Category::all();
 		
-		include_once './app/views/backend/categories/list.php';
+		include_once './app/views/admin/categories/list.php';
 	}
 
 	public function addCategory(){
-		include_once './app/views/backend/categories/add.php';
+		include_once './app/views/admin/categories/add.php';
 	}
 	public function saveAddCategory(){
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";
@@ -31,7 +31,7 @@ class CategoryController
 	public function editCategory(){
 		$id = $_GET['id'];
 		$cate = Category::where(['id','=',$id])->first();
-		include_once './app/views/backend/categories/edit.php';
+		include_once './app/views/admin/categories/edit.php';
 	}
 	public function editSaveCategory()
 	{

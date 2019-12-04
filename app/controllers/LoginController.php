@@ -11,7 +11,7 @@ class LoginController
 
     public function loginAdmin()
     {
-        include_once './app/views/backend/login.php';
+        include_once './app/views/admin/login.php';
     }
 
     public function postLoginAdmin()
