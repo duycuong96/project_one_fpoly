@@ -14,12 +14,12 @@ class PageController
     // dd(1);
     $page = Page::all();
 
-    include_once './app/views/backend/page/list.php';
+    include_once './app/views/admin/page/list.php';
   }
   // thêm mới
   public function addPage()
   {
-    include_once './app/views/backend/page/add.php';
+    include_once './app/views/admin/page/add.php';
   }
   public function saveAddPage()
   {
@@ -41,7 +41,7 @@ class PageController
       header('location: ' . ADMIN_URL);
       die;
     }
-    include_once './app/views/backend/page/edit.php';
+    include_once './app/views/admin/page/edit.php';
   }
   public function SaveEditPage()
   {

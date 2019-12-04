@@ -12,12 +12,12 @@ class UserController
 	public function listUser(){	
 		$users = User::all();
 		
-		include_once './app/views/backend/users/list.php';
+		include_once './app/views/admin/users/list.php';
 	}
 	// thêm mới
 	public function addUser(){
 		$roles = Role::all();
-		include_once './app/views/backend/users/add.php';
+		include_once './app/views/admin/users/add.php';
 	}
 	public function saveAddUser(){
 		$name = isset($_POST['name']) == true ? $_POST['name']: "";
@@ -58,7 +58,7 @@ class UserController
 			header('location: ' . ADMIN_URL);
         	die;
 		}
-		include_once './app/views/backend/users/edit.php';
+		include_once './app/views/admin/users/edit.php';
 	}
 	public function saveEditUser(){
 

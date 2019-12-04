@@ -14,12 +14,12 @@ class WebSettingController
     // dd(1);
     $setting = WebSetting::all();
 
-    include_once './app/views/backend/setting/list.php';
+    include_once './app/views/admin/setting/list.php';
   }
   // thêm mới
   public function addWebSetting()
   {
-    include_once './app/views/backend/setting/add.php';
+    include_once './app/views/admin/setting/add.php';
   }
   public function SaveAddWebSetting()
   {
@@ -49,7 +49,7 @@ class WebSettingController
       header('location: ' . ADMIN_URL);
       die;
     }
-    include_once './app/views/backend/setting/edit.php';
+    include_once './app/views/admin/setting/edit.php';
   }
   public function saveEditWebSetting()
   {
