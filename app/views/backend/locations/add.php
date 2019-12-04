@@ -37,11 +37,27 @@ require_once './app/views/backend/master/sidebar.php';
                         <div class="card-body">
                             <div class="row justify-content-md-center">
                                 <div class="col-md-8">
-                                    <form action="<?= ADMIN_URL . '/location/save-add' ?>" method="post">
+                                    <form action="<?= ADMIN_URL . '/location/save-add' ?>" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Tên địa điểm:</label>
                                             <input type="text" name="name" class="form-control" placeholder="" value="">
                                             <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ảnh</label>
+                                            <input id="img" type="file" name="image" class="form-control" placeholder="" value="" onchange="changeImg(this)">
+                                            <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                        </div>
+                                        <div class="form-check">
+                                            <label>Hiển thị</label><br>
+                                            <label class="form-radio-label">
+                                                <input class="form-radio-input" type="radio" name="status" value="2" checked>
+                                                <span class="form-radio-sign">Không</span>
+                                            </label>
+                                            <label class="form-radio-label ml-3">
+                                                <input class="form-radio-input" type="radio" name="status" value="1">
+                                                <span class="form-radio-sign">Có</span>
+                                            </label>
                                         </div>
                                         <div class="form-group">
                                             <label for="comment">Mô tả:</label>

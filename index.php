@@ -32,6 +32,15 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->index();
 		break;
+		// login user
+	case 'login':
+		$ctr = new HomeController();
+		$ctr->login();
+		break;
+	case 'post-login':
+		$ctr = new HomeController();
+		$ctr->postLogin();
+		break;
 		// trang danh mục
 	case 'category':
 		$ctr = new HomeController();

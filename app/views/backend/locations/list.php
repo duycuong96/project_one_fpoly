@@ -43,7 +43,9 @@ require_once './app/views/backend/master/sidebar.php';
                                     <thead>
                                         <tr>
                                             <th style="width:20px">Id</th>
-                                            <th>Name</th>
+                                            <th>Tên địa điểm</th>
+                                            <th>Ảnh</th>
+                                            <th>Hiện thị</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -52,6 +54,15 @@ require_once './app/views/backend/master/sidebar.php';
                                             <tr>
                                                 <td><?= $location->id ?></td>
                                                 <td><?= $location->name ?></td>
+                                                <td><img height="100%" src="<?= $location->image ?>" alt=""></td>
+                                                <td><?php
+                                                    if($location->show_location ==1){
+                                                        echo "Hiện";
+                                                    }else{
+                                                        echo "Ẩn";
+                                                    }
+                                                
+                                                ?></td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="<?= ADMIN_URL . "/location/edit?id=" ?><?= $location->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">

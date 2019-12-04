@@ -38,7 +38,7 @@ require_once './app/views/backend/master/sidebar.php';
 
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
-                                    
+
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -63,26 +63,32 @@ require_once './app/views/backend/master/sidebar.php';
                                                         <?php
                                                             for ($i = 1; $i <= 5; $i++) {
                                                                 if ($comment->rating >= $i) {
-                                                                    $star = "public/icon/star.png";
+                                                                    echo "<i class='fas fa-star text-warning'></i>";
+                                                                } else if (!is_int($comment->rating)) {
+                                                                    echo "<img src='public/icon/half-star.png'>";
+                                                                    if ($i < 5) {
+                                                                        for ($j = $i; $j < 5; $j++) {
+                                                                            echo "<i class='far fa-star text-warning'></i>";   # code...
+                                                                        }
+
+                                                                        break;
+                                                                    }
                                                                 }
-                                                                // else if (!is_int($comment->rating)) {
-                                                                //     $star = "public/icon/half-star.png";
+                                                                // else if ($comment->rating < $i) {
+                                                                //     echo "<i class='far fa-star text-warning'></i>";
                                                                 // }
-                                                                else if ($comment->rating < $i) {
-                                                                    $star = "public/icon/star-o.png";
-                                                                }
                                                                 ?>
-                                                            <img src="<?= $star ?>" alt="">
                                                         <?php
                                                             }
+
                                                             ?>
                                                     </td>
                                                     <td>
-                                                        <?php if($comment->status == 1){
-                                                            echo "Hiện";
-                                                        }else {
-                                                            echo "Ẩn";
-                                                        } ?>
+                                                        <?php if ($comment->status == 1) {
+                                                                echo "Hiện";
+                                                            } else {
+                                                                echo "Ẩn";
+                                                            } ?>
                                                     </td>
                                                     <td>
                                                         <div class="form-button-action">

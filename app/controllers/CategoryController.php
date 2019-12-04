@@ -31,6 +31,10 @@ class CategoryController
 	public function editCategory(){
 		$id = $_GET['id'];
 		$cate = Category::where(['id','=',$id])->first();
+		if (!$cate) {
+			header('location: ../category');
+			die;
+		}
 		include_once './app/views/backend/categories/edit.php';
 	}
 	public function editSaveCategory()
