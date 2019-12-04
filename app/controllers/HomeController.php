@@ -20,7 +20,7 @@ class HomeController
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate= Category::all();
 		$cars= Car::all();
-		include_once './app/views/frontend/home/homepage.php';
+		include_once './app/views/client/home/homepage.php';
 	}
 	public function login(){
 		include_once './app/views/login.php';
@@ -52,7 +52,7 @@ class HomeController
 		$cars = $car = Car::all();
 		// echo "<pre>";
 		// dd($car);
-		include_once './app/views/frontend/home/category.php';
+		include_once './app/views/client/home/category.php';
 	}
 	public function category()
 	{
@@ -64,7 +64,7 @@ class HomeController
 		// dd($cars);
 		// echo "<pre>";
 		// dd($car);
-		include_once './app/views/frontend/home/category.php';
+		include_once './app/views/client/home/category.php';
 	}
 	public function makers()
 	{
@@ -92,7 +92,7 @@ class HomeController
 		// dd($makers);
 		// echo "<pre>";
 		// dd($car);
-		include_once './app/views/frontend/home/category.php';
+		include_once './app/views/client/home/category.php';
 	}
 
 
