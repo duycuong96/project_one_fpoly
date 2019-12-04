@@ -35,7 +35,7 @@ class CategoryController
 			header('location: ../category');
 			die;
 		}
-		include_once './app/views/backend/categories/edit.php';
+		include_once './app/views/admin/categories/edit.php';
 	}
 	public function editSaveCategory()
 	{
