@@ -25,15 +25,27 @@ class LoginController
         // var_dump($user);die;
         $pass =  $user->password;
         $role = $user->role_id;
-        var_dump($role); die;
+        // var_dump($role); die;    
         // echo $pass;die;
         if (($user && password_verify($password, $pass))) {
+            // if($role === 1){
+
+            // }
             $_SESSION['AUTH'] = [
                 'name' => $user->name,
                 'email' => $user->email,
-                'id' => $user->id
+                'id' => $user->id,
+                'role_id' => $user->role_id
             ];
-            header('location: ' . ADMIN_URL);
+            if($_SESSION['AUTH']['role_id'] == 1){
+                header('location: ' . ADMIN_URL);
+            } elseif ($_SESSION['AUTH']['role_id'] == 2){
+                header('location: ' . BASE_URL);
+            } elseif($_SESSION['AUTH']['role_id'] == 3){
+                header('location: ' . BASE_URL);
+            }
+            // var_dump($_SESSION['AUTH']['role_id']);die;
+            
             die;
         } else {
 
