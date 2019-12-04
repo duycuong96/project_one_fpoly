@@ -1,6 +1,6 @@
 <?php
-include_once "./app/views/frontend/template/header.php";
-include_once "./app/views/frontend/template/nav.php";
+include_once "./app/views/client/template/header.php";
+include_once "./app/views/client/template/nav.php";
 ?>
       <div class="col-lg-9">
         <div class="shop-topbar-wrapper">
@@ -101,5 +101,5 @@ include_once "./app/views/frontend/template/nav.php";
   </div>
 </div>
 <?php
-include_once "./app/views/frontend/template/footer.php"
+include_once "./app/views/client/template/footer.php"
 ?>
