@@ -42,10 +42,24 @@ switch ($url) {
 		$ctr->postLogin();
 		break;
 		// trang danh mục
+	case 'categorys':
+		$ctr = new HomeController();
+		$ctr->categorys();
+		break;
 	case 'category':
 		$ctr = new HomeController();
 		$ctr->category();
 		break;
+		// trang danh xe theo hãng xe
+	case 'maker':
+		$ctr = new HomeController();
+		$ctr->makers();
+		break;
+	case 'location':
+		$ctr = new HomeController();
+		$ctr->locations();
+		break;
+
 
 
 	// trang tìm kiếm
