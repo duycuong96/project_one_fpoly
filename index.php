@@ -45,42 +45,25 @@ switch ($url) {
 		$ctr = new LoginController();
 		$ctr->loginAdmin();
 		break;
+	case 'admin/post-login':
+		$ctr = new LoginController();
+		$ctr->postLoginAdmin();
+		break;
+	case 'admin/logout':
+		$ctr = new LoginController();
+		$ctr->logoutAdmin();
+		break;
 	// admin
 	case 'admin':
-		// checkLogin();
+		checkLogin();
 		$ctr = new AdminController();
 		$ctr->index();
 		break;
 	case 'admin/':
-		// checkLogin();
+		checkLogin();
 		$ctr = new AdminController();
 		$ctr->index();
 		break;
-	case 'admin/login':
-		$ctr = new AdminController();
-		$ctr->login();
-		break;
-	case 'admin/post-login':
-		$ctr = new AdminController();
-		$ctr->postLogin();
-		break;
-	case 'admin/logout':
-		unset($_SESSION['AUTH']);
-		header('location: ' . ADMIN_URL);die;
-		break;
-	case 'admin/forgot':
-		$ctr = new AdminController();
-		$ctr->forgot();
-		break;
-	case 'admin/post-forgot':
-		$ctr = new AdminController();
-		$ctr->postForgot();
-		break;
-	case 'admin/register':
-		$ctr = new AdminController();
-		$ctr->register();
-		break;
-	
 	// danh mục xe
 	case 'admin/category':
 		$ctr = new CategoryController();
@@ -336,8 +319,7 @@ switch ($url) {
 		$ctr = new WebSettingController();
 		$ctr->delWebSetting($id);
 		break;
-
-		# code...
+		
 		break;
 }
 

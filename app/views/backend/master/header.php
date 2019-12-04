@@ -55,10 +55,17 @@
                                 <div class="dropdown-user-scroll scrollbar-outer">
                                     <li>
                                         <div class="user-box">
-                                            <div class="avatar-lg"><img src="./public/assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+                                            <div class="avatar-lg"><img src="<?= BASE_URL . '/public/assets/img/logo/icon.png' ?>" alt="image profile" class="avatar-img rounded"></div>
                                             <div class="u-text">
-                                                <h4>Hizrian</h4>
-                                                <p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                                <h4><?php if (isset($_SESSION['AUTH'])) : ?>
+                                                        <?= $_SESSION['AUTH']['name']; ?>
+                                                    <?php endif ?></h4>
+                                                <p class="text-muted">
+                                                    <?php if (isset($_SESSION['AUTH'])) : ?>
+                                                        <?= $_SESSION['AUTH']['email']; ?>
+                                                    <?php endif ?>
+                                                </p><a href="<?= ADMIN_URL . '/account/edit?id=' ?><?php if (isset($_SESSION['AUTH'])) : ?><?= $_SESSION['AUTH']['id']; ?>
+                                                    <?php endif ?>" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                                             </div>
                                         </div>
                                     </li>
@@ -70,7 +77,7 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Account Setting</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Logout</a>
+                                        <a class="dropdown-item" href="<?= ADMIN_URL . '/logout' ?>">Logout</a>
                                     </li>
                                 </div>
                             </ul>
