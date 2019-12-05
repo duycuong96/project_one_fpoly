@@ -59,6 +59,8 @@ class BaseModel
 		return $this;
 	}
 
+	
+
 	public static function sttOrderBy($col, $asc = true){
 		$model =  new static();
 		$model->queryBuilder = "select * from $model->tableName order by $col";
@@ -94,7 +96,9 @@ class BaseModel
  		$model->queryBuilder = "select * from $model->tableName where $arr[0] $arr[1] '$arr[2]'";
 // dd($model);
  		return $model;
- 	}
+	 }
+	 
+
 
  	public static function destroy($id){
  		$model = new static();

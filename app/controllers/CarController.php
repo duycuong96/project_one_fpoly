@@ -12,10 +12,14 @@ class CarController
 	
 	// list
 	public function listCar(){	
-		$cars = Car::all();
-		$cate = Category::all();
-		$loca = Location::all();
-		$maker = Makers::all();
+		$cate_id = isset($_GET['cate_id']) == true ? $_GET['cate_id'] : "";
+		
+		$categories = Category::all();
+		if($cate_id != ""){
+			$cars = Car::where(['cate_id','=', $cate_id])->get();
+		} else{
+			$cars = Car::sttOrderBy('id', false)->get();
+		}
 		
 		include_once './app/views/admin/cars/list.php';
 	}
