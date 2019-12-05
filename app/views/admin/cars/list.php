@@ -28,6 +28,34 @@ require_once './app/views/admin/master/sidebar.php';
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
+                                <div class="row">
+
+                                    <form action="">
+                                        <div class="">
+                                            <div class="form-group">
+                                                <select class="form-control form-control-round" name="cate_id" id="">
+                                                    <option value="">Loại xe</option>
+                                                    <?php foreach ($categories as $cate) : ?>
+                                                        <!-- <option value="<?= $cate->id ?>"><?= $cate->name ?></option> -->
+                                                        <?php if ($cate->id == $_GET['cate_id']) { ?>
+                                                            <option value="<?= $cate->id  ?>" selected><?= $cate->name  ?></option>
+
+                                                        <?php } else { ?>
+                                                            <option value="<?= $cate->id  ?>"><?= $cate->name ?></option>
+                                                        <?php } ?>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                            
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-primary btn-round ml-auto">Lọc</button>
+                                        </div>
+
+
+                                    </form>
+                                </div>
 
                                 <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>

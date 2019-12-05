@@ -25,6 +25,8 @@ use App\Controllers\PageController;
 use App\Controllers\WebSettingController;
 use App\Controllers\RoleController;
 use App\Controllers\LoginController;
+// 
+use App\Controllers\PartnerController;
 
 switch ($url) {
 	// trang chủ
@@ -341,6 +343,11 @@ switch ($url) {
 		$id = $_GET['id'];
 		$ctr = new WebSettingController();
 		$ctr->delWebSetting($id);
+		break;
+	case 'partner':
+		checkLogin();
+		$ctr = new PartnerController();
+		$ctr->homePagePartner();
 		break;
 		
 		break;

@@ -41,6 +41,8 @@ function checkLogin(){
 		die;
 	} elseif($_SESSION['AUTH']['role_id'] == 2){
 		header('location: ' . ADMIN_URL . '/login');
+	} elseif ($_SESSION['AUTH']['role_id'] == 3){
+		header('location: ' . ADMIN_URL . '/partner');
 	}
 
 }
