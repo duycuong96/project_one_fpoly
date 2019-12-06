@@ -64,39 +64,30 @@ class PartnerController{
 		include_once './app/views/partner/cars/edit.php';
     }
     public function saveEditCarsPartner(){
-        $id = isset($_POST['id']) == true ? $_POST['id'] : "";
+		$id = isset($_POST['id']) == true ? $_POST['id'] : "";
+		$user_id = isset($_POST['user_id']) == true ? $_POST['user_id'] : "";
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";
 		$cate_id = isset($_POST['cate_id']) == true ? $_POST['cate_id'] : "";
 		$location_id = isset($_POST['location_id']) == true ? $_POST['location_id'] : "";
 		$maker_id = isset($_POST['maker_id']) == true ? $_POST['maker_id'] : "";
-		$user_id = isset($_POST['user_id']) == true ? $_POST['user_id'] : "";
 		$price = isset($_POST['price']) == true ? $_POST['price'] : "";
 		$detail = isset($_POST['detail']) == true ? $_POST['detail'] : "";
-		$image = isset($_POST['feature_image']) == true ? $_POST['feature_image'] : "";
-		// dd($id);
-		$images = $_FILES['feature_images'];
+
+		$image = $_FILES['feature_image'];
 		$filePath = "";
-		if ($images['size'] > 0) {
-			$filename = $images['name'];
+		if ($image['size'] > 0) {
+			$filename = $image['name'];
 			$filename = uniqid() . "-" . $filename;
-			move_uploaded_file($images['tmp_name'], "public/assets/img/cars/" . $filename);
-			// $filePath = "./public/images/cars/" . $filename;
+			move_uploaded_file($image['tmp_name'], 'public/assets/img/cars/' . $filename);
+			// $filePath = "public/images/cars/" . $filename;
 		}
 		// dd($filePath);
-		if ($images['size'] > 0) {
-			$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail');
-			$data['user_id'] =  $user_id;
-			$data['feature_image'] = $filename;
-		} else {
-			$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail', 'image');
-			$data['user_id'] =  $user_id;
-		}
-		// dd($data);
+		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'user_id', 'price', 'detail');
+        $data['feature_image'] = $filename;
 		$model = new Car();
 		$model->id = $id;
 		$model->update($data);
-		// var_dump($model);die;
-		header("Location: ../cars/edit?id=$id");
+		header('location: ' . PARTNER_URL . '/cars');
     }
 }
 ?>
