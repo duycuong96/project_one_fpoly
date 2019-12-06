@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Makers;
+use App\Models\Order;
 
 class CarController
 {
@@ -13,13 +14,22 @@ class CarController
 	// list
 	public function listCar(){	
 		$cate_id = isset($_GET['cate_id']) == true ? $_GET['cate_id'] : "";
+		$location_id = isset($_GET['location_id']) == true ? $_GET['location_id'] : "";
 		
 		$categories = Category::all();
-		if($cate_id != ""){
-			$cars = Car::where(['cate_id','=', $cate_id])->get();
-		} else{
+		$locations = Location::all();
+		if($cate_id != "" && $location_id != ""){
+			$cars = Car::where(['cate_id','=', $cate_id])->andWhere(['location_id', '=', $location_id])->get();
+		} elseif($cate_id != "" && $location_id == ""){
+			$cars = Car::where(['cate_id', '=', $cate_id])->get();
+		} elseif($cate_id == "" && $location_id != ""){
+			$cars = Car::where(['location_id', '=', $location_id])->get();
+		}
+		else{
 			$cars = Car::sttOrderBy('id', false)->get();
 		}
+
+	
 		
 		include_once './app/views/admin/cars/list.php';
 	}
@@ -107,7 +117,7 @@ class CarController
 		$model = new Car();
 		$model = Car::where(['id', '=', $id])->first();
 		$model->update($data);
-		header("Location: ../car/edit?id=$id");
+		header('location: '.PARTNER_URL. 'cars/edit?id=' . $id);
 	}
 
 	public function delCar($id)

@@ -37,10 +37,11 @@ class LoginController
                 'id' => $user->id,
                 'role_id' => $user->role_id
             ];
+
             if($_SESSION['AUTH']['role_id'] == 1){
                 header('location: ' . ADMIN_URL);
             } elseif ($_SESSION['AUTH']['role_id'] == 2){
-                header('location: ' . BASE_URL);
+                header('location: ' . PARTNER_URL);
             } elseif($_SESSION['AUTH']['role_id'] == 3){
                 header('location: ' . BASE_URL);
             }

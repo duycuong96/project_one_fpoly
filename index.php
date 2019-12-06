@@ -349,6 +349,26 @@ switch ($url) {
 		$ctr = new PartnerController();
 		$ctr->homePagePartner();
 		break;
+	case 'partner/cars':
+		$ctr = new PartnerController();
+		$ctr->listCarsPartner();
+		break;
+	case 'partner/cars/add':
+		$ctr = new PartnerController();
+		$ctr->addCarsPartner();
+		break;
+	case 'partner/cars/save-add':
+		$ctr = new PartnerController();
+		$ctr->saveAddCarsPartner();
+		break;
+	case 'partner/cars/edit':
+		$ctr = new PartnerController();
+		$ctr->editCarsPartner();
+		break;
+	case 'partner/cars/save-edit':
+		$ctr = new PartnerController();
+		$ctr->saveEditCarsPartner();
+		break;
 		
 		break;
 }

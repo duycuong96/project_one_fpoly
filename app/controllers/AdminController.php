@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Location;
 use App\Models\Car;
 use App\Models\Order;
+use App\Models\Comment;
 
 class AdminController{
 
@@ -22,6 +23,12 @@ class AdminController{
                                         GROUP BY month(created_date)')
                                         ->get();
         // var_dump($chartOrder);die;
+
+        // đơn hàng mới nhất
+		$ordersLatest = Order::sttOrderBy('id', false)->limit(5)->get();
+        // var_dump($ordersLatest);die;
+        // bình luận mới nhất
+        $commentsLatest = Comment::sttOrderBy('id', false)->limit(5)->get(); 
         include_once './app/views/admin/home/home.php';
     }
 
