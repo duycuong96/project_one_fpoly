@@ -69,6 +69,7 @@ class PartnerController{
 		$cate_id = isset($_POST['cate_id']) == true ? $_POST['cate_id'] : "";
 		$location_id = isset($_POST['location_id']) == true ? $_POST['location_id'] : "";
 		$maker_id = isset($_POST['maker_id']) == true ? $_POST['maker_id'] : "";
+		$user_id = isset($_POST['user_id']) == true ? $_POST['user_id'] : "";
 		$price = isset($_POST['price']) == true ? $_POST['price'] : "";
 		$detail = isset($_POST['detail']) == true ? $_POST['detail'] : "";
 		$image = isset($_POST['feature_image']) == true ? $_POST['feature_image'] : "";
@@ -84,15 +85,18 @@ class PartnerController{
 		// dd($filePath);
 		if ($images['size'] > 0) {
 			$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail');
+			$data['user_id'] =  $user_id;
 			$data['feature_image'] = $filename;
 		} else {
 			$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail', 'image');
+			$data['user_id'] =  $user_id;
 		}
 		// dd($data);
 		$model = new Car();
-		$model = Car::where(['id', '=', $id])->first();
+		$model->id = $id;
 		$model->update($data);
-		header("Location: ../car/edit?id=$id");
+		// var_dump($model);die;
+		header("Location: ../cars/edit?id=$id");
     }
 }
 ?>

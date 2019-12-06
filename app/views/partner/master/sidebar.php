@@ -56,12 +56,12 @@
                     <div class="collapse" id="car">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="<?= ADMIN_URL . "/car" ?>">
+                                <a href="<?= PARTNER_URL . "/cars" ?>">
                                     <span class="sub-item">Danh sách</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= ADMIN_URL . "/car/add" ?>">
+                                <a href="<?= PARTNER_URL . "/cars/add" ?>">
                                     <span class="sub-item">Thêm mới</span>
                                 </a>
                             </li>
@@ -79,17 +79,17 @@
                     <div class="collapse" id="users">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="<?= ADMIN_URL . "/account" ?>">
+                                <a href="<?= PARTNER_URL . "/accsount" ?>">
                                     <span class="sub-item">Danh sách</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= ADMIN_URL . "/account/add" ?>">
+                                <a href="<?= PARTNER_URL . "/accsount/add" ?>">
                                     <span class="sub-item">Thêm mới</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= ADMIN_URL . '/role' ?>">
+                                <a href="<?= PARTNER_URL . '/rolse' ?>">
                                     <span class="sub-item">Vai trò</span>
                                 </a>
                             </li>
@@ -108,12 +108,12 @@
                     <div class="collapse" id="orders">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="<?= ADMIN_URL . "/order" ?>">
+                                <a href="<?= PARTNER_URL . "/ordser" ?>">
                                     <span class="sub-item">Danh sách</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= ADMIN_URL . "/order/add" ?>">
+                                <a href="<?= PARTNER_URL . "/ordser/add" ?>">
                                     <span class="sub-item">Thêm mới</span>
                                 </a>
                             </li>

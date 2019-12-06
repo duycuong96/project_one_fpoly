@@ -117,7 +117,7 @@ class CarController
 		$model = new Car();
 		$model = Car::where(['id', '=', $id])->first();
 		$model->update($data);
-		header('location: '.PARTNER_URL. 'cars/edit?id=' . $id);
+		header('location: ' . ADMIN_URL . '/car/edit?id=' . $id);
 	}
 
 	public function delCar($id)
