@@ -79,18 +79,8 @@
                     <div class="collapse" id="users">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="<?= PARTNER_URL . "/accsount" ?>">
-                                    <span class="sub-item">Danh sách</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= PARTNER_URL . "/accsount/add" ?>">
-                                    <span class="sub-item">Thêm mới</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= PARTNER_URL . '/rolse' ?>">
-                                    <span class="sub-item">Vai trò</span>
+                                <a href="<?= PARTNER_URL . "/account" ?>">
+                                    <span class="sub-item">Thông tin</span>
                                 </a>
                             </li>
 

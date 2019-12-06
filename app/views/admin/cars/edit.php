@@ -47,13 +47,13 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="">Loại xe</label>
                                             <select name="cate_id" class="form-control" id="">
-                                                <?php foreach ($cate as $cates) : ?>
-                                                    <option value="<?= $cates->id ?>" <?php
-                                                                                            if ($cates->id == $car->cate_id) {
+                                                <?php foreach ($categories as $cate) : ?>
+                                                    <option value="<?= $cate->id ?>" <?php
+                                                                                            if ($cate->id == $car->cate_id) {
                                                                                                 echo "selected";
                                                                                             }
                                                                                             ?>>
-                                                        <?= $cates->name ?>
+                                                        <?= $cate->name ?>
                                                     </option>
 
                                                 <?php endforeach ?>
@@ -62,12 +62,12 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="">Địa điểm</label>
                                             <select name="location_id" class="form-control" id="">
-                                                <?php foreach ($loca as $locas) : ?>
-                                                    <option value="<?= $locas->id ?>" <?php
-                                                                                            if ($locas->id == $car->location_id) {
+                                                <?php foreach ($locations as $location) : ?>
+                                                    <option value="<?= $location->id ?>" <?php
+                                                                                            if ($location->id == $car->location_id) {
                                                                                                 echo "selected";
                                                                                             }
-                                                                                            ?>><?= $locas->name ?></option>
+                                                                                            ?>><?= $location->name ?></option>
 
                                                 <?php endforeach ?>
                                             </select>
@@ -75,12 +75,26 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="">Hãng xe</label>
                                             <select name="maker_id" class="form-control" id="">
-                                                <?php foreach ($maker as $makers) : ?>
-                                                    <option value="<?= $makers->id ?>" <?php
-                                                                                            if ($makers->id == $car->maker_id) {
+                                                <?php foreach ($makers as $maker) : ?>
+                                                    <option value="<?= $maker->id ?>" <?php
+                                                                                            if ($maker->id == $car->maker_id) {
                                                                                                 echo "selected";
                                                                                             }
-                                                                                            ?>><?= $makers->name ?></option>
+                                                                                            ?>><?= $maker->name ?></option>
+
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Chủ xe</label>
+                                            <select name="user_id" class="form-control" id="">
+                                                <?php foreach ($users as $user) : ?>
+                                                    <option value="<?= $user->id ?>" <?php
+                                                                                            if ($user->id == $car->user_id) {
+                                                                                                echo "selected";
+                                                                                            }
+                                                                                            ?>><?= $user->name ?></option>
 
                                                 <?php endforeach ?>
                                             </select>

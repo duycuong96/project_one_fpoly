@@ -369,6 +369,10 @@ switch ($url) {
 		$ctr = new PartnerController();
 		$ctr->saveEditCarsPartner();
 		break;
+	case 'partner/account':
+		$ctr = new PartnerController();
+		$ctr->informationAccount(); 
+		break;
 		
 		break;
 }

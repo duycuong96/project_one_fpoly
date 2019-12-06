@@ -4,7 +4,8 @@ namespace App\Controllers;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Location;
-use App\Models\Makers;
+use App\Models\Maker;
+use App\Models\User;
 
 class PartnerController{
     public function homePagePartner(){
@@ -88,6 +89,14 @@ class PartnerController{
 		$model->id = $id;
 		$model->update($data);
 		header('location: ' . PARTNER_URL . '/cars');
-    }
+	}
+	
+	public function informationAccount(){
+		$user_id = $_SESSION['AUTH']['id'];
+	
+		$user = User::where(['id', '=', $user_id])->first();
+		// var_dump($user);die;
+		include_once './app/views/partner/users/list.php';
+	}
 }
 ?>

@@ -46,8 +46,8 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="">Loại xe</label>
                                             <select name="cate_id" class="form-control" id="">
-                                                <?php foreach ($cate as $cates) : ?>
-                                                    <option value="<?= $cates->id ?>"><?= $cates->name ?></option>
+                                                <?php foreach ($categories as $cate) : ?>
+                                                    <option value="<?= $cate->id ?>"><?= $cate->name ?></option>
 
                                                 <?php endforeach ?>
                                             </select>
@@ -55,8 +55,8 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="">Địa điểm</label>
                                             <select name="location_id" class="form-control" id="">
-                                                <?php foreach ($loca as $locas) : ?>
-                                                    <option value="<?= $locas->id ?>"><?= $locas->name ?></option>
+                                                <?php foreach ($locations as $location) : ?>
+                                                    <option value="<?= $location->id ?>"><?= $location->name ?></option>
 
                                                 <?php endforeach ?>
                                             </select>
@@ -64,8 +64,17 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="">Hãng xe</label>
                                             <select name="maker_id" class="form-control" id="">
-                                                <?php foreach ($maker as $makers) : ?>
-                                                    <option value="<?= $makers->id ?>"><?= $makers->name ?></option>
+                                                <?php foreach ($makers as $maker) : ?>
+                                                    <option value="<?= $maker->id ?>"><?= $maker->name ?></option>
+
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Chủ xe</label>
+                                            <select name="user_id" class="form-control" id="">
+                                                <?php foreach ($users as $user) : ?>
+                                                    <option value="<?= $user->id ?>"><?= $user->name ?></option>
 
                                                 <?php endforeach ?>
                                             </select>

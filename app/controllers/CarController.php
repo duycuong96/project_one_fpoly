@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Location;
 use App\Models\Makers;
 use App\Models\Order;
+use App\Models\User;
 
 class CarController
 {
@@ -36,9 +37,11 @@ class CarController
 	// add
 	public function addCar()
 	{
-		$cate = Category::all();
-		$loca = Location::all();
-		$maker = Makers::all();
+		$categories = Category::all();
+		$locations = Location::all();
+		$makers = Makers::all();
+		$users = User::where(['role_id', '=', 2])->orWhere(['role_id', '=', 1])->get();
+		// var_dump($users);die;
 		include_once './app/views/admin/cars/add.php';
 	}
 	public function saveAddCar()
@@ -47,11 +50,12 @@ class CarController
 		$cate_id = isset($_POST['cate_id']) == true ? $_POST['cate_id'] : "";
 		$location_id = isset($_POST['location_id']) == true ? $_POST['location_id'] : "";
 		$maker_id = isset($_POST['maker_id']) == true ? $_POST['maker_id'] : "";
+		$user_id = isset($_POST['user_id']) == true ? $_POST['user_id'] : "";
 		$price = isset($_POST['price']) == true ? $_POST['price'] : "";
 		$detail = isset($_POST['detail']) == true ? $_POST['detail'] : "";
 
 		$image = $_FILES['feature_image'];
-		$filePath = "";
+
 		if ($image['size'] > 0) {
 			$filename = $image['name'];
 			$filename = uniqid() . "-" . $filename;
@@ -59,7 +63,7 @@ class CarController
 			// $filePath = "public/images/cars/" . $filename;
 		}
 		// dd($filePath);
-		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail');
+		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'user_id', 'price', 'detail');
 		$data['feature_image'] = $filename;
 		$model = new Car();
 		$model->insert($data);
@@ -68,9 +72,10 @@ class CarController
 	// edit
 	public function editCar()
 	{
-		$cate = Category::all();
-		$loca = Location::all();
-		$maker = Makers::all();
+		$categories = Category::all();
+		$locations = Location::all();
+		$makers = Makers::all();
+		$users = User::where(['role_id', '=', 2])->orWhere(['role_id', '=', 1])->get();
 		
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		$car = Car::where(['id','=',$id])->first();
@@ -90,32 +95,27 @@ class CarController
 	public function saveEditCar()
 	{
 		$id = isset($_POST['id']) == true ? $_POST['id'] : "";
+		$user_id = isset($_POST['user_id']) == true ? $_POST['user_id'] : "";
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";
 		$cate_id = isset($_POST['cate_id']) == true ? $_POST['cate_id'] : "";
 		$location_id = isset($_POST['location_id']) == true ? $_POST['location_id'] : "";
 		$maker_id = isset($_POST['maker_id']) == true ? $_POST['maker_id'] : "";
 		$price = isset($_POST['price']) == true ? $_POST['price'] : "";
 		$detail = isset($_POST['detail']) == true ? $_POST['detail'] : "";
-		$image = isset($_POST['feature_image']) == true ? $_POST['feature_image'] : "";
-		// dd($id);
-		$images = $_FILES['feature_images'];
-		$filePath = "";
-		if ($images['size'] > 0) {
-			$filename = $images['name'];
+
+		$image = $_FILES['feature_image'];
+
+		if ($image['size'] > 0) {
+			$filename = $image['name'];
 			$filename = uniqid() . "-" . $filename;
-			move_uploaded_file($images['tmp_name'], "public/assets/img/cars/" . $filename);
-			// $filePath = "./public/images/cars/" . $filename;
+			move_uploaded_file($image['tmp_name'], 'public/assets/img/cars/' . $filename);
+			// $filePath = "public/images/cars/" . $filename;
 		}
 		// dd($filePath);
-		if ($images['size'] > 0) {
-			$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail');
-			$data['feature_image'] = $filename;
-		} else {
-			$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail', 'image');
-		}
-		// dd($data);
+		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'user_id', 'price', 'detail');
+        $data['feature_image'] = $filename;
 		$model = new Car();
-		$model = Car::where(['id', '=', $id])->first();
+		$model->id = $id;
 		$model->update($data);
 		header('location: ' . ADMIN_URL . '/car/edit?id=' . $id);
 	}
