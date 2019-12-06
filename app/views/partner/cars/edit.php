@@ -7,7 +7,7 @@ require_once './app/views/partner/master/sidebar.php';
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Địa điểm</h4>
+                <h4 class="page-title">Xe</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/partner/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= PARTNER_URL . '/cars' ?>">Địa điểm</a>
+                        <a href="<?= PARTNER_URL . '/cars' ?>">Xe</a>
                     </li>
                 </ul>
             </div>
@@ -39,6 +39,7 @@ require_once './app/views/partner/master/sidebar.php';
                                 <div class="col-md-8">
                                     <form action="<?= PARTNER_URL . '/cars/save-edit' ?>" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="<?= $car->id ?>">
+                                        <input type="hidden" name="user_id" value="<?= $car->user_id ?>">
                                         <div class="form-group">
                                             <label>Tên:</label>
                                             <input name="name" type="text" class="form-control" placeholder="" value="<?= $car->name ?>">
@@ -60,14 +61,14 @@ require_once './app/views/partner/master/sidebar.php';
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Địa điểm</label>
+                                            <label for="">Xe</label>
                                             <select name="location_id" class="form-control" id="">
                                                 <?php foreach ($locations as $location) : ?>
                                                     <option value="<?= $location->id ?>" <?php
-                                                                                            if ($location->id == $car->location_id) {
-                                                                                                echo "selected";
-                                                                                            }
-                                                                                            ?>><?= $location->name ?></option>
+                                                                                                if ($location->id == $car->location_id) {
+                                                                                                    echo "selected";
+                                                                                                }
+                                                                                                ?>><?= $location->name ?></option>
 
                                                 <?php endforeach ?>
                                             </select>
@@ -92,7 +93,7 @@ require_once './app/views/partner/master/sidebar.php';
                                         </div>
                                         <div class="form-group">
                                             <label>Ảnh:</label>
-                                            <img id="image" style="height:200px;margin: 1% 2%;" src="<?= IMAGE_URL . $car->feature_image ?>" alt="" >
+                                            <img id="image" style="height:200px;margin: 1% 2%;" src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
                                             <input type="hidden" name="feature_image" value="<?= $car->feature_image ?>">
                                             <input id="img" type="file" name="feature_images" class="form-control" placeholder="" value="" onchange="changeImg(this)">
                                             <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
