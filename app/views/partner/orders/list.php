@@ -1,7 +1,7 @@
 <?php
-require_once './app/views/admin/master/master.php';
-require_once './app/views/admin/master/header.php';
-require_once './app/views/admin/master/sidebar.php';
+require_once './app/views/partner/master/master.php';
+require_once './app/views/partner/master/header.php';
+require_once './app/views/partner/master/sidebar.php';
 ?>
 <div class="main-panel">
   <div class="content">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/order' ?>">Đơn hàng</a>
+            <a href="<?= PARTNER_URL . '/orders' ?>">Đơn hàng</a>
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@ require_once './app/views/admin/master/sidebar.php';
             <div class="card-header">
               <div class="d-flex align-items-center">
 
-                <a href="<?= ADMIN_URL ?>" class="btn btn-primary btn-round ml-auto">
+                <a href="<?= PARTNER_URL ?>" class="btn btn-primary btn-round ml-auto">
                   Dashboard
                 </a>
               </div>
@@ -50,14 +50,14 @@ require_once './app/views/admin/master/sidebar.php';
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($orders as $order) : ?>
+                    <?php foreach ($orderOfPartner as $order) : ?>
                       <tr>
                         <td><?= $order->id ?></td>
                         <td><?= $order->customer_name ?></td>
                         <td><?= $order->total_price ?></td>
                         <td><?= $order->created_date ?></td>
                         <td>
-                          <?php if ($order->status == 0) : ?>
+                        <?php if ($order->status == 0) : ?>
                             Tiếp nhận đơn hàng
                           <?php elseif ($order->status == 1) : ?>
                             Đang xử lý
@@ -73,7 +73,7 @@ require_once './app/views/admin/master/sidebar.php';
                         </td>
                         <td>
                           <div class="form-button-action">
-                            <a href="<?php echo ADMIN_URL . '/order/edit?id=' ?><?php echo $order->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                            <a href="<?php echo PARTNER_URL . '/orders/edit?id=' ?><?php echo $order->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                               <i class="fa fa-edit"></i>
                             </a>
                             <!-- <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
@@ -97,5 +97,5 @@ require_once './app/views/admin/master/sidebar.php';
 </div>
 
 <?php
-require_once './app/views/admin/master/footer.php';
+require_once './app/views/partner/master/footer.php';
 ?>

@@ -101,6 +101,7 @@ require_once './app/views/admin/master/sidebar.php';
                                             <th>Loại xe</th>
                                             <th>Địa điểm</th>
                                             <th>Hãng xe</th>
+                                            <th>Chủ xe</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -112,6 +113,7 @@ require_once './app/views/admin/master/sidebar.php';
                                                 <td><?= $car->getCateName() ?></td>
                                                 <td><?= $car->getLocaName() ?></td>
                                                 <td><?= $car->getMakerName() ?></td>
+                                                <td><?= $car->getUserName() ?></td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="<?= ADMIN_URL . '/car/edit?id=' . $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
