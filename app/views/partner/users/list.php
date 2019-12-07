@@ -33,15 +33,24 @@ require_once './app/views/partner/master/sidebar.php';
 									<div class="d-flex">
 										<div class="col-md-3">
 											<img src="<?= AVATAR_URL . $user->avatar ?>" alt="..." class="avatar-img rounded-circle">
-										</div>
+                                        </div>
+                                        <div class="col-md-6">
 										<div class="info-post ml-2">
-											<h1 class="username"><?= $user->name ?></h1>
+                                            <h1 class="username"><?= $user->name ?></h1>
+                                            
                                             <p class="date text-muted">#<?= $user->id ?></p>
-                                            <h3>Email:</h3>
-										</div>
+                                            <h3>Email: <?= $user->email ?></h3>
+                                            <h3>Vài trò: <?= $user->getRoleName() ?></h3>
+                                        </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-right">
+                                        <a href="<?= PARTNER_URL . '/account/edit' ?>" class="btn btn-round btn-primary">Chỉnh sửa</a>
+                                        </div>
+
 									</div>
                                     <div class="separator-solid"></div>
-        
+
                               
 								</div>
 							</div>

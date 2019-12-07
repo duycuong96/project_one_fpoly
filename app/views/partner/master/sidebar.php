@@ -98,13 +98,8 @@
                     <div class="collapse" id="orders">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="<?= PARTNER_URL . "/ordser" ?>">
+                                <a href="<?= PARTNER_URL . "/orders" ?>">
                                     <span class="sub-item">Danh sách</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= PARTNER_URL . "/ordser/add" ?>">
-                                    <span class="sub-item">Thêm mới</span>
                                 </a>
                             </li>
 

@@ -5,7 +5,10 @@ use App\Models\Car;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Maker;
+use App\Models\Order;
 use App\Models\User;
+use App\Models\Role;
+use App\Models\OrderDetail;
 
 class PartnerController{
     public function homePagePartner(){
@@ -21,7 +24,7 @@ class PartnerController{
     public function addCarsPartner(){
         $categories = Category::all();
 		$locations = Location::all();
-		$makers = Makers::all();
+		$makers = Maker::all();
         include_once './app/views/partner/cars/add.php';
     }
     public function saveAddCarsPartner(){
@@ -53,7 +56,7 @@ class PartnerController{
         $user_id = $_SESSION['AUTH']['id'];
         $categories = Category::all();
 		$locations = Location::all();
-		$makers = Makers::all();
+		$makers = Maker::all();
 		
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
         $car = Car::where(['id','=',$id])->andWhere(['user_id', '=', $user_id])->first();
@@ -98,5 +101,70 @@ class PartnerController{
 		// var_dump($user);die;
 		include_once './app/views/partner/users/list.php';
 	}
+
+	public function editAccount(){
+		$id = $_SESSION['AUTH']['id'];
+		$roles = Role::all();
+
+		$user = User::where(['id', '=', $id])->first();
+		include_once './app/views/partner/users/edit.php';
+	}
+
+	public function saveEditAccount(){
+		$id = isset($_POST['id']) == true ? $_POST['id']: "";
+		$name = isset($_POST['name']) == true ? $_POST['name']: "";
+		$email = isset($_POST['email']) == true ? $_POST['email']: "";
+		$password = isset($_POST['password']) == true ? $_POST['password']: "";
+		$role_id = isset($_POST['role_id']) == true ? $_POST['role_id']: "";
+		$status = isset($_POST['status']) == true ? $_POST['status']: "";
+
+		$avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar']: "";
+
+		if ($avatar['size'] > 0) {
+			$filename = $avatar['name'];
+			$filename = uniqid() . "-" . $filename;
+			move_uploaded_file($avatar['tmp_name'], 'public/assets/img/users/' . $filename);
+		}
+		// mã hóa mật khẩu
+		$hashpassword = password_hash($password, PASSWORD_DEFAULT);
+		$data = compact('name', 'email', 'role_id', 'status');
+		$data['password'] = $hashpassword;
+		$data['avatar'] = $filename;
+		$data['updated_at'] = date_format(date_create(), 'Y-m-d H:i:s');
+		// var_dump($data);die;
+		$model = new User();
+		$model->id = $id;
+		$model->update($data);
+
+		header('location: ' . PARTNER_URL . '/account');
+	}
+
+
+	public function listOrdersPartner(){
+		$user_id = $_SESSION['AUTH']['id'];
+		$orderOfPartner = OrderDetail::rawQuery('SELECT *
+											FROM order_detail
+											INNER JOIN cars ON order_detail.car_id = cars.id
+											INNER JOIN orders ON order_detail.order_id = orders.id
+											WHERE cars.user_id = ' . $user_id)
+											->get();
+		// var_dump($orderOfPartner);die;
+		include_once './app/views/partner/orders/list.php';
+	}
+
+	public function editOrdersPartner(){
+		$user_id = $_SESSION['AUTH']['id'];
+		$id = isset($_GET['id']) ? $_GET['id'] : null;
+		$order = Order::where(['id', '=', $id])->first();
+		if(!$order){
+			header('location: ' . PARTNER_URL);
+        	die;
+		}
+		if($order != ""){
+			$orderDetail = OrderDetail::where(['order_id','=', $order->id])->get();
+		}
+		include_once './app/views/partner/orders/edit.php';
+	}
+	
 }
 ?>
