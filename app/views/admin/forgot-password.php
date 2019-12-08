@@ -8,7 +8,7 @@
 	<meta name="author" content="">
 	<link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-	<title>Đăng nhập</title>
+	<title>Quên mật khẩu</title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/floating-labels/">
 
@@ -20,32 +20,26 @@
 </head>
 
 <body>
-	<form class="form-signin" action="<?= ADMIN_URL . '/post-login' ?>" method="POST">
+	<form class="form-signin" action="<?= ADMIN_URL . '/submit-forgot-password' ?>" method="POST">
 		<div class="text-center mb-4">
 			<img class="mb-4" src="<?= BASE_URL . '/public/assets/img/logo/icon.png' ?>" alt="">
-			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
+			<h1 class="h3 mb-3 font-weight-normal">Quên mật khẩu</h1>
 
 		</div>
 
 		<div class="form-label-group">
 			<input type="email" id="inputEmail" class="form-control" name="email" placeholder="Địa chỉ email" >
-			<label for="inputEmail">Email của bạn</label>
-		</div>
-
-		<div class="form-label-group">
-			<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
-			<label for="inputPassword">Password</label>
-		</div>
-
+            <label for="inputEmail">Email của bạn</label>
+           
+        </div>
+        
 		<div class="checkbox mb-3">
-			<label>
-				<input type="checkbox" value="remember-me"> Nhớ mật khẩu
-			</label>
-			<div>
-			<a href="<?= ADMIN_URL . '/forgot-password' ?>">Quên mật khẩu</a>
-			</div>
+        <div>
+            <a href="<?= ADMIN_URL . '/login' ?>">Đăng nhập</a>
+            </div>
 		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
+
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Lấy lại mật khẩu</button>
 		<p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2020</p>
 	</form>
 </body>

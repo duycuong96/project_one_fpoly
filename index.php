@@ -78,6 +78,22 @@ switch ($url) {
 		$ctr = new LoginController();
 		$ctr->logoutAdmin();
 		break;
+	case 'admin/forgot-password':
+		$ctr = new LoginController();
+		$ctr->forgotPassword();
+		break;
+	case 'admin/submit-forgot-password':
+		$ctr = new LoginController();
+		$ctr->submitForgotPassword();
+		break;
+	case 'admin/reset-password':
+		$ctr = new LoginController();
+		$ctr->resetPassword();
+		break;
+	case 'admin/submit-reset-password':
+		$ctr = new LoginController();
+		$ctr->submitResetPassword();
+		break;
 	// admin
 	case 'admin':
 		checkLogin();
