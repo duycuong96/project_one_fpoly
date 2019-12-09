@@ -27,7 +27,6 @@ class UserController
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
 
 		$avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar']: "";
-		
 		if (isset($_SERVER['PHP_SELF'])){
 			// tên
 			$err_name = "";
@@ -46,6 +45,10 @@ class UserController
 			if($password == "" || strlen($password) < 6 ){
 				$err_password = "Nhập mật khẩu ít nhất 6 kí tự";
 			}
+
+
+		
+
 
 			// ảnh
 			$err_file = "";

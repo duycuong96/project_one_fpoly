@@ -77,10 +77,7 @@ require_once './app/views/admin/master/sidebar.php';
                                                                 // else if ($comment->rating < $i) {
                                                                 //     echo "<i class='far fa-star text-warning'></i>";
                                                                 // }
-                                                                ?>
-                                                        <?php
                                                             }
-
                                                             ?>
                                                     </td>
                                                     <td>

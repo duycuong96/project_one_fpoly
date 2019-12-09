@@ -43,10 +43,15 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->postLogin();
 		break;
-		// trang danh mục
-	case 'categorys':
+		// logout
+	case 'logout':
 		$ctr = new HomeController();
-		$ctr->categorys();
+		$ctr->logout();
+		break;
+		// trang danh mục
+	case 'categories':
+		$ctr = new HomeController();
+		$ctr->categories();
 		break;
 	case 'category':
 		$ctr = new HomeController();
@@ -61,6 +66,59 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->locations();
 		break;
+		// chi tiết
+	case 'detail':
+		$ctr = new HomeController();
+		$ctr->detail();
+		break;
+	case 'contact':
+		$ctr = new HomeController();
+		$ctr->contact();
+		break;
+	// case 'add-cart':
+	// 	checkLoginClient();
+	// 	$ctr = new HomeController();
+	// 	$ctr->addCart();
+	// 	break;
+	// case 'cart':
+	// 	checkLoginClient();
+	// 	$ctr = new HomeController();
+	// 	$ctr->cart();
+	// 	break;
+	case 'checkout':
+		$ctr = new HomeController();
+		$ctr->checkout();
+		break;
+	case 'account':
+		checkLoginClient();
+		$ctr = new HomeController();
+		$ctr->account();
+		break;
+		// đổi mật khẩu
+	case 'change-password':
+		$ctr = new HomeController();
+		$ctr->changePassword();
+		break;
+	case 'save-change-password':
+		$ctr = new HomeController();
+		$ctr->saveChangePassword();
+		break;
+
+
+	case 'history':
+		$ctr = new HomeController();
+		$ctr->history();
+		break;
+	case 'register':
+		$ctr = new HomeController();
+		$ctr->register();
+		break;
+	case 'save-register':
+		$ctr = new HomeController();
+		$ctr->saveRegister();
+		break;
+
+
 
 
 

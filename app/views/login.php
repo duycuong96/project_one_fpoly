@@ -1,5 +1,5 @@
 <?php
-require_once './app/views/frontend/template/header.php';
+require_once './app/views/client/template/header.php';
 ?>
 <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/banner-4.jpg)">
     <div class="container-fluid">
@@ -20,8 +20,8 @@ require_once './app/views/frontend/template/header.php';
             <div class="col-lg-7 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
-                        <a class="active" data-toggle="tab" href="#lg1">
-                            <h4> Đăng nhập </h4>
+                        <a class="active" href="#">
+                            <h4 style="color: #fd7e14"> Đăng nhập &nbsp &nbsp &nbsp <a style="color: #303030" href="<?= BASE_URL ?>register">Đăng ký</a></h4>
                         </a>
                     </div>
                     <div class="tab-content">
@@ -50,5 +50,5 @@ require_once './app/views/frontend/template/header.php';
     </div>
 </div>
 <?php
-require_once './app/views/frontend/template/footer.php';
+require_once './app/views/client/template/footer.php';
 ?>
