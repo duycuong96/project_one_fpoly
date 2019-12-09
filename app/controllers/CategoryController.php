@@ -22,6 +22,27 @@ class CategoryController
 		$description = isset($_POST['description']) == true ? $_POST['description'] : "";
 		$show_menu = isset($_POST['show_menu']) == true ? $_POST['show_menu'] : "";
 
+		if (isset($_SERVER['PHP_SELF'])){
+			$err_name = "";
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên loại xe";
+			}
+			$err_description = "";
+			if($err_description == ""){
+				$err_description = "Vui lòng nhập mô tả loại xe";
+			}
+			
+		// kiểm tra và hiện validation
+		if($err_name != "" || $err_description != ""){
+			header(
+				'location: ' . ADMIN_URL . '/category/add?'
+					. 'err_name=' . $err_name
+					. '&err_description=' . $err_description
+			);
+			die;
+		}
+		}
+
 		$data = compact('name', 'description', 'show_menu');
 		$model = new Category();
 		$model->insert($data);
@@ -43,6 +64,28 @@ class CategoryController
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";
 		$description = isset($_POST['description']) == true ? $_POST['description'] : "";
 		$show_menu = isset($_POST['show_menu']) == true ? $_POST['show_menu'] : "";
+
+		if (isset($_SERVER['PHP_SELF'])){
+			$err_name = "";
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên loại xe";
+			}
+			$err_description = "";
+			if($err_description == ""){
+				$err_description = "Vui lòng nhập mô tả loại xe";
+			}
+			
+		// kiểm tra và hiện validation
+		if($err_name != "" || $err_description != ""){
+			header(
+				'location: ' . ADMIN_URL . '/category/edit?id=' . $id
+					. '&err_name=' . $err_name
+					. '&err_description=' . $err_description
+			);
+			die;
+		}
+		}
+
 		$data = compact('name', 'description', 'show_menu');
 		$model = new Category();
 		$model = Category::where(['id', '=', $id])->first();

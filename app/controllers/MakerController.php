@@ -22,10 +22,28 @@ class MakerController
     {
         $name = isset($_POST['name']) == true ? $_POST['name'] : "";
 
+		if (isset($_SERVER['PHP_SELF'])){
+			$err_name = "";
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên";
+			}
+
+			
+		// kiểm tra và hiện validation
+		if($err_name != ""){
+			header(
+				'location: ' . ADMIN_URL . '/maker/add?'
+					. 'err_name=' . $err_name
+			);
+			die;
+		}
+		}
+
         $data = compact('name');
         $model = new Maker;
         $model->insert($data);
-        header('Location: ../maker');
+
+        header('location: ' . ADMIN_URL . '/maker/add');
     }
 
     // sửa

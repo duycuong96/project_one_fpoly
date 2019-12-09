@@ -12,7 +12,20 @@ class OrderController
 	// list
 	public function listOrder(){
 		// dd(1);
-		$orders = Order::all();
+		// $orders = Order::all();
+		$status = isset($_GET['status']) == true ? $_GET['status'] : "";
+		$date = isset($_GET['date']) == true ? $_GET['date'] : "";
+		$date2 = isset($_GET['date2']) == true ? $_GET['date2'] : "";
+
+		if($status != "" && $date != ""){
+		$orders = Order::where(['status', '=', $status])->andWhere(['created_date', '>', $date])->andWhere(['created_date', '<' , $date2])->get();
+		} elseif ($status != "" && $date == "") {
+		$orders = Order::where(['status', '=', $status])->get();
+		} elseif ($status == "" && $date != "" && $date2 != "") {
+		$orders = Order::where(['created_date', '>', $date])->andWhere(['created_date', '<' , $date2])->get();
+		} else {
+		$orders = Order::sttOrderBy('id', false)->get();
+		}
 		
 		include_once './app/views/admin/orders/list.php';
 	}
