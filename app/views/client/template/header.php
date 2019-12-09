@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
+
 <!-- Mirrored from preview.freethemescloud.com/oswan/shop-grid-2-col.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2019 16:12:46 GMT -->
 
 <head>
@@ -12,6 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/icon.png">
+
 
   <!-- all css here -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -59,7 +61,7 @@
                     <nav>
                       <ul>
                         <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
-                        <li><a href="<?= BASE_URL ?>category">loại xe</a>
+                        <li><a href="<?= BASE_URL ?>categories">loại xe</a>
                           <ul>
                             <?php
                             foreach ($cate as $cates) { ?>
@@ -83,7 +85,7 @@
                             <?php } ?>
                           </ul>
                         </li>
-                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="<?= BASE_URL ?>contact">Liên hệ</a></li>
                       </ul>
                     </nav>
 
@@ -206,9 +208,14 @@
         <div class="header-cart-wrapper">
           <div class="header-cart">
             <button class="icon-cart">
-              <i class="ti-shopping-cart"></i>
-              <span class="count-style">02</span>
-              <span class="count-price-add">$295.95</span>
+              <a href="<?= BASE_URL ?>cart">
+                <i class="ti-shopping-cart"></i>
+                <span class="count-style"><?= $total_car = getTotalProductInCart() ?></span>
+                <span class="count-price-add">$ <?= $total = getCartTotalPrice() ?></span>
+              </a>
+              <a title="<?= $_SESSION['AUTH']['name'] ?>" href="<?= BASE_URL ?>account">
+                <i style="float: right; margin-left:15px" style="margin-left: 30px;" class="ti-user"></i>
+              </a>
             </button>
           </div>
         </div>

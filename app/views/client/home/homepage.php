@@ -56,7 +56,7 @@
                                             <nav>
                                                 <ul>
                                                     <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
-                                                    <li><a href="categorys">loại xe</a>
+                                                    <li><a href="categories">loại xe</a>
                                                         <ul>
                                                             <?php
                                                             foreach ($cate as $cates) { ?>
@@ -80,7 +80,7 @@
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="">Liên hệ</a></li>
+                                                    <li><a href="<?= BASE_URL ?>contact">Liên hệ</a></li>
                                                 </ul>
                                             </nav>
 
@@ -88,60 +88,13 @@
                                     </div>
                                 </div>
                                 <div class="header-cart cart-small-device">
-                                    <button class="icon-cart">
-                                        <i class="ti-shopping-cart"></i>
-                                        <span class="count-style">02</span>
-                                        <span class="count-price-add">$295.95</span>
-                                    </button>
-                                    <div class="shopping-cart-content">
-                                        <ul>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="#"><img alt="" src="./public/assets/img/cart/cart-1.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h3><a href="#">Gloriori GSX 250 R </a></h3>
-                                                    <span>Price: $275</span>
-                                                    <span>Qty: 01</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="icofont icofont-ui-delete"></i></a>
-                                                </div>
-                                            </li>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="#"><img alt="" src="./public/assets/img/cart/cart-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h3><a href="#">Demonissi Gori</a></h3>
-                                                    <span>Price: $275</span>
-                                                    <span class="qty">Qty: 01</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="icofont icofont-ui-delete"></i></a>
-                                                </div>
-                                            </li>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="#"><img alt="" src="./public/assets/img/cart/cart-3.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h3><a href="#">Demonissi Gori</a></h3>
-                                                    <span>Price: $275</span>
-                                                    <span class="qty">Qty: 01</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="icofont icofont-ui-delete"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="shopping-cart-total">
-                                            <h4>total: <span>$550.00</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-btn">
-                                            <a class="btn-style cr-btn" href="#">checkout</a>
-                                        </div>
-                                    </div>
+                                    <?php if ($_SESSION['AUTH'] != null) { ?>
+                                        <button class="icon-cart">
+                                            <i class="ti-shopping-cart"></i>
+                                            <span class="count-style">02</span>
+                                            <span class="count-price-add">$295.95</span>
+                                        </button>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="mobile-menu-area col-12">
@@ -203,11 +156,15 @@
                     <div class="header-cart-wrapper">
                         <div class="header-cart">
                             <button class="icon-cart">
-                                <i class="ti-shopping-cart"></i>
-                                <span class="count-style">02</span>
-                                <span class="count-price-add">$295.95</span>
+                                <a title="Giỏ hàng" href="<?= BASE_URL ?>cart">
+                                    <i class="ti-shopping-cart"></i>
+                                    <span class="count-style"><?= $total_car = getTotalProductInCart() ?></span>
+                                    <span class="count-price-add">$ <?= $total = getCartTotalPrice() ?></span>
+                                </a>
+                                <a title="<?= $_SESSION['AUTH']['name'] ?>" href="<?= BASE_URL ?>account">
+                                    <i style="float: right; margin-left:15px" style="margin-left: 30px;" class="ti-user"></i>
+                                </a>
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -229,12 +186,9 @@
                                                     <label for="">Chọn địa điểm</label>
                                                     <select class="form-control">
                                                         <option value="" hidden="">Chọn điểm nhận xe</option>
-                                                        <option value="1">Hà Nội</option>
-                                                        <option value="2">TP. Hồ Chí Minh</option>
-                                                        <option value="3">Đà Nẵng</option>
-                                                        <option value="4">Phú Quốc</option>
-                                                        <option value="7">Sapa (Lào Cai)</option>
-                                                        <option value="11">Ninh Bình</option>
+                                                        <?php foreach ($loca as $location) { ?>
+                                                            <option value="<?= $location->id ?>"><?= $location->name ?></option>
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
@@ -303,7 +257,7 @@
                                 <?php foreach ($cars as $car) { ?>
                                     <div class="product-wrapper">
                                         <div class="product-img">
-                                            <a href="product-details.html">
+                                            <a href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
                                                 <img src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
                                             </a>
                                             <div class="product-item-dec">
@@ -312,7 +266,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-action">
-                                                <a class="action-plus-2" title="Add To Cart" href="#">
+                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'add-cart?id=' . $car->id ?>">
                                                     <i class=" ti-shopping-cart"></i>
                                                 </a>
                                                 <a class="action-cart-2" title="Wishlist" href="#">
@@ -324,7 +278,7 @@
                                             </div>
                                             <div class="product-content-wrapper">
                                                 <div class="product-title-spreed">
-                                                    <h4><a href="product-details.html"><?= $car->name ?></a></h4>
+                                                    <h4><a href="<?= BASE_URL . 'detail?id=' . $car->id ?>"><?= $car->name ?></a></h4>
                                                     <span><?= $car->getLocaName() ?></span>
                                                 </div>
                                                 <div class="product-price">
@@ -342,7 +296,7 @@
                                 <?php foreach ($cars as $car) { ?>
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
-                                            <a href="product-details.html">
+                                            <a href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
                                                 <img src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
                                             </a>
                                             <div class="product-item-dec">
@@ -354,7 +308,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-action">
-                                                <a class="action-plus-2" title="Add To Cart" href="#">
+                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'add-cart?id=' . $car->id ?>">
                                                     <i class=" ti-shopping-cart"></i>
                                                 </a>
                                                 <a class="action-cart-2" title="Wishlist" href="#">
@@ -366,7 +320,7 @@
                                             </div>
                                             <div class="product-content-wrapper">
                                                 <div class="product-title-spreed">
-                                                    <h4><a href="product-details.html"><?= $car->name ?></a></h4>
+                                                    <h4><a href="<?= BASE_URL . 'detail?id=' . $car->id ?>"><?= $car->name ?></a></h4>
                                                     <span>150 CC</span>
                                                 </div>
                                                 <div class="product-price">
