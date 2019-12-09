@@ -308,7 +308,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-action">
-                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'add-cart?id=' . $car->id ?>">
+                                                <a class="action-plus-2" title="Đặt hàng" href="<?= BASE_URL . 'add-cart?id=' . $car->id ?>">
                                                     <i class=" ti-shopping-cart"></i>
                                                 </a>
                                                 <a class="action-cart-2" title="Wishlist" href="#">
