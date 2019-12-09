@@ -1,13 +1,13 @@
 <?php
-require_once './app/views/admin/master/master.php';
-require_once './app/views/admin/master/header.php';
-require_once './app/views/admin/master/sidebar.php';
+require_once './app/views/partner/master/master.php';
+require_once './app/views/partner/master/header.php';
+require_once './app/views/partner/master/sidebar.php';
 ?>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Địa điểm</h4>
+                <h4 class="page-title">Xe</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= ADMIN_URL . '/car' ?>">Địa điểm</a>
+                        <a href="<?= PARTNER_URL . '/cars' ?>">Xe</a>
                     </li>
                 </ul>
             </div>
@@ -29,7 +29,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <div class="card-header">
                             <div class="d-flex align-items-center">
 
-                                <a href="<?= ADMIN_URL . '/car' ?>" class="btn btn-primary btn-round ml-auto">
+                                <a href="<?= PARTNER_URL . '/cars' ?>" class="btn btn-primary btn-round ml-auto">
                                     Danh sách
                                 </a>
                             </div>
@@ -37,7 +37,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <div class="card-body">
                             <div class="row justify-content-md-center">
                                 <div class="col-md-8">
-                                    <form action="<?= ADMIN_URL . '/car/save-add' ?>" method="post" enctype="multipart/form-data">
+                                    <form action="<?= PARTNER_URL . '/cars/save-add' ?>" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Tên:</label>
                                             <input name="name" type="text" class="form-control" placeholder="" value="">
@@ -55,8 +55,8 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="">Địa điểm</label>
                                             <select name="location_id" class="form-control" id="">
-                                                <?php foreach ($locations as $location) : ?>
-                                                    <option value="<?= $location->id ?>"><?= $location->name ?></option>
+                                                <?php foreach ($locations as $loca) : ?>
+                                                    <option value="<?= $loca->id ?>"><?= $loca->name ?></option>
 
                                                 <?php endforeach ?>
                                             </select>
@@ -66,15 +66,6 @@ require_once './app/views/admin/master/sidebar.php';
                                             <select name="maker_id" class="form-control" id="">
                                                 <?php foreach ($makers as $maker) : ?>
                                                     <option value="<?= $maker->id ?>"><?= $maker->name ?></option>
-
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Chủ xe</label>
-                                            <select name="user_id" class="form-control" id="">
-                                                <?php foreach ($users as $user) : ?>
-                                                    <option value="<?= $user->id ?>"><?= $user->name ?></option>
 
                                                 <?php endforeach ?>
                                             </select>
@@ -113,5 +104,5 @@ require_once './app/views/admin/master/sidebar.php';
 
 <!-- End Custom template -->
 <?php
-require_once './app/views/admin/master/footer.php';
+require_once './app/views/partner/master/footer.php';
 ?>

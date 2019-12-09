@@ -36,12 +36,12 @@ function getPaymentMethod(){
 }
 
 function checkLogin(){
-	if(!isset($_SESSION['AUTH']) || $_SESSION['AUTH'] == null){
+	if(!isset($_SESSION['AUTH']) || $_SESSION['AUTH'] == null ){
 		header('location: ' . ADMIN_URL . '/login');
 		die;
-	} elseif($_SESSION['AUTH']['role_id'] == 2){
-		header('location: ' . ADMIN_URL . '/login');
-	}
+	} elseif($_SESSION['AUTH']['role_id'] == 3){
+		header('location: ' . ADMIN_URL . '/login'); 
+	} 
 
 }
 function checkLoginClient()

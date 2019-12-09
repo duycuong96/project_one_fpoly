@@ -1,7 +1,7 @@
 <?php
-require_once './app/views/admin/master/master.php';
-require_once './app/views/admin/master/header.php';
-require_once './app/views/admin/master/sidebar.php';
+require_once './app/views/partner/master/master.php';
+require_once './app/views/partner/master/header.php';
+require_once './app/views/partner/master/sidebar.php';
 ?>
 <div class="main-panel">
     <div class="content">
@@ -26,7 +26,7 @@ require_once './app/views/admin/master/sidebar.php';
                 <div class="col-md-12">
                     <div class="card">
 
-                        <div class="card-header">
+                        <!-- <div class="card-header">
                             <form action="" method="get">
                                 <div class="row">
                                     <div class="col-md-3">
@@ -73,7 +73,7 @@ require_once './app/views/admin/master/sidebar.php';
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -83,7 +83,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <div class="card-header">
                             <div class="d-flex align-items-center">
 
-                                <a href="<?= ADMIN_URL . '/car/add' ?>" class="btn btn-primary btn-round ml-auto">
+                                <a href="<?= PARTNER_URL . '/cars/add' ?>" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
                                 </a>
@@ -101,25 +101,23 @@ require_once './app/views/admin/master/sidebar.php';
                                             <th>Loại xe</th>
                                             <th>Địa điểm</th>
                                             <th>Hãng xe</th>
-                                            <th>Chủ xe</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($cars as $car) : ?>
+                                        <?php foreach ($carsPartner as $car) : ?>
                                             <tr>
                                                 <td><?= $car->id ?></td>
                                                 <td><?= $car->name ?></td>
                                                 <td><?= $car->getCateName() ?></td>
                                                 <td><?= $car->getLocaName() ?></td>
                                                 <td><?= $car->getMakerName() ?></td>
-                                                <td><?= $car->getUserName() ?></td>
                                                 <td>
                                                     <div class="form-button-action">
-                                                        <a href="<?= ADMIN_URL . '/car/edit?id=' . $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                        <a href="<?= PARTNER_URL . '/cars/edit?id=' . $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a onclick="return del()" href="<?= ADMIN_URL . '/car/del?id=' . $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                                                        <a onclick="return del()" href="<?= PARTNER_URL . '/cars/del?id=' . $car->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                     </div>
@@ -140,5 +138,5 @@ require_once './app/views/admin/master/sidebar.php';
 </div>
 
 <?php
-require_once './app/views/admin/master/footer.php';
+require_once './app/views/partner/master/footer.php';
 ?>

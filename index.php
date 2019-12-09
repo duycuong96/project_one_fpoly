@@ -25,6 +25,8 @@ use App\Controllers\PageController;
 use App\Controllers\WebSettingController;
 use App\Controllers\RoleController;
 use App\Controllers\LoginController;
+// 
+use App\Controllers\PartnerController;
 
 switch ($url) {
 	// trang chủ
@@ -133,6 +135,22 @@ switch ($url) {
 	case 'admin/logout':
 		$ctr = new LoginController();
 		$ctr->logoutAdmin();
+		break;
+	case 'admin/forgot-password':
+		$ctr = new LoginController();
+		$ctr->forgotPassword();
+		break;
+	case 'admin/submit-forgot-password':
+		$ctr = new LoginController();
+		$ctr->submitForgotPassword();
+		break;
+	case 'admin/reset-password':
+		$ctr = new LoginController();
+		$ctr->resetPassword();
+		break;
+	case 'admin/submit-reset-password':
+		$ctr = new LoginController();
+		$ctr->submitResetPassword();
 		break;
 	// admin
 	case 'admin':
@@ -399,6 +417,51 @@ switch ($url) {
 		$id = $_GET['id'];
 		$ctr = new WebSettingController();
 		$ctr->delWebSetting($id);
+		break;
+	case 'partner':
+		checkLogin();
+		$ctr = new PartnerController();
+		$ctr->homePagePartner();
+		break;
+	case 'partner/cars':
+		$ctr = new PartnerController();
+		$ctr->listCarsPartner();
+		break;
+	case 'partner/cars/add':
+		$ctr = new PartnerController();
+		$ctr->addCarsPartner();
+		break;
+	case 'partner/cars/save-add':
+		$ctr = new PartnerController();
+		$ctr->saveAddCarsPartner();
+		break;
+	case 'partner/cars/edit':
+		$ctr = new PartnerController();
+		$ctr->editCarsPartner();
+		break;
+	case 'partner/cars/save-edit':
+		$ctr = new PartnerController();
+		$ctr->saveEditCarsPartner();
+		break;
+	case 'partner/account':
+		$ctr = new PartnerController();
+		$ctr->informationAccount(); 
+		break;
+	case 'partner/account/edit':
+		$ctr = new PartnerController();
+		$ctr->editAccount(); 
+		break;
+	case 'partner/account/save-edit':
+		$ctr = new PartnerController();
+		$ctr->saveEditAccount(); 
+		break;
+	case 'partner/orders':
+		$ctr = new PartnerController();
+		$ctr->listOrdersPartner();
+		break;
+	case 'partner/orders/edit':
+		$ctr = new PartnerController();
+		$ctr->editOrdersPartner();
 		break;
 		
 		break;

@@ -36,5 +36,14 @@ class Car extends BaseModel
 		}
 		return "";
 	}
+
+	// tên chủ xe
+	public function getUserName(){
+		$user = User::where(['id','=', $this->user_id])->first();
+		if($user != null){
+			return $user->name;
+		}
+		return "";
+	}
 }
  ?>

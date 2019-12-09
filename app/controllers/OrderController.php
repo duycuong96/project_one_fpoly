@@ -43,7 +43,7 @@ class OrderController
 		// $data['updated_date'] = date_format(date_create(), 'Y-m-d');
 		$model = new Order();
 		$model->id = $id;
-		var_dump($model);die;
+		// var_dump($model);die;
 		$model->update($data);
 		
 		header('location: ' . ADMIN_URL . '/order' );
