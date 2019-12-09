@@ -25,7 +25,12 @@ class RoleController
 			
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên";
-			}
+			} else{
+				$nameRole = Role::where(['name', '=', $name])->get();
+				if($nameRole){
+					$err_name = "Tên đã tồn tại";
+				}
+            }
 			
 		// kiểm tra và hiện validation
 		if($err_name != ""){
@@ -48,8 +53,8 @@ class RoleController
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		$role = Role::where(['id', '=', $id])->first();
 		if(!$role){
-			header('location: ' . ADMIN_URL);
-        	die;
+            header('location: '. BASE_URL . 'error');
+			die;
 		}
 		include_once './app/views/admin/roles/edit.php';
     }
@@ -59,10 +64,16 @@ class RoleController
         $status = isset($_POST['status']) == true ? $_POST['status']: "";
 
         if (isset($_SERVER['PHP_SELF'])){
+			$role = Role::where(['id', '=', $id])->first();
 			$err_name = "";
 			
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên";
+			} elseif ($role != $role->name){
+				$nameRole = Role::where(['name', '=', $name])->get();
+				if($nameRole){
+					$err_name = "Tên đã tồn tại";
+				}
 			}
 			
 		// kiểm tra và hiện validation

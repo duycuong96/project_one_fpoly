@@ -33,7 +33,12 @@ class UserController
 			$err_name = "";
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên";
-			}
+			} else{
+				$nameUser = User::where(['name', '=', $name])->get();
+				if($nameUser){
+					$err_name = "Tên đã tồn tại";
+				}
+            }
 			// validate email
 			$err_email = "";
 			if($email == ""){
@@ -46,10 +51,6 @@ class UserController
 			if($password == "" || strlen($password) < 6 ){
 				$err_password = "Nhập mật khẩu ít nhất 6 kí tự";
 			}
-
-
-		
-
 
 			// ảnh
 			$err_file = "";
@@ -115,8 +116,8 @@ class UserController
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		$user = User::where(['id', '=', $id])->first();
 		if(!$user){
-			header('location: ' . ADMIN_URL);
-        	die;
+            header('location: '. BASE_URL . 'error');
+			die;
 		}
 		include_once './app/views/admin/users/edit.php';
 	}
@@ -132,10 +133,16 @@ class UserController
 		$avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar']: "";
 
 		if (isset($_SERVER['PHP_SELF'])){
+			$user = User::where(['id', '=', $id])->first();
 			// tên
 			$err_name = "";
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên";
+			} elseif ($name != $user->name){
+				$nameUser = User::where(['name', '=', $name])->get();
+				if($nameUser){
+					$err_name = "Tên đã tồn tại";
+				}
 			}
 			// validate email
 			$err_email = "";
@@ -193,7 +200,6 @@ class UserController
 		}
 		}
 
-
 		// mã hóa mật khẩu
 		$hashpassword = password_hash($password, PASSWORD_DEFAULT);
 		$data = compact('name', 'email', 'role_id', 'status');
@@ -214,14 +220,19 @@ class UserController
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		// $user_id =  $_SESSION['AUTH']['id'];
 		// var_dump($user_id);die;
-		if($id = 1){
-			header('location: ' . ADMIN_URL . '/account');
-		} else {
+
 			$user = User::destroy($id);
-		}
 		
 		
-		header('location: ' . ADMIN_URL . '/account');
+		header('location: ' . ADMIN_URL . '/account');die;
+	}
+
+	public function infomationUser(){
+		$user_id = $_SESSION['AUTH']['id'];
+	
+		$user = User::where(['id', '=', $user_id])->first();
+		// var_dump($user);die;
+		include_once './app/views/admin/users/info.php';
 	}
 	
 }

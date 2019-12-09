@@ -39,7 +39,12 @@ class VoucherController
 			$err_code = "";
 			if($code == ""){
 				$err_code = "Vui lòng nhập mã voucher giảm giá";
-			}
+			} else{
+				$codeVoucher = Voucher::where(['code', '=', $code])->get();
+				if($codeVoucher){
+					$err_code = "Mã đã tồn tại";
+				}
+            }
 			// thời gian bắt đầu
 			$err_start_time = "";
 			if($start_time == "" || $start_time >= $created_at){
@@ -84,8 +89,8 @@ class VoucherController
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		$voucher = Voucher::where(['id', '=', $id])->first();
 		if(!$voucher){
-			header('location: ' . ADMIN_URL);
-        	die;
+            header('location: '. BASE_URL . 'error');
+			die;
 		}
 		include_once './app/views/admin/vouchers/edit.php';
 	}
@@ -109,10 +114,16 @@ class VoucherController
 		$created_at = date('Y-m-d');
 
 		if (isset($_SERVER['PHP_SELF'])){
+			$voucher = Voucher::where(['id', '=', $id])->first();
 			// mã giảm giá
 			$err_code = "";
 			if($code == ""){
 				$err_code = "Vui lòng nhập mã voucher giảm giá";
+			} elseif ($code != $voucher->code){
+				$codeVoucher = Voucher::where(['code', '=', $code])->get();
+				if($codeVoucher){
+					$err_code = "Mã đã tồn tại";
+				}
 			}
 			// thời gian bắt đầu
 			$err_start_time = "";

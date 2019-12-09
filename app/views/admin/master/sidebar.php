@@ -207,11 +207,6 @@
                                     <span class="sub-item">Danh sách</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="<?= ADMIN_URL . "/order/add" ?>">
-                                    <span class="sub-item">Thêm mới</span>
-                                </a>
-                            </li>
 
                         </ul>
                     </div>

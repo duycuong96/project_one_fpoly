@@ -109,7 +109,6 @@ require_once './app/views/admin/master/master.php';
 
                                                 <div class="card-action">
                                                     <button class="btn btn-success">Cập nhật</button>
-                                                    <button class="btn btn-danger">Trở lại</button>
                                                 </div>
                                             </form>
                                         </div>

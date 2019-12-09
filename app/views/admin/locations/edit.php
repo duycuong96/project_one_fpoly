@@ -50,20 +50,21 @@ require_once './app/views/admin/master/sidebar.php';
                                         </div>
                                         <div class="form-group">
                                             <label>Ảnh:</label>
-                                            <input type="hidden" name="image" class="form-control" value="<?= $location->image ?>">
-                                            <img height="100px" src="<?= $location->image ?>" alt="">
-                                            <input type="file" name="images" id="">
+
+                                            <input type="file" name="image" id=""  value="<?= $location->image ?>" >
+                                            
                                             <small id="emailHelp2" class="form-text text-muted">
                                                         <?php if (isset($_GET['err_file'])) : ?>
                                                             <span style="color: red"><?= $_GET['err_file'] ?></span>
                                                         <?php endif ?>
                                             </small>
+                                            <img src="<?= LOCATION_URL . $location->image ?>" width="50%" alt="">
                                         </div>
                                         <div class="form-check">
-                                            <label>Hiển thị bình luận</label><br>
+                                            <label>Hiển thị</label><br>
                                             <label class="form-radio-label">
-                                                <input class="form-radio-input" type="radio" name="show_location" value="2" <?php
-                                                                                                                        if ($location->show_location == 2) {
+                                                <input class="form-radio-input" type="radio" name="show_location" value="0" <?php
+                                                                                                                        if ($location->show_location == 0) {
                                                                                                                             echo 'checked';
                                                                                                                         } ?>>
                                                 <span class="form-radio-sign">Không</span>
@@ -79,16 +80,15 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="comment">Mô tả:</label>
                                             <textarea class="form-control" name="description" id="comment" rows="5"><?= $location->description ?></textarea>
-                                            <!-- <small id="emailHelp2" class="form-text text-muted">
+                                            <small id="emailHelp2" class="form-text text-muted">
                                                     <?php if (isset($_GET['err_description'])) : ?>
                                                         <span style="color: red"><?= $_GET['err_description'] ?></span>
                                                     <?php endif ?>
-                                            </small> -->
+                                            </small>
                                         </div>
 
                                         <div class="card-action">
                                             <button class="btn btn-success">Cập nhật</button>
-                                            <button class="btn btn-danger">Trở lại</button>
                                         </div>
                                     </form>
                                 </div>
