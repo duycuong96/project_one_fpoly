@@ -65,17 +65,13 @@
                                                         <?= $_SESSION['AUTH']['email']; ?>
                                                     <?php endif ?>
                                                 </p><a href="<?= ADMIN_URL . '/account/edit?id=' ?><?php if (isset($_SESSION['AUTH'])) : ?><?= $_SESSION['AUTH']['id']; ?>
-                                                    <?php endif ?>" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                                    <?php endif ?>" class="btn btn-xs btn-secondary btn-sm">Thông tin</a>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">My Profile</a>
-                                        <a class="dropdown-item" href="#">My Balance</a>
-                                        <a class="dropdown-item" href="#">Inbox</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Account Setting</a>
+                                        <a class="dropdown-item" href="">My Profile</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= ADMIN_URL . '/logout' ?>">Logout</a>
                                     </li>

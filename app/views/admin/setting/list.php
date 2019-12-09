@@ -52,7 +52,7 @@ require_once './app/views/admin/master/sidebar.php';
                     <?php foreach ($setting as $settings) : ?>
                       <tr>
                         <td><?= $settings->id ?></td>
-                        <td><img height="100%" src="<?= IMAGE_URL . $settings->logo ?>" alt=""></td>
+                        <td><img height="100%" src="<?= LOGO_URL . $settings->logo ?>" alt=""></td>
                         <td><?= $settings->address ?></td>
                         <td><?= $settings->hotline ?></td>
                         <td><?= $settings->email ?></td>

@@ -41,18 +41,38 @@ require_once './app/views/admin/master/sidebar.php';
                     <div class="form-group">
                       <label for="">Logo</label>
                       <input name="logo" type="file" class="form-control">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_file'])) : ?>
+                          <span style="color: red"><?= $_GET['err_file'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
                     <div class="form-group">
                       <label for="">Email</label>
                       <input name="email" type="text" class="form-control" placeholder="" value="">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_email'])) : ?>
+                          <span style="color: red"><?= $_GET['err_email'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
                     <div class="form-group">
                       <label for="">Địa chỉ</label>
                       <input name="address" type="text" class="form-control" placeholder="" value="">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_address'])) : ?>
+                          <span style="color: red"><?= $_GET['err_address'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
                     <div class="form-group">
                       <label for="">Hotline</label>
                       <input name="hotline" type="text" class="form-control" placeholder="" value="">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_hotline'])) : ?>
+                          <span style="color: red"><?= $_GET['err_hotline'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
 
                     <div class="card-action">

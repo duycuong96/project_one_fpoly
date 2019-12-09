@@ -16,7 +16,7 @@ require_once './app/views/admin/master/master.php';
             <div class="content">
                 <div class="page-inner">
                     <div class="page-header">
-                        <h4 class="page-title">Địa điểm</h4>
+                        <h4 class="page-title">Vai trò</h4>
                         <ul class="breadcrumbs">
                             <li class="nav-home">
                                 <a href="#">
@@ -27,7 +27,7 @@ require_once './app/views/admin/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/category' ?>">Địa điểm</a>
+                                <a href="<?= ADMIN_URL . '/category' ?>">Vai trò</a>
                             </li>
                         </ul>
                     </div>
@@ -50,15 +50,19 @@ require_once './app/views/admin/master/master.php';
                                                 <div class="form-group">
                                                     <label>Tên</label>
                                                     <input type="text" class="form-control" placeholder="" value="" name="name">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_name'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_name'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
 
 
                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>
                                                     <label class="form-radio-label">
-                                                        <input class="form-radio-input" type="radio" name="status" value="0">
-                                                        <span class="form-radio-sign">Không kích hoạt</span>
+                                                        <input class="form-radio-input" type="radio" name="status" value="0" checked>
+                                                        <span class="form-radio-sign">Chưa kích hoạt</span>
                                                     </label>
                                                     <label class="form-radio-label ml-3">
                                                         <input class="form-radio-input" type="radio" name="status" value="1">

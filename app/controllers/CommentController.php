@@ -36,6 +36,11 @@ class CommentController
 		$model->update($data);
 		header("Location: ../comment/edit?id=$id");
 	}
+	public function delComment(){
+		$id = isset($_GET['id']) ? $_GET['id'] : null;
+		$comment = Comment::destroy($id);
+        header('location: ' . ADMIN_URL . '/comment' );
+	}
 	
 }
 

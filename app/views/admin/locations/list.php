@@ -44,7 +44,7 @@ require_once './app/views/admin/master/sidebar.php';
                                         <tr>
                                             <th style="width:20px">Id</th>
                                             <th>Tên địa điểm</th>
-                                            <th>Ảnh</th>
+                                            <th>Số lượng xe</th>
                                             <th>Hiện thị</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
@@ -54,7 +54,7 @@ require_once './app/views/admin/master/sidebar.php';
                                             <tr>
                                                 <td><?= $location->id ?></td>
                                                 <td><?= $location->name ?></td>
-                                                <td><img height="100%" src="<?= $location->image ?>" alt=""></td>
+                                                <td><?= $location->countTotalCarLocation() ?></td>
                                                 <td><?php
                                                     if($location->show_location ==1){
                                                         echo "Hiện";

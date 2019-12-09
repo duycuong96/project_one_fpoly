@@ -51,23 +51,39 @@ require_once './app/views/admin/master/master.php';
                                                 <div class="form-group">
                                                     <label>Mã voucher:</label>
                                                     <input type="text" class="form-control" placeholder="" name="code"value="<?= $voucher->code ?>">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_code'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_code'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian bắt đầu:</label>
                                                   
                                                     <input type="text" id="timeCheckIn" class="form-control" name="start_time" value="<?= $voucher->start_time ?>" />
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_start_time'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_start_time'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian kết thúc:</label>
                                                     <input type="text" id="timeCheckOut" class="form-control" name="end_time" value="<?= $voucher->end_time ?>" />
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_end_time'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_end_time'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Giảm giá:</label>
                                                     <input type="text" class="form-control" placeholder="Nhập tiền giảm giá" name="discount_price" value="<?= $voucher->discount_price ?>">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_discount_price'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_discount_price'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>

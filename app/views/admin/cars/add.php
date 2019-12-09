@@ -7,7 +7,7 @@ require_once './app/views/admin/master/sidebar.php';
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Địa điểm</h4>
+                <h4 class="page-title">Xe</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= ADMIN_URL . '/car' ?>">Địa điểm</a>
+                        <a href="<?= ADMIN_URL . '/car' ?>">Xe</a>
                     </li>
                 </ul>
             </div>

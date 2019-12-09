@@ -27,6 +27,7 @@ use App\Controllers\RoleController;
 use App\Controllers\LoginController;
 // 
 use App\Controllers\PartnerController;
+use App\Models\Comment;
 
 switch ($url) {
 	// trang chủ
@@ -288,7 +289,7 @@ switch ($url) {
 		break;
 	case 'admin/account/del':
 		$ctr = new UserController();
-		$ctr->delUser($id);
+		$ctr->delUser();
 		break;
 	// vai trò
 	case 'admin/role':
@@ -313,7 +314,7 @@ switch ($url) {
 		break;
 	case 'admin/role/del':
 		$ctr = new RoleController();
-		$ctr->delRole($id);
+		$ctr->delRole();
 		break;
 	// bình luận
 	case 'admin/comment':
@@ -327,6 +328,10 @@ switch ($url) {
 	case 'admin/comment/save-edit':
 		$ctr = new CommentController();
 		$ctr->editSaveComment();
+		break;
+	case 'admin/comment/del':
+		$ctr = new CommentController();
+		$ctr->delComment();
 		break;
 	// mã giảm giá voucher
 	case 'admin/voucher':
@@ -351,7 +356,7 @@ switch ($url) {
 		break;
 	case 'admin/voucher/del':
 		$ctr = new VoucherController();
-		$ctr->delVoucher($id);
+		$ctr->delVoucher();
 		break;
 	// đơn hàng
 	case 'admin/order':
