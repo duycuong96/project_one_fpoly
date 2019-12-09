@@ -41,7 +41,11 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label>Tên:</label>
                                             <input name="name" type="text" class="form-control" placeholder="" value="">
-                                            <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                            <small id="emailHelp2" class="form-text text-muted">
+                                                    <?php if (isset($_GET['err_name'])) : ?>
+                                                        <span style="color: red"><?= $_GET['err_name'] ?></span>
+                                                    <?php endif ?>
+                                            </small>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Loại xe</label>
@@ -82,17 +86,30 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label>Giá:</label>
                                             <input name="price" type="text" class="form-control" placeholder="" value="">
-                                            <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                            <small id="emailHelp2" class="form-text text-muted">
+                                                    <?php if (isset($_GET['err_price'])) : ?>
+                                                        <span style="color: red"><?= $_GET['err_price'] ?></span>
+                                                    <?php endif ?>
+                                            </small>
                                         </div>
                                         <div class="form-group">
                                             <label>Ảnh:</label>
                                             <input id="img" type="file" name="feature_image" class="form-control" placeholder="" value="" onchange="changeImg(this)">
                                             <img id="image" class="thumbnail" width="50%" height="">
-                                            <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                            <small id="emailHelp2" class="form-text text-muted">
+                                                    <?php if (isset($_GET['err_file'])) : ?>
+                                                        <span style="color: red"><?= $_GET['err_file'] ?></span>
+                                                    <?php endif ?>
+                                            </small>
                                         </div>
                                         <div class="form-group">
                                             <label for="comment">Chi tiết:</label>
                                             <textarea name="detail" class="form-control" id="comment" rows="5"></textarea>
+                                            <small id="emailHelp2" class="form-text text-muted">
+                                                    <?php if (isset($_GET['err_detail'])) : ?>
+                                                        <span style="color: red"><?= $_GET['err_detail'] ?></span>
+                                                    <?php endif ?>
+                                            </small>
                                         </div>
 
                                         <div class="card-action">

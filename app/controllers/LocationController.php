@@ -24,14 +24,62 @@ class LocationController
 		$description = isset($_POST['description']) == true ? $_POST['description'] : "";
 
 		$image = $_FILES['image'];
-		// dd($image);
-		$filePath = "";
-		if ($image['size'] > 0) {
-			$filename = $image['name'];
-			$filename = uniqid() . "-" . $filename;
-			move_uploaded_file($image['tmp_name'], 'public/assets/img/locations/' . $filename);
-			// $filePath = "public/images/cars/" . $filename;
+
+		if (isset($_SERVER['PHP_SELF'])){
+			// tên
+			$err_name = "";
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên địa điểm";
+			}
+			// mô tả
+			$err_description = "";
+			if($err_description == ""){
+				$err_description = "Vui lòng nhập mô tả";
+			}
+			// ảnh
+			$err_file = "";
+
+			$allowed_image_extension = array(
+				"png",
+				"jpg",
+				"jpeg"
+			);
+		
+			// pathinfo trả về thông tin về đường dẫn tệp
+			$file_extension = pathinfo($image["name"], PATHINFO_EXTENSION);
+		
+			//  Kiểm tra xem một tập tin hoặc thư mục tồn tại
+			if (!file_exists($image["tmp_name"])) {
+				$err_file = "Vui lòng chọn hình ảnh để tải lên";
+			}
+			//  Kiểm tra biến tồn tại trong mảng
+			else if (!in_array($file_extension, $allowed_image_extension)) {
+				$err_file = "Tải lên hình ảnh khác. Chỉ cho phép JPG, PNG và JPEG.";
+			}
+			// move_uploaded_file Di chuyển tệp đã tải lên đến một vị trí mới
+			// upload ảnh
+			else {
+								// $filePath = "";
+				if ($image['size'] > 0) {
+					$filename = $image['name'];
+					$filename = uniqid() . "-" . $filename;
+					move_uploaded_file($image['tmp_name'], 'public/assets/img/locations/' . $filename);
+					// $filePath = "public/images/cars/" . $filename;
+				}
+			}
+			
+		// kiểm tra và hiện validation
+		if($err_name != "" || $err_description != "" || $err_file != ""){
+			header(
+				'location: ' . ADMIN_URL . '/location/add?'
+					. 'err_name=' . $err_name
+					. '&err_description=' . $err_description
+					. '&err_file=' . $err_file
+			);
+			die;
 		}
+		}
+
 		$data = compact('name', 'description', 'show_location');
 		$data['image'] = $filename;
 		$model = new Location();
@@ -52,15 +100,64 @@ class LocationController
 		$image = isset($_POST['image']) == true ? $_POST['image'] : "";
 		$show_location = isset($_POST['show_location']) == true ? $_POST['show_location'] : "";
 		$description = isset($_POST['description']) == true ? $_POST['description'] : "";
-
 		$images = $_FILES['images'];
-		$filePath = "";
-		if ($images['size'] > 0) {
-			$filename = $images['name'];
-			$filename = uniqid() . "-" . $filename;
-			move_uploaded_file($images['tmp_name'], "public/assets/img/locations/" . $filename);
-			// $filePath = "./public/images/cars/" . $filename;
+
+		if (isset($_SERVER['PHP_SELF'])){
+			// tên
+			$err_name = "";
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên địa điểm";
+			}
+			// mô tả
+			$err_description = "";
+			if($err_description == ""){
+				$err_description = "Vui lòng nhập mô tả";
+			}
+			// ảnh
+			$err_file = "";
+
+			$allowed_image_extension = array(
+				"png",
+				"jpg",
+				"jpeg"
+			);
+		
+			// pathinfo trả về thông tin về đường dẫn tệp
+			$file_extension = pathinfo($image["name"], PATHINFO_EXTENSION);
+		
+			//  Kiểm tra xem một tập tin hoặc thư mục tồn tại
+			if (!file_exists($image["tmp_name"])) {
+				$err_file = "Vui lòng chọn hình ảnh để tải lên";
+			}
+			//  Kiểm tra biến tồn tại trong mảng
+			else if (!in_array($file_extension, $allowed_image_extension)) {
+				$err_file = "Tải lên hình ảnh khác. Chỉ cho phép JPG, PNG và JPEG.";
+			}
+			// move_uploaded_file Di chuyển tệp đã tải lên đến một vị trí mới
+			// upload ảnh
+			else {
+								// $filePath = "";
+				if ($image['size'] > 0) {
+					$filename = $image['name'];
+					$filename = uniqid() . "-" . $filename;
+					move_uploaded_file($image['tmp_name'], 'public/assets/img/locations/' . $filename);
+					// $filePath = "public/images/cars/" . $filename;
+				}
+			}
+			
+		// kiểm tra và hiện validation
+		if($err_name != "" || $err_description != "" || $err_file != ""){
+			header(
+				'location: ' . ADMIN_URL . '/location/edit?id=' . $id
+					. '&err_name=' . $err_name
+					. '&err_description=' . $err_description
+					. '&err_file=' . $err_file
+			);
+			die;
 		}
+		}
+
+
 		if($images['size'] > 0){
 		$data = compact('name', 'description', 'show_location');
 		$data['image']=$filename;

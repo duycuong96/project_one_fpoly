@@ -51,21 +51,38 @@ require_once './app/views/admin/master/master.php';
                                                 <div class="form-group">
                                                     <label>Tên</label>
                                                     <input type="text" class="form-control" placeholder="" name="name" value="<?= $user->name ?>">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="emailHelp2" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_name'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_name'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
                                                     <input type="text" class="form-control" placeholder="" name="email" value="<?= $user->email ?>">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="emailHelp2" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_email'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_email'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Password</label>
                                                     <input type="password" class="form-control" placeholder="" name="password" value="<?= $user->password ?>">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="emailHelp2" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_password'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_password'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">Avatar</label>
                                                     <input id="img" type="file" class="form-control" name="avatar" onchange="changeImg(this)">
+                                                    <small id="emailHelp2" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_file'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_file'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <img src="<?= AVATAR_URL . $user->avatar ?>" alt="" id="image" width="50%">
                                                 <div class="form-group">

@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= ADMIN_URL . '/location' ?>">Địa điểm</a>
+                        <a href="<?= ADMIN_URL . '/maker' ?>">Địa điểm</a>
                     </li>
                 </ul>
             </div>
@@ -29,7 +29,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <div class="card-header">
                             <div class="d-flex align-items-center">
 
-                                <a href="<?= ADMIN_URL . "/location/add" ?>" class="btn btn-primary btn-round ml-auto">
+                                <a href="<?= ADMIN_URL . "/maker/add" ?>" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
                                 </a>

@@ -50,12 +50,21 @@ require_once './app/views/admin/master/master.php';
                                                 <div class="form-group">
                                                     <label>Tên danh mục:</label>
                                                     <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="emailHelp2" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_name'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_name'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="comment">Mô tả danh mục:</label>
                                                     <textarea name="description" class="form-control" id="comment" rows="5">
                                                     </textarea>
+                                                    <small id="emailHelp2" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_description'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_description'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-check">
                                                     <label>Hiển thị ra menu:</label><br>
@@ -70,7 +79,7 @@ require_once './app/views/admin/master/master.php';
                                                 </div>
 
                                                 <div class="card-action">
-                                                    <button class="btn btn-success">Cập nhật</button>
+                                                    <button class="btn btn-success" >Cập nhật</button>
                                                     <button class="btn btn-danger">Trở lại</button>
                                                 </div>
                                             </form>

@@ -56,18 +56,76 @@ class CarController
 
 		$image = $_FILES['feature_image'];
 
-		if ($image['size'] > 0) {
-			$filename = $image['name'];
-			$filename = uniqid() . "-" . $filename;
-			move_uploaded_file($image['tmp_name'], 'public/assets/img/cars/' . $filename);
-			// $filePath = "public/images/cars/" . $filename;
+		if (isset($_SERVER['PHP_SELF'])){
+			// tên
+			$err_name = "";
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên";
+			}
+			// validate giá
+			$err_price = "";
+			$pattern = '/[0-9]/';
+			if ($_POST['price'] == "") {
+				$err_price = "Chưa nhập đơn giá";
+			} elseif (!preg_match($pattern, $_POST['price']) || $_POST['price'] < 1) {
+				$err_price = "Vui lòng không để trống và nhập số dương";
+			}
+			// chi tiết
+			$err_detail = "";
+			if($detail == ""){
+				$err_detail = "Vui lòng nhập chi tiết";
+			}
+			// ảnh
+			$err_file = "";
+
+			$allowed_image_extension = array(
+				"png",
+				"jpg",
+				"jpeg"
+			);
+		
+			// pathinfo trả về thông tin về đường dẫn tệp
+			$file_extension = pathinfo($image["name"], PATHINFO_EXTENSION);
+		
+			//  Kiểm tra xem một tập tin hoặc thư mục tồn tại
+			if (!file_exists($image["tmp_name"])) {
+				$err_file = "Vui lòng chọn hình ảnh để tải lên";
+			}
+			//  Kiểm tra biến tồn tại trong mảng
+			else if (!in_array($file_extension, $allowed_image_extension)) {
+				$err_file = "Tải lên hình ảnh khác. Chỉ cho phép JPG, PNG và JPEG.";
+			}
+			// move_uploaded_file Di chuyển tệp đã tải lên đến một vị trí mới
+			// upload ảnh
+			else {
+				if ($image['size'] > 0) {
+					$filename = $image['name'];
+					$filename = uniqid() . "-" . $filename;
+					move_uploaded_file($image['tmp_name'], 'public/assets/img/cars/' . $filename);
+					// $filePath = "public/images/cars/" . $filename;
+				}
+			}
+			
+		// kiểm tra và hiện validation
+		if($err_name != "" || $err_price != "" || $err_detail != "" || $err_file != ""){
+			header(
+				'location: ' . ADMIN_URL . '/car/add'
+					. '&err_name=' . $err_name
+					. '&err_price=' . $err_price
+					. '&err_file=' . $err_file
+					. '&err_detail=' . $err_detail
+			);
+			die;
 		}
+		}
+
 		// dd($filePath);
 		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'user_id', 'price', 'detail');
 		$data['feature_image'] = $filename;
 		$model = new Car();
 		$model->insert($data);
-		header('Location: ../car');
+		header('location: ' . ADMIN_URL . '/car');
+		die;
 	}
 	// edit
 	public function editCar()
@@ -95,15 +153,16 @@ class CarController
 	public function saveEditCar()
 	{
 		$id = isset($_POST['id']) == true ? $_POST['id'] : "";
-		$user_id = isset($_POST['user_id']) == true ? $_POST['user_id'] : "";
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";
 		$cate_id = isset($_POST['cate_id']) == true ? $_POST['cate_id'] : "";
 		$location_id = isset($_POST['location_id']) == true ? $_POST['location_id'] : "";
 		$maker_id = isset($_POST['maker_id']) == true ? $_POST['maker_id'] : "";
+		$user_id = isset($_POST['user_id']) == true ? $_POST['user_id'] : "";
 		$price = isset($_POST['price']) == true ? $_POST['price'] : "";
 		$detail = isset($_POST['detail']) == true ? $_POST['detail'] : "";
 
-		$image = $_FILES['feature_image'];
+		$image = isset($_FILES['feature_image']) == true ? $_FILES['feature_image']: "";
+
 
 		if ($image['size'] > 0) {
 			$filename = $image['name'];
@@ -113,11 +172,12 @@ class CarController
 		}
 		// dd($filePath);
 		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'user_id', 'price', 'detail');
-        $data['feature_image'] = $filename;
+		$data['feature_image'] = $filename;
 		$model = new Car();
 		$model->id = $id;
 		$model->update($data);
-		header('location: ' . ADMIN_URL . '/car/edit?id=' . $id);
+		header('location: ' . ADMIN_URL . '/car');
+		die;
 	}
 
 	public function delCar($id)
@@ -128,5 +188,3 @@ class CarController
 	}
 	
 }
-
- ?>

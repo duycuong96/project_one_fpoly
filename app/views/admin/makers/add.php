@@ -41,7 +41,11 @@ require_once './app/views/admin/master/sidebar.php';
                     <div class="form-group">
                       <label>Tên địa điểm:</label>
                       <input type="text" name="name" class="form-control" placeholder="" value="">
-                      <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                      <small id="emailHelp2" class="form-text text-muted">
+                          <?php if (isset($_GET['err_name'])) : ?>
+                            <span style="color: red"><?= $_GET['err_name'] ?></span>
+                          <?php endif ?>
+                      </small>
                     </div>
                     <div class="card-action">
                       <button class="btn btn-success">Cập nhật</button>

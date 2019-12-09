@@ -42,14 +42,22 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label>Tên:</label>
                                             <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $location->name ?>">
-                                            <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                            <small id="emailHelp2" class="form-text text-muted">
+                                                    <?php if (isset($_GET['err_name'])) : ?>
+                                                        <span style="color: red"><?= $_GET['err_name'] ?></span>
+                                                    <?php endif ?>
+                                            </small>
                                         </div>
                                         <div class="form-group">
                                             <label>Ảnh:</label>
                                             <input type="hidden" name="image" class="form-control" value="<?= $location->image ?>">
                                             <img height="100px" src="<?= $location->image ?>" alt="">
                                             <input type="file" name="images" id="">
-                                            <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                            <small id="emailHelp2" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_file'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_file'] ?></span>
+                                                        <?php endif ?>
+                                            </small>
                                         </div>
                                         <div class="form-check">
                                             <label>Hiển thị bình luận</label><br>
@@ -71,6 +79,11 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-group">
                                             <label for="comment">Mô tả:</label>
                                             <textarea class="form-control" name="description" id="comment" rows="5"><?= $location->description ?></textarea>
+                                            <!-- <small id="emailHelp2" class="form-text text-muted">
+                                                    <?php if (isset($_GET['err_description'])) : ?>
+                                                        <span style="color: red"><?= $_GET['err_description'] ?></span>
+                                                    <?php endif ?>
+                                            </small> -->
                                         </div>
 
                                         <div class="card-action">
