@@ -85,6 +85,7 @@ require_once './app/views/admin/master/master.php';
                                                     </small>
                                                 </div>
                                                 <img src="<?= AVATAR_URL . $user->avatar ?>" alt="" id="image" width="50%">
+                                                
                                                 <div class="form-group">
 												<label for="exampleFormControlSelect1">Phân quyền</label>
 												<select class="form-control"  name="role_id" >

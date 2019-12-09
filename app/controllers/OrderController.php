@@ -12,7 +12,13 @@ class OrderController
 	// list
 	public function listOrder(){
 		// dd(1);
-		$orders = Order::all();
+		// $orders = Order::all();
+		$status = isset($_GET['status']) == true ? $_GET['status'] : "";
+		if($status != ""){
+			$orders = Order::where(['status', '=', $status])->get();
+		} else {
+			$orders = Order::sttOrderBy('id', false)->get();
+		}
 		
 		include_once './app/views/admin/orders/list.php';
 	}
