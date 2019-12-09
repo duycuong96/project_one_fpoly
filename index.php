@@ -73,16 +73,16 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->contact();
 		break;
-	case 'add-cart':
-		checkLoginClient();
-		$ctr = new HomeController();
-		$ctr->addCart();
-		break;
-	case 'cart':
-		checkLoginClient();
-		$ctr = new HomeController();
-		$ctr->cart();
-		break;
+	// case 'add-cart':
+	// 	checkLoginClient();
+	// 	$ctr = new HomeController();
+	// 	$ctr->addCart();
+	// 	break;
+	// case 'cart':
+	// 	checkLoginClient();
+	// 	$ctr = new HomeController();
+	// 	$ctr->cart();
+	// 	break;
 	case 'checkout':
 		$ctr = new HomeController();
 		$ctr->checkout();

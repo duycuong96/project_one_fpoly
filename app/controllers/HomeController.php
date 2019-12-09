@@ -168,62 +168,62 @@ class HomeController
 		$cate = Category::all();
 		include_once './app/views/client/home/contact.php';
 	}
-	public function addCart(){
-		$id = isset($_GET['id']) == true ? $_GET['id'] : null;
+	// public function addCart(){
+	// 	$id = isset($_GET['id']) == true ? $_GET['id'] : null;
 
-		$car = Car::where(['id', '=', $id])->first();
-		// dd($car->feature_image);
-		if ($car == null) {
-			header('location: ' . BASE_URL);
-			die;
-		}
-		$item = [
-			'id' => $car->id,
-			'name' => $car->name,
-			'image' => $car->feature_image,
-			'price' => $car->price,
-			'quantity' => 1
-		];
+	// 	$car = Car::where(['id', '=', $id])->first();
+	// 	// dd($car->feature_image);
+	// 	if ($car == null) {
+	// 		header('location: ' . BASE_URL);
+	// 		die;
+	// 	}
+	// 	$item = [
+	// 		'id' => $car->id,
+	// 		'name' => $car->name,
+	// 		'image' => $car->feature_image,
+	// 		'price' => $car->price,
+	// 		'quantity' => 1
+	// 	];
 
-		if (!isset($_SESSION[CART]) || count($_SESSION[CART]) == 0) {
-			$_SESSION[CART][] = $item;
-		} else {
-			$cart = $_SESSION[CART];
-			$existed = false;
+	// 	if (!isset($_SESSION[CART]) || count($_SESSION[CART]) == 0) {
+	// 		$_SESSION[CART][] = $item;
+	// 	} else {
+	// 		$cart = $_SESSION[CART];
+	// 		$existed = false;
 
-			for ($i = 0; $i < count($cart); $i++) {
-				if ($cart[$i]['id'] == $car->id) {
-					$existed = true;
-					$cart[$i]['quantity'] += 1;
-					break;
-				}
-			}
+	// 		for ($i = 0; $i < count($cart); $i++) {
+	// 			if ($cart[$i]['id'] == $car->id) {
+	// 				$existed = true;
+	// 				$cart[$i]['quantity'] += 1;
+	// 				break;
+	// 			}
+	// 		}
 
-			if ($existed == false) {
-				$cart[] = $item;
-			}
+	// 		if ($existed == false) {
+	// 			$cart[] = $item;
+	// 		}
 
-			$_SESSION[CART] = $cart;
-		}
-		// dd($_SESSION[CART]);
-		header('location: ' . BASE_URL);
-		die;
-	}
-	public function cart()
-	{
-		// SHOW DANH SÁCH MENU
-		$maker = Maker::all();
-		$loca = Location::where(['show_location', '=', '1'])->get();
-		$cate = Category::all();
+	// 		$_SESSION[CART] = $cart;
+	// 	}
+	// 	// dd($_SESSION[CART]);
+	// 	header('location: ' . BASE_URL);
+	// 	die;
+	// }
+	// public function cart()
+	// {
+	// 	// SHOW DANH SÁCH MENU
+	// 	$maker = Maker::all();
+	// 	$loca = Location::where(['show_location', '=', '1'])->get();
+	// 	$cate = Category::all();
 
-		$cart = isset($_SESSION[CART]) == true ? $_SESSION[CART] : [];
-		// dd($cart);
-		if (count($cart) <= 0) {
-			header('location: ' . BASE_URL);
-			die;
-		}
-		include_once './app/views/client/home/cart.php';
-	}
+	// 	$cart = isset($_SESSION[CART]) == true ? $_SESSION[CART] : [];
+	// 	// dd($cart);
+	// 	if (count($cart) <= 0) {
+	// 		header('location: ' . BASE_URL);
+	// 		die;
+	// 	}
+	// 	include_once './app/views/client/home/cart.php';
+	// }
 	public function checkout()
 	{
 		// SHOW DANH SÁCH MENU
