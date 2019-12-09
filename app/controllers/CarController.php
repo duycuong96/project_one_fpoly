@@ -28,9 +28,7 @@ class CarController
 		}
 		else{
 			$cars = Car::sttOrderBy('id', false)->get();
-		}
-
-	
+		}	
 		
 		include_once './app/views/admin/cars/list.php';
 	}
@@ -61,7 +59,12 @@ class CarController
 			$err_name = "";
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên";
-			}
+			} else{
+				$nameCar = Car::where(['name', '=', $name])->get();
+				if($nameCar){
+					$err_name = "Tên đã tồn tại";
+				}
+            }
 			// validate giá
 			$err_price = "";
 			$pattern = '/[0-9]/';
@@ -138,18 +141,12 @@ class CarController
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		$car = Car::where(['id','=',$id])->first();
 		if(!$car){
-			header('location: ../car');
-        	die;
+            header('location: '. BASE_URL . 'error');
+			die;
 		}
 		include_once './app/views/admin/cars/edit.php';
 	}
-	public function saveEditMaker()
-	{
-		$cate = Category::all();
-		$loca = Location::all();
-		$maker = Makers::all();
-		include_once './app/views/admin/cars/add.php';
-	}
+
 	public function saveEditCar()
 	{
 		$id = isset($_POST['id']) == true ? $_POST['id'] : "";
@@ -164,10 +161,16 @@ class CarController
 		$image = isset($_FILES['feature_image']) == true ? $_FILES['feature_image']: "";
 
 		if (isset($_SERVER['PHP_SELF'])){
+			$car = Car::where(['id','=',$id])->first();
 			// tên
 			$err_name = "";
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên";
+			} elseif ($name != $car->name){
+				$nameCar = Car::where(['name', '=', $name])->get();
+				if($nameCar){
+					$err_name = "Tên đã tồn tại";
+				}
 			}
 			// validate giá
 			$err_price = "";
@@ -196,7 +199,7 @@ class CarController
 		
 			//  Kiểm tra xem một tập tin hoặc thư mục tồn tại
 			if (!file_exists($image["tmp_name"])) {
-				$err_file = "Vui lòng chọn hình ảnh để tải lên";
+				$err_file = "Bạn chưa chọn hình ảnh thay thế";
 			}
 			//  Kiểm tra biến tồn tại trong mảng
 			else if (!in_array($file_extension, $allowed_image_extension)) {
@@ -235,11 +238,12 @@ class CarController
 		die;
 	}
 
-	public function delCar($id)
+	public function delCar()
 	{
 		$id = $_GET['id'];
 		$car = Car::destroy($id);
-		header('Location: ../car');
+		header('location: '. ADMIN_URL . '/car');
+		die;
 	}
 	
 }

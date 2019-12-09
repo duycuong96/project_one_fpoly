@@ -35,6 +35,10 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->index();
 		break;
+	case 'error':
+		$ctr = new HomeController();
+		$ctr->errorPage();
+		break;
 		// login user
 	case 'login':
 		$ctr = new HomeController();
@@ -186,9 +190,8 @@ switch ($url) {
 		$ctr->editSaveCategory();
 		break;
 	case 'admin/category/del':
-		$id = $_GET['id'];
 		$ctr = new CategoryController();
-		$ctr->delCategory($id);
+		$ctr->delCategory();
 		break;
 	// địa điểm cho thuê xe
 	case 'admin/location':
@@ -213,7 +216,7 @@ switch ($url) {
 		break;
 	case 'admin/location/del':
 		$ctr = new LocationController();
-		$ctr->delLocation($id);
+		$ctr->delLocation();
 		break;
 	// maker (hãng xe)
 	case 'admin/maker':
@@ -238,7 +241,7 @@ switch ($url) {
 		break;
 	case 'admin/maker/del':
 		$ctr = new MakerController();
-		$ctr->delMaker($id);
+		$ctr->delMaker();
 		break;
 	// xe
 	case 'admin/car':
@@ -263,7 +266,7 @@ switch ($url) {
 		break;
 	case 'admin/car/del':
 		$ctr = new CarController();
-		$ctr->delCar($id);
+		$ctr->delCar();
 		break;
 
 	// tài khoản
@@ -290,6 +293,10 @@ switch ($url) {
 	case 'admin/account/del':
 		$ctr = new UserController();
 		$ctr->delUser();
+		break;
+	case 'admin/account/infomation':
+		$ctr = new UserController();
+		$ctr->infomationUser();
 		break;
 	// vai trò
 	case 'admin/role':
@@ -395,7 +402,7 @@ switch ($url) {
 		break;
 	case 'admin/page/del':
 		$ctr = new PageController();
-		$ctr->delPage($id);
+		$ctr->delPage();
 		break;
 	// cấu hình website
 	case 'admin/setting':

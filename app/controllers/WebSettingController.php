@@ -101,7 +101,7 @@ class WebSettingController
     $data['logo'] = $filename;
     $model = new WebSetting();
     $model->insert($data);
-    header('Location: ../setting');
+		header('location: ' . ADMIN_URL . '/setting');
   }
   // sửa
   public function editWebSetting()
@@ -109,8 +109,8 @@ class WebSettingController
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     $setting = WebSetting::where(['id', '=', $id])->first();
     if (!$setting) {
-      header('location: ' . ADMIN_URL);
-      die;
+      header('location: '. BASE_URL . 'error');
+			die;
     }
     include_once './app/views/admin/setting/edit.php';
   }
@@ -194,12 +194,12 @@ class WebSettingController
     $model = new WebSetting();
     $model->id = $id;
     $model->update($data);
-    header("Location: ../setting/edit?id=$id");
+		header('location: ' . ADMIN_URL . '/setting/edit?id=' . $id);
   }
   public function delWebSetting($id)
   {
     $id = $_GET['id'];
     $setting = WebSetting::destroy($id);
-    header('Location: ../setting');
+		header('location: ' . ADMIN_URL . '/setting');
   }
 }

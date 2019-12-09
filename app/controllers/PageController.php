@@ -33,6 +33,11 @@ class PageController
 			$err_title = "";
 			if($title == ""){
 				$err_title = "Vui lòng nhập tên";
+      } else{
+          $titlePage = Page::where(['title', '=', $title])->get();
+          if($titlePage){
+            $err_title = "Tiêu đề đã tồn tại";
+          }
       }
       // mô tả
       $err_description = "";
@@ -68,8 +73,8 @@ class PageController
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     $page = Page::where(['id', '=', $id])->first();
     if (!$page) {
-      header('location: ' . ADMIN_URL);
-      die;
+      header('location: '. BASE_URL . 'error');
+			die;
     }
     include_once './app/views/admin/page/edit.php';
   }
@@ -81,10 +86,16 @@ class PageController
     $content = isset($_POST['content']) == true ? $_POST['content'] : "";
 
     if (isset($_SERVER['PHP_SELF'])){
+      $page = Page::where(['id', '=', $id])->first();
       // tiêu đề
 			$err_title = "";
 			if($title == ""){
 				$err_title = "Vui lòng nhập tên";
+      } elseif ($title != $page->title){
+          $titlePage = Page::where(['title', '=', $title])->get();
+          if($titlePage){
+            $err_title = "Tiêu đề đã tồn tại";
+          }
       }
       // mô tả
       $err_description = "";
@@ -116,11 +127,11 @@ class PageController
 
     header('location: ' . ADMIN_URL . '/page/edit?id=' . $id );
   }
-  public function delPage($id)
+  public function delPage()
   {
     $id = $_GET['id'];
     $page = Page::destroy($id);
-    header('Location: ../page');
+		header('location: ' . ADMIN_URL . '/page');
   }
 
 }

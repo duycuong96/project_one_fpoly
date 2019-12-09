@@ -22,6 +22,10 @@ class HomeController
 		$cars= Car::all();
 		include_once './app/views/client/home/homepage.php';
 	}
+
+	public function errorPage(){
+		include_once './app/views/error.php';
+	}
 	public function login()
 	{
 		$maker = Maker::all();

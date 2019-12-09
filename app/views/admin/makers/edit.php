@@ -42,12 +42,15 @@ require_once './app/views/admin/master/sidebar.php';
                     <div class="form-group">
                       <label>Tên:</label>
                       <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $maker->name ?>">
-                      <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                      <small id="emailHelp2" class="form-text text-muted">
+                        <?php if (isset($_GET['err_name'])) : ?>
+                          <span style="color: red"><?= $_GET['err_name'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
 
                     <div class="card-action">
                       <button class="btn btn-success">Cập nhật</button>
-                      <button class="btn btn-danger">Trở lại</button>
                     </div>
                   </form>
                 </div>
