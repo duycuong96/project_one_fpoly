@@ -7,7 +7,7 @@ require_once './app/views/admin/master/sidebar.php';
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Địa điểm</h4>
+                <h4 class="page-title">Loại xe</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= ADMIN_URL . '/location' ?>">Địa điểm</a>
+                        <a href="<?= ADMIN_URL . '/location' ?>">Loại xe</a>
                     </li>
                 </ul>
             </div>
@@ -42,9 +42,10 @@ require_once './app/views/admin/master/sidebar.php';
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
-                                            <th>Hiển/ẩn</th>
-                                            <th style="width: 10%">Action</th>
+                                            <th>Tên</th>
+                                            <th>Số xe</th>
+                                            <th>Hiển thị</th>
+                                            <th style="width: 10%">Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -52,6 +53,7 @@ require_once './app/views/admin/master/sidebar.php';
                                             <tr>
                                                 <td><?= $cate->id ?></td>
                                                 <td><?= $cate->name ?></td>
+                                                <td><?= $cate->countTotalCar() ?></td>
                                                 <td>
                                                     <?php if ($cate->show_menu == 1) {
                                                             echo "Hiện";

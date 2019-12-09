@@ -51,7 +51,11 @@ require_once './app/views/admin/master/master.php';
                                                 <div class="form-group">
                                                     <label>Tên</label>
                                                     <input type="text" class="form-control" placeholder="" value="<?= $role->name ?>" name="name">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_name'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_name'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
 
 

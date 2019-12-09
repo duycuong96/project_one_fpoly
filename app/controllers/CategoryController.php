@@ -18,17 +18,20 @@ class CategoryController
 		include_once './app/views/admin/categories/add.php';
 	}
 	public function saveAddCategory(){
+		//  
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";
 		$description = isset($_POST['description']) == true ? $_POST['description'] : "";
 		$show_menu = isset($_POST['show_menu']) == true ? $_POST['show_menu'] : "";
 
+		// validate
 		if (isset($_SERVER['PHP_SELF'])){
 			$err_name = "";
+			
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên loại xe";
 			}
 			$err_description = "";
-			if($err_description == ""){
+			if($description == ""){
 				$err_description = "Vui lòng nhập mô tả loại xe";
 			}
 			
@@ -71,7 +74,7 @@ class CategoryController
 				$err_name = "Vui lòng nhập tên loại xe";
 			}
 			$err_description = "";
-			if($err_description == ""){
+			if($description == ""){
 				$err_description = "Vui lòng nhập mô tả loại xe";
 			}
 			

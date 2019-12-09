@@ -41,21 +41,41 @@ require_once './app/views/admin/master/sidebar.php';
                   <input type="hidden" name="id" value="<?= $setting->id ?>">
                     <div class="form-group">
                       <label for="">Logo</label>
-                      <img style="height:100px;margin: 1% 2%;" src="<?= IMAGE_URL . $setting->logo ?>" alt="">
+                      <img style="height:100px;margin: 1% 2%;" src="<?= LOGO_URL . $setting->logo ?>" alt="">
                       <input type="hidden" name="logo" value="<?= $setting->logo ?>">
-                      <input name="logoTwo" type="file" class="form-control">
+                      <input name="logo" type="file" class="form-control">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_file'])) : ?>
+                          <span style="color: red"><?= $_GET['err_file'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
                     <div class="form-group">
                       <label for="">Email</label>
                       <input name="email" type="text" class="form-control" placeholder="" value="<?= $setting->email ?>">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_email'])) : ?>
+                          <span style="color: red"><?= $_GET['err_email'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
                     <div class="form-group">
                       <label for="">Địa chỉ</label>
                       <input name="address" type="text" class="form-control" placeholder="" value="<?= $setting->address ?>">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_address'])) : ?>
+                          <span style="color: red"><?= $_GET['err_address'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
                     <div class="form-group">
                       <label for="">Hotline</label>
                       <input name="hotline" type="text" class="form-control" placeholder="" value="<?= $setting->hotline ?>">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_hotline'])) : ?>
+                          <span style="color: red"><?= $_GET['err_hotline'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
 
                     <div class="card-action">

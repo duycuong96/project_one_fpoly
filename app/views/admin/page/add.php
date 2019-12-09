@@ -7,7 +7,7 @@ require_once './app/views/admin/master/sidebar.php';
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
-        <h4 class="page-title">Địa điểm</h4>
+        <h4 class="page-title">Trang</h4>
         <ul class="breadcrumbs">
           <li class="nav-home">
             <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/page' ?>">Địa điểm</a>
+            <a href="<?= ADMIN_URL . '/page' ?>">Trang</a>
           </li>
         </ul>
       </div>
@@ -40,11 +40,30 @@ require_once './app/views/admin/master/sidebar.php';
                   <form action="<?= ADMIN_URL . '/page/save-add' ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="">Tiêu đề</label>
-                        <input name="title" type="text" class="form-control" placeholder="" value="">
+                      <input name="title" type="text" class="form-control" placeholder="" value="">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_title'])) : ?>
+                          <span style="color: red"><?= $_GET['err_title'] ?></span>
+                        <?php endif ?>
+                      </small>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Mô tả</label>
+                      <input name="description" type="text" class="form-control" placeholder="" value="">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_description'])) : ?>
+                          <span style="color: red"><?= $_GET['err_description'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
                     <div class="form-group">
                       <label for="">Nội dung</label>
-                      <textarea name="description" class="form-control" id="comment" rows="5"></textarea>
+                      <textarea name="content" class="form-control" rows="5"></textarea>
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_content'])) : ?>
+                          <span style="color: red"><?= $_GET['err_content'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
 
                     <div class="card-action">

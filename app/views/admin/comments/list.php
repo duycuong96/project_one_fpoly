@@ -44,9 +44,8 @@ require_once './app/views/admin/master/sidebar.php';
                                             <th>#</th>
                                             <th>Tiêu đề</th>
                                             <th>Sản phẩm</th>
-                                            <th>User</th>
-                                            <th>đánh giá</th>
-                                            <th>Hiện/ẩn</th>
+                                            <th>Người bình luận</th>
+                                            <th>Hiện thị</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -60,27 +59,6 @@ require_once './app/views/admin/master/sidebar.php';
                                                     <td><?= $comment->getCarName() ?></td>
                                                     <td><?= $comment->getUserName() ?></td>
                                                     <td>
-                                                        <?php
-                                                            for ($i = 1; $i <= 5; $i++) {
-                                                                if ($comment->rating >= $i) {
-                                                                    echo "<i class='fas fa-star text-warning'></i>";
-                                                                } else if (!is_int($comment->rating)) {
-                                                                    echo "<img src='public/icon/half-star.png'>";
-                                                                    if ($i < 5) {
-                                                                        for ($j = $i; $j < 5; $j++) {
-                                                                            echo "<i class='far fa-star text-warning'></i>";   # code...
-                                                                        }
-
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                // else if ($comment->rating < $i) {
-                                                                //     echo "<i class='far fa-star text-warning'></i>";
-                                                                // }
-                                                            }
-                                                            ?>
-                                                    </td>
-                                                    <td>
                                                         <?php if ($comment->status == 1) {
                                                                 echo "Hiện";
                                                             } else {
@@ -92,9 +70,9 @@ require_once './app/views/admin/master/sidebar.php';
                                                             <a href="<?= ADMIN_URL . "/comment/edit?id=" ?><?= $comment->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
-                                                            <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
-                                                                <i class="fa fa-times"></i>
-                                                            </a>
+                                                            <a onclick="return del()" href="<?= ADMIN_URL . '/comment/del?id=' . $comment->id  ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
                                                         </div>
                                                     </td>
                                                 </tr>

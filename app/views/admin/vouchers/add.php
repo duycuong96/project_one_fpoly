@@ -50,24 +50,40 @@ require_once './app/views/admin/master/master.php';
 
                                                 <div class="form-group">
                                                     <label>Mã voucher:</label>
-                                                    <input type="text" class="form-control" placeholder="" value="" name="code" >
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <input type="text" class="form-control" placeholder="" value="" name="code">
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_code'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_code'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian bắt đầu:</label>
-                                                  
-                                                    <input type="text" id="timeCheckIn"  name="start_time" class="form-control" value="" />
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+
+                                                    <input type="text" id="timeCheckIn" name="start_time" class="form-control" value="" />
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_start_time'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_start_time'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Thời gian kết thúc:</label>
                                                     <input type="text" id="timeCheckOut" name="end_time" class="form-control" value="" />
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <small id="" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_end_time'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_end_time'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Giảm giá:</label>
-                                                    <input type="text" class="form-control" placeholder="Nhập tiền giảm giá" name="discount_price" value="">
-                                                    <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                                                    <label>Số tiền giảm giá:</label>
+                                                    <input name="price" type="text" class="form-control" placeholder="" value="">
+                                                    <small id="emailHelp2" class="form-text text-muted">
+                                                        <?php if (isset($_GET['err_discount_price'])) : ?>
+                                                            <span style="color: red"><?= $_GET['err_discount_price'] ?></span>
+                                                        <?php endif ?>
+                                                    </small>
                                                 </div>
                                                 <div class="form-check">
                                                     <label>Trạng thái:</label><br>
@@ -90,15 +106,15 @@ require_once './app/views/admin/master/master.php';
                                     </div>
 
                                 </div>
+                            </div>
+
                         </div>
-                        
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <!-- End Custom template -->
-        <?php
-        require_once './app/views/admin/master/footer.php';
-        ?>
+            <!-- End Custom template -->
+            <?php
+            require_once './app/views/admin/master/footer.php';
+            ?>

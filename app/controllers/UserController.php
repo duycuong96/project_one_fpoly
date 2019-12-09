@@ -27,6 +27,7 @@ class UserController
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
 
 		$avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar']: "";
+		
 		if (isset($_SERVER['PHP_SELF'])){
 			// tên
 			$err_name = "";
@@ -209,9 +210,17 @@ class UserController
 
 	// xóa
 
-	public function delUser($id){
+	public function delUser(){
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
-		$user = User::destroy($id);
+		// $user_id =  $_SESSION['AUTH']['id'];
+		// var_dump($user_id);die;
+		if($id = 1){
+			header('location: ' . ADMIN_URL . '/account');
+		} else {
+			$user = User::destroy($id);
+		}
+		
+		
 		header('location: ' . ADMIN_URL . '/account');
 	}
 	

@@ -20,6 +20,23 @@ class RoleController
         $name = isset($_POST['name']) == true ? $_POST['name']: "";
         $status = isset($_POST['status']) == true ? $_POST['status']: "";
 
+        if (isset($_SERVER['PHP_SELF'])){
+			$err_name = "";
+			
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên";
+			}
+			
+		// kiểm tra và hiện validation
+		if($err_name != ""){
+			header(
+				'location: ' . ADMIN_URL . '/role/add?'
+					. 'err_name=' . $err_name
+			);
+			die;
+		}
+		}
+
         $data = compact('name', 'status');
         $model = new Role();
         $model->insert($data);
@@ -41,6 +58,23 @@ class RoleController
         $name = isset($_POST['name']) == true ? $_POST['name']: "";
         $status = isset($_POST['status']) == true ? $_POST['status']: "";
 
+        if (isset($_SERVER['PHP_SELF'])){
+			$err_name = "";
+			
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên";
+			}
+			
+		// kiểm tra và hiện validation
+		if($err_name != ""){
+			header(
+				'location: ' . ADMIN_URL . '/role/edit?id=' . $id
+					. '&err_name=' . $err_name
+			);
+			die;
+		}
+		}
+
         $data = compact('name', 'status');
         $model = new Role();
         $model->id = $id;
@@ -49,7 +83,7 @@ class RoleController
         header('location: ' . ADMIN_URL . '/role' );
     }
     // xóa
-    public function delRole($id){
+    public function delRole(){
         $id = isset($_GET['id']) ? $_GET['id'] : null;
 		$role = Role::destroy($id);
 		header('location: ' . ADMIN_URL . '/role');
