@@ -27,7 +27,8 @@ class UserController
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
 
 		$avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar']: "";
-		
+
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 		if ($avatar['size'] > 0) {
 			$filename = $avatar['name'];

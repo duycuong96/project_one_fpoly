@@ -44,5 +44,12 @@ function checkLogin(){
 	} 
 
 }
+function checkLoginClient()
+{
+	if (!isset($_SESSION['AUTH']) || $_SESSION['AUTH'] == null) {
+		header('location: ' . BASE_URL . 'login');
+		die;
+	}
+}
 
 ?>
