@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Location;
+
 use App\Models\Makers;
 
 use App\Models\Maker;
@@ -11,6 +12,7 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\OrderDetail;
+
 
 class PartnerController{
     public function homePagePartner(){
@@ -27,7 +29,6 @@ class PartnerController{
         $categories = Category::all();
 		$locations = Location::all();
 		$makers = Makers::all();
-
 		$makers = Maker::all();
         include_once './app/views/partner/cars/add.php';
     }
@@ -61,7 +62,6 @@ class PartnerController{
         $categories = Category::all();
 		$locations = Location::all();
 		$makers = Makers::all();
-
 		$makers = Maker::all();
 		
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -75,7 +75,6 @@ class PartnerController{
     }
     public function saveEditCarsPartner(){
 		$id = isset($_POST['id']) == true ? $_POST['id'] : "";
-
 		$user_id = isset($_POST['user_id']) == true ? $_POST['user_id'] : "";
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";
 		$cate_id = isset($_POST['cate_id']) == true ? $_POST['cate_id'] : "";
@@ -96,14 +95,12 @@ class PartnerController{
 		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'price', 'detail');
         $data['feature_image'] = $filename;
         $data['user_id'] =  $user_id = $_SESSION['AUTH']['id'];
-
 		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'user_id', 'price', 'detail');
         $data['feature_image'] = $filename;
 		$model = new Car();
 		$model->id = $id;
 		$model->update($data);
 		header('location: ' . PARTNER_URL . '/cars');
-    }
 
 	}
 	
@@ -179,5 +176,6 @@ class PartnerController{
 		include_once './app/views/partner/orders/edit.php';
 	}
 	
+
 }
 ?>
