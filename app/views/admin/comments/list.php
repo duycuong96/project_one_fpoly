@@ -59,6 +59,27 @@ require_once './app/views/admin/master/sidebar.php';
                                                     <td><?= $comment->getCarName() ?></td>
                                                     <td><?= $comment->getUserName() ?></td>
                                                     <td>
+                                                        <?php
+                                                            for ($i = 1; $i <= 5; $i++) {
+                                                                if ($comment->rating >= $i) {
+                                                                    echo "<i class='fas fa-star text-warning'></i>";
+                                                                } else if (!is_int($comment->rating)) {
+                                                                    echo "<i class='fas fa-star-half-alt text-warning'></i>";
+                                                                    if ($i < 5) {
+                                                                        for ($j = $i; $j < 5; $j++) {
+                                                                            echo "<i class='far fa-star text-warning'></i>";   # code...
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                                }
+                                                                // else if ($comment->rating < $i) {
+                                                                //     echo "<i class='far fa-star text-warning'></i>";
+                                                                // }
+                                                            }
+                                                            ?>
+                                                    </td>
+                                                    <td>
                                                         <?php if ($comment->status == 1) {
                                                                 echo "Hiện";
                                                             } else {

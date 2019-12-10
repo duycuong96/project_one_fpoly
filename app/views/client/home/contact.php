@@ -7,7 +7,7 @@ include_once "./app/views/client/template/header.php";
       <h2>Liên hệ</h2>
       <ul>
         <li>
-          <a href="#">home</a>
+          <a href="<?= BASE_URL ?>">Trang chủ</a>
         </li>
         <li>Liên hệ</li>
       </ul>
