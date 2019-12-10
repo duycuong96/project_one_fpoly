@@ -27,7 +27,7 @@ require_once './app/views/admin/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/category' ?>">Địa điểm</a>
+                                <a href="<?= ADMIN_URL . '/account' ?>">Địa điểm</a>
                             </li>
                         </ul>
                     </div>
@@ -38,7 +38,7 @@ require_once './app/views/admin/master/master.php';
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
 
-                                        <a href="<?= ADMIN_URL . '/category' ?>" class="btn btn-primary btn-round ml-auto">
+                                        <a href="<?= ADMIN_URL . '/account' ?>" class="btn btn-primary btn-round ml-auto">
                                             Danh sách
                                         </a>
                                     </div>
@@ -66,7 +66,7 @@ require_once './app/views/admin/master/master.php';
                                                         <?php endif ?>
                                                     </small>
                                                 </div>
-                                                <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <label>Password</label>
                                                     <input type="password" class="form-control" placeholder="" name="password" value="<?= $user->password ?>">
                                                     <small id="emailHelp2" class="form-text text-muted">
@@ -74,7 +74,7 @@ require_once './app/views/admin/master/master.php';
                                                             <span style="color: red"><?= $_GET['err_password'] ?></span>
                                                         <?php endif ?>
                                                     </small>
-                                                </div>
+                                                </div> -->
                                                 <div class="form-group">
                                                     <label for="">Avatar</label>
                                                     <input id="img" type="file" class="form-control" name="avatar" onchange="changeImg(this)">
@@ -113,7 +113,6 @@ require_once './app/views/admin/master/master.php';
 
                                                 <div class="card-action">
                                                     <button class="btn btn-success">Cập nhật</button>
-                                                    <button class="btn btn-danger">Trở lại</button>
                                                 </div>
                                             </form>
                                         </div>
