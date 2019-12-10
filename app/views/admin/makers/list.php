@@ -7,7 +7,7 @@ require_once './app/views/admin/master/sidebar.php';
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Địa điểm</h4>
+                <h4 class="page-title">Hãng xe</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= ADMIN_URL . '/maker' ?>">Địa điểm</a>
+                        <a href="<?= ADMIN_URL . '/maker' ?>">Hãng xe</a>
                     </li>
                 </ul>
             </div>
@@ -40,8 +40,9 @@ require_once './app/views/admin/master/sidebar.php';
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="width:20px">Id</th>
+                                            <th>Id</th>
                                             <th>Name</th>
+                                            <th>Số lượng xe</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -50,6 +51,7 @@ require_once './app/views/admin/master/sidebar.php';
                                             <tr>
                                                 <td><?= $maker->id ?></td>
                                                 <td><?= $maker->name ?></td>
+                                                <td><?= $maker->countTotalCarMaker() ?></td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="<?= ADMIN_URL . "/maker/edit?id=" . $maker->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">

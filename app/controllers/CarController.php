@@ -28,9 +28,7 @@ class CarController
 		}
 		else{
 			$cars = Car::sttOrderBy('id', false)->get();
-		}
-
-	
+		}	
 		
 		include_once './app/views/admin/cars/list.php';
 	}
@@ -61,7 +59,12 @@ class CarController
 			$err_name = "";
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên";
-			}
+			} else{
+				$nameCar = Car::where(['name', '=', $name])->get();
+				if($nameCar){
+					$err_name = "Tên đã tồn tại";
+				}
+            }
 			// validate giá
 			$err_price = "";
 			$pattern = '/[0-9]/';
@@ -138,18 +141,12 @@ class CarController
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		$car = Car::where(['id','=',$id])->first();
 		if(!$car){
-			header('location: ../car');
-        	die;
+            header('location: '. BASE_URL . 'error');
+			die;
 		}
 		include_once './app/views/admin/cars/edit.php';
 	}
-	public function saveEditMaker()
-	{
-		$cate = Category::all();
-		$loca = Location::all();
-		$maker = Makers::all();
-		include_once './app/views/admin/cars/add.php';
-	}
+
 	public function saveEditCar()
 	{
 		$id = isset($_POST['id']) == true ? $_POST['id'] : "";
@@ -163,12 +160,73 @@ class CarController
 
 		$image = isset($_FILES['feature_image']) == true ? $_FILES['feature_image']: "";
 
+		if (isset($_SERVER['PHP_SELF'])){
+			$car = Car::where(['id','=',$id])->first();
+			// tên
+			$err_name = "";
+			if($name == ""){
+				$err_name = "Vui lòng nhập tên";
+			} elseif ($name != $car->name){
+				$nameCar = Car::where(['name', '=', $name])->get();
+				if($nameCar){
+					$err_name = "Tên đã tồn tại";
+				}
+			}
+			// validate giá
+			$err_price = "";
+			$pattern = '/[0-9]/';
+			if ($_POST['price'] == "") {
+				$err_price = "Chưa nhập đơn giá";
+			} elseif (!preg_match($pattern, $_POST['price']) || $_POST['price'] < 1) {
+				$err_price = "Vui lòng không để trống và nhập số dương";
+			}
+			// chi tiết
+			$err_detail = "";
+			if($detail == ""){
+				$err_detail = "Vui lòng nhập chi tiết";
+			}
+			// ảnh
+			$err_file = "";
 
-		if ($image['size'] > 0) {
-			$filename = $image['name'];
-			$filename = uniqid() . "-" . $filename;
-			move_uploaded_file($image['tmp_name'], 'public/assets/img/cars/' . $filename);
-			// $filePath = "public/images/cars/" . $filename;
+			$allowed_image_extension = array(
+				"png",
+				"jpg",
+				"jpeg"
+			);
+		
+			// pathinfo trả về thông tin về đường dẫn tệp
+			$file_extension = pathinfo($image["name"], PATHINFO_EXTENSION);
+		
+			//  Kiểm tra xem một tập tin hoặc thư mục tồn tại
+			if (!file_exists($image["tmp_name"])) {
+				$err_file = "Bạn chưa chọn hình ảnh thay thế";
+			}
+			//  Kiểm tra biến tồn tại trong mảng
+			else if (!in_array($file_extension, $allowed_image_extension)) {
+				$err_file = "Tải lên hình ảnh khác. Chỉ cho phép JPG, PNG và JPEG.";
+			}
+			// move_uploaded_file Di chuyển tệp đã tải lên đến một vị trí mới
+			// upload ảnh
+			else {
+				if ($image['size'] > 0) {
+					$filename = $image['name'];
+					$filename = uniqid() . "-" . $filename;
+					move_uploaded_file($image['tmp_name'], 'public/assets/img/cars/' . $filename);
+					// $filePath = "public/images/cars/" . $filename;
+				}
+			}
+			
+		// kiểm tra và hiện validation
+		if($err_name != "" || $err_price != "" || $err_detail != "" || $err_file != ""){
+			header(
+				'location: ' . ADMIN_URL . '/car/edit?id=' . $id
+					. '&err_name=' . $err_name
+					. '&err_price=' . $err_price
+					. '&err_file=' . $err_file
+					. '&err_detail=' . $err_detail
+			);
+			die;
+		}
 		}
 		// dd($filePath);
 		$data = compact('name', 'cate_id', 'location_id', 'maker_id', 'user_id', 'price', 'detail');
@@ -176,15 +234,16 @@ class CarController
 		$model = new Car();
 		$model->id = $id;
 		$model->update($data);
-		header('location: ' . ADMIN_URL . '/car');
+		header('location: ' . ADMIN_URL . '/car/edit?id=' . $id);
 		die;
 	}
 
-	public function delCar($id)
+	public function delCar()
 	{
 		$id = $_GET['id'];
 		$car = Car::destroy($id);
-		header('Location: ../car');
+		header('location: '. ADMIN_URL . '/car');
+		die;
 	}
 	
 }

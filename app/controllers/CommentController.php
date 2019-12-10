@@ -18,8 +18,8 @@ class CommentController
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
 		$comment = Comment::where(['id','=',$id])->first();
 		if(!$comment){
-			header('location: ' . ADMIN_URL);
-        	die;
+            header('location: '. BASE_URL . 'error');
+			die;
 		}
 		include_once './app/views/admin/comments/edit.php';
 	}
@@ -34,7 +34,12 @@ class CommentController
 		$model = Comment::where(['id', '=', $id])->first();
 		// dd($data);
 		$model->update($data);
-		header("Location: ../comment/edit?id=$id");
+		header('location: '. ADMIN_URL . '/comment/edit?id=' . $id);
+	}
+	public function delComment(){
+		$id = isset($_GET['id']) ? $_GET['id'] : null;
+		$comment = Comment::destroy($id);
+        header('location: ' . ADMIN_URL . '/comment' );
 	}
 	
 }

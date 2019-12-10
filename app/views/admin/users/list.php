@@ -28,7 +28,9 @@ require_once './app/views/admin/master/sidebar.php';
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-
+                                <?php if (isset($_GET['error'])) : ?>
+                                    <span style="color: red"><?= $_GET['error'] ?></span>
+                                <?php endif ?>
                                 <a href="<?= ADMIN_URL . "/account/add" ?>" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
@@ -58,7 +60,10 @@ require_once './app/views/admin/master/sidebar.php';
                                                 <td><?= $user->getRoleName() ?></td>
                                                 <td>
                                                     <div class="form-button-action">
-                                                        <a href="<?= ADMIN_URL . "/account/edit?id=" ?><?= $user->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa">
+                                                        <a href="<?= ADMIN_URL . "/account/change-password?id=" ?><?= $user->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Đổi mật khẩu">
+                                                            <i class="fas fa-unlock"></i>
+                                                        </a>
+                                                        <a href="<?= ADMIN_URL . "/account/edit?id=" ?><?= $user->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Sửa thông tin">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         <a onclick="return del()" href="<?= ADMIN_URL . '/account/del?id=' . $user->id ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa">

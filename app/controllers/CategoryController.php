@@ -18,17 +18,25 @@ class CategoryController
 		include_once './app/views/admin/categories/add.php';
 	}
 	public function saveAddCategory(){
+		//  
 		$name = isset($_POST['name']) == true ? $_POST['name'] : "";
 		$description = isset($_POST['description']) == true ? $_POST['description'] : "";
 		$show_menu = isset($_POST['show_menu']) == true ? $_POST['show_menu'] : "";
 
+		// validate
 		if (isset($_SERVER['PHP_SELF'])){
 			$err_name = "";
+			
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên loại xe";
+			} else {
+				$nameCategory = Category::where(['name', '=', $name])->get();
+				if($nameCategory){
+					$err_name = "Tên đã tồn tại";
+				}
 			}
 			$err_description = "";
-			if($err_description == ""){
+			if($description == ""){
 				$err_description = "Vui lòng nhập mô tả loại xe";
 			}
 			
@@ -46,14 +54,14 @@ class CategoryController
 		$data = compact('name', 'description', 'show_menu');
 		$model = new Category();
 		$model->insert($data);
-		header('Location: ../category');
+		header('location: '. ADMIN_URL . '/category');
 	}
 
 	public function editCategory(){
 		$id = $_GET['id'];
 		$cate = Category::where(['id','=',$id])->first();
 		if (!$cate) {
-			header('location: ../category');
+			header('location: '. BASE_URL . 'error');
 			die;
 		}
 		include_once './app/views/admin/categories/edit.php';
@@ -66,12 +74,22 @@ class CategoryController
 		$show_menu = isset($_POST['show_menu']) == true ? $_POST['show_menu'] : "";
 
 		if (isset($_SERVER['PHP_SELF'])){
+			$cate = Category::where(['id','=',$id])->first();
+			// dd($cate);
+			// tên
 			$err_name = "";
 			if($name == ""){
 				$err_name = "Vui lòng nhập tên loại xe";
+			} elseif($name != $cate->name) { 
+				$nameCategory = Category::where(['name', '=', $name])->get();
+					if ($nameCategory){
+					$err_name = "Tên đã tồn tại";
+				}
+
 			}
+			// mô tả
 			$err_description = "";
-			if($err_description == ""){
+			if($description == ""){
 				$err_description = "Vui lòng nhập mô tả loại xe";
 			}
 			
@@ -91,14 +109,14 @@ class CategoryController
 		$model = Category::where(['id', '=', $id])->first();
 		$model->update($data);
 		// var_dump($model);die;
-		header("Location: ../category/edit?id=$id");
+		header('location: '. ADMIN_URL . '/category/edit?id='.$id);
 	}
 
-	public function delCategory($id)
+	public function delCategory()
 	{
 		$id = $_GET['id'];
 		$cate=Category::destroy($id);
-		header('Location: ../category');
+		header('location: '. ADMIN_URL . '/category');
 	}
 }
 

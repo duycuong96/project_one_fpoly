@@ -7,7 +7,7 @@ require_once './app/views/admin/master/sidebar.php';
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
-        <h4 class="page-title">Danh mục</h4>
+        <h4 class="page-title">Bình luận</h4>
         <ul class="breadcrumbs">
           <li class="nav-home">
             <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/comment' ?>">Danh mục</a>
+            <a href="<?= ADMIN_URL . '/comment' ?>">Bình luận</a>
           </li>
         </ul>
       </div>
@@ -35,42 +35,56 @@ require_once './app/views/admin/master/sidebar.php';
               </div>
             </div>
             <div class="card-body">
-              <div class="row justify-content-md-center">
-                <div class="col-md-8">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                  <ol class="activity-feed">
+										<li class="feed-item feed-item-secondary">
+											<p class="date">Người bình luận: </p>
+											<span class="text"><?= $comment->getUserName() ?></span>
+										</li>
+										<li class="feed-item feed-item-success">
+											<p class="date" datep="9-24">Tên xe</p>
+											<span class="text"><?= $comment->getCarName() ?></span>
+										</li>
+										<li class="feed-item feed-item-info">
+											<p class="date" datep="9-23">Tiêu đề bình luận:</p>
+											<span class="text"><?= $comment->title ?></a></span>
+										</li>
+										<li class="feed-item feed-item-warning">
+											<p class="date" datep="9-21">Nội dung bình luận</p>
+											<span class="text"><?= $comment->content ?></span>
+										</li>
+										<li class="feed-item feed-item-danger">
+											<p class="date" datep="9-18">Ngày bình luận</p>
+											<span class="text"><?= $comment->created_at ?></span>
+										</li>
+										<li class="feed-item">
+											<p class="date" datep="9-17">Đánh giá</p>
+											<span class="text"><?= $comment->rating ?></span>
+										</li>
+									</ol>
+                    
+                  </div>
+                  <div class="col-md-6">
                   <form action="<?= ADMIN_URL . '/comment/save-edit' ?>" method="post">
                     <input type="hidden" name="id" value="<?= $comment->id ?>">
-                    <div class="form-group">
-                      <label>Tên khách hàng:</label>
-                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->getUserName() ?>" readonly>
-                      <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
-                    </div>
-                    <div class="form-group">
-                      <label for="comment">Tên xe</label>
-                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->getCarName() ?>" readonly>
-                    </div>
-                    <div class="form-group">
-                      <label for="comment">Tên đề</label>
-                      <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="<?= $comment->title ?>" readonly>
-                    </div>
-                    <div class="form-group">
-                      <label for="comment">Tên xe</label>
-                      <textarea name="description" class="form-control" id="comment" rows="5" readonly><?= $comment->content ?></textarea>
-                    </div>
+
                     <div class="form-check">
-                      <label>Hiển thị bình luận</label><br>
+                      <label>Cập nhật trạng thái</label><br>
                       <label class="form-radio-label">
                         <input class="form-radio-input" type="radio" name="status" value="2" <?php
                                                                                               if ($comment->status == 2) {
                                                                                                 echo 'checked';
                                                                                               } ?>>
-                        <span class="form-radio-sign">Không</span>
+                        <span class="form-radio-sign">Ẩn bình luận</span>
                       </label>
                       <label class="form-radio-label ml-3">
                         <input class="form-radio-input" type="radio" name="status" value="1" <?php
                                                                                               if ($comment->status == 1) {
                                                                                                 echo 'checked';
                                                                                               } ?>>
-                        <span class="form-radio-sign">Có</span>
+                        <span class="form-radio-sign">Hiện bình luận</span>
                       </label>
                     </div>
 
@@ -79,6 +93,8 @@ require_once './app/views/admin/master/sidebar.php';
                       <button class="btn btn-danger">Trở lại</button>
                     </div>
                   </form>
+                  </div>
+
                 </div>
               </div>
 
@@ -95,3 +111,5 @@ require_once './app/views/admin/master/sidebar.php';
 
 require_once './app/views/admin/master/footer.php';
 ?>
+
+

@@ -16,7 +16,7 @@ require_once './app/views/admin/master/master.php';
             <div class="content">
                 <div class="page-inner">
                     <div class="page-header">
-                        <h4 class="page-title">Danh mục</h4>
+                        <h4 class="page-title">Loại xe</h4>
                         <ul class="breadcrumbs">
                             <li class="nav-home">
                                 <a href="#">
@@ -27,7 +27,7 @@ require_once './app/views/admin/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/category' ?>">Danh mục</a>
+                                <a href="<?= ADMIN_URL . '/category' ?>">Loại xe</a>
                             </li>
                         </ul>
                     </div>
@@ -48,8 +48,8 @@ require_once './app/views/admin/master/master.php';
                                         <div class="col-md-8">
                                             <form action="<?= ADMIN_URL . '/category/save-add' ?>" method="post">
                                                 <div class="form-group">
-                                                    <label>Tên danh mục:</label>
-                                                    <input type="text" name="name" class="form-control" placeholder="Tên danh mục" value="">
+                                                    <label>Tên loại xe:</label>
+                                                    <input type="text" name="name" class="form-control" placeholder="Tên loại xe" value="">
                                                     <small id="emailHelp2" class="form-text text-muted">
                                                         <?php if (isset($_GET['err_name'])) : ?>
                                                             <span style="color: red"><?= $_GET['err_name'] ?></span>
@@ -57,9 +57,8 @@ require_once './app/views/admin/master/master.php';
                                                     </small>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="comment">Mô tả danh mục:</label>
-                                                    <textarea name="description" class="form-control" id="comment" rows="5">
-                                                    </textarea>
+                                                    <label for="comment">Mô tả loại xe:</label>
+                                                    <textarea name="description" class="form-control" rows="5"></textarea>
                                                     <small id="emailHelp2" class="form-text text-muted">
                                                         <?php if (isset($_GET['err_description'])) : ?>
                                                             <span style="color: red"><?= $_GET['err_description'] ?></span>

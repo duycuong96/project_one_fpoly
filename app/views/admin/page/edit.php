@@ -42,11 +42,29 @@ require_once './app/views/admin/master/sidebar.php';
                     <div class="form-group">
                       <label>Tiêu đề</label>
                       <input name="title" type="text" class="form-control" placeholder="" value="<?= $page->title ?>">
-                      <!-- <small id="emailHelp2" class="form-text text-muted">Validate</small> -->
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_title'])) : ?>
+                          <span style="color: red"><?= $_GET['err_title'] ?></span>
+                        <?php endif ?>
+                      </small>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Mô tả</label>
+                      <input name="description" type="text" class="form-control" placeholder="" value="<?= $page->description ?>">
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_description'])) : ?>
+                          <span style="color: red"><?= $_GET['err_description'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
                     <div class="form-group">
                       <label for="comment">Nội dung</label>
-                      <textarea name="description" class="form-control" id="comment" rows="5"><?= $page->description ?></textarea>
+                      <textarea name="content" class="form-control" id="comment" rows="5"><?= $page->content ?></textarea>
+                      <small id="" class="form-text text-muted">
+                        <?php if (isset($_GET['err_content'])) : ?>
+                          <span style="color: red"><?= $_GET['err_content'] ?></span>
+                        <?php endif ?>
+                      </small>
                     </div>
 
                     <div class="card-action">

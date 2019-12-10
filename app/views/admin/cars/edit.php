@@ -7,7 +7,7 @@ require_once './app/views/admin/master/sidebar.php';
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Địa điểm</h4>
+                <h4 class="page-title">Xe</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= ADMIN_URL . '/car' ?>">Địa điểm</a>
+                        <a href="<?= ADMIN_URL . '/car' ?>">Xe</a>
                     </li>
                 </ul>
             </div>
@@ -119,15 +119,15 @@ require_once './app/views/admin/master/sidebar.php';
                                             </small>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Avatar</label>
+                                            <label for="">Hình ảnh</label>
                                             <input id="img" type="file" class="form-control" name="feature_image" onchange="changeImg(this)">
                                             <small id="emailHelp2" class="form-text text-muted">
-                                                <?php if (isset($_GET['err_file'])) : ?>
-                                                    <span style="color: red"><?= $_GET['err_file'] ?></span>
-                                                <?php endif ?>
+                                                    <?php if (isset($_GET['err_file'])) : ?>
+                                                        <span style="color: red"><?= $_GET['err_file'] ?></span>
+                                                    <?php endif ?>
                                             </small>
                                         </div>
-                                            <img src="<?= AVATAR_URL . $user->avatar ?>" alt="" id="image" width="50%">
+                                            <img src="<?= IMAGE_URL . $car->feature_image ?>" alt="" id="image" width="50%">
                                         <div class="form-group">
                                             <label for="comment">Chi tiết:</label>
                                             <textarea name="detail" class="form-control" id="comment" rows="5"><?= $car->detail ?></textarea>

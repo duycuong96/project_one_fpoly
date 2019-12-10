@@ -6,34 +6,24 @@
                     <img src="<?= BASE_URL . '/public/assets/img/logo/icon.png' ?>" alt=".." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
-                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                    <a  href="<?= ADMIN_URL ?>" aria-expanded="true">
                         <span>
-                            Duy Cường
-                            <span class="user-level">Administrator</span>
-                            <span class="caret"></span>
+                        <?php if (isset($_SESSION['AUTH'])) : ?>
+                            <?= $_SESSION['AUTH']['name']; ?>
+                        <?php endif ?>
+                        <span class="user-level">
+                        <?php if (isset($_SESSION['AUTH'])) : ?>
+                            <?= $_SESSION['AUTH']['email']; ?>
+                        <?php endif ?>
+                        </span>
+                        
                         </span>
                     </a>
-                    <div class="clearfix"></div>
-
-                    <div class="collapse in" id="collapseExample">
-                        <ul class="nav">
-                            <li>
-                                <a href="#profile">
-                                    <span class="link-collapse">My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#edit">
-                                    <span class="link-collapse">Edit Profile</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item active">
-                    <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                    <a href="<?= ADMIN_URL ?>" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -215,11 +205,6 @@
                             <li>
                                 <a href="<?= ADMIN_URL . "/order" ?>">
                                     <span class="sub-item">Danh sách</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= ADMIN_URL . "/order/add" ?>">
-                                    <span class="sub-item">Thêm mới</span>
                                 </a>
                             </li>
 
