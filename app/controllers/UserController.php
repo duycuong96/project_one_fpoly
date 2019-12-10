@@ -218,13 +218,16 @@ class UserController
 
 	public function delUser(){
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
-		// $user_id =  $_SESSION['AUTH']['id'];
+		$user_id =  $_SESSION['AUTH']['id'];
+		$error = "Không thể xóa";
 		// var_dump($user_id);die;
-
+		if($id != $user_id && $id != 1){
 			$user = User::destroy($id);
+			header('location: ' . ADMIN_URL . '/account');die;
+		} else{
+			header('location: ' . ADMIN_URL . '/account?error=' . $error);die;
+		}
 		
-		
-		header('location: ' . ADMIN_URL . '/account');die;
 	}
 
 	public function infomationUser(){

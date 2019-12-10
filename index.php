@@ -170,6 +170,7 @@ switch ($url) {
 		break;
 	// danh mục xe
 	case 'admin/category':
+		checkLogin();
 		$ctr = new CategoryController();
 		$ctr->listCategory();
 		break;

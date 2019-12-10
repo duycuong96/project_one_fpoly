@@ -64,16 +64,15 @@
                                                     <?php if (isset($_SESSION['AUTH'])) : ?>
                                                         <?= $_SESSION['AUTH']['email']; ?>
                                                     <?php endif ?>
-                                                </p><a href="<?= ADMIN_URL . '/account/edit?id=' ?><?php if (isset($_SESSION['AUTH'])) : ?><?= $_SESSION['AUTH']['id']; ?>
-                                                    <?php endif ?>" class="btn btn-xs btn-secondary btn-sm">Thông tin</a>
+                                                </p><a href="<?= ADMIN_URL . '/account/infomation' ?>" class="btn btn-xs btn-secondary btn-sm">Thông tin</a>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="">My Profile</a>
+                                        <a class="dropdown-item" href="<?= ADMIN_URL . '/account/infomation' ?>">Thông tin</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= ADMIN_URL . '/logout' ?>">Logout</a>
+                                        <a class="dropdown-item" href="<?= ADMIN_URL . '/logout' ?>">Đăng xuất</a>
                                     </li>
                                 </div>
                             </ul>
