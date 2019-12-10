@@ -1,12 +1,12 @@
 <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/banner-4.jpg)">
   <div class="container-fluid">
     <div class="breadcrumb-content text-center">
-      <h2>Shop grid 2 column</h2>
+      <h2>Danh sách xe</h2>
       <ul>
         <li>
-          <a href="#">home</a>
+          <a href="<?= BASE_URL ?>">Trang chủ</a>
         </li>
-        <li>Shop grid 2 column</li>
+        <li>Danh sách xe</li>
       </ul>
     </div>
   </div>
@@ -29,8 +29,9 @@
             <h3 class="sidebar-widget">Hãng xe</h3>
             <div class="widget-categories">
               <ul>
-                <li><a href="#">Honda</a></li>
-                <li><a href="#">Yamaha</a></li>
+                <?php foreach ($cate as $category) { ?>
+                  <li><a href="<?= BASE_URL . 'category?id=' . $category->id ?>"><?= $category->name ?></a></li>
+                <?php } ?>
               </ul>
             </div>
           </div>
@@ -38,28 +39,9 @@
             <h3 class="sidebar-widget">Địa điểm nhận xe</h3>
             <div class="widget-categories">
               <ul>
-                <li><a href="#">Hà Nội</a></li>
-                <li><a href="#">Tp Hồ Chí Minh</a></li>
-                <li><a href="#">Đà Nẵng</a></li>
-                <li><a href="#">Ninh Bình</a></li>
-                <li><a href="#">Phú Quốc</a></li>
-                <li><a href="#">Sapa (Lào Cai)</a></li>
-                <li><a href="#">Hà Giang</a></li>
-                <li><a href="#">Huế</a></li>
-                <li><a href="#">Đà Lạt</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="sidebar-widget mb-55">
-            <h3 class="sidebar-widget">Màu</h3>
-            <div class="product-color">
-              <ul>
-                <li class="blue">b</li>
-                <li class="yellow">y</li>
-                <li class="gray">g</li>
-                <li class="puce">pu</li>
-                <li class="black">b</li>
-                <li class="pink">p</li>
+                <?php foreach ($loca as $location) { ?>
+                  <li><a href="<?= BASE_URL . 'location?id=' . $location->id ?>"><?= $location->name ?></a></li>
+                <?php } ?>
               </ul>
             </div>
           </div>

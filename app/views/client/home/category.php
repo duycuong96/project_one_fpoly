@@ -36,7 +36,7 @@ include_once "./app/views/client/template/nav.php";
             <div class="product-wrapper mb-35">
               <div class="product-img">
                 <a href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
-                  <img src="assets/img/product/honda-air-blade.png" alt="">
+                  <img src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
                 </a>
                 <div class="product-item-dec">
                   <ul>
@@ -44,7 +44,7 @@ include_once "./app/views/client/template/nav.php";
                   </ul>
                 </div>
                 <div class="product-action">
-                  <a class="action-plus-2 p-action-none" title="Add To Cart" href="<?= BASE_URL . 'add-cart?id=' . $car->id ?>">
+                  <a class="action-plus-2 p-action-none" title="Add To Cart" href="<?= BASE_URL . 'checkout?id=' . $car->id ?>">
                     <i class=" ti-shopping-cart"></i>
                   </a>
                   <a class="action-cart-2" title="Wishlist" href="#">

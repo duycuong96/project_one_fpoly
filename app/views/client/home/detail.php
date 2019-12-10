@@ -8,9 +8,9 @@ include_once "./app/views/client/template/header.php";
       <h2>Thông tin chi tiết xe</h2>
       <ul>
         <li>
-          <a href="#">home</a>
+          <a href="<?= BASE_URL ?>">Trang chủ</a>
         </li>
-        <li>product details </li>
+        <li>Chi tiết xe</li>
       </ul>
     </div>
   </div>
@@ -25,7 +25,7 @@ include_once "./app/views/client/template/header.php";
 
           <div class="row">
             <div class="col-md-6">
-              <img width="100%" src="assets/img/product/honda-future.png" alt="">
+              <img width="100%" src="<?= IMAGE_URL . $detail->feature_image ?>" alt="">
             </div>
             <div class="col-md-6">
               <h2><?= $detail->name ?></h2>
@@ -75,6 +75,78 @@ include_once "./app/views/client/template/header.php";
             <p><?= $detail->detail ?></p>
           </div>
 
+        </div>
+
+        <h3 style="margin: 40px 0px;">Nhận xét - Đánh giá:</h3>
+        <div class="product-details-content">
+          <div class="comments">
+            <div class="row">
+              <div class="col-md-12">
+                <form method="post" action="<?= BASE_URL . 'comment' ?>" id="form" role="form" class="blog-comments">
+                  <div class="row">
+
+                    <div class="col-md-12 form-group">
+                      <!-- Name -->
+                      <input type="hidden" name="product_id" value="<?= $detail->id ?>">
+                      <input type="text" name="title" id="name" class=" form-control" placeholder="Title *" maxlength="100" required="">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                      <select class="form-control" name="rating">
+                        <option value="">Đánh giá</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+
+                    <!-- Comment -->
+                    <div class="form-group col-md-12">
+                      <textarea id="text" class=" form-control" rows="6" placeholder="Comment" maxlength="400" name="content"></textarea>
+                    </div>
+
+                    <!-- Send Button -->
+                    <div class="form-group col-md-12">
+                      <button class="btn-lg btn-warning btn-block " type="submit">Gửi</button>
+                    </div>
+
+
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin: 40px 0px;">Khách hàng nhận xét:</h3>
+        <div class="product-details-content">
+          <div class="comments">
+            <div class="row">
+              <div class="col-md-2">
+                <img style="border-radius: 50%" class="img-comment" src="<?= AVATAR_URL . $_SESSION['AUTH']['avatar'] ?>" alt="">
+              </div>
+              <div class="col-md-10">
+                <div style="margin-left: 20%" class="product-overview">
+                  <h5 class="pd-sub-title">Duy Cường</h5>
+                  <div class="quick-view-rating">
+                    <i class="fa fa-star reting-color"></i>
+                    <i class="fa fa-star reting-color"></i>
+                    <i class="fa fa-star reting-color"></i>
+                    <i class="fa fa-star reting-color"></i>
+                    <i class="fa fa-star reting-color"></i>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
+                    incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercita
+                    tion ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-lg-4">

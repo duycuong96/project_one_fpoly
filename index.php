@@ -25,7 +25,6 @@ use App\Controllers\PageController;
 use App\Controllers\WebSettingController;
 use App\Controllers\RoleController;
 use App\Controllers\LoginController;
-// 
 use App\Controllers\PartnerController;
 
 switch ($url) {
@@ -48,6 +47,11 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->logout();
 		break;
+	case 'search':
+		$ctr = new HomeController();
+		$ctr->search();
+		break;
+		// search
 		// trang danh mục
 	case 'categories':
 		$ctr = new HomeController();
@@ -71,20 +75,29 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->detail();
 		break;
+	case 'comment':
+		$ctr = new HomeController();
+		$ctr->comment();
+		break;
 	case 'contact':
 		$ctr = new HomeController();
 		$ctr->contact();
 		break;
-	// case 'add-cart':
-	// 	checkLoginClient();
-	// 	$ctr = new HomeController();
-	// 	$ctr->addCart();
-	// 	break;
-	// case 'cart':
-	// 	checkLoginClient();
-	// 	$ctr = new HomeController();
-	// 	$ctr->cart();
-	// 	break;
+	case 'add-wishlist':
+		checkLoginClient();
+		$ctr = new HomeController();
+		$ctr->addWishlist();
+		break;
+	case 'wishlist':
+		checkLoginClient();
+		$ctr = new HomeController();
+		$ctr->wishlist();
+		break;
+	case 'del-item-wishlist':
+		checkLoginClient();
+		$ctr = new HomeController();
+		$ctr->delItemWishlist();
+		break;
 	case 'checkout':
 		$ctr = new HomeController();
 		$ctr->checkout();
@@ -93,6 +106,11 @@ switch ($url) {
 		checkLoginClient();
 		$ctr = new HomeController();
 		$ctr->account();
+		break;
+	case 'save-account':
+		checkLoginClient();
+		$ctr = new HomeController();
+		$ctr->saveAccount();
 		break;
 		// đổi mật khẩu
 	case 'change-password':

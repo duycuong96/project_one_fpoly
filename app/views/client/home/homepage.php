@@ -45,7 +45,7 @@
                             <div class="col-lg-8 col-md-8 col-8">
                                 <div class="header-contact-menu-wrapper pl-45">
                                     <div class="header-contact">
-                                        <p>LIÊN HỆ VỚI CHÚNG TÔI +01254 265 987</p>
+                                        <p>LIÊN HỆ VỚI CHÚNG TÔI 0987 654 321</p>
                                     </div>
                                     <div class="menu-wrapper text-center">
                                         <button class="menu-toggle">
@@ -88,13 +88,11 @@
                                     </div>
                                 </div>
                                 <div class="header-cart cart-small-device">
-                                    <?php if ($_SESSION['AUTH'] != null) { ?>
-                                        <button class="icon-cart">
-                                            <i class="ti-shopping-cart"></i>
-                                            <span class="count-style">02</span>
-                                            <span class="count-price-add">$295.95</span>
-                                        </button>
-                                    <?php } ?>
+                                    <button class="icon-cart">
+                                        <i class=" ti-heart"></i>
+                                        <span class="count-style">02</span>
+                                        <span class="count-price-add">$295.95</span>
+                                    </button>
                                 </div>
                             </div>
                             <div class="mobile-menu-area col-12">
@@ -156,12 +154,10 @@
                     <div class="header-cart-wrapper">
                         <div class="header-cart">
                             <button class="icon-cart">
-                                <a title="Giỏ hàng" href="<?= BASE_URL ?>cart">
-                                    <i class="ti-shopping-cart"></i>
-                                    <span class="count-style"><?= $total_car = getTotalProductInCart() ?></span>
-                                    <span class="count-price-add">$ <?= $total = getCartTotalPrice() ?></span>
+                                <a title="Danh sách yêu thích" href="<?= BASE_URL ?>wishlist">
+                                    <i class=" ti-heart text-danger"></i>
                                 </a>
-                                <a title="<?= $_SESSION['AUTH']['name'] ?>" href="<?= BASE_URL ?>account">
+                                <a title="Thông tin tài khoản" href="<?= BASE_URL ?>account">
                                     <i style="float: right; margin-left:15px" style="margin-left: 30px;" class="ti-user"></i>
                                 </a>
                             </button>
@@ -181,10 +177,10 @@
                                 <div class="">
                                     <div class="col-md-8">
                                         <div class="car-rental">
-                                            <form>
+                                            <form action="<?= BASE_URL . 'search' ?>" method="get">
                                                 <div class="form-group">
                                                     <label for="">Chọn địa điểm</label>
-                                                    <select class="form-control">
+                                                    <select name="locationId" class="form-control">
                                                         <option value="" hidden="">Chọn điểm nhận xe</option>
                                                         <?php foreach ($loca as $location) { ?>
                                                             <option value="<?= $location->id ?>"><?= $location->name ?></option>
@@ -266,10 +262,10 @@
                                                 </ul>
                                             </div>
                                             <div class="product-action">
-                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'add-cart?id=' . $car->id ?>">
+                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'checkout?id=' . $car->id ?>">
                                                     <i class=" ti-shopping-cart"></i>
                                                 </a>
-                                                <a class="action-cart-2" title="Wishlist" href="#">
+                                                <a class="action-cart-2" title="Wishlist" href="<?= BASE_URL . 'add-wishlist?id=' . $car->id ?>">
                                                     <i class=" ti-heart"></i>
                                                 </a>
                                                 <a class="action-reload" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">

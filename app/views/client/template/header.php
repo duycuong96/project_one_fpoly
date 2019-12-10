@@ -46,7 +46,7 @@
             <div class="col-lg-8 col-md-8 col-8">
               <div class="header-contact-menu-wrapper pl-45">
                 <div class="header-contact">
-                  <p>WANT TO TALK WITH US +01254 265 987</p>
+                  <p>LIÊN HỆ VỚI CHÚNG TÔI 0987 654 321</p>
                 </div>
                 <div class="menu-wrapper text-center">
                   <button class="menu-toggle menu-sticky-none">
@@ -208,12 +208,10 @@
         <div class="header-cart-wrapper">
           <div class="header-cart">
             <button class="icon-cart">
-              <a href="<?= BASE_URL ?>cart">
-                <i class="ti-shopping-cart"></i>
-                <span class="count-style"><?= $total_car = getTotalProductInCart() ?></span>
-                <span class="count-price-add">$ <?= $total = getCartTotalPrice() ?></span>
+              <a title="Danh sách yêu thích" href="<?= BASE_URL ?>wishlist">
+                <i class=" ti-heart text-danger"></i>
               </a>
-              <a title="<?= $_SESSION['AUTH']['name'] ?>" href="<?= BASE_URL ?>account">
+              <a title="Thông tin tài khoản" href="<?= BASE_URL ?>account">
                 <i style="float: right; margin-left:15px" style="margin-left: 30px;" class="ti-user"></i>
               </a>
             </button>

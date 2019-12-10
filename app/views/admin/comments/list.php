@@ -65,7 +65,7 @@ require_once './app/views/admin/master/sidebar.php';
                                                                 if ($comment->rating >= $i) {
                                                                     echo "<i class='fas fa-star text-warning'></i>";
                                                                 } else if (!is_int($comment->rating)) {
-                                                                    echo "<img src='public/icon/half-star.png'>";
+                                                                    echo "<i class='fas fa-star-half-alt text-warning'></i>";
                                                                     if ($i < 5) {
                                                                         for ($j = $i; $j < 5; $j++) {
                                                                             echo "<i class='far fa-star text-warning'></i>";   # code...

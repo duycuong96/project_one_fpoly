@@ -7,7 +7,7 @@ include_once "./app/views/client/template/header.php";
       <h2>Thông tin tài khoản</h2>
       <ul>
         <li>
-          <a href="#">home</a>
+          <a href="<?= BASE_URL ?>">Trang chủ</a>
         </li>
         <li>Thông tin tài khoản</li>
       </ul>
@@ -47,14 +47,23 @@ include_once "./app/views/client/template/header.php";
                   <div class="checkout-form-list">
                     <label>Nhập lại mật hiện tại <span class="required">*</span></label>
                     <input type="password" name="passwordNow" placeholder="" />
+                    <?php if (isset($_GET['err_password_now'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_password_now'] ?></div>
+                    <?php endif ?>
                   </div>
                   <div class="checkout-form-list">
                     <label>Mật khẩu mới <span class="required">*</span></label>
                     <input type="password" name="newPassword" placeholder="" />
+                    <?php if (isset($_GET['err_password_new'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_password_new'] ?></div>
+                    <?php endif ?>
                   </div>
                   <div class="checkout-form-list">
                     <label>Nhập lại mật khẩu mới <span class="required">*</span></label>
                     <input type="password" name="rePassword" placeholder="" />
+                    <?php if (isset($_GET['err_rePassword'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_rePassword'] ?></div>
+                    <?php endif ?>
                   </div>
                   <div class="button-box text-center">
                     <button type="submit" class="btn-style cr-btn"><span>Cập nhật</span></button>
