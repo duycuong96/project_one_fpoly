@@ -141,7 +141,6 @@
                                                         <option value="" hidden="">Chọn điểm nhận xe</option>
                                                         <?php foreach ($cate as $category) { ?>
                                                             <option value="<?= $category->id ?>"><?= $category->name ?></option>
-
                                                         <?php } ?>
                                                     </select>
                                                 </div>
