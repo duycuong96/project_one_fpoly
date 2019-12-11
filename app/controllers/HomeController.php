@@ -220,7 +220,7 @@ class HomeController
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
-		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id','=',$categoryId]);
+		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id','=',$categoryId])->get();
 		// dd($cars);
 		include_once './app/views/client/home/category.php';
 
@@ -553,11 +553,12 @@ class HomeController
 			$mail->Subject = $customer_name;
 			$mail->Body    = $message;
 			$mail->send();
-			echo 'Message has been sent';
-			header('location: ' . BASE_URL);
+			
+			header('location: ' . BASE_URL );
 		} catch (Exception $e) {
 			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		}
+		
 	}
 	public function account()
 	{

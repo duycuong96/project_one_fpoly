@@ -18,11 +18,11 @@ class OrderController
 		$date2 = isset($_GET['date2']) == true ? $_GET['date2'] : "";
 
 		if($status != "" && $date != ""){
-		$orders = Order::where(['status', '=', $status])->andWhere(['created_date', '>', $date])->andWhere(['created_date', '<' , $date2])->get();
+		$orders = Order::where(['status', '=', $status])->andWhere(['created_date', '>=', $date])->andWhere(['created_date', '<=' , $date2])->get();
 		} elseif ($status != "" && $date == "") {
 		$orders = Order::where(['status', '=', $status])->get();
 		} elseif ($status == "" && $date != "" && $date2 != "") {
-		$orders = Order::where(['created_date', '>', $date])->andWhere(['created_date', '<' , $date2])->get();
+		$orders = Order::where(['created_date', '>=', $date])->andWhere(['created_date', '<=' , $date2])->get();
 		} else {
 		$orders = Order::sttOrderBy('id', false)->get();
 		}
@@ -39,6 +39,7 @@ class OrderController
 		}
 		if($order != ""){
 			$orderDetail = OrderDetail::where(['order_id','=', $order->id])->get();
+			// dd($orderDetail);
 		}
 		include_once './app/views/admin/orders/edit.php';
 	}

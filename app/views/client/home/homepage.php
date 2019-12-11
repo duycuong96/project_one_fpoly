@@ -128,7 +128,7 @@
                                             <form action="<?= BASE_URL . 'search' ?>" method="get">
                                                 <div class="form-group">
                                                     <label for="">Chọn địa điểm</label>
-                                                    <select name="location_id" class="form-control">
+                                                    <select name="locationId" class="form-control">
                                                         <option value="" hidden="">Chọn điểm nhận xe</option>
                                                         <?php foreach ($locations as $location) { ?>
                                                             <option value="<?= $location->id ?>"><?= $location->name ?></option>
@@ -138,7 +138,7 @@
                                                 <div class="form-group">
                                                     <label for="">Chọn loại xe</label>
                                                     <select name="categoryId" class="form-control">
-                                                        <option value="" hidden="">Chọn điểm nhận xe</option>
+                                                        <option value="" hidden="">Chọn loại xe</option>
                                                         <?php foreach ($cate as $category) { ?>
                                                             <option value="<?= $category->id ?>"><?= $category->name ?></option>
                                                         <?php } ?>
@@ -174,7 +174,7 @@
                         <?php foreach ($locations as $location) { ?>
                             <div class="col-md-4">
                                 <div class="banner-wrapper mb-30">
-                                    <a href="#"><img src="<?= LOCATION_URL . $location->image ?>" alt="image"></a>
+                                    <a href="<?= BASE_URL . 'location?id=' . $location->id ?>"><img src="<?= LOCATION_URL . $location->image ?>" alt="image"></a>
                                     <div class="banner-content">
                                         <h2><?= $location->name ?></h2>
                                     </div>
