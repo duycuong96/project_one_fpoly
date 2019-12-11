@@ -75,9 +75,12 @@
                                                     <li><a href="">Địa điểm thuê xe</a>
                                                         <ul>
                                                             <?php
+                                                            foreach ($loca as $location) { ?>
+                                                                <li><a href=""><?= $location->name ?></a></li>
 
                                                             foreach ($loca as $location) { ?>
                                                                 <li><a href=""><?= $location->name ?></a></li>
+
 
                                                             foreach ($loca as $locas) { ?>
                                                                 <li><a href="<?= BASE_URL . 'location?id=' . $locas->id ?>"><?= $locas->name ?></a></li>
