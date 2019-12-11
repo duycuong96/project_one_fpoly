@@ -7,7 +7,7 @@ require_once './app/views/admin/master/sidebar.php';
   <div class="content">
     <div class="page-inner">
       <div class="page-header">
-        <h4 class="page-title">Địa điểm</h4>
+        <h4 class="page-title">Hãng xe</h4>
         <ul class="breadcrumbs">
           <li class="nav-home">
             <a href="#">
@@ -18,7 +18,7 @@ require_once './app/views/admin/master/sidebar.php';
             <i class="flaticon-right-arrow"></i>
           </li>
           <li class="nav-item">
-            <a href="<?= ADMIN_URL . '/maker' ?>">Địa điểm</a>
+            <a href="<?= ADMIN_URL . '/maker' ?>">Hãng xe</a>
           </li>
         </ul>
       </div>
@@ -39,7 +39,7 @@ require_once './app/views/admin/master/sidebar.php';
                 <div class="col-md-8">
                   <form action="<?= ADMIN_URL . '/maker/save-add' ?>" method="post">
                     <div class="form-group">
-                      <label>Tên địa điểm:</label>
+                      <label>Tên hãng xe:</label>
                       <input type="text" name="name" class="form-control" placeholder="" value="">
                       <small id="emailHelp2" class="form-text text-muted">
                           <?php if (isset($_GET['err_name'])) : ?>

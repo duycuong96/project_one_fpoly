@@ -174,12 +174,11 @@ class LocationController
 		}
 
 
-		if($image['size'] > 0){
-		$data = compact('name', 'description', 'show_location');
-		$data['image']=$filename;
-		}else {
+
+		
+
 		$data = compact('name', 'description','image', 'show_location');
-		}
+		$data['image']=$filename;
 		// dd($data);
 		$model = new Location();
 		$model = Location::where(['id', '=', $id])->first();

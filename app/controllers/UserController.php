@@ -213,7 +213,78 @@ class UserController
 
 		header('location: ' . ADMIN_URL . '/account');
 	}
+	// thay đổi mật khẩu
+	public function changePassword(){
+		$roles = Role::all();
+		$id = isset($_GET['id']) ? $_GET['id'] : null;
+		$user = User::where(['id', '=', $id])->first();
+		if(!$user){
+            header('location: '. BASE_URL . 'error');
+			die;
+		}
+		include_once './app/views/admin/users/change.php';
+	}
+	// 
+	public function saveChangePassword(){
+		$rePassword = $_POST['rePassword'];
+		$passwordNow = isset($_POST['passwordNow']) == true ? $_POST['passwordNow'] : null;
+		$newPassword = isset($_POST['newPassword']) == true ? $_POST['newPassword'] : null;
+		$password = password_hash($newPassword, PASSWORD_DEFAULT);
+		// dd($password);
+		$id = $_SESSION['AUTH']['id'];
+		// dd($passwordNow);
+		$user = User::where(['id', '=', $id])->first();
 
+		$pass_sql = $user->password;
+		// dd($passwordNow);
+		if (isset($_SERVER['PHP_SELF'])) {
+			// pass
+			$err_password_now = "";
+			if ($passwordNow == "" || strlen($passwordNow) < 6) {
+				$err_password_now = "Nhập lại mật khẩu";
+			} elseif (!password_verify($passwordNow, $pass_sql)) {
+				$err_password_now = "Mật khẩu không chính xác";
+			}
+
+			$err_password_new= "";
+			if ($newPassword == "" || strlen($newPassword) < 6) {
+				$err_password_new = "Nhập mật khẩu mới ít nhất 6 kí tự";
+				}elseif (strcmp($newPassword, $passwordNow) == 0) {
+					$err_password_new = "Mật khẩu mới không được giống mật khẩu cũ";
+				}
+
+			$err_rePassword = "";
+			if (strcmp($newPassword, $rePassword) != 0) {
+				$err_rePassword = "Nhập lại mật khẩu không trùng khớp";
+			}
+
+
+			// kiểm tra và hiện validation
+			if ($err_password_now != "" || $err_password_new != "" || $err_rePassword != "") {
+				header(
+					'location: ' . ADMIN_URL . '/account/change-password?id=' .$id
+						. '&err_password_now=' . $err_password_now
+						. '&err_password_new=' . $err_password_new
+						. '&err_rePassword=' . $err_rePassword
+				);
+				die;
+			}
+		}
+		if (password_verify($passwordNow, $pass_sql)) {
+			// echo 'thanh cong';
+			$data = compact('password');
+			// dd($data);
+			$model = new User();
+			$model = User::where(['id', '=', $id])->first();
+			// dd($model);
+			$model->update($data);
+			header("Location: " .BASE_URL . 'account');
+			// dd($model);
+		include_once './app/views/client/home/changePassword.php';
+		}else{
+			echo 'that bai';
+		}
+	}
 	// xóa
 
 	public function delUser(){

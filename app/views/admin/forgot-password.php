@@ -28,15 +28,19 @@
 		</div>
 
 		<div class="form-label-group">
-			<input type="email" id="inputEmail" class="form-control" name="email" placeholder="Địa chỉ email" >
-            <label for="inputEmail">Email của bạn</label>
-           
-        </div>
-        
+			<input type="email" id="inputEmail" class="form-control" name="email" placeholder="Địa chỉ email">
+			<label for="inputEmail">Email của bạn</label>
+			<small id="emailHelp2" class="form-text text-muted">
+				<?php if (isset($_GET['error'])) : ?>
+					<span style="color: red"><?= $_GET['error'] ?></span>
+				<?php endif ?>
+			</small>
+		</div>
+
 		<div class="checkbox mb-3">
-        <div>
-            <a href="<?= ADMIN_URL . '/login' ?>">Đăng nhập</a>
-            </div>
+			<div>
+				<a href="<?= ADMIN_URL . '/login' ?>">Đăng nhập</a>
+			</div>
 		</div>
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Lấy lại mật khẩu</button>
