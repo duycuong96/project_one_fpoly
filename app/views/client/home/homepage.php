@@ -56,7 +56,7 @@
                                             <nav>
                                                 <ul>
                                                     <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
-                                                    <li><a href="categories">loại xe</a>
+                                                    <li><a href="#">loại xe</a>
                                                         <ul>
                                                             <?php
                                                             foreach ($cate as $cates) { ?>
@@ -64,19 +64,20 @@
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="">Hãng xe</a>
+                                                    <li><a href="#">Hãng xe</a>
                                                         <ul>
                                                             <?php
-                                                            foreach ($maker as $makers) { ?>
-                                                                <li><a href="<?= BASE_URL . 'maker?id=' . $makers->id ?>"><?= $makers->name ?></a></li>
+                                                            foreach ($makers as $maker) { ?>
+                                                                <li><a href="<?= BASE_URL . 'maker?id=' . $maker->id ?>"><?= $maker->name ?></a></li>
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="">Địa điểm thuê xe</a>
+                                                    <li><a href="#">Địa điểm thuê xe</a>
                                                         <ul>
                                                             <?php
-                                                            foreach ($loca as $locas) { ?>
-                                                                <li><a href="<?= BASE_URL . 'location?id=' . $locas->id ?>"><?= $locas->name ?></a></li>
+                                                            foreach ($locations as $location) { ?>
+                                                                <li><a href="<?= BASE_URL . 'location?id=' . $location->id ?>"><?= $location->name ?></a></li>
+
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
@@ -95,60 +96,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="mobile-menu-area col-12">
-                                <div class="mobile-menu">
-                                    <nav id="mobile-menu-active">
-                                        <ul class="menu-overflow">
-                                            <li><a href="index.html">HOME</a></li>
-                                            <li><a href="#">pages</a>
-                                                <ul>
-                                                    <li><a href="about-us.html">about us</a></li>
-                                                    <li><a href="cart.html">cart page</a></li>
-                                                    <li><a href="checkout.html">checkout</a></li>
-                                                    <li><a href="wishlist.html">wishlist</a></li>
-                                                    <li><a href="login-register.html">login</a></li>
-                                                    <li><a href="contact.html">contact</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">shop</a>
-                                                <ul>
-                                                    <li><a href="#">shop grid</a>
-                                                        <ul>
-                                                            <li><a href="shop-grid-2-col.html"> grid 2 column</a></li>
-                                                            <li><a href="shop.html"> grid 3 column</a></li>
-                                                            <li><a href="shop-grid-4-col.html"> grid 4 column</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">shop list</a>
-                                                        <ul>
-                                                            <li><a href="shop-list.html"> list 1 column</a></li>
-                                                            <li><a href="shop-list-2-col.html"> list 2 column</a></li>
-                                                            <li><a href="shop-list-box.html"> list box style</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">product details</a>
-                                                        <ul>
-                                                            <li><a href="product-details.html">tab style</a></li>
-                                                            <li><a href="product-details-sticky.html">sticky style</a></li>
-                                                            <li><a href="product-details-gallery.html">gallery style</a></li>
-                                                            <li><a href="product-details-fixed-img.html">fixed image style</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">BLOG</a>
-                                                <ul>
-                                                    <li><a href="blog.html">blog page</a></li>
-                                                    <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                                    <li><a href="blog-sidebar-2.html">blog sidebar 2</a></li>
-                                                    <li><a href="blog-details.html">blog details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html"> Contact us</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="header-cart-wrapper">
@@ -180,9 +128,9 @@
                                             <form action="<?= BASE_URL . 'search' ?>" method="get">
                                                 <div class="form-group">
                                                     <label for="">Chọn địa điểm</label>
-                                                    <select name="locationId" class="form-control">
+                                                    <select name="location_id" class="form-control">
                                                         <option value="" hidden="">Chọn điểm nhận xe</option>
-                                                        <?php foreach ($loca as $location) { ?>
+                                                        <?php foreach ($locations as $location) { ?>
                                                             <option value="<?= $location->id ?>"><?= $location->name ?></option>
                                                         <?php } ?>
                                                     </select>
@@ -193,9 +141,11 @@
                                                         <option value="" hidden="">Chọn điểm nhận xe</option>
                                                         <?php foreach ($cate as $category) { ?>
                                                             <option value="<?= $category->id ?>"><?= $category->name ?></option>
+
                                                         <?php } ?>
                                                     </select>
                                                 </div>
+
                                                 <div class="form-group">
                                                     <button class="btn-lg btn-warning btn-block " type="submit">TÌM XE</button>
                                                 </div>
@@ -222,12 +172,12 @@
                         <hr>
                     </div>
                     <div class="row">
-                        <?php foreach ($loca as $locas) { ?>
+                        <?php foreach ($locations as $location) { ?>
                             <div class="col-md-4">
                                 <div class="banner-wrapper mb-30">
-                                    <a href="#"><img src="<?= $locas->image ?>" alt="image"></a>
+                                    <a href="#"><img src="<?= LOCATION_URL . $location->image ?>" alt="image"></a>
                                     <div class="banner-content">
-                                        <h2><?= $locas->name ?></h2>
+                                        <h2><?= $location->name ?></h2>
                                     </div>
                                 </div>
                             </div>
@@ -251,7 +201,7 @@
                     <div class="tab-content jump">
                         <div class="tab-pane active" id="home1">
                             <div class="product-slider-active owl-carousel">
-                                <?php foreach ($cars as $car) { ?>
+                                <?php foreach ($carsHonda as $car) { ?>
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
@@ -269,7 +219,7 @@
                                                 <a class="action-cart-2" title="Wishlist" href="<?= BASE_URL . 'add-wishlist?id=' . $car->id ?>">
                                                     <i class=" ti-heart"></i>
                                                 </a>
-                                                <a class="action-reload" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                                <a class="action-reload" title="Quick View" href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
                                                     <i class=" ti-zoom-in"></i>
                                                 </a>
                                             </div>
@@ -290,42 +240,40 @@
                         </div>
                         <div class="tab-pane" id="home2">
                             <div class="product-slider-active owl-carousel">
-                                <?php foreach ($cars as $car) { ?>
-                                    <div class="product-wrapper mb-30">
+                                <?php foreach ($carsYamaha as $car) { ?>
+                                    <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
                                                 <img src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
-                                                    <li>2018</li>
-                                                    <li>MANUAL</li>
-                                                    <li>PETROL</li>
-                                                    <li>250 CC</li>
+                                                    <li><?= $car->getCateName(); ?></li>
                                                 </ul>
                                             </div>
                                             <div class="product-action">
-                                                <a class="action-plus-2" title="Đặt hàng" href="<?= BASE_URL . 'add-cart?id=' . $car->id ?>">
+                                                <a class="action-plus-2" title="Đặt xe" href="<?= BASE_URL . 'checkout?id=' . $car->id ?>">
                                                     <i class=" ti-shopping-cart"></i>
                                                 </a>
-                                                <a class="action-cart-2" title="Wishlist" href="#">
+                                                <a class="action-cart-2" title="Yêu thích" href="<?= BASE_URL . 'add-wishlist?id=' . $car->id ?>">
                                                     <i class=" ti-heart"></i>
                                                 </a>
-                                                <a class="action-reload" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                                <a class="action-reload" title="Chi tiết" href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
                                                     <i class=" ti-zoom-in"></i>
                                                 </a>
                                             </div>
                                             <div class="product-content-wrapper">
                                                 <div class="product-title-spreed">
                                                     <h4><a href="<?= BASE_URL . 'detail?id=' . $car->id ?>"><?= $car->name ?></a></h4>
-                                                    <span>150 CC</span>
+                                                    <span><?= $car->getLocaName() ?></span>
                                                 </div>
                                                 <div class="product-price">
-                                                    <span>200,000 đ/ngày</span>
+                                                    <span><?= $car->price ?> đ/ngày</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 <?php } ?>
                             </div>
                         </div>
