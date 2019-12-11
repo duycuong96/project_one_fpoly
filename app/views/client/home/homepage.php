@@ -56,7 +56,7 @@
                                             <nav>
                                                 <ul>
                                                     <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
-                                                    <li><a href="categories">loại xe</a>
+                                                    <li><a href="#">loại xe</a>
                                                         <ul>
                                                             <?php
                                                             foreach ($cate as $cates) { ?>
@@ -64,7 +64,7 @@
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="">Hãng xe</a>
+                                                    <li><a href="#">Hãng xe</a>
                                                         <ul>
                                                             <?php
                                                             foreach ($makers as $maker) { ?>
@@ -72,18 +72,11 @@
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="">Địa điểm thuê xe</a>
+                                                    <li><a href="#">Địa điểm thuê xe</a>
                                                         <ul>
                                                             <?php
-                                                            foreach ($loca as $location) { ?>
-                                                                <li><a href=""><?= $location->name ?></a></li>
-
-                                                            foreach ($loca as $location) { ?>
-                                                                <li><a href=""><?= $location->name ?></a></li>
-
-
-                                                            foreach ($loca as $locas) { ?>
-                                                                <li><a href="<?= BASE_URL . 'location?id=' . $locas->id ?>"><?= $locas->name ?></a></li>
+                                                            foreach ($locations as $location) { ?>
+                                                                <li><a href="<?= BASE_URL . 'location?id=' . $location->id ?>"><?= $location->name ?></a></li>
 
                                                             <?php } ?>
                                                         </ul>
@@ -135,21 +128,23 @@
                                             <form action="<?= BASE_URL . 'search' ?>" method="get">
                                                 <div class="form-group">
                                                     <label for="">Chọn địa điểm</label>
-                                                    <select name="locationId" class="form-control">
+                                                    <select name="location_id" class="form-control">
                                                         <option value="" hidden="">Chọn điểm nhận xe</option>
-                                                        <?php foreach ($loca as $location) { ?>
+                                                        <?php foreach ($locations as $location) { ?>
                                                             <option value="<?= $location->id ?>"><?= $location->name ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="">Ngày nhận xe</label>
-                                                    <input class="form-control" type="date">
+                                                    <label for="">Chọn hãng xe</label>
+                                                    <select name="locationId" class="form-control">
+                                                        <option value="maker_id" hidden="">Chọn hãng xe</option>
+                                                        <?php foreach ($makers as $maker) { ?>
+                                                            <option value="<?= $maker->id ?>"><?= $maker->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="">Ngày trả xe</label>
-                                                    <input class="form-control" type="date">
-                                                </div>
+
                                                 <div class="form-group">
                                                     <button class="btn-lg btn-warning btn-block " type="submit">TÌM XE</button>
                                                 </div>
@@ -176,7 +171,7 @@
                         <hr>
                     </div>
                     <div class="row">
-                        <?php foreach ($loca as $location) { ?>
+                        <?php foreach ($locations as $location) { ?>
                             <div class="col-md-4">
                                 <div class="banner-wrapper mb-30">
                                     <a href="#"><img src="<?= LOCATION_URL . $location->image ?>" alt="image"></a>
