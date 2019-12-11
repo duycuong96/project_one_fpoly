@@ -309,6 +309,14 @@ switch ($url) {
 		$ctr = new UserController();
 		$ctr->saveEditUser();
 		break;
+	case 'admin/account/change-password':
+		$ctr = new UserController();
+		$ctr->changePassword();
+		break;
+	case 'admin/account/save-change-password':
+		$ctr = new UserController();
+		$ctr->saveChangePassword();
+		break;
 	case 'admin/account/del':
 		$ctr = new UserController();
 		$ctr->delUser();
