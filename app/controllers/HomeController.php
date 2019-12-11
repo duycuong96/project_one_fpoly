@@ -220,7 +220,7 @@ class HomeController
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
-		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id','=',$categoryId])->get();
+		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id','=',$categoryId]);
 		// dd($cars);
 		include_once './app/views/client/home/category.php';
 
