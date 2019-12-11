@@ -480,6 +480,53 @@ class HomeController
 		$unit_price = isset($_POST['unit_price']) == true ? $_POST['unit_price'] : "";
 		$count_day = isset($_POST['count_day']) == true ? $_POST['count_day'] : "";
 		$status=1;
+
+		if (isset($_SERVER['PHP_SELF'])) {
+			$err_customer_name = "";
+			if ($customer_name = "" || strlen($customer_name) < 2) {
+				$err_customer_name = 'Vui lòng điền họ và tên';
+			}
+
+			$err_customer_phone_number = '';
+			if ($customer_phone_number = '') {
+				$err_customer_phone_number = 'Vui lòng nhập số điện thoại';
+			} elseif (!is_int($customer_phone_number)) {
+				$err_customer_phone_number = "Vui lòng nhập đúng số điện thoại không '.' hoặc ',' ";
+			} elseif (strlen($customer_phone_number) < 10) {
+				$err_customer_phone_number = "Số điện thoại ở Việt Nam hiện tại có 10 số";
+			}
+
+
+			$err_customer_address = "";
+			if ($customer_address = "" || strlen($customer_address) < 6) {
+				$err_customer_address = 'Địa chỉ của bạn quá ngắn';
+			}
+
+			$err_customer_email = "";
+			if ($customer_email == "") {
+				$err_customer_email = "Vui lòng nhập địa chỉ Email";
+			} elseif (!filter_var($customer_email, FILTER_VALIDATE_EMAIL)) {
+				$err_customer_email = "Cập nhật Email nhập chưa đúng";
+			}
+
+			$err_message = "";
+			if ($message = "" || strlen($message) < 2) {
+				$err_message = 'Lời nhắn quá ngắn';
+			}
+
+			// kiểm tra và hiện validation
+			if ($err_customer_name != "" || $err_customer_phone_number != "" || $err_customer_address != "" || $err_message != "" || $err_customer_email != "") {
+				header(
+					'location: ' . BASE_URL . '/checkout?id=28&customer_address=&date_start='. $date_start .'&date_end=' .$date_end
+						. '&err_customer_name=' . $err_customer_name
+						. '&err_customer_phone_number=' . $err_customer_phone_number
+						. '&err_customer_address=' . $err_customer_address
+						. '&err_message=' . $err_message
+						. '&err_customer_email=' . $err_customer_email
+				);
+				die;
+			}
+		}
 		// dd($customer_address);
 		$data = compact('customer_name', 'customer_email', 'customer_phone_number', 'customer_address', 'total_price', 'status', 'buyer_id', 'message', 'payment_method', 'date_start', 'date_end');
 		// dd($data);

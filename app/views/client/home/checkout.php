@@ -105,24 +105,36 @@ include_once "./app/views/client/template/header.php";
                   <div class="checkout-form-list">
                     <label>Họ và tên <span class="required">*</span></label>
                     <input type="text" name="customer_name" placeholder="" />
+                    <?php if (isset($_GET['err_customer_name'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_customer_name'] ?></div>
+                    <?php endif ?>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Số điện thoại <span class="required">*</span></label>
                     <input type="text" name="customer_phone_number" />
+                    <?php if (isset($_GET['err_customer_phone_number'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_customer_phone_number'] ?></div>
+                    <?php endif ?>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Địa chỉ nhận xe <span class="required">*</span></label>
                     <input type="text" name="customer_address" />
+                    <?php if (isset($_GET['err_customer_address'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_customer_address'] ?></div>
+                    <?php endif ?>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Email<span class="required">*</span></label>
                     <input type="email" name="customer_email" />
+                    <?php if (isset($_GET['err_customer_email'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_customer_email'] ?></div>
+                    <?php endif ?>
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -130,6 +142,9 @@ include_once "./app/views/client/template/header.php";
                     <div class="checkout-form-list mrg-nn">
                       <label>Lưu ý</label>
                       <textarea id="checkout-mess" name="message" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                      <?php if (isset($_GET['err_message'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_message'] ?></div>
+                      <?php endif ?>
                     </div>
                   </div>
                 </div>
