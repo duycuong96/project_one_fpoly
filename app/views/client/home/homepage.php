@@ -188,12 +188,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="">Ngày nhận xe</label>
-                                                    <input class="form-control" type="date">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="">Ngày trả xe</label>
-                                                    <input class="form-control" type="date">
+                                                    <label for="">Chọn loại xe</label>
+                                                    <select name="categoryId" class="form-control">
+                                                        <option value="" hidden="">Chọn điểm nhận xe</option>
+                                                        <?php foreach ($cate as $category) { ?>
+                                                            <option value="<?= $category->id ?>"><?= $category->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <button class="btn-lg btn-warning btn-block " type="submit">TÌM XE</button>
@@ -262,7 +263,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-action">
-                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'checkout?id=' . $car->id ?>">
+                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
                                                     <i class=" ti-shopping-cart"></i>
                                                 </a>
                                                 <a class="action-cart-2" title="Wishlist" href="<?= BASE_URL . 'add-wishlist?id=' . $car->id ?>">
