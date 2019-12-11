@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/icon.png">
-
+  <link href="https://thichchiase.com/demo/date-range-picker/Date%20range%20picker%20sample_files/datepicker.css" rel="stylesheet" />
 
   <!-- all css here -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">

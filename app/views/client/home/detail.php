@@ -195,10 +195,10 @@ include_once "./app/views/client/template/header.php";
                 <label for="">Ngày trả xe</label>
                 <input class="form-control" type="date" name="date_end">
               </div>
-              <!-- <div class="form-group">
+              <div class="form-group">
                 <label for="">Voucher giảm giá</label>
                 <input class="form-control" type="text" name="voucher">
-              </div> -->
+              </div>
 
             </form>
           </div>

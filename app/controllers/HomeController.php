@@ -199,8 +199,20 @@ class HomeController
 		// dd($data);
 		$model = new User();
 		$model->insert($data);
-		// dd($model);
-		header('Location: ' . BASE_URL . 'login');
+		if (isset($_SERVER['PHP_SELF'])) {
+			$err_success = "";
+			if ($name = "" || strlen($name) < 2) {
+				$err_success = 'Chúc mừng bạn đã đăng ký thành công!';
+			}
+			// kiểm tra và hiện validation
+			if ($err_email != "" || $err_password != "") {
+				header(
+					'location: ' . BASE_URL . '/register?'
+						. 'err_success=' . $err_success
+				);
+				die;
+			}
+		}
 	}
 	// logout
 	public function logout()
@@ -473,6 +485,7 @@ class HomeController
 		// dd($data);
 		$model = new Order();
 		$model->insert($data);
+		dd($model);
 		$newOrder = Order::sttOrderBy('id', false)->limit(1)->first();
 		// dd($newOrder);
 		$order_id = $newOrder->id;

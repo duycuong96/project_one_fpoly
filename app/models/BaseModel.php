@@ -28,7 +28,7 @@ class BaseModel
 		foreach ($arr as $key => &$value) {
 			$stmt->bindParam(":$key", $value);
 		}
-		// var_dump($this->queryBuilder);die;
+		var_dump($this->queryBuilder);die;
 		$stmt->execute();
 	}
 	public function update($arr){

@@ -27,6 +27,9 @@ include_once "./app/views/client/template/header.php";
           <div class="tab-content">
             <div id="lg1" class="tab-pane active">
               <div class="login-form-container">
+                <?php if (isset($_GET['err_name'])) : ?>
+                  <div class="text-danger" role="alert"><?= $_GET['err_success'] ?></div>
+                <?php endif ?>
                 <div class="login-form">
                   <form action="<?= BASE_URL ?>save-register" method="post" enctype="multipart/form-data">
                     <?php if (isset($_GET['err_name'])) : ?>
