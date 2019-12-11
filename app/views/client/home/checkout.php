@@ -96,6 +96,8 @@ include_once "./app/views/client/template/header.php";
               <input type="hidden" name="date_end" value="<?= $_GET['date_end'] ?>" id="">
               <input type="hidden" name="car_id" value="<?= $car->id ?>" id="">
               <input type="hidden" name="total_price" value="<?= $car->price * $day ?>" id="">
+              <input type="hidden" name="unit_price" value="<?= $car->price ?>" id="">
+              <input type="hidden" name="count_day" value="<?= $day ?>" id="">
               <h3>Thông tin khách hàng</h3>
               <p>Nhập thông tin cá nhân để tiến hành đặt</p>
               <div class="row">
@@ -135,8 +137,7 @@ include_once "./app/views/client/template/header.php";
                   <div class="checkout-form-list">
                     <label>Phương thức thanh toán<span class="required">*</span></label>
                     <select name="payment_method">
-                      <option value="1" selected>Tiền mặt</option>
-                      <option value="2">Chuyển khoản</option>
+                      <option value="1" selected>Thanh toán khi nhận xe</option>
                     </select>
                   </div>
                 </div>

@@ -85,26 +85,35 @@ include_once "./app/views/client/template/header.php";
                 <form method="post" action="<?= BASE_URL . 'comment' ?>" id="form" role="form" class="blog-comments">
                   <div class="row">
 
+                    <?php if (isset($_GET['err_checkout'])) : ?>
+                      <h3 class="text-danger" role="alert"><?= $_GET['err_checkout'] ?></h3>
+                    <?php endif ?>
                     <div class="col-md-12 form-group">
                       <!-- Name -->
                       <input type="hidden" name="product_id" value="<?= $detail->id ?>">
                       <input type="text" name="title" id="name" class=" form-control" placeholder="Title *" maxlength="100" required="">
+                      <?php if (isset($_GET['err_title'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_title'] ?></div>
+                      <?php endif ?>
                     </div>
 
                     <div class="form-group col-md-12">
                       <select class="form-control" name="rating">
-                        <option value="">Đánh giá</option>
+                        <option value="" disabled>Đánh giá</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
-                        <option value="5">5</option>
+                        <option value="5" selected>5</option>
                       </select>
                     </div>
 
                     <!-- Comment -->
                     <div class="form-group col-md-12">
                       <textarea id="text" class=" form-control" rows="6" placeholder="Comment" maxlength="400" name="content"></textarea>
+                      <?php if (isset($_GET['err_content'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_content'] ?></div>
+                      <?php endif ?>
                     </div>
 
                     <!-- Send Button -->
@@ -186,10 +195,10 @@ include_once "./app/views/client/template/header.php";
                 <label for="">Ngày trả xe</label>
                 <input class="form-control" type="date" name="date_end">
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="">Voucher giảm giá</label>
                 <input class="form-control" type="text" name="voucher">
-              </div>
+              </div> -->
 
             </form>
           </div>

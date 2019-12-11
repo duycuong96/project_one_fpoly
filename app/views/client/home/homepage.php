@@ -136,11 +136,11 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="">Chọn hãng xe</label>
-                                                    <select name="locationId" class="form-control">
-                                                        <option value="maker_id" hidden="">Chọn hãng xe</option>
-                                                        <?php foreach ($makers as $maker) { ?>
-                                                            <option value="<?= $maker->id ?>"><?= $maker->name ?></option>
+                                                    <label for="">Chọn loại xe</label>
+                                                    <select name="categoryId" class="form-control">
+                                                        <option value="" hidden="">Chọn điểm nhận xe</option>
+                                                        <?php foreach ($cate as $category) { ?>
+                                                            <option value="<?= $category->id ?>"><?= $category->name ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -212,7 +212,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-action">
-                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'checkout?id=' . $car->id ?>">
+                                                <a class="action-plus-2" title="Add To Cart" href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
                                                     <i class=" ti-shopping-cart"></i>
                                                 </a>
                                                 <a class="action-cart-2" title="Wishlist" href="<?= BASE_URL . 'add-wishlist?id=' . $car->id ?>">
