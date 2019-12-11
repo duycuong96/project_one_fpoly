@@ -47,7 +47,7 @@ include_once "./app/views/client/template/nav.php";
                   <a class="action-plus-2 p-action-none" title="Add To Cart" href="<?= BASE_URL . 'checkout?id=' . $car->id ?>">
                     <i class=" ti-shopping-cart"></i>
                   </a>
-                  <a class="action-cart-2" title="Wishlist" href="#">
+                  <a class="action-cart-2" title="Wishlist" href="<?= BASE_URL . 'add-wishlist?id=' . $car->id ?>">
                     <i class=" ti-heart"></i>
                   </a>
                   <a class="action-reload" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">

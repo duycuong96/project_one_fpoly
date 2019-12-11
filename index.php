@@ -107,6 +107,10 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->checkout();
 		break;
+	case 'post-checkout':
+		$ctr = new HomeController();
+		$ctr->postCheckout();
+		break;
 	case 'account':
 		checkLoginClient();
 		$ctr = new HomeController();
