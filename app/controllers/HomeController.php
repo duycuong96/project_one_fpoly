@@ -9,6 +9,7 @@ use App\Models\Location;
 use App\Models\Maker;
 use App\Models\Order;
 use App\Models\OrderDetail;
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -485,7 +486,7 @@ class HomeController
 		// dd($data);
 		$model = new Order();
 		$model->insert($data);
-		dd($model);
+		// dd($model);
 		$newOrder = Order::sttOrderBy('id', false)->limit(1)->first();
 		// dd($newOrder);
 		$order_id = $newOrder->id;
@@ -496,49 +497,49 @@ class HomeController
 		$orderDetail = OrderDetail::where(['order_id', '=', $order_id])->first();
 		// dd($orderDetail->car_id);
 		// dd($dataDetail);
-		$message = '<div style="width: 600px; margin: 0 auto; padding: 0 auto;">';
-		$message .= '<div style="border: 1px dotted #007bff; padding:10px">';
-		$message .= 'Cảm ơn các bạn đã tin tưởng Mego !!';
-		$message .= '</div>';
-		$message .= '<div><h2>Cảm ơn quý khách đã đặt hàng</h2>';
-		$message .= '<p>Mego thông báo đơn hàng của quý khách đã được tiếp nhận và đang trong quá trình xử lý.</p></div>';
-		$message .= '<div><h4>Thông tin đơn hàng #';
-		$message .= $order_id;
-		$message .= '</h4><hr>';
-		$message .= '<table style="width: 100%;">';
-		$message .= '<tr><th style="width: 50%; text-align: left;">Thông tin thanh toán</th><th style="width: 50%; text-align: left;">Địa chỉ giao hàng</th></tr>';
-		$message .= '<tr><td>';
-		$message .= $customer_name;
-		$message .= '<br>';
-		$message .= $customer_email;
-		$message .= '<br>';
-		$message .= $customer_phone_number;
-		$message .= '</td><td>';
-		$message .= $customer_address;
-		$message .= '<br>';
-		$message .= $customer_phone_number;
-		$message .= '</td></tr></table>';
-		$message .= '<p>Phương thức thanh toán: Thanh toán khi nhận xe';
-		$message .= '</p></div>';
+		$output = '<div style="width: 600px; margin: 0 auto; padding: 0 auto;">';
+		$output .= '<div style="border: 1px dotted #007bff; padding:10px">';
+		$output .= 'Cảm ơn các bạn đã tin tưởng Mego !!';
+		$output .= '</div>';
+		$output .= '<div><h2>Cảm ơn quý khách đã đặt hàng</h2>';
+		$output .= '<p>Mego thông báo đơn hàng của quý khách đã được tiếp nhận và đang trong quá trình xử lý.</p></div>';
+		$output .= '<div><h4>Thông tin đơn hàng #';
+		$output .= $order_id;
+		$output .= '</h4><hr>';
+		$output .= '<table style="width: 100%;">';
+		$output .= '<tr><th style="width: 50%; text-align: left;">Thông tin thanh toán</th><th style="width: 50%; text-align: left;">Địa chỉ giao hàng</th></tr>';
+		$output .= '<tr><td>';
+		$output .= $customer_name;
+		$output .= '<br>';
+		$output .= $customer_email;
+		$output .= '<br>';
+		$output .= $customer_phone_number;
+		$output .= '</td><td>';
+		$output .= $customer_address;
+		$output .= '<br>';
+		$output .= $customer_phone_number;
+		$output .= '</td></tr></table>';
+		$output .= '<p>Phương thức thanh toán: Thanh toán khi nhận xe';
+		$output .= '</p></div>';
 
-		$message .= '<h4>Chi tiết đơn hàng</h4><hr>';
-		$message .= '<table style="width: 100%;"><tr><th style="text-align: left;">Tên xe</th><th style="text-align: left;">Đơn giá</th><th style="text-align: left;" >Số ngày</th><th style="text-align: left;" >Thành tiền</th></tr><tr>';
-		$message .= '<td>';
-		$message .= $orderDetail->getNameCar();
-		$message .= '</td><td>';
-		$message .= $unit_price;
-		$message .= '</td><td>';
-		$message .= $count_day;
-		$message .= '</td><td>';
-		$message .= $total_price;
-		$message .= '</td></tr><tr>';
-		$message .= '<td colspan="3"><b>Tổng giá trị đơn hàng</b></td><td>';
-		$message .= $total_price;
-		$message .= '</td></tr></table>';
+		$output .= '<h4>Chi tiết đơn hàng</h4><hr>';
+		$output .= '<table style="width: 100%;"><tr><th style="text-align: left;">Tên xe</th><th style="text-align: left;">Đơn giá</th><th style="text-align: left;" >Số ngày</th><th style="text-align: left;" >Thành tiền</th></tr><tr>';
+		$output .= '<td>';
+		$output .= $orderDetail->getNameCar();
+		$output .= '</td><td>';
+		$output .= $unit_price;
+		$output .= '</td><td>';
+		$output .= $count_day;
+		$output .= '</td><td>';
+		$output .= $total_price;
+		$output .= '</td></tr><tr>';
+		$output .= '<td colspan="3"><b>Tổng giá trị đơn hàng</b></td><td>';
+		$output .= $total_price;
+		$output .= '</td></tr></table>';
 
-		$message .= '<div><h4>Một lần nữa cảm ơn quý khách</h4></div>';
-		$message .= '</div>';
-
+		$output .= '<div><h4>Một lần nữa cảm ơn quý khách</h4></div>';
+		$output .= '</div>';
+		$body = $output;
 		$mail = new PHPMailer(true);
 		try {
 			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -564,12 +565,13 @@ class HomeController
 			}
 			$mail->isHTML(true);
 			$mail->Subject = $customer_name;
-			$mail->Body    = $message;
+			$mail->Body    = $body;
 			$mail->send();
-			
-			header('location: ' . BASE_URL );
+			header('location: ' . BASE_URL . 'checkout?id=26' . "&error="  . "Đặt xe thành công!");
+			die;
 		} catch (Exception $e) {
-			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+			header('location: ' . BASE_URL );
+			die;
 		}
 		
 	}
