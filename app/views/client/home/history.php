@@ -41,36 +41,49 @@ include_once "./app/views/client/template/header.php";
               <div class="row">
                 <?php foreach ($cars as $car ) { ?>
                 <div class="history-car">
+                  <?php foreach ($cars as $car) { ?>
                   <div class="row">
                     <div class="col-md-5">
-                      <img width="280px" src="assets/img/product/honda-air-blade.png" alt="">
+                      <img width="280px" style="margin-right: 50px" src="<?= IMAGE_URL . $car->feature_image ?>" alt="">
                     </div>
                     <div class="col-md-7">
                       <div class="row">
                         <div class="col-md-6">
-                          <h4>Honda Air Blade</h4>
-
+                          <h4><?= $car->name ?></h4>
                         </div>
                         <div class="col-md-6 text-right">
                           <a href="" class="btn btn-warning">Chi tiết</a>
                         </div>
                         <div class="col-md-12">
-                          <p class="text-danger">Trạng thái: Đã thanh toán</p>
+                          <p class="text-danger">Trạng thái: <?php if ($car->status == 0) {
+                            echo "Tiếp nhận đơn hàng";
+                          }elseif ($car->status == 1) {
+                            echo "Đang xử lý";
+                          }elseif ($car->status == 2) {
+                            echo "Chờ thanh toán";
+                          }elseif ($car->status == 3) {
+                            echo "Đã hoàn thành";
+                          }elseif ($car->status == 4) {
+                            echo "Hủy bỏ";
+                          }elseif ($car->status == 5) {
+                            echo "Hoàn tiền";
+                          } ?></p>
                         </div>
 
                       </div>
 
                       <hr>
                       <div>
-                        <p>Bắt đầu: 9:00 Ngày 20-11-2019 </p>
-                        <p>Kết thúc: 9:00 Ngày 21-11-2019 </p>
-                        <h5>Tổng tiền: 1,000,000 vnđ</h5>
+                        <p>Bắt đầu: <?= $car->date_start ?> </p>
+                        <p>Kết thúc: <?= $car->date_end ?> </p>
+                        <h5>Tổng tiền: <?= $car->total_price ?> vnđ</h5>
 
                       </div>
 
                     </div>
-
                   </div>
+                    
+                  <?php } ?>
                 </div>
                   
                 <?php } ?>

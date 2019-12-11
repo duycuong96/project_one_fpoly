@@ -76,7 +76,7 @@
                                                         <ul>
                                                             <?php
                                                             foreach ($loca as $locas) { ?>
-                                                                <li><a href=""><?= $locas->name ?></a></li>
+                                                                <li><a href="<?= BASE_URL . 'location?id=' . $locas->id ?>"><?= $locas->name ?></a></li>
                                                             <?php } ?>
                                                         </ul>
                                                     </li>
