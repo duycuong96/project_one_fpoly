@@ -44,7 +44,7 @@ include_once "./app/views/client/template/nav.php";
                   </ul>
                 </div>
                 <div class="product-action">
-                  <a class="action-plus-2 p-action-none" title="Add To Cart" href="<?= BASE_URL . 'checkout?id=' . $car->id ?>">
+                  <a class="action-plus-2 p-action-none" title="Add To Cart" href="<?= BASE_URL . 'detail?id=' . $car->id ?>">
                     <i class=" ti-shopping-cart"></i>
                   </a>
                   <a class="action-cart-2" title="Wishlist" href="<?= BASE_URL . 'add-wishlist?id=' . $car->id ?>">

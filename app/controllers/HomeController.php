@@ -216,10 +216,11 @@ class HomeController
 	public function search()
 	{
 		$locationId = isset($_GET['locationId']) == true ? $_GET['locationId'] : "";
+		$categoryId = isset($_GET['categoryId']) == true ? $_GET['categoryId'] : "";
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
-		$cars = Car::where(['location_id', '=', $locationId])->get();
+		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id','=',$categoryId])->get();
 		// dd($cars);
 		include_once './app/views/client/home/category.php';
 
@@ -302,6 +303,37 @@ class HomeController
 		$content = isset($_POST['content']) == true ? $_POST['content'] : "";
 		$user_id = $_SESSION['AUTH']['id'];
 		$status = 1;
+
+		if (isset($_SERVER['PHP_SELF'])) {
+			// pass
+			// dd($_SESSION['AUTH']);
+			$err_checkout = "";
+			if ($_SESSION['AUTH'] == null) {
+				$err_checkout = "Đăng nhập để có thể bình luận được bạn nhé!";
+			}
+			$err_title = "";
+			if ($title == "" || strlen($title) < 2) {
+				$err_title = "Tiêu đề quá ngắn";
+			}
+
+			$err_content = "";
+			if ($content == "" || strlen($content) < 6) {
+				$err_content = "Nội dung bình luận quá ngắn";
+			}
+
+
+			// kiểm tra và hiện validation
+			if ($err_checkout != "" || $err_title != "" || $err_content != "") {
+				header(
+					'location: ' . BASE_URL . '/detail?id=' .$product_id
+						. '&err_checkout=' . $err_checkout
+						. '&err_title=' . $err_title
+						. '&err_content=' . $err_content
+				);
+				die;
+			}
+		}
+
 		// dd($user_id);	
 		// dd($rating);
 		$data = compact('title', 'rating', 'content','product_id', 'user_id', 'status');
@@ -433,12 +465,99 @@ class HomeController
 		$date_start = isset($_POST['date_start']) == true ? $_POST['date_start'] : "";
 		$date_end = isset($_POST['date_end']) == true ? $_POST['date_end'] : "";
 		$car_id = isset($_POST['car_id']) == true ? $_POST['car_id'] : "";
+		$unit_price = isset($_POST['unit_price']) == true ? $_POST['unit_price'] : "";
+		$count_day = isset($_POST['count_day']) == true ? $_POST['count_day'] : "";
 		$status=1;
 		// dd($customer_address);
 		$data = compact('customer_name', 'customer_email', 'customer_phone_number', 'customer_address', 'total_price', 'status', 'buyer_id', 'message', 'payment_method', 'date_start', 'date_end');
 		// dd($data);
 		$model = new Order();
 		$model->insert($data);
+		$newOrder = Order::sttOrderBy('id', false)->limit(1)->first();
+		// dd($newOrder);
+		$order_id = $newOrder->id;
+		// dd($order_id);
+		$dataDetail =compact('order_id','car_id', 'unit_price');
+		$modelDetail = new OrderDetail();
+		$modelDetail->insert($dataDetail);
+		$orderDetail = OrderDetail::where(['order_id', '=', $order_id])->first();
+		// dd($orderDetail->car_id);
+		// dd($dataDetail);
+		$message = '<div style="width: 600px; margin: 0 auto; padding: 0 auto;">';
+		$message .= '<div style="border: 1px dotted #007bff; padding:10px">';
+		$message .= 'Cảm ơn các bạn đã tin tưởng Mego !!';
+		$message .= '</div>';
+		$message .= '<div><h2>Cảm ơn quý khách đã đặt hàng</h2>';
+		$message .= '<p>Mego thông báo đơn hàng của quý khách đã được tiếp nhận và đang trong quá trình xử lý.</p></div>';
+		$message .= '<div><h4>Thông tin đơn hàng #';
+		$message .= $order_id;
+		$message .= '</h4><hr>';
+		$message .= '<table style="width: 100%;">';
+		$message .= '<tr><th style="width: 50%; text-align: left;">Thông tin thanh toán</th><th style="width: 50%; text-align: left;">Địa chỉ giao hàng</th></tr>';
+		$message .= '<tr><td>';
+		$message .= $customer_name;
+		$message .= '<br>';
+		$message .= $customer_email;
+		$message .= '<br>';
+		$message .= $customer_phone_number;
+		$message .= '</td><td>';
+		$message .= $customer_address;
+		$message .= '<br>';
+		$message .= $customer_phone_number;
+		$message .= '</td></tr></table>';
+		$message .= '<p>Phương thức thanh toán: Thanh toán khi nhận xe';
+		$message .= '</p></div>';
+
+		$message .= '<h4>Chi tiết đơn hàng</h4><hr>';
+		$message .= '<table style="width: 100%;"><tr><th style="text-align: left;">Tên xe</th><th style="text-align: left;">Đơn giá</th><th style="text-align: left;" >Số ngày</th><th style="text-align: left;" >Thành tiền</th></tr><tr>';
+		$message .= '<td>';
+		$message .= $orderDetail->getNameCar();
+		$message .= '</td><td>';
+		$message .= $unit_price;
+		$message .= '</td><td>';
+		$message .= $count_day;
+		$message .= '</td><td>';
+		$message .= $total_price;
+		$message .= '</td></tr><tr>';
+		$message .= '<td colspan="3"><b>Tổng giá trị đơn hàng</b></td><td>';
+		$message .= $total_price;
+		$message .= '</td></tr></table>';
+
+		$message .= '<div><h4>Một lần nữa cảm ơn quý khách</h4></div>';
+		$message .= '</div>';
+
+		$mail = new PHPMailer(true);
+		try {
+			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail->CharSet = 'UTF-8';
+			$mail->isSMTP();
+			$mail->Host       = 'smtp.gmail.com';
+			$mail->SMTPAuth   = true;
+			$mail->Username = 'd3tmobilebk@gmail.com';
+			$mail->Password = 'd3t123456789';
+			$mail->SMTPSecure = 'tls';
+			$mail->Port = 587;
+			$mail->setFrom('phuoctrank51a6@gmail.com', 'Mego');
+			$mail->SMTPOptions = array(
+				'ssl' => array(
+					'verify_peer' => false,
+					'verify_peer_name' => false,
+					'allow_self_signed' => true
+				)
+			);
+			$emails = explode(",", $customer_email);
+			foreach ($emails as $e) {
+				$mail->addAddress($e);
+			}
+			$mail->isHTML(true);
+			$mail->Subject = $customer_name;
+			$mail->Body    = $message;
+			$mail->send();
+			echo 'Message has been sent';
+			header('location: ' . BASE_URL);
+		} catch (Exception $e) {
+			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+		}
 	}
 	public function account()
 	{
