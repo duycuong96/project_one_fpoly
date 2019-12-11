@@ -16,10 +16,15 @@ class HomeController
 {
 	// trang chủ
 	public function index(){
-		$maker= Maker::all();
+		$makers= Maker::all();
+		$hondaMaker = Maker::where(['name', '=', 'Honda' ])->first();
+		$yamahaMaker = Maker::where(['name', '=', 'Yamaha' ])->first();
+		// dd($hondaMaker);
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate= Category::all();
 		$cars= Car::all();
+		$carsHonda = Car::where(['maker_id', '=', $hondaMaker->id])->get();
+		$carsYamaha = Car::where(['maker_id', '=', $yamahaMaker->id])->get();
 		include_once './app/views/client/home/homepage.php';
 	}
 

@@ -58,7 +58,7 @@ require_once './app/views/admin/master/sidebar.php';
                                                 <td><?php
                                                     if($location->show_location ==1){
                                                         echo "Hiện";
-                                                    }else{
+                                                    }elseif($location->show_location == 0){
                                                         echo "Ẩn";
                                                     }
                                                 

@@ -48,7 +48,7 @@ class MakerController
         $model = new Maker;
         $model->insert($data);
 
-        header('location: ' . ADMIN_URL . '/maker/add');
+        header('location: ' . ADMIN_URL . '/maker');
     }
 
     // sửa
