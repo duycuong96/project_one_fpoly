@@ -61,26 +61,26 @@ include_once "./app/views/client/template/header.php";
           </div>
           <div class="product-overview">
             <h5 class="pd-sub-title">Thời gian nhận xe</h5>
-            <input type="date">
+            <input type="text" value="<?= $_GET['date_start'] ?>" readonly>
           </div>
           <div class="product-overview">
             <h5 class="pd-sub-title">Thời gian trả xe</h5>
-            <p><input type="date"></p>
+            <input type="text" value="<?= $_GET['date_end'] ?>" readonly>
           </div>
           <div class="product-overview">
             <h5 class="pd-sub-title">Chi tiết giá</h5>
             <table class="table">
               <tr>
                 <td>Đơn giá ngày</td>
-                <td>100,000 đ</td>
+                <td><?= $car->price ?> đ</td>
               </tr>
               <tr>
                 <td>Ngày</td>
-                <td>2 ngày</td>
+                <td><?= $day ?> ngày</td>
               </tr>
               <tr>
                 <td><b>Tổng</b></td>
-                <td>200,000 đ</td>
+                <td><?= $car->price * $day ?> đ</td>
               </tr>
             </table>
           </div>
@@ -89,40 +89,60 @@ include_once "./app/views/client/template/header.php";
       </div>
       <div class="col-md-8">
         <div class="product-details-content">
-          <form action="#">
+          <form action="<?= BASE_URL . 'post-checkout' ?>" method="post">
             <div class="checkbox-form">
+              <input type="hidden" name="buyer_id" value="<?= $_SESSION['AUTH']['id'] ?>">
+              <input type="hidden" name="date_start" value="<?= $_GET['date_start'] ?>" id="">
+              <input type="hidden" name="date_end" value="<?= $_GET['date_end'] ?>" id="">
+              <input type="hidden" name="car_id" value="<?= $car->id ?>" id="">
+              <input type="hidden" name="total_price" value="<?= $car->price * $day ?>" id="">
               <h3>Thông tin khách hàng</h3>
               <p>Nhập thông tin cá nhân để tiến hành đặt</p>
               <div class="row">
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Họ và tên <span class="required">*</span></label>
-                    <input type="text" placeholder="" />
+                    <input type="text" name="customer_name" placeholder="" />
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Số điện thoại <span class="required">*</span></label>
-                    <input type="text" />
+                    <input type="text" name="customer_phone_number" />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="checkout-form-list">
+                    <label>Địa chỉ nhận xe <span class="required">*</span></label>
+                    <input type="text" name="customer_address" />
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Email<span class="required">*</span></label>
-                    <input type="email" />
+                    <input type="email" name="customer_email" />
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="order-notes">
                     <div class="checkout-form-list mrg-nn">
                       <label>Lưu ý</label>
-                      <textarea id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                      <textarea id="checkout-mess" name="message" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-12">
+                  <div class="checkout-form-list">
+                    <label>Phương thức thanh toán<span class="required">*</span></label>
+                    <select name="payment_method">
+                      <option value="1" selected>Tiền mặt</option>
+                      <option value="2">Chuyển khoản</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12">
                   <div class="cart-btn text-center mb-15">
-                    <a href="#">Hoàn tất</a>
+                    <button class="btn-lg btn-warning btn-block " type="submit">Hoàn tất</button>
                   </div>
                 </div>
               </div>

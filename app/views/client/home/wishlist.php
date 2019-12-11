@@ -33,7 +33,7 @@ include_once "./app/views/client/template/header.php";
               <?php foreach ($carts as $cart) { ?>
                 <tr>
                   <td class="product-thumbnail">
-                    <a href="#"><img width="150px" src="<?= IMAGE_URL . $cart['image'] ?>" alt=""></a>
+                    <a href="<?= BASE_URL . 'detail?id=' . $cart['id'] ?>"><img width="150px" src="<?= IMAGE_URL . $cart['image'] ?>" alt=""></a>
                   </td>
                   <td class="product-name">
                     <a href="#"><?= $cart['name'] ?></a>
