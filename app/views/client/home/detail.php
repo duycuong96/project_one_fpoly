@@ -124,28 +124,38 @@ include_once "./app/views/client/template/header.php";
         <h3 style="margin: 40px 0px;">Khách hàng nhận xét:</h3>
         <div class="product-details-content">
           <div class="comments">
-            <div class="row">
-              <div class="col-md-2">
-                <img style="border-radius: 50%" class="img-comment" src="<?= AVATAR_URL . $_SESSION['AUTH']['avatar'] ?>" alt="">
-              </div>
-              <div class="col-md-10">
-                <div style="margin-left: 20%" class="product-overview">
-                  <h5 class="pd-sub-title">Duy Cường</h5>
-                  <div class="quick-view-rating">
-                    <i class="fa fa-star reting-color"></i>
-                    <i class="fa fa-star reting-color"></i>
-                    <i class="fa fa-star reting-color"></i>
-                    <i class="fa fa-star reting-color"></i>
-                    <i class="fa fa-star reting-color"></i>
+            <?php foreach ($comments as $comment) { ?>
+              <div class="row">
+                <div class="col-md-2">
+                  <img width="100%" style="border-radius: 50%" class="img-comment" src="<?= AVATAR_URL . $comment->avatar ?>" alt="">
+                </div>
+                <div class="col-md-10">
+                  <div class="product-overview">
+                    <h5 class="pd-sub-title"><?= $comment->name ?></h5>
+                    <div class="quick-view-rating">
+                      <?php
+                        for ($i = 1; $i <= 5; $i++) {
+                          if ($comment->rating >= $i) {
+                            echo "<i class='fa fa-star reting-color'></i>";
+                          } else if (!is_int($comment->rating)) {
+                            echo "<i class='fa fa-star-half-o reting-color'></i>";
+                            if ($i < 5) {
+                              for ($j = $i; $j < 5; $j++) {
+                                echo "<i class='fa fa-star-o reting-color'></i>";   # code...
+                              }
+
+                              break;
+                            }
+                          }
+                        }
+                        ?>
+                    </div>
+                    <b><?= $comment->title ?></b>
+                    <p><?= $comment->content ?></p>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor
-                    incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercita
-                    tion ullamco laboris nisi ut aliquip ex ea commodo.</p>
                 </div>
               </div>
-            </div>
+            <?php } ?>
           </div>
         </div>
       </div>
@@ -153,29 +163,32 @@ include_once "./app/views/client/template/header.php";
         <div class="product-details-content">
 
           <div>
-            <form>
+            <form action="<?= BASE_URL . 'checkout' ?>" method="get">
               <div class="form-group">
                 <button class="btn-lg btn-warning btn-block " type="submit">ĐẶT XE</button>
+                <input type="hidden" name="id" value="<?= $detail->id ?>">
               </div>
               <div class="form-group">
                 <label for="">Chọn địa điểm nhận xe</label>
-                <select class="form-control">
+                <select name="customer_address" class="form-control">
                   <option value="" hidden="">Chọn điểm nhận xe</option>
-                  <option value="1">Hà Nội</option>
-                  <option value="2">TP. Hồ Chí Minh</option>
-                  <option value="3">Đà Nẵng</option>
-                  <option value="4">Phú Quốc</option>
-                  <option value="7">Sapa (Lào Cai)</option>
-                  <option value="11">Ninh Bình</option>
+                  <?php foreach ($loca as $location) { ?>
+                    <option value="<?= $location->id ?>"><?= $location->name ?></option>
+                  <?php } ?>
+
                 </select>
               </div>
               <div class="form-group">
                 <label for="">Ngày nhận xe</label>
-                <input type="text" id="timeCheckIn" class="form-control" name="start_time" value="" />
+                <input type="date" id="timeCheckIn" class="form-control" name="date_start" value="" />
               </div>
               <div class="form-group">
                 <label for="">Ngày trả xe</label>
-                <input class="form-control" type="date">
+                <input class="form-control" type="date" name="date_end">
+              </div>
+              <div class="form-group">
+                <label for="">Voucher giảm giá</label>
+                <input class="form-control" type="text" name="voucher">
               </div>
 
             </form>

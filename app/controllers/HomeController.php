@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\Location;
 use App\Models\Maker;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -281,6 +282,13 @@ class HomeController
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
+		$comments= Comment::rawQuery('SELECT * 
+																	FROM comments 
+																	INNER JOIN users 
+																	ON comments.user_id = users.id
+																	WHERE comments.status = 1
+																	AND comments.product_id =' . $id)->get();
+		// dd($comments);
 
 		$detail = Car::where(['id', '=', $id])->first();
 		$listLoca = Car::where(['location_id', '=', $id])->get();
@@ -308,7 +316,8 @@ class HomeController
 		$cate = Category::all();
 		include_once './app/views/client/home/contact.php';
 	}
-	public function addWishlist(){
+	public function addWishlist()
+	{
 		$id = isset($_GET['id']) == true ? $_GET['id'] : null;
 
 		$car = Car::where(['id', '=', $id])->first();
@@ -389,15 +398,47 @@ class HomeController
 }
 	public function checkout()
 	{
+		// dd(1);
 		// SHOW DANH SÁCH MENU
 		$id = isset($_GET['id']) == true ? $_GET['id'] : "";
+		$customer_address = isset($_GET['customer_address']) == true ? $_GET['customer_address'] : "";
+		$date_start = isset($_GET['date_start']) == true ? $_GET['date_start'] : "";
+		$date_end = isset($_GET['date_end']) == true ? $_GET['date_end'] : "";
+		$voucher = isset($_GET['voucher']) == true ? $_GET['voucher'] : "";
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		// dd($id);
 		$car= Car::where(['id', '=', $id])->first();
 		// dd($car);
+		// tính ngày
+		$minus = abs(strtotime($date_end) - strtotime($date_start));
+
+		$year = floor($minus / (365 * 60 * 60 * 24));
+		$month = floor(($minus - $year * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+		$day = floor(($minus + $year * 365 * 60 * 60 * 24 + $month * 30 * 60 * 60 * 24) / (60 * 60 * 24));  
+		  // dd($day);
 		include_once './app/views/client/home/checkout.php';
+	}
+	public function postCheckout()
+	{
+		$customer_name = isset($_POST['customer_name']) == true ? $_POST['customer_name'] : "";
+		$customer_email = isset($_POST['customer_email']) == true ? $_POST['customer_email'] : "";
+		$customer_phone_number = isset($_POST['customer_phone_number']) == true ? $_POST['customer_phone_number'] : "";
+		$customer_address = isset($_POST['customer_address']) == true ? $_POST['customer_address'] : "";
+		$total_price = isset($_POST['total_price']) == true ? $_POST['total_price'] : "";
+		$buyer_id = isset($_POST['buyer_id']) == true ? $_POST['buyer_id'] : "";
+		$message = isset($_POST['message']) == true ? $_POST['message'] : "";
+		$payment_method = isset($_POST['payment_method']) == true ? $_POST['payment_method'] : "";
+		$date_start = isset($_POST['date_start']) == true ? $_POST['date_start'] : "";
+		$date_end = isset($_POST['date_end']) == true ? $_POST['date_end'] : "";
+		$car_id = isset($_POST['car_id']) == true ? $_POST['car_id'] : "";
+		$status=1;
+		// dd($customer_address);
+		$data = compact('customer_name', 'customer_email', 'customer_phone_number', 'customer_address', 'total_price', 'status', 'buyer_id', 'message', 'payment_method', 'date_start', 'date_end');
+		// dd($data);
+		$model = new Order();
+		$model->insert($data);
 	}
 	public function account()
 	{
@@ -544,8 +585,12 @@ class HomeController
 		$id = $_SESSION['AUTH']['id'];
 		// dd($id);
 		$user = User::where(['id', '=', $id])->first();
-		$cars=Order::where(['buyer_id', '=', $id])->get();
-
+		$cars=OrderDetail::rawQuery('SELECT *
+																FROM order_detail
+																INNER JOIN cars ON order_detail.car_id = cars.id
+																INNER JOIN orders ON order_detail.order_id = orders.id
+																WHERE orders.buyer_id = ' . $id)->get();
+		// dd($cars);
 		include_once './app/views/client/home/history.php';
 	}
 
