@@ -35,6 +35,11 @@
 		<div class="form-label-group">
 			<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
 			<label for="inputPassword">Password</label>
+			<small id="emailHelp2" class="form-text text-muted">
+				<?php if (isset($_GET['err_login'])) : ?>
+					<span style="color: red"><?= $_GET['err_login'] ?></span>
+				<?php endif ?>
+			</small>
 		</div>
 
 		<div class="checkbox mb-3">

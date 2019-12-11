@@ -135,14 +135,14 @@ class LoginController
                     $mail->SMTPSecure = 'tls';
                     $mail->Port = 587;
 
-                    $mail->setFrom('vuduycuong996@gmail.com', 'Cuong Poly');
+                    $mail->setFrom('vuduycuong996@gmail.com', 'Mego');
 
                     $mail->addAddress($email_to);
                     $mail->isHTML(true);
                     $mail->Subject = $subject;
                     $mail->Body    = $body;
                     $mail->send();
-                    echo 'Gửi email thành công';
+                    header('location: ' . ADMIN_URL . '/forgot-password?error=' . "Mego vừa gởi thông tin vào email của bạn. Vui lòng kiểm tra email nhé!");
                     die;
                 } catch (Exception $e) {
                     header('location: ' . ADMIN_URL . '/forgot-password?' . 'error=' . $error);
@@ -164,6 +164,7 @@ class LoginController
       
                 $token = isset($_POST['token']) == true ? $_POST['token']: "";
                 $email = isset($_POST['email']) == true ? $_POST['email']: "";
+                $error = "";
                 // var_dump($token);die;
                 date_default_timezone_set('Asia/Ho_Chi_Minh');
                 $currentTime = date("Y-m-d H:i:s");
@@ -171,7 +172,8 @@ class LoginController
                 $user = User::where(['token', '=', $token])->andWhere(['email', '=', $email])->first();
                 // dd($user);die;
                 if($user == ""){
-                    header('location: ' . ADMIN_URL . '/reset-password');
+                    header('location: ' . ADMIN_URL . '/reset-password?error=' . "Không thành công, vui lòng nhập lại email để lấy lại mật khẩu"
+                        );
         	        die;
                 } else {
 
@@ -182,6 +184,29 @@ class LoginController
                         $cfpassword = isset($_POST['cfpassword']) == true ? $_POST['cfpassword']: "";
                         $email = isset($_POST['email']) == true ? $_POST['email']: "";
                         // var_dump($email); die;
+                        // validate kiểm tra
+                        if (isset($_SERVER['PHP_SELF'])){
+                            $err_password = "";
+                            if($password == "" || strlen($password) < 6 ){
+                                $err_password = "Nhập lại mật khẩu";
+                            }
+                            $err_cfpassword = "";
+                            if($cfpassword != $password){
+                                $err_cfpassword = "Mật khẩu không trung nhau";
+                            }
+                            
+                            dd($token);
+                        // kiểm tra và hiện validation
+                        if($err_password != ""){
+                            header('location: ' . ADMIN_URL . '/reset-password?'
+                                . '&token=' . $token   
+                                . '&email=' . $email   
+                                . '&err_password=' . $err_password        
+                                    );
+                            die;
+                        }
+                        } 
+
                         $hashpassword = password_hash($password, PASSWORD_DEFAULT);
                         $data = compact( 'email');
                         $data['password'] = $hashpassword;
@@ -191,7 +216,7 @@ class LoginController
                         $model->id = $user->id;
                         $model->update($data);
                 
-                        header('location: ' . ADMIN_URL . '/login');
+                        header('location: ' . ADMIN_URL . '/reset-password?' . 'error=' . $error);
                     } else {
                         $error = "Liên kết đã hết hạn. Bạn đang cố gắng sử dụng liên kết đã hết hạn, chỉ có hiệu lực trong 24 giờ (1 ngày sau khi yêu cầu)";
                     }

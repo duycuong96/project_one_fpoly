@@ -70,6 +70,8 @@
                                     </li>
                                     <li>
                                         <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="<?= BASE_URL  ?>">Trang web</a>
+                                        <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= ADMIN_URL . '/account/infomation' ?>">Thông tin</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= ADMIN_URL . '/logout' ?>">Đăng xuất</a>

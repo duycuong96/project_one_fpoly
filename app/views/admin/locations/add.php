@@ -59,11 +59,11 @@ require_once './app/views/admin/master/sidebar.php';
                                         <div class="form-check">
                                             <label>Hiển thị</label><br>
                                             <label class="form-radio-label">
-                                                <input class="form-radio-input" type="radio" name="status" value="2" checked>
+                                                <input class="form-radio-input" type="radio" name="show_location" value="0" checked>
                                                 <span class="form-radio-sign">Không</span>
                                             </label>
                                             <label class="form-radio-label ml-3">
-                                                <input class="form-radio-input" type="radio" name="status" value="1">
+                                                <input class="form-radio-input" type="radio" name="show_location" value="1">
                                                 <span class="form-radio-sign">Có</span>
                                             </label>
                                         </div>
