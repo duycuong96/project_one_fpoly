@@ -56,6 +56,10 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->search();
 		break;
+	case 'find':
+		$ctr = new HomeController();
+		$ctr->find();
+		break;
 		// search
 		// trang danh mục
 	case 'categories':

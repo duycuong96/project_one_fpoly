@@ -9,6 +9,7 @@ use App\Models\Location;
 use App\Models\Maker;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Voucher;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -229,13 +230,56 @@ class HomeController
 	{
 		$locationId = isset($_GET['locationId']) == true ? $_GET['locationId'] : "";
 		$categoryId = isset($_GET['categoryId']) == true ? $_GET['categoryId'] : "";
+		// dd($locationId);
+		if (isset($_SERVER['PHP_SELF'])) {
+			$errLocationId = "";
+			if ($categoryId == "") {
+				$errLocationId = "Mời bạn chọn địa điểm";
+			}
+		$errCategoryId = "";
+		if ($locationId == "") {
+			$errCategoryId = "Mời bạn chọn loại xe";
+		}
+		// kiểm tra và hiện validation
+		if ($errLocationId != "" || $errCategoryId != "") {
+			header(
+				'location: ' . BASE_URL . '/?' 
+					. 'errLocationId=' . $errLocationId
+					. '&errCategoryId=' . $errCategoryId
+			);
+			die;
+		}
+	}
+
+		// kiểm tra và hiện validation
+		if ($errLocationId != "" || $errCategoryId != "") {
+			header(
+				'location: ' . BASE_URL . '/?' 
+					. 'errLocationId=' . $errLocationId
+					. '&errCategoryId=' . $errCategoryId
+			);
+			die;
+		}
+
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id','=',$categoryId]);
 		// dd($cars);
 		include_once './app/views/client/home/category.php';
+	}
+	public function find()
+	{
+		$keyword =  isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
+		$maker = Maker::all();
+		$loca = Location::where(['show_location', '=', '1'])->get();
+		$cate = Category::all();
+		
+		$cars = Car::where(['name', 'like', "%$keyword%"])->get();
+		// dd($cars);
+		$nameCategory = "có từ khóa là " . $keyword;
 
+		include_once './app/views/client/home/category.php';
 	}
 	// trang danh mục
 	public function categories()
@@ -255,6 +299,8 @@ class HomeController
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		$cars = Car::where(['cate_id', '=', $id])->get();
+		$category = Category::where(['id', '=', $id])->first();
+		$nameCategory= $category->name;
 		// dd($cars);
 		// echo "<pre>";
 		// dd($car);
@@ -267,6 +313,8 @@ class HomeController
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		$car = Car::all();
+		$category = Maker::where(['id', '=', $id])->first();
+		$nameCategory = 'của hãng '.$category->name;
 
 		$cars = Car::where(['maker_id', '=',$id])->get();
 		// dd($makers);
@@ -281,6 +329,8 @@ class HomeController
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		$car = Car::all();
+		$category = Location::where(['id', '=', $id])->first();
+		$nameCategory = 'ở '.$category->name;
 
 		$cars = Car::where(['location_id', '=', $id])->get();
 		// dd($makers);
@@ -449,19 +499,56 @@ class HomeController
 		$date_start = isset($_GET['date_start']) == true ? $_GET['date_start'] : "";
 		$date_end = isset($_GET['date_end']) == true ? $_GET['date_end'] : "";
 		$voucher = isset($_GET['voucher']) == true ? $_GET['voucher'] : "";
+
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
-		// dd($id);
+		$voucher_code = Voucher::where(['code', '=', $voucher])->first();
+		// dd($voucher_code);
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
+		$now = date('d/m/Y');
+
 		$car= Car::where(['id', '=', $id])->first();
+		// dd($id);
 		// dd($car);
 		// tính ngày
 		$minus = abs(strtotime($date_end) - strtotime($date_start));
 
 		$year = floor($minus / (365 * 60 * 60 * 24));
 		$month = floor(($minus - $year * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-		$day = floor(($minus + $year * 365 * 60 * 60 * 24 + $month * 30 * 60 * 60 * 24) / (60 * 60 * 24));  
-		  // dd($day);
+		$day = floor(($minus + $year * 365 * 60 * 60 * 24 + $month * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+		// dd($day);
+
+		if (isset($_SERVER['PHP_SELF'])) {
+			// pass
+			$err_date_start = "";
+			if ($date_start == "") {
+				$err_date_start = "Hãy chon ngày nhận xe";
+			}
+			$err_date_end = "";
+			if ($date_end == "") {
+				$err_date_end = "Hãy chon ngày trả xe";
+			}
+			// $err_voucher = "";
+			// if ($day < 5) {
+			// 	$err_voucher = "Mã giảm giá chỉ áp dụng khi bạn thuê xe trên 4 ngày";
+			// }elseif ($voucher_code ==null) {
+			// 	$err_voucher = "Mã giảm giá không tồn tại";
+			// }
+
+
+			// kiểm tra và hiện validation
+			if ($err_date_start != "" || $err_date_end != "") {
+				header(
+					'location: ' . BASE_URL . 'detail?id=' . $id
+						. '&err_date_start=' . $err_date_start
+						. '&err_date_end=' . $err_date_end
+						// . '&err_voucher=' . $err_voucher
+				);
+				die;
+			}
+		}
+		
 		include_once './app/views/client/home/checkout.php';
 	}
 	public function postCheckout()
@@ -479,26 +566,33 @@ class HomeController
 		$car_id = isset($_POST['car_id']) == true ? $_POST['car_id'] : "";
 		$unit_price = isset($_POST['unit_price']) == true ? $_POST['unit_price'] : "";
 		$count_day = isset($_POST['count_day']) == true ? $_POST['count_day'] : "";
-		$status=1;
+		$voucher = isset($_POST['voucher']) == true ? $_POST['voucher'] : "";
 
+		$voucher_code =Voucher::where(['code', '=', $voucher])->first();
+		$discount= $voucher_code->discount_price;
+		$voucher_id= $voucher_code->id;
+		// dd($voucher_id);
+		$status=1;
 		if (isset($_SERVER['PHP_SELF'])) {
 			$err_customer_name = "";
-			if ($customer_name = "" || strlen($customer_name) < 2) {
+			if ($customer_name == "" || strlen($customer_name) < 2) {
 				$err_customer_name = 'Vui lòng điền họ và tên';
 			}
 
-			$err_customer_phone_number = '';
-			if ($customer_phone_number = '') {
-				$err_customer_phone_number = 'Vui lòng nhập số điện thoại';
-			} elseif (!is_int($customer_phone_number)) {
-				$err_customer_phone_number = "Vui lòng nhập đúng số điện thoại không '.' hoặc ',' ";
-			} elseif (strlen($customer_phone_number) < 10) {
-				$err_customer_phone_number = "Số điện thoại ở Việt Nam hiện tại có 10 số";
+			// dd($customer_name);
+			$err_customer_phone_number = "";
+			$pattern = '/[0-9]/';
+			if($customer_phone_number == ""){
+				$err_customer_phone_number = "Vui lòng nhập số điện thoại";
+			}elseif (!preg_match($pattern, $customer_phone_number)) {
+				$err_customer_phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
+			}elseif (strlen($customer_phone_number)!=10) {
+				$err_customer_phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
 			}
 
 
 			$err_customer_address = "";
-			if ($customer_address = "" || strlen($customer_address) < 6) {
+			if ($customer_address == "" || strlen($customer_address) < 6) {
 				$err_customer_address = 'Địa chỉ của bạn quá ngắn';
 			}
 
@@ -510,14 +604,14 @@ class HomeController
 			}
 
 			$err_message = "";
-			if ($message = "" || strlen($message) < 2) {
+			if ($message == "" || strlen($message) < 2) {
 				$err_message = 'Lời nhắn quá ngắn';
 			}
 
 			// kiểm tra và hiện validation
 			if ($err_customer_name != "" || $err_customer_phone_number != "" || $err_customer_address != "" || $err_message != "" || $err_customer_email != "") {
 				header(
-					'location: ' . BASE_URL . '/checkout?id=28&customer_address=&date_start='. $date_start .'&date_end=' .$date_end
+					'location: ' . BASE_URL . '/checkout?id=28&customer_address=&date_start='. $date_start .'&date_end=' . $date_end . '&voucher=' . $voucher
 						. '&err_customer_name=' . $err_customer_name
 						. '&err_customer_phone_number=' . $err_customer_phone_number
 						. '&err_customer_address=' . $err_customer_address
@@ -527,12 +621,12 @@ class HomeController
 				die;
 			}
 		}
-		// dd($customer_address);
-		$data = compact('customer_name', 'customer_email', 'customer_phone_number', 'customer_address', 'total_price', 'status', 'buyer_id', 'message', 'payment_method', 'date_start', 'date_end');
+// dd($voucher);
+		$data = compact('customer_name', 'customer_email', 'customer_phone_number', 'customer_address', 'total_price', 'status', 'buyer_id', 'message', 'payment_method', 'date_start', 'date_end', 'discount', 'voucher_id');
 		// dd($data);
 		$model = new Order();
 		$model->insert($data);
-		dd($model);
+		// dd($model);
 		$newOrder = Order::sttOrderBy('id', false)->limit(1)->first();
 		// dd($newOrder);
 		$order_id = $newOrder->id;
@@ -846,6 +940,3 @@ class HomeController
 		}
 	}
 }
-
-
- ?>

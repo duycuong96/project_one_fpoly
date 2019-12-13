@@ -3,30 +3,6 @@ include_once "./app/views/client/template/header.php";
 include_once "./app/views/client/template/nav.php";
 ?>
 <div class="col-lg-9">
-  <div class="shop-topbar-wrapper">
-    <div class="grid-list-options">
-      <ul class="view-mode">
-        <li class="active"><a href="#product-grid" data-view="product-grid"><i class="ti-layout-grid2"></i></a></li>
-        <li><a href="#product-list" data-view="product-list"><i class="ti-view-list"></i></a></li>
-      </ul>
-    </div>
-    <div class="product-sorting">
-      <div class="shop-product-sorting nav">
-        <a class="active" data-toggle="tab" href="#new-product">NEW BIKES </a>
-        <a data-toggle="tab" href="#use-product"> USED BIKES </a>
-        <a data-toggle="tab" href="#accessory-product">ACCESSORIES</a>
-      </div>
-      <div class="sorting sorting-bg-1">
-        <form>
-          <select class="select">
-            <option value="">Default softing </option>
-            <option value="">Sort by news</option>
-            <option value="">Sort by price</option>
-          </select>
-        </form>
-      </div>
-    </div>
-  </div>
   <div class="grid-list-product-wrapper tab-content">
     <div id="new-product" class="product-grid product-view tab-pane active">
       <div class="row">
