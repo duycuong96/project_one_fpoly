@@ -95,12 +95,15 @@ include_once "./app/views/client/template/header.php";
         <div class="product-details-content">
           <form action="<?= BASE_URL . 'post-checkout' ?>" method="post">
             <div class="checkbox-form">
+              <?php if (isset($_GET['success'])) : ?>
+                <div class="alert alert-success" role="alert"><?= $_GET['success'] ?></div>
+              <?php endif ?>
               <input type="hidden" name="buyer_id" value="<?= $_SESSION['AUTH']['id'] ?>">
               <input type="hidden" name="date_start" value="<?= $_GET['date_start'] ?>" id="">
               <input type="hidden" name="date_end" value="<?= $_GET['date_end'] ?>" id="">
               <input type="hidden" name="car_id" value="<?= $car->id ?>" id="">
               <input type="hidden" name="total_price" value="<?= $total_price ?>" id="">
-              <input type="hidden" name="voucher" value="<?= $voucher= $voucher_code->code ?>" id="">
+              <input type="hidden" name="voucher" value="<?= $voucher = $voucher_code->code ?>" id="">
               <input type="hidden" name="unit_price" value="<?= $car->price ?>" id="">
               <input type="hidden" name="count_day" value="<?= $day ?>" id="">
               <h3>Thông tin khách hàng</h3>
