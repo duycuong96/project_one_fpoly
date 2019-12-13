@@ -92,6 +92,10 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->contact();
 		break;
+	case 'post-contact':
+		$ctr = new HomeController();
+		$ctr->postContact();
+		break;
 	case 'add-wishlist':
 		checkLoginClient();
 		$ctr = new HomeController();
