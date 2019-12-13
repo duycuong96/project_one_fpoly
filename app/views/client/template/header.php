@@ -61,7 +61,7 @@
                     <nav>
                       <ul>
                         <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
-                        <li><a href="<?= BASE_URL ?>categories">loại xe</a>
+                        <li><a href="#">loại xe</a>
                           <ul>
                             <?php
                             foreach ($cate as $cates) { ?>

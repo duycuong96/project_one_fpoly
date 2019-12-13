@@ -71,33 +71,55 @@ include_once "./app/views/client/template/header.php";
         <div class="col-lg-6">
           <div class="contact-message-wrapper">
             <h4 class="contact-title">LIÊN HỆ</h4>
+            <?php if (isset($_GET['success'])) : ?>
+              <div class="alert alert-success" role="alert"><?= $_GET['success'] ?></div>
+            <?php endif ?>
             <div class="contact-message">
-              <form id="contact-form" action="http://preview.freethemescloud.com/oswan/assets/mail.php" method="post">
+              <form action="<?= BASE_URL . 'post-contact' ?>" method="post">
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="contact-form-style mb-20">
                       <input name="name" placeholder="Tên" type="text">
+                      <?php if (isset($_GET['err_name'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_name'] ?></div>
+                      <?php endif ?>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="contact-form-style mb-20">
-                      <input name="email" placeholder="Địa chỉ Email" type="email">
+                      <input name="phone_number" placeholder="Số điện thoại" type="text">
+                      <?php if (isset($_GET['err_phone_number'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_phone_number'] ?></div>
+                      <?php endif ?>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="contact-form-style mb-20">
-                      <input name="Tiêu đề" placeholder="Subject" type="text">
+                      <input name="email" placeholder="Địa chỉ Email" type="text">
+                      <?php if (isset($_GET['err_email'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_email'] ?></div>
+                      <?php endif ?>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="contact-form-style mb-20">
+                      <input name="title" placeholder="Tiêu đề" type="text">
+                      <?php if (isset($_GET['err_title'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_title'] ?></div>
+                      <?php endif ?>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="contact-form-style">
-                      <textarea name="message" placeholder="Nội dung"></textarea>
+                      <textarea name="content" placeholder="Nội dung"></textarea>
+                      <?php if (isset($_GET['err_content'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_content'] ?></div>
+                      <?php endif ?>
                       <button class="submit cr-btn btn-style" type="submit"><span>GỬI</span></button>
                     </div>
                   </div>
                 </div>
               </form>
-              <p class="form-messege"></p>
             </div>
           </div>
         </div>

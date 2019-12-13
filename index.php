@@ -56,6 +56,10 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->search();
 		break;
+	case 'find':
+		$ctr = new HomeController();
+		$ctr->find();
+		break;
 		// search
 		// trang danh mục
 	case 'categories':
@@ -87,6 +91,10 @@ switch ($url) {
 	case 'contact':
 		$ctr = new HomeController();
 		$ctr->contact();
+		break;
+	case 'post-contact':
+		$ctr = new HomeController();
+		$ctr->postContact();
 		break;
 	case 'add-wishlist':
 		checkLoginClient();

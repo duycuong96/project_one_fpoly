@@ -1,15 +1,17 @@
-<?php 
+<?php
+
 namespace App\Controllers;
 
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Car;
 use App\Models\Comment;
+use App\Models\Contact;
 use App\Models\Location;
 use App\Models\Maker;
 use App\Models\Order;
 use App\Models\OrderDetail;
-
+use App\Models\Voucher;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -17,20 +19,22 @@ use PHPMailer\PHPMailer\Exception;
 class HomeController
 {
 	// trang chủ
-	public function index(){
-		$makers= Maker::all();
-		$hondaMaker = Maker::where(['name', '=', 'Honda' ])->first();
-		$yamahaMaker = Maker::where(['name', '=', 'Yamaha' ])->first();
+	public function index()
+	{
+		$makers = Maker::all();
+		$hondaMaker = Maker::where(['name', '=', 'Honda'])->first();
+		$yamahaMaker = Maker::where(['name', '=', 'Yamaha'])->first();
 		// dd($hondaMaker);
 		$locations = Location::where(['show_location', '=', '1'])->get();
-		$cate= Category::all();
-		$cars= Car::all();
+		$cate = Category::all();
+		$cars = Car::all();
 		$carsHonda = Car::where(['maker_id', '=', $hondaMaker->id])->get();
 		$carsYamaha = Car::where(['maker_id', '=', $yamahaMaker->id])->get();
 		include_once './app/views/client/home/homepage.php';
 	}
 
-	public function errorPage(){
+	public function errorPage()
+	{
 		include_once './app/views/error.php';
 	}
 	public function login()
@@ -64,7 +68,7 @@ class HomeController
 			$err_password = "";
 			if ($password == "" || strlen($password) < 6) {
 				$err_password = "Nhập mật khẩu ít nhất 6 kí tự";
-			}elseif (!password_verify($password, $pass_sql)) {
+			} elseif (!password_verify($password, $pass_sql)) {
 				$err_password = "Mật khẩu chưa chính xác";
 			}
 
@@ -78,9 +82,8 @@ class HomeController
 				die;
 			}
 		}
-			// dd($model);
-		if(password_verify($password, $pass_sql)) 
-		{
+		// dd($model);
+		if (password_verify($password, $pass_sql)) {
 			$_SESSION['AUTH'] = [
 				'name' => $model->name,
 				'email' => $model->email,
@@ -90,8 +93,7 @@ class HomeController
 			];
 			// dd($_SESSION['AUTH']);
 			header("Location: ./");
-		}
-		else {
+		} else {
 			echo "thất bại";
 		}
 	}
@@ -115,13 +117,13 @@ class HomeController
 		// dd($created_at);
 		$avatar = $_FILES['avatar'];
 		$filePath = "";
-		
+
 		// dd($filename);
 
 
 		if (isset($_SERVER['PHP_SELF'])) {
 			$err_name = "";
-			if($name = "" || strlen($name) <2){
+			if ($name = "" || strlen($name) < 2) {
 				$err_name = 'Vui lòng điền họ và tên';
 			}
 
@@ -133,11 +135,11 @@ class HomeController
 			}
 
 			$err_phone_number = '';
-			if($phone_number = ''){
+			if ($phone_number = '') {
 				$err_phone_number = 'Vui lòng nhập số điện thoại';
-			}elseif (!is_int($phone_number)) {
+			} elseif (!is_int($phone_number)) {
 				$err_phone_number = "Vui lòng nhập đúng số điện thoại không '.' hoặc ',' ";
-			}elseif (strlen($phone_number)<10) {
+			} elseif (strlen($phone_number) < 10) {
 				$err_phone_number = "Số điện thoại ở Việt Nam hiện tại có 10 số";
 			}
 			// pass
@@ -145,7 +147,7 @@ class HomeController
 			if ($pass == "" || strlen($pass) < 6) {
 				$err_password = "Nhập mật khẩu ít nhất 6 kí tự";
 			}
-			
+
 			$err_rePassword = '';
 			if (strcmp($password, $rePassword) != 0) {
 				$err_rePassword = 'mật khẩu nhập không trùng khớp';
@@ -230,13 +232,57 @@ class HomeController
 	{
 		$locationId = isset($_GET['locationId']) == true ? $_GET['locationId'] : "";
 		$categoryId = isset($_GET['categoryId']) == true ? $_GET['categoryId'] : "";
+		// dd($locationId);
+		if (isset($_SERVER['PHP_SELF'])) {
+			$errLocationId = "";
+			if ($categoryId == "") {
+				$errLocationId = "Mời bạn chọn địa điểm";
+			}
+			$errCategoryId = "";
+			if ($locationId == "") {
+				$errCategoryId = "Mời bạn chọn loại xe";
+			}
+			// kiểm tra và hiện validation
+			if ($errLocationId != "" || $errCategoryId != "") {
+				header(
+					'location: ' . BASE_URL . '/?'
+						. 'errLocationId=' . $errLocationId
+						. '&errCategoryId=' . $errCategoryId
+				);
+				die;
+			}
+		}
+
+		// kiểm tra và hiện validation
+		if ($errLocationId != "" || $errCategoryId != "") {
+			header(
+				'location: ' . BASE_URL . '/?'
+					. 'errLocationId=' . $errLocationId
+					. '&errCategoryId=' . $errCategoryId
+			);
+			die;
+		}
+
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id','=',$categoryId])->get();
+
 		// dd($cars);
 		include_once './app/views/client/home/category.php';
+	}
+	public function find()
+	{
+		$keyword =  isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
+		$maker = Maker::all();
+		$loca = Location::where(['show_location', '=', '1'])->get();
+		$cate = Category::all();
 
+		$cars = Car::where(['name', 'like', "%$keyword%"])->get();
+		// dd($cars);
+		$nameCategory = "có từ khóa là " . $keyword;
+
+		include_once './app/views/client/home/category.php';
 	}
 	// trang danh mục
 	public function categories()
@@ -256,6 +302,8 @@ class HomeController
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		$cars = Car::where(['cate_id', '=', $id])->get();
+		$category = Category::where(['id', '=', $id])->first();
+		$nameCategory = $category->name;
 		// dd($cars);
 		// echo "<pre>";
 		// dd($car);
@@ -268,8 +316,10 @@ class HomeController
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		$car = Car::all();
+		$category = Maker::where(['id', '=', $id])->first();
+		$nameCategory = 'của hãng ' . $category->name;
 
-		$cars = Car::where(['maker_id', '=',$id])->get();
+		$cars = Car::where(['maker_id', '=', $id])->get();
 		// dd($makers);
 		// echo "<pre>";
 		// dd($car);
@@ -282,6 +332,8 @@ class HomeController
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		$car = Car::all();
+		$category = Location::where(['id', '=', $id])->first();
+		$nameCategory = 'ở ' . $category->name;
 
 		$cars = Car::where(['location_id', '=', $id])->get();
 		// dd($makers);
@@ -296,7 +348,7 @@ class HomeController
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
-		$comments= Comment::rawQuery('SELECT * 
+		$comments = Comment::rawQuery('SELECT * 
 																	FROM comments 
 																	INNER JOIN users 
 																	ON comments.user_id = users.id
@@ -309,7 +361,8 @@ class HomeController
 		// dd($detail);
 		include_once './app/views/client/home/detail.php';
 	}
-	public function comment(){
+	public function comment()
+	{
 		$product_id = isset($_POST['product_id']) == true ? $_POST['product_id'] : "";
 		$title = isset($_POST['title']) == true ? $_POST['title'] : "";
 		$rating = isset($_POST['rating']) == true ? $_POST['rating'] : "";
@@ -338,7 +391,7 @@ class HomeController
 			// kiểm tra và hiện validation
 			if ($err_checkout != "" || $err_title != "" || $err_content != "") {
 				header(
-					'location: ' . BASE_URL . '/detail?id=' .$product_id
+					'location: ' . BASE_URL . '/detail?id=' . $product_id
 						. '&err_checkout=' . $err_checkout
 						. '&err_title=' . $err_title
 						. '&err_content=' . $err_content
@@ -349,10 +402,10 @@ class HomeController
 
 		// dd($user_id);	
 		// dd($rating);
-		$data = compact('title', 'rating', 'content','product_id', 'user_id', 'status');
+		$data = compact('title', 'rating', 'content', 'product_id', 'user_id', 'status');
 		$model = new Comment();
 		$model->insert($data);
-		header('location: '. BASE_URL .'detail?id=' . $product_id);
+		header('location: ' . BASE_URL . 'detail?id=' . $product_id);
 	}
 	public function contact()
 	{
@@ -360,6 +413,107 @@ class HomeController
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
 		include_once './app/views/client/home/contact.php';
+	}
+	public function postContact()
+	{
+		$name = isset($_POST['name']) == true ? $_POST['name'] : null;
+		$phone_number = isset($_POST['phone_number']) == true ? $_POST['phone_number'] : null;
+		$email = isset($_POST['email']) == true ? $_POST['email'] : null;
+		$title = isset($_POST['title']) == true ? $_POST['title'] : null;
+		$content = isset($_POST['content']) == true ? $_POST['content'] : null;
+		// dd($content);
+		if (isset($_SERVER['PHP_SELF'])) {
+			// pass
+			$err_name = "";
+			if ($name == "" || strlen($name)<2) {
+				$err_name = "Hãy nhập tên của bạn";
+			}
+			$err_title = "";
+			if ($title == "" || strlen($title) < 2) {
+				$err_title = "Hãy nhập tiêu đề";
+			}
+			$err_content = "";
+			if ($content == "" || strlen($content) < 2) {
+				$err_content = "Hãy nhập nội dung";
+			}
+			$err_email = "";
+			if ($email == "") {
+				$err_email = "Vui lòng nhập địa chỉ Email";
+			} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$err_email = "Email nhập chưa đúng";
+			}
+			$err_phone_number = "";
+			$pattern = '/[0-9]/';
+			if ($phone_number == "") {
+				$err_phone_number = "Vui lòng nhập số điện thoại";
+			} elseif (!preg_match($pattern, $phone_number)) {
+				$err_phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
+			} elseif (strlen($phone_number) != 10) {
+				$err_phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
+			}
+
+
+
+			// kiểm tra và hiện validation
+			if ($err_name != "" || $err_email != "" || $err_title != "" || $err_content != "" || $err_phone_number != "") {
+				header(
+					'location: ' . BASE_URL . 'contact?'
+						. 'err_name=' . $err_name
+						. '&err_email=' . $err_email
+						. '&err_title=' . $err_title
+						. '&err_content=' . $err_content
+						. '&err_phone_number=' . $err_phone_number
+				);
+				die;
+			}
+		}
+		$data = compact('name', 'email', 'title', 'content','phone_number');
+		$model = new Contact();
+		$model->insert($data);
+		$success = "Gửi liên hệ thành công";
+		$message = '<div style="width: 600px; margin: 0 auto; padding: 0 auto;">';
+		$message .= '<div style="border: 1px dotted #007bff; padding:10px">';
+		$message .= 'Cảm ơn các bạn đã tin tưởng Mego !!';
+		$message .= '</div>';
+		$message .= "<div><h2>Chúng tôi sẽ liện hệ với bạn $name sớm nhất</h2>";
+		$message .= "---------------------------------------------------------------- <br>";
+		$message .= "Chúng tôi sẽ liện hệ với bạn qua số điện thoại $phone_number và email $email <br>";
+		$message .= "Nội dung bạn muốn liên hệ chúng tôi: <br>";
+		$message .= "<h4>$title</h4> <br> <p>$content</p>";
+
+		$mail = new PHPMailer(true);
+		try {
+			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail->CharSet = 'UTF-8';
+			$mail->isSMTP();
+			$mail->Host       = 'smtp.gmail.com';
+			$mail->SMTPAuth   = true;
+			$mail->Username = 'd3tmobilebk@gmail.com';
+			$mail->Password = 'd3t123456789';
+			$mail->SMTPSecure = 'tls';
+			$mail->Port = 587;
+			$mail->setFrom('phuoctrank51a6@gmail.com', 'Mego');
+			$mail->SMTPOptions = array(
+				'ssl' => array(
+					'verify_peer' => false,
+					'verify_peer_name' => false,
+					'allow_self_signed' => true
+				)
+			);
+			$emails = explode(",", $email);
+			foreach ($emails as $e) {
+				$mail->addAddress($e);
+			}
+			$mail->isHTML(true);
+			$mail->Subject = "Mego";
+			$mail->Body    = $message;
+			$mail->send();
+			echo 'Message has been sent';
+			header('location: ' . BASE_URL . 'contact'
+				. '?success=' . $success);
+		} catch (Exception $e) {
+			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+		}
 	}
 	public function addWishlist()
 	{
@@ -419,7 +573,8 @@ class HomeController
 		}
 		include_once './app/views/client/home/wishlist.php';
 	}
-	public function delItemWishlist(){
+	public function delItemWishlist()
+	{
 		$carId = isset($_GET['id']) == true ? $_GET['id'] : null;
 		$cart = isset($_SESSION[CART]) == true ? $_SESSION[CART] : [];
 		$index = false;
@@ -440,7 +595,7 @@ class HomeController
 			header('location: ' . BASE_URL . 'wishlist');
 			die;
 		}
-}
+	}
 	public function checkout()
 	{
 		// dd(1);
@@ -450,19 +605,56 @@ class HomeController
 		$date_start = isset($_GET['date_start']) == true ? $_GET['date_start'] : "";
 		$date_end = isset($_GET['date_end']) == true ? $_GET['date_end'] : "";
 		$voucher = isset($_GET['voucher']) == true ? $_GET['voucher'] : "";
+
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
+		$voucher_code = Voucher::where(['code', '=', $voucher])->first();
+		// dd($voucher_code);
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
+		$now = date('d/m/Y');
+
+		$car = Car::where(['id', '=', $id])->first();
 		// dd($id);
-		$car= Car::where(['id', '=', $id])->first();
 		// dd($car);
 		// tính ngày
 		$minus = abs(strtotime($date_end) - strtotime($date_start));
 
 		$year = floor($minus / (365 * 60 * 60 * 24));
 		$month = floor(($minus - $year * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-		$day = floor(($minus + $year * 365 * 60 * 60 * 24 + $month * 30 * 60 * 60 * 24) / (60 * 60 * 24));  
-		  // dd($day);
+		$day = floor(($minus + $year * 365 * 60 * 60 * 24 + $month * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+		// dd($day);
+
+		if (isset($_SERVER['PHP_SELF'])) {
+			// pass
+			$err_date_start = "";
+			if ($date_start == "") {
+				$err_date_start = "Hãy chon ngày nhận xe";
+			}
+			$err_date_end = "";
+			if ($date_end == "") {
+				$err_date_end = "Hãy chon ngày trả xe";
+			}
+			// $err_voucher = "";
+			// if ($day < 5) {
+			// 	$err_voucher = "Mã giảm giá chỉ áp dụng khi bạn thuê xe trên 4 ngày";
+			// }elseif ($voucher_code ==null) {
+			// 	$err_voucher = "Mã giảm giá không tồn tại";
+			// }
+
+
+			// kiểm tra và hiện validation
+			if ($err_date_start != "" || $err_date_end != "") {
+				header(
+					'location: ' . BASE_URL . 'detail?id=' . $id
+						. '&err_date_start=' . $err_date_start
+						. '&err_date_end=' . $err_date_end
+					// . '&err_voucher=' . $err_voucher
+				);
+				die;
+			}
+		}
+
 		include_once './app/views/client/home/checkout.php';
 	}
 	public function postCheckout()
@@ -480,9 +672,64 @@ class HomeController
 		$car_id = isset($_POST['car_id']) == true ? $_POST['car_id'] : "";
 		$unit_price = isset($_POST['unit_price']) == true ? $_POST['unit_price'] : "";
 		$count_day = isset($_POST['count_day']) == true ? $_POST['count_day'] : "";
-		$status=1;
-		// dd($customer_address);
-		$data = compact('customer_name', 'customer_email', 'customer_phone_number', 'customer_address', 'total_price', 'status', 'buyer_id', 'message', 'payment_method', 'date_start', 'date_end');
+		$voucher = isset($_POST['voucher']) == true ? $_POST['voucher'] : "";
+
+		$voucher_code = Voucher::where(['code', '=', $voucher])->first();
+		$discount = $voucher_code->discount_price;
+		$voucher_id = $voucher_code->id;
+		// dd($voucher_id);
+		$status = 1;
+		if (isset($_SERVER['PHP_SELF'])) {
+			$err_customer_name = "";
+			if ($customer_name == "" || strlen($customer_name) < 2) {
+				$err_customer_name = 'Vui lòng điền họ và tên';
+			}
+
+			// dd($customer_name);
+			$err_customer_phone_number = "";
+			$pattern = '/[0-9]/';
+			if ($customer_phone_number == "") {
+				$err_customer_phone_number = "Vui lòng nhập số điện thoại";
+			} elseif (!preg_match($pattern, $customer_phone_number)) {
+				$err_customer_phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
+			} elseif (strlen($customer_phone_number) != 10) {
+				$err_customer_phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
+			}
+
+
+			$err_customer_address = "";
+			if ($customer_address == "" || strlen($customer_address) < 6) {
+				$err_customer_address = 'Địa chỉ của bạn quá ngắn';
+			}
+
+			$err_customer_email = "";
+			if ($customer_email == "") {
+				$err_customer_email = "Vui lòng nhập địa chỉ Email";
+			} elseif (!filter_var($customer_email, FILTER_VALIDATE_EMAIL)) {
+				$err_customer_email = "Cập nhật Email nhập chưa đúng";
+			}
+
+			$err_message = "";
+			if ($message == "" || strlen($message) < 2) {
+				$err_message = 'Lời nhắn quá ngắn';
+			}
+
+			// kiểm tra và hiện validation
+			if ($err_customer_name != "" || $err_customer_phone_number != "" || $err_customer_address != "" || $err_message != "" || $err_customer_email != "") {
+				header(
+					'location: ' . BASE_URL . '/checkout?id=28&customer_address=&date_start=' . $date_start . '&date_end=' . $date_end . '&voucher=' . $voucher
+						. '&err_customer_name=' . $err_customer_name
+						. '&err_customer_phone_number=' . $err_customer_phone_number
+						. '&err_customer_address=' . $err_customer_address
+						. '&err_message=' . $err_message
+						. '&err_customer_email=' . $err_customer_email
+				);
+				die;
+			}
+		}
+		$success = "Đặt hàng thành công";
+		// dd($voucher);
+		$data = compact('customer_name', 'customer_email', 'customer_phone_number', 'customer_address', 'total_price', 'status', 'buyer_id', 'message', 'payment_method', 'date_start', 'date_end', 'discount', 'voucher_id');
 		// dd($data);
 		$model = new Order();
 		$model->insert($data);
@@ -491,7 +738,7 @@ class HomeController
 		// dd($newOrder);
 		$order_id = $newOrder->id;
 		// dd($order_id);
-		$dataDetail =compact('order_id','car_id', 'unit_price');
+		$dataDetail = compact('order_id', 'car_id', 'unit_price');
 		$modelDetail = new OrderDetail();
 		$modelDetail->insert($dataDetail);
 		$orderDetail = OrderDetail::where(['order_id', '=', $order_id])->first();
@@ -564,11 +811,14 @@ class HomeController
 				$mail->addAddress($e);
 			}
 			$mail->isHTML(true);
-			$mail->Subject = $customer_name;
-			$mail->Body    = $body;
+			$mail->Subject = "Mego";
+			$mail->Body    = $message;
 			$mail->send();
-			header('location: ' . BASE_URL . 'checkout?id=26' . "&error="  . "Đặt xe thành công!");
-			die;
+			header('location: ' . BASE_URL . 'checkout?id='. $car_id
+			.'&customer_address='. $customer_address
+			.'&date_start='.$date_start
+			.'&date_end='.$date_end
+			.'&voucher='.$voucher);
 		} catch (Exception $e) {
 			header('location: ' . BASE_URL );
 			die;
@@ -581,7 +831,7 @@ class HomeController
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
-		$id= $_SESSION['AUTH']['id'];
+		$id = $_SESSION['AUTH']['id'];
 		// dd($id);
 		$user = User::where(['id', '=', $id])->first();
 		// dd($user->name);
@@ -611,12 +861,13 @@ class HomeController
 			}
 
 			$err_phone_number = "";
-			if ($phone_number = "") {
-				$err_phone_number = 'Nhập số điện thoại';
-			} elseif (!is_int($phone_number)) {
-				$err_phone_number = "Cập nhật đúng số điện thoại không '.' hoặc ',' ";
-			} elseif (strlen($phone_number) < 10) {
-				$err_phone_number = "Số điện thoại ở Việt Nam hiện tại có 10 số";
+			$pattern = '/[0-9]/';
+			if ($phone_number == "") {
+				$err_phone_number = "Vui lòng nhập số điện thoại";
+			} elseif (!preg_match($pattern, $phone_number)) {
+				$err_phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
+			} elseif (strlen($phone_number) != 10) {
+				$err_phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
 			}
 
 
@@ -631,13 +882,12 @@ class HomeController
 				die;
 			}
 		}
-		$data = compact('name','email', 'phone_number');
+		$data = compact('name', 'email', 'phone_number');
 		$model = new User();
 		$model = User::where(['id', '=', $id])->first();
 		// dd($model);
 		$model->update($data);
 		header("Location: " . BASE_URL . 'account');
-
 	}
 	public function changePassword()
 	{
@@ -671,12 +921,12 @@ class HomeController
 				$err_password_now = "Mật khẩu không chính xác";
 			}
 
-			$err_password_new= "";
+			$err_password_new = "";
 			if ($newPassword == "" || strlen($newPassword) < 6) {
 				$err_password_new = "Nhập mật khẩu mới ít nhất 6 kí tự";
-				}elseif (strcmp($newPassword, $passwordNow) == 0) {
-					$err_password_new = "Mật khẩu mới không được giống mật khẩu cũ";
-				}
+			} elseif (strcmp($newPassword, $passwordNow) == 0) {
+				$err_password_new = "Mật khẩu mới không được giống mật khẩu cũ";
+			}
 
 			$err_rePassword = "";
 			if (strcmp($newPassword, $rePassword) != 0) {
@@ -703,10 +953,10 @@ class HomeController
 			$model = User::where(['id', '=', $id])->first();
 			// dd($model);
 			$model->update($data);
-			header("Location: " .BASE_URL . 'account');
+			header("Location: " . BASE_URL . 'account');
 			// dd($model);
-		include_once './app/views/client/home/changePassword.php';
-		}else{
+			include_once './app/views/client/home/changePassword.php';
+		} else {
 			echo 'that bai';
 		}
 	}
@@ -720,7 +970,7 @@ class HomeController
 		$id = $_SESSION['AUTH']['id'];
 		// dd($id);
 		$user = User::where(['id', '=', $id])->first();
-		$cars=OrderDetail::rawQuery('SELECT *
+		$cars = OrderDetail::rawQuery('SELECT *
 																FROM order_detail
 																INNER JOIN cars ON order_detail.car_id = cars.id
 																INNER JOIN orders ON order_detail.order_id = orders.id
@@ -730,12 +980,14 @@ class HomeController
 	}
 
 
-	
-	public function mailForm(){
+
+	public function mailForm()
+	{
 		$menus = Category::where(['show_menu', '=', 1])->get();
 		include_once './app/views/client/home/mail-form.php';
 	}
-	public function sendMail(){
+	public function sendMail()
+	{
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$subject = $_POST['subject'];
@@ -745,63 +997,64 @@ class HomeController
 		if (isset($_POST["submit"])) {
 			// validate tên
 			$err_name = "";
-			if($name == ""){
+			if ($name == "") {
 				$err_name = "Vui lòng nhập tên";
 			}
-			 // validate email
-			 $err_email = "";
-			 if($email == ""){
-				 $err_email = "Vui lòng nhập email";
-			 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-				 $err_email = "Email nhập chưa đúng";
-			 }
-			 // validate tiêu đề
-			 $err_subject = "";
-			 if($subject == ""){
-				 $err_subject = "Vui lòng nhập tiêu đề nội dung";
-			 }
-			 // validate nội dung
-			 $err_content = "";
-			 if($content == ""){
-				 $err_content = "Vui lòng nhập nội dung";
-			 }
+			// validate email
+			$err_email = "";
+			if ($email == "") {
+				$err_email = "Vui lòng nhập email";
+			} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$err_email = "Email nhập chưa đúng";
+			}
+			// validate tiêu đề
+			$err_subject = "";
+			if ($subject == "") {
+				$err_subject = "Vui lòng nhập tiêu đề nội dung";
+			}
+			// validate nội dung
+			$err_content = "";
+			if ($content == "") {
+				$err_content = "Vui lòng nhập nội dung";
+			}
 
-			  // kiểm tra và hiện validate
-			  if($err_email != "" || $err_subject != "" || $err_content != "" || $err_name != ""){
-				header('location: ' . BASE_URL . 'contact?'
-								. 'err_email=' . $err_email
-								. '&err_subject=' . $err_subject
-								. '&err_content=' . $err_content
-								. '&err_name=' . $err_name
-								); die;
+			// kiểm tra và hiện validate
+			if ($err_email != "" || $err_subject != "" || $err_content != "" || $err_name != "") {
+				header(
+					'location: ' . BASE_URL . 'contact?'
+						. 'err_email=' . $err_email
+						. '&err_subject=' . $err_subject
+						. '&err_content=' . $err_content
+						. '&err_name=' . $err_name
+				);
+				die;
 			}
 		}
 		// dd($content);
 		$mail = new PHPMailer(true);
 		try {
-		    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-		    $mail->CharSet = 'UTF-8';
-		    $mail->isSMTP(); 
-		    $mail->Host       = 'smtp.gmail.com';
-		    $mail->SMTPAuth   = true;
-		    $mail->Username = 'noiconsong@gmail.com';
-		    $mail->Password = 'cuong16051996';
-		    $mail->SMTPSecure = 'tls';
-			$mail->Port = 587; 
-			                                   
+			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail->CharSet = 'UTF-8';
+			$mail->isSMTP();
+			$mail->Host       = 'smtp.gmail.com';
+			$mail->SMTPAuth   = true;
+			$mail->Username = 'noiconsong@gmail.com';
+			$mail->Password = 'cuong16051996';
+			$mail->SMTPSecure = 'tls';
+			$mail->Port = 587;
+
 			$mail->setFrom('vuduycuong996@gmail.com', 'Cuong Poly');
-			
-		    $mail->addAddress($email);
-		    $mail->isHTML(true);
-		    $mail->Subject = $subject;
-		    $mail->Body    = $content;
-		    $mail->send();
-		    header('location: ' . BASE_URL .'contact');die;
+
+			$mail->addAddress($email);
+			$mail->isHTML(true);
+			$mail->Subject = $subject;
+			$mail->Body    = $content;
+			$mail->send();
+			header('location: ' . BASE_URL . 'contact');
+			die;
 		} catch (Exception $e) {
-		    header('location: ' . BASE_URL .'contact?' . 'err_mail=' . $err_mail);die;
+			header('location: ' . BASE_URL . 'contact?' . 'err_mail=' . $err_mail);
+			die;
 		}
 	}
 }
-
-
- ?>

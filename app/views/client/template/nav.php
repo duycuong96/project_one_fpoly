@@ -1,7 +1,7 @@
 <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/banner-4.jpg)">
   <div class="container-fluid">
     <div class="breadcrumb-content text-center">
-      <h2>Danh sách xe</h2>
+      <h2>Danh sách xe <?= $nameCategory ?></h2>
       <ul>
         <li>
           <a href="<?= BASE_URL ?>">Trang chủ</a>
@@ -19,9 +19,9 @@
           <div class="sidebar-widget pb-55">
             <h3 class="sidebar-widget">Tìm kiếm</h3>
             <div class="sidebar-search">
-              <form action="#">
-                <input type="text" placeholder="Tìm kiếm...">
-                <button><i class="ti-search"></i></button>
+              <form action="<?= BASE_URL . 'find' ?>" method="get">
+                <input type="text" name="keyword" placeholder="Tìm kiếm...">
+                <button type="submit"><i class="ti-search"></i></button>
               </form>
             </div>
           </div>

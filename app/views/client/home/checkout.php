@@ -79,8 +79,12 @@ include_once "./app/views/client/template/header.php";
                 <td><?= $day ?> ngày</td>
               </tr>
               <tr>
+                <td>Giảm giá</td>
+                <td><?= $discount = $voucher_code->discount_price ?> đ</td>
+              </tr>
+              <tr>
                 <td><b>Tổng</b></td>
-                <td><?= $car->price * $day ?> đ</td>
+                <td><?= $total_price = $car->price * $day - $discount ?> đ</td>
               </tr>
             </table>
           </div>
@@ -91,11 +95,15 @@ include_once "./app/views/client/template/header.php";
         <div class="product-details-content">
           <form action="<?= BASE_URL . 'post-checkout' ?>" method="post">
             <div class="checkbox-form">
+              <?php if (isset($_GET['success'])) : ?>
+                <div class="alert alert-success" role="alert"><?= $_GET['success'] ?></div>
+              <?php endif ?>
               <input type="hidden" name="buyer_id" value="<?= $_SESSION['AUTH']['id'] ?>">
               <input type="hidden" name="date_start" value="<?= $_GET['date_start'] ?>" id="">
               <input type="hidden" name="date_end" value="<?= $_GET['date_end'] ?>" id="">
               <input type="hidden" name="car_id" value="<?= $car->id ?>" id="">
-              <input type="hidden" name="total_price" value="<?= $car->price * $day ?>" id="">
+              <input type="hidden" name="total_price" value="<?= $total_price ?>" id="">
+              <input type="hidden" name="voucher" value="<?= $voucher = $voucher_code->code ?>" id="">
               <input type="hidden" name="unit_price" value="<?= $car->price ?>" id="">
               <input type="hidden" name="count_day" value="<?= $day ?>" id="">
               <h3>Thông tin khách hàng</h3>
@@ -105,24 +113,36 @@ include_once "./app/views/client/template/header.php";
                   <div class="checkout-form-list">
                     <label>Họ và tên <span class="required">*</span></label>
                     <input type="text" name="customer_name" placeholder="" />
+                    <?php if (isset($_GET['err_customer_name'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_customer_name'] ?></div>
+                    <?php endif ?>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Số điện thoại <span class="required">*</span></label>
                     <input type="text" name="customer_phone_number" />
+                    <?php if (isset($_GET['err_customer_phone_number'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_customer_phone_number'] ?></div>
+                    <?php endif ?>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Địa chỉ nhận xe <span class="required">*</span></label>
                     <input type="text" name="customer_address" />
+                    <?php if (isset($_GET['err_customer_address'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_customer_address'] ?></div>
+                    <?php endif ?>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>Email<span class="required">*</span></label>
                     <input type="email" name="customer_email" />
+                    <?php if (isset($_GET['err_customer_email'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_customer_email'] ?></div>
+                    <?php endif ?>
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -130,6 +150,9 @@ include_once "./app/views/client/template/header.php";
                     <div class="checkout-form-list mrg-nn">
                       <label>Lưu ý</label>
                       <textarea id="checkout-mess" name="message" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                      <?php if (isset($_GET['err_message'])) : ?>
+                        <div class="text-danger" role="alert"><?= $_GET['err_message'] ?></div>
+                      <?php endif ?>
                     </div>
                   </div>
                 </div>
