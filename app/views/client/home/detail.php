@@ -133,36 +133,42 @@ include_once "./app/views/client/template/header.php";
         <h3 style="margin: 40px 0px;">Khách hàng nhận xét:</h3>
         <div class="product-details-content">
           <div class="comments">
-            <?php foreach ($comments as $comment) { ?>
-              <div class="row">
-                <div class="col-md-2">
-                  <img width="100%" style="border-radius: 50%" class="img-comment" src="<?= AVATAR_URL . $comment->avatar ?>" alt="">
-                </div>
-                <div class="col-md-10">
-                  <div class="product-overview">
-                    <h5 class="pd-sub-title"><?= $comment->name ?></h5>
-                    <div class="quick-view-rating">
-                      <?php
-                        for ($i = 1; $i <= 5; $i++) {
-                          if ($comment->rating >= $i) {
-                            echo "<i class='fa fa-star reting-color'></i>";
-                          } else if (!is_int($comment->rating)) {
-                            echo "<i class='fa fa-star-half-o reting-color'></i>";
-                            if ($i < 5) {
-                              for ($j = $i; $j < 5; $j++) {
-                                echo "<i class='fa fa-star-o reting-color'></i>";   # code...
-                              }
+            <?php if ($comments != null) {
+              foreach ($comments as $comment) { ?>
+                <div class="row">
+                  <div class="col-md-2">
+                    <img width="100%" style="border-radius: 50%" class="img-comment" src="<?= AVATAR_URL . $comment->avatar ?>" alt="">
+                  </div>
+                  <div class="col-md-10">
+                    <div class="product-overview">
+                      <h4 class="pd-sub-title"><?= $comment->getUserName() ?></h4>
+                      <div class="quick-view-rating">
+                        <?php
+                            for ($i = 1; $i <= 5; $i++) {
+                              if ($comment->rating >= $i) {
+                                echo "<i class='fa fa-star reting-color'></i>";
+                              } else if (!is_int($comment->rating)) {
+                                echo "<i class='fa fa-star-half-o reting-color'></i>";
+                                if ($i < 5) {
+                                  for ($j = $i; $j < 5; $j++) {
+                                    echo "<i class='fa fa-star-o reting-color'></i>";   # code...
+                                  }
 
-                              break;
+                                  break;
+                                }
+                              }
                             }
-                          }
-                        }
-                        ?>
+                            ?>
+                      </div>
+                      <b><?= $comment->title ?></b>
+                      <p><?= $comment->content ?></p>
                     </div>
-                    <b><?= $comment->title ?></b>
-                    <p><?= $comment->content ?></p>
                   </div>
                 </div>
+              <?php }
+              } else { ?>
+              <div class="alert alert-secondary" role="alert">
+                Chưa có nhận xét về chiếc xe này. Hãy là người đầu tiên nhận xét về chiếc xe này nhé!
               </div>
             <?php } ?>
           </div>
@@ -178,26 +184,29 @@ include_once "./app/views/client/template/header.php";
                 <input type="hidden" name="id" value="<?= $detail->id ?>">
               </div>
               <div class="form-group">
-                <label for="">Chọn địa điểm nhận xe</label>
-                <select name="customer_address" class="form-control">
-                  <option value="" hidden="">Chọn điểm nhận xe</option>
-                  <?php foreach ($loca as $location) { ?>
-                    <option value="<?= $location->id ?>"><?= $location->name ?></option>
-                  <?php } ?>
-
-                </select>
+                <label for="">Địa điểm nhận xe</label>
+                <input type="text" name="customer_address" value="<?= $detail->getLocaName() ?>">
               </div>
               <div class="form-group">
                 <label for="">Ngày nhận xe</label>
                 <input type="date" id="timeCheckIn" class="form-control" name="date_start" value="" />
+                <?php if (isset($_GET['err_date_start'])) : ?>
+                  <div class="text-danger" role="alert"><?= $_GET['err_date_start'] ?></div>
+                <?php endif ?>
               </div>
               <div class="form-group">
                 <label for="">Ngày trả xe</label>
                 <input class="form-control" type="date" name="date_end">
+                <?php if (isset($_GET['err_date_end'])) : ?>
+                  <div class="text-danger" role="alert"><?= $_GET['err_date_end'] ?></div>
+                <?php endif ?>
               </div>
               <div class="form-group">
                 <label for="">Voucher giảm giá</label>
                 <input class="form-control" type="text" name="voucher">
+                <?php if (isset($_GET['err_voucher'])) : ?>
+                  <div class="text-danger" role="alert"><?= $_GET['err_voucher'] ?></div>
+                <?php endif ?>
               </div>
 
             </form>

@@ -79,8 +79,12 @@ include_once "./app/views/client/template/header.php";
                 <td><?= $day ?> ngày</td>
               </tr>
               <tr>
+                <td>Giảm giá</td>
+                <td><?= $discount = $voucher_code->discount_price ?> đ</td>
+              </tr>
+              <tr>
                 <td><b>Tổng</b></td>
-                <td><?= $car->price * $day ?> đ</td>
+                <td><?= $total_price = $car->price * $day - $discount ?> đ</td>
               </tr>
             </table>
           </div>
@@ -95,7 +99,8 @@ include_once "./app/views/client/template/header.php";
               <input type="hidden" name="date_start" value="<?= $_GET['date_start'] ?>" id="">
               <input type="hidden" name="date_end" value="<?= $_GET['date_end'] ?>" id="">
               <input type="hidden" name="car_id" value="<?= $car->id ?>" id="">
-              <input type="hidden" name="total_price" value="<?= $car->price * $day ?>" id="">
+              <input type="hidden" name="total_price" value="<?= $total_price ?>" id="">
+              <input type="hidden" name="voucher" value="<?= $voucher= $voucher_code->code ?>" id="">
               <input type="hidden" name="unit_price" value="<?= $car->price ?>" id="">
               <input type="hidden" name="count_day" value="<?= $day ?>" id="">
               <h3>Thông tin khách hàng</h3>

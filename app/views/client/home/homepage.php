@@ -128,12 +128,15 @@
                                             <form action="<?= BASE_URL . 'search' ?>" method="get">
                                                 <div class="form-group">
                                                     <label for="">Chọn địa điểm</label>
-                                                    <select name="location_id" class="form-control">
+                                                    <select name="locationId" class="form-control">
                                                         <option value="" hidden="">Chọn điểm nhận xe</option>
                                                         <?php foreach ($locations as $location) { ?>
                                                             <option value="<?= $location->id ?>"><?= $location->name ?></option>
                                                         <?php } ?>
                                                     </select>
+                                                    <?php if (isset($_GET['errLocationId'])) : ?>
+                                                        <div class="text-danger" role="alert"><?= $_GET['errLocationId'] ?></div>
+                                                    <?php endif ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">Chọn loại xe</label>
@@ -143,6 +146,9 @@
                                                             <option value="<?= $category->id ?>"><?= $category->name ?></option>
                                                         <?php } ?>
                                                     </select>
+                                                    <?php if (isset($_GET['errCategoryId'])) : ?>
+                                                        <div class="text-danger" role="alert"><?= $_GET['errCategoryId'] ?></div>
+                                                    <?php endif ?>
                                                 </div>
 
                                                 <div class="form-group">
