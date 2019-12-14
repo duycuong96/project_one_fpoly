@@ -214,7 +214,7 @@
                                             </a>
                                             <div class="product-item-dec">
                                                 <ul>
-                                                    <li><?= $car->getCateName(); ?></li>
+                                                    <li><h5><?= $car->name ?></h5></li>
                                                 </ul>
                                             </div>
                                             <div class="product-action">
