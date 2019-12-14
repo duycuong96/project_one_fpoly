@@ -41,7 +41,7 @@ require_once './app/views/client/template/header.php';
                                             <div class="login-toggle-btn">
                                                 <input type="checkbox">
                                                 <label>Remember me</label>
-                                                <a href="#">Quên mật khẩu?</a>
+                                                <a href="<?= BASE_URL . 'forgot-password' ?>">Quên mật khẩu?</a>
                                             </div>
                                             <button type="submit" class="btn-style cr-btn"><span>Đăng nhập</span></button>
                                         </div>

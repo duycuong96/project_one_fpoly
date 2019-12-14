@@ -20,14 +20,14 @@ include_once "./app/views/client/template/header.php";
       <div class="col-lg-7 ml-auto mr-auto">
         <div class="login-register-wrapper">
           <div class="login-register-tab-list nav">
-            <a class="active" data-toggle="tab" href="<?= BASE_URL ?>login">
+            <a href="<?= BASE_URL ?>login">
               <h4 style="color: #fd7e14"> Đăng nhập &nbsp &nbsp &nbsp <a style="color: #303030" href="<?= BASE_URL ?>register">Đăng ký</a></h4>
             </a>
           </div>
           <div class="tab-content">
             <div id="lg1" class="tab-pane active">
               <div class="login-form-container">
-                <?php if (isset($_GET['err_name'])) : ?>
+                <?php if (isset($_GET['err_success'])) : ?>
                   <div class="text-danger" role="alert"><?= $_GET['err_success'] ?></div>
                 <?php endif ?>
                 <div class="login-form">
@@ -71,5 +71,5 @@ include_once "./app/views/client/template/header.php";
   </div>
 </div>
 <?php
-include_once "./app/views/client/template/header.php";
+include_once "./app/views/client/template/footer.php";
 ?>

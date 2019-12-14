@@ -47,6 +47,16 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->postLogin();
 		break;
+
+	case 'forgot-password':
+		$ctr = new HomeController();
+		$ctr->forgotPassword();
+		break;
+	case 'post-forgot-password':
+		$ctr = new HomeController();
+		$ctr->postForgotPassword();
+		break;
+		
 		// logout
 	case 'logout':
 		$ctr = new HomeController();

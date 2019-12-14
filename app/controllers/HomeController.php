@@ -97,6 +97,96 @@ class HomeController
 			echo "thất bại";
 		}
 	}
+
+	public function forgotPassword()
+	{
+		include_once './app/views/client/home/forgotPassword.php';
+	}
+	public function postForgotPassword()
+	{
+		$email = isset($_POST['email']) == true ? $_POST['email'] : "";
+		// dd($email);
+		$user = User::where(['email', '=', $email])->first();
+		// dd($user);
+		if (isset($_SERVER['PHP_SELF'])) {
+
+			$err_email = "";
+			if ($email == "") {
+				$err_email = "Vui lòng nhập địa chỉ Email";
+			} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$err_email = "Email nhập chưa đúng";
+			}elseif (!$user) {
+				$err_email = "Email chưa được đăng ký";
+			}
+
+			// kiểm tra và hiện validation
+			if ($err_email != "" ) {
+				header(
+					'location: ' . BASE_URL . '/forgot-password?'
+						. 'err_email=' . $err_email
+				);
+				die;
+			}else {
+
+				date_default_timezone_set('Asia/Ho_Chi_Minh');
+				$expFormat = mktime(date("H"), date("i"), date("s"), date("m"), date("d") + 1, date("Y"));
+				$reset_expired_time = date("Y-m-d H:i:s", $expFormat);
+				$token =  md5($reset_expired_time);
+				$addToken = substr(md5(uniqid(rand(), 1)), 3, 10);
+				// dd($addToken);
+				$token = $token . $addToken;
+
+				$data['token'] = $token;
+				$data['reset_expired_time'] = $reset_expired_time;
+				$model = new User();
+				$model->id = $user->id;
+				$model->update($data);
+// dd($model);
+				// 
+				$output = '<span>Xin chào </span> ' . $email;
+				$output .= '<p>Vui lòng nhấp vào liên kết sau để đặt lại mật khẩu của bạn..</p>';
+				$output .= '<p>-------------------------------------------------------------</p>';
+				$output .= '<p><a href="http://localhost/project/project_one/admin/reset-password?token=' . $token . '&email=' . $email . '" target="_blank">Click vào đây lấy lại mật khẩu</a></p>';
+				$output .= '<p>-------------------------------------------------------------</p>';
+				$output .= '<p>Vui lòng nhấp liên kết để lấy lại mật khẩu. Liên kết sẽ hết hạn sau 1 ngày vì lý do bảo mật.</p>';
+				$output .= '<p>Cảm ơn bạn luôn đồng hành cùng MeGo,</p>';
+				$output .= '<p>MeGo Team</p>';
+				// var_dump($email);die;
+				$body = $output;
+				$subject = "Khôi phục mật khẩu - Mego";
+				$email_to = $email;
+				$error = "Gửi không thành công";
+				// dd($content);
+				$mail = new PHPMailer(true);
+				try {
+					$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+					$mail->CharSet = 'UTF-8';
+					$mail->isSMTP();
+					$mail->Host       = 'smtp.gmail.com';
+					$mail->SMTPAuth   = true;
+					$mail->Username = 'noiconsong@gmail.com';
+					$mail->Password = 'qkxrjoenwrpshmhk';
+					$mail->SMTPSecure = 'tls';
+					$mail->Port = 587;
+
+					$mail->setFrom('vuduycuong996@gmail.com', 'Mego');
+
+					$mail->addAddress($email_to);
+					$mail->isHTML(true);
+					$mail->Subject = $subject;
+					$mail->Body    = $body;
+					$mail->send();
+					header('location: ' . BASE_URL . '/forgot-password?err_success=' . "Mego vừa gởi thông tin vào email của bạn. Vui lòng kiểm tra email nhé!");
+					die;
+				} catch (Exception $e) {
+					header('location: ' . BASE_URL . '/forgot-password?' . 'err_email=' . $error);
+					die;
+				}
+			
+			}
+		}
+		
+	}
 	public function register()
 	{
 		$maker = Maker::all();
@@ -182,7 +272,7 @@ class HomeController
 			}
 
 			// kiểm tra và hiện validation
-			if ($err_email != "" || $err_password != "") {
+			if ($err_name != "" || $err_email != "" || $err_phone_number != "" || $err_rePassword != "" || $err_file != "") {
 				header(
 					'location: ' . BASE_URL . '/register?'
 						. 'err_name=' . $err_name
@@ -266,8 +356,9 @@ class HomeController
 		$maker = Maker::all();
 		$loca = Location::where(['show_location', '=', '1'])->get();
 		$cate = Category::all();
-		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id','=',$categoryId])->get();
+		$cars = Car::where(['location_id', '=', $locationId])->andWhere(['cate_id', '=', $categoryId])->get();
 
+		$nameCategory = " ";
 		// dd($cars);
 		include_once './app/views/client/home/category.php';
 	}
@@ -317,7 +408,7 @@ class HomeController
 		$cate = Category::all();
 		$car = Car::all();
 		$category = Maker::where(['id', '=', $id])->first();
-		$nameCategory = 'của hãng ' . $category->name;
+		$nameCategory = 'xe của hãng ' . $category->name;
 
 		$cars = Car::where(['maker_id', '=', $id])->get();
 		// dd($makers);
@@ -333,7 +424,7 @@ class HomeController
 		$cate = Category::all();
 		$car = Car::all();
 		$category = Location::where(['id', '=', $id])->first();
-		$nameCategory = 'ở ' . $category->name;
+		$nameCategory = 'xe ở ' . $category->name;
 
 		$cars = Car::where(['location_id', '=', $id])->get();
 		// dd($makers);
@@ -425,7 +516,7 @@ class HomeController
 		if (isset($_SERVER['PHP_SELF'])) {
 			// pass
 			$err_name = "";
-			if ($name == "" || strlen($name)<2) {
+			if ($name == "" || strlen($name) < 2) {
 				$err_name = "Hãy nhập tên của bạn";
 			}
 			$err_title = "";
@@ -467,7 +558,7 @@ class HomeController
 				die;
 			}
 		}
-		$data = compact('name', 'email', 'title', 'content','phone_number');
+		$data = compact('name', 'email', 'title', 'content', 'phone_number');
 		$model = new Contact();
 		$model->insert($data);
 		$success = "Gửi liên hệ thành công";
@@ -814,11 +905,11 @@ class HomeController
 			$mail->Subject = "Mego";
 			$mail->Body    = $message;
 			$mail->send();
-			header('location: ' . BASE_URL . 'checkout?id='. $car_id
-			.'&customer_address='. $customer_address
-			.'&date_start='.$date_start
-			.'&date_end='.$date_end
-			.'&voucher='.$voucher);
+			header('location: ' . BASE_URL . 'checkout?id=' . $car_id
+				. '&customer_address=' . $customer_address
+				. '&date_start=' . $date_start
+				. '&date_end=' . $date_end
+				. '&voucher=' . $voucher);
 		} catch (Exception $e) {
 			header('location: ' . BASE_URL );
 			die;
