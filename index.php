@@ -531,6 +531,10 @@ switch ($url) {
 		$ctr = new PartnerController();
 		$ctr->editOrdersPartner();
 		break;
+	case 'partner/orders/save-edit':
+		$ctr = new PartnerController();
+		$ctr->saveEditOrdersPartner();
+		break;
 		
 		break;
 }

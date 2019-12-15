@@ -27,7 +27,7 @@ require_once './app/views/admin/master/master.php';
                                 <i class="flaticon-right-arrow"></i>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= ADMIN_URL . '/category' ?>">Đặt xe</a>
+                                <a href="<?= ADMIN_URL . '/order' ?>">Đặt xe</a>
                             </li>
                         </ul>
                     </div>
@@ -38,7 +38,7 @@ require_once './app/views/admin/master/master.php';
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
 
-                                        <a href="<?= ADMIN_URL . '/category' ?>" class="btn btn-primary btn-round ml-auto">
+                                        <a href="<?= ADMIN_URL . '/order' ?>" class="btn btn-primary btn-round ml-auto">
                                             Danh sách
                                         </a>
                                     </div>
@@ -123,10 +123,10 @@ require_once './app/views/admin/master/master.php';
                                                     <h3>Cập nhật đơn hàng:</h3>
                                                     <form method="post" action="<?php echo ADMIN_URL . '/order/save-edit' ?>" enctype="multipart/form-data">
                                                         <div class="card-body">
-                                                            <input type="hidden" name="id" order="<?= $order->id ?>">
+                                                            <input type="hidden" name="id" value="<?= $order->id ?>">
                                                             <div class="form-group">
                                                                 <label>Tên</label>
-                                                                <input type="text" class="form-control" name="customer_name" placeholder="Tên" order="<?php echo $order->customer_name ?>">
+                                                                <input type="text" class="form-control" name="customer_name" placeholder="Tên" value="<?php echo $order->customer_name ?>">
                                                                 <small id="emailHelp2" class="form-text text-muted">
                                                                     <?php if (isset($_GET['err_name'])) : ?>
                                                                         <span style="color: red"><?= $_GET['err_name'] ?></span>
@@ -136,7 +136,7 @@ require_once './app/views/admin/master/master.php';
 
                                                             <div class="form-group">
                                                                 <label>Số điện thoại</label>
-                                                                <input type="text" class="form-control" name="customer_phone_number" placeholder="Số điện thoại" order="<?php echo $order->customer_phone_number ?>">
+                                                                <input type="text" class="form-control" name="customer_phone_number" placeholder="Số điện thoại" value="<?php echo $order->customer_phone_number ?>">
                                                                 <small id="emailHelp2" class="form-text text-muted">
                                                                     <?php if (isset($_GET['err_phone_number'])) : ?>
                                                                         <span style="color: red"><?= $_GET['err_phone_number'] ?></span>
@@ -146,7 +146,7 @@ require_once './app/views/admin/master/master.php';
 
                                                             <div class="form-group">
                                                                 <label>Email</label>
-                                                                <input type="text" class="form-control" name="customer_email" placeholder="Email" order="<?php echo $order->customer_email ?>">
+                                                                <input type="text" class="form-control" name="customer_email" placeholder="Email" value="<?php echo $order->customer_email ?>">
                                                                 <small id="emailHelp2" class="form-text text-muted">
                                                                     <?php if (isset($_GET['err_email'])) : ?>
                                                                         <span style="color: red"><?= $_GET['err_email'] ?></span>
@@ -155,7 +155,7 @@ require_once './app/views/admin/master/master.php';
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Địa chỉ</label>
-                                                                <input type="text" class="form-control" name="customer_address" placeholder="Địa chỉ" order="<?php echo $order->customer_address ?>">
+                                                                <input type="text" class="form-control" name="customer_address" placeholder="Địa chỉ" value="<?php echo $order->customer_address ?>">
                                                                 <small id="emailHelp2" class="form-text text-muted">
                                                                     <?php if (isset($_GET['err_address'])) : ?>
                                                                         <span style="color: red"><?= $_GET['err_address'] ?></span>
@@ -165,22 +165,22 @@ require_once './app/views/admin/master/master.php';
                                                             <div class="form-group">
                                                                 <label for="" class="">Xử lý đơn hàng</label>
                                                                 <select name="status" required class="form-control">
-                                                                    <option <?php if ($order->status == "0") : ?> selected <?php endif ?> order="0">
+                                                                    <option <?php if ($order->status == "0") : ?> selected <?php endif ?> value="0">
                                                                         Tiếp nhận đơn hàng
                                                                     </option>
-                                                                    <option <?php if ($order->status == "1") : ?> selected <?php endif ?> order="1">
+                                                                    <option <?php if ($order->status == "1") : ?> selected <?php endif ?> value="1">
                                                                         Đang xử lý
                                                                     </option>
-                                                                    <option <?php if ($order->status == "2") : ?> selected <?php endif ?> order="2">
+                                                                    <option <?php if ($order->status == "2") : ?> selected <?php endif ?> value="2">
                                                                         Chờ thanh toán
                                                                     </option>
-                                                                    <option <?php if ($order->status == "3") : ?> selected <?php endif ?> order="3">
+                                                                    <option <?php if ($order->status == "3") : ?> selected <?php endif ?> value="3">
                                                                         Đã hoàn thành
                                                                     </option>
-                                                                    <option <?php if ($order->status == "4") : ?> selected <?php endif ?> order="4">
+                                                                    <option <?php if ($order->status == "4") : ?> selected <?php endif ?> value="4">
                                                                         Hủy bỏ
                                                                     </option>
-                                                                    <option <?php if ($order->status == "5") : ?> selected <?php endif ?> order="5">
+                                                                    <option <?php if ($order->status == "5") : ?> selected <?php endif ?> value="5">
                                                                         Hoàn tiền
                                                                     </option>
                                                                 </select> </div>
