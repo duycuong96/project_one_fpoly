@@ -129,7 +129,7 @@ class UserController
 		$password = isset($_POST['password']) == true ? $_POST['password']: "";
 		$role_id = isset($_POST['role_id']) == true ? $_POST['role_id']: "";
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
-
+		// dd($id);
 		$avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar']: "";
 
 		if (isset($_SERVER['PHP_SELF'])){
