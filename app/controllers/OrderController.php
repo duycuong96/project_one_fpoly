@@ -52,6 +52,7 @@ class OrderController
 		$customer_email = isset($_POST['customer_email']) == true ? $_POST['customer_email']: "";
 		$customer_address = isset($_POST['customer_address']) == true ? $_POST['customer_address']: "";
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
+		// dd($id);
 
 		if (isset($_SERVER['PHP_SELF'])){
 
@@ -87,8 +88,8 @@ class OrderController
 				. '&err_phone_number=' . $err_phone_number
 				. '&err_email=' . $err_email
 				. '&err_address=' . $err_address
-				); die;
-			die;
+				); 
+				die;
 		}
 		}
 		

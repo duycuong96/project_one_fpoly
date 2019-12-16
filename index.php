@@ -542,6 +542,3 @@ switch ($url) {
 		
 		break;
 }
-
-
- ?>
