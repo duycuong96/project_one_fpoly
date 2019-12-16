@@ -169,6 +169,14 @@ switch ($url) {
 		$ctr = new ClientAccountController();
 		$ctr->saveRegister();
 		break;
+	case 'register-partner':
+		$ctr = new ClientAccountController();
+		$ctr->registerPartner();
+		break;
+	case 'save-register-partner':
+		$ctr = new ClientAccountController();
+		$ctr->saveRegisterPartner();
+		break;
 
 
 
@@ -531,13 +539,6 @@ switch ($url) {
 		$ctr = new PartnerController();
 		$ctr->editOrdersPartner();
 		break;
-	case 'partner/orders/save-edit':
-		$ctr = new PartnerController();
-		$ctr->saveEditOrdersPartner();
-		break;
 		
 		break;
 }
-
-
- ?>
