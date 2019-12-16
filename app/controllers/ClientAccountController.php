@@ -166,9 +166,6 @@ class ClientAccountController
       }
     }
   }
-  public function resetPassword()
-  {
-  }
   public function register()
   {
     $maker = Maker::all();
