@@ -27,6 +27,9 @@ use App\Controllers\RoleController;
 use App\Controllers\LoginController;
 use App\Controllers\PartnerController;
 use App\Models\Comment;
+use App\Controllers\ClientAccountController;
+use App\Controllers\ClientCategoryController;
+use App\Controllers\ClientOrderController;
 
 switch ($url) {
 	// trang chủ
@@ -40,26 +43,30 @@ switch ($url) {
 		break;
 		// login user
 	case 'login':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->login();
 		break;
 	case 'post-login':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->postLogin();
 		break;
 
 	case 'forgot-password':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->forgotPassword();
 		break;
 	case 'post-forgot-password':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->postForgotPassword();
+		break;
+	case 'reset-password':
+		$ctr = new ClientAccountController();
+		$ctr->resetPassword();
 		break;
 		
 		// logout
 	case 'logout':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->logout();
 		break;
 	case 'search':
@@ -73,25 +80,25 @@ switch ($url) {
 		// search
 		// trang danh mục
 	case 'categories':
-		$ctr = new HomeController();
+		$ctr = new ClientCategoryController();
 		$ctr->categories();
 		break;
 	case 'category':
-		$ctr = new HomeController();
+		$ctr = new ClientCategoryController();
 		$ctr->category();
 		break;
 		// trang danh xe theo hãng xe
 	case 'maker':
-		$ctr = new HomeController();
+		$ctr = new ClientCategoryController();
 		$ctr->makers();
 		break;
 	case 'location':
-		$ctr = new HomeController();
+		$ctr = new ClientCategoryController();
 		$ctr->locations();
 		break;
 		// chi tiết
 	case 'detail':
-		$ctr = new HomeController();
+		$ctr = new ClientCategoryController();
 		$ctr->detail();
 		break;
 	case 'comment':
@@ -122,30 +129,30 @@ switch ($url) {
 		$ctr->delItemWishlist();
 		break;
 	case 'checkout':
-		$ctr = new HomeController();
+		$ctr = new ClientOrderController();
 		$ctr->checkout();
 		break;
 	case 'post-checkout':
-		$ctr = new HomeController();
+		$ctr = new ClientOrderController();
 		$ctr->postCheckout();
 		break;
 	case 'account':
 		checkLoginClient();
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->account();
 		break;
 	case 'save-account':
 		checkLoginClient();
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->saveAccount();
 		break;
 		// đổi mật khẩu
 	case 'change-password':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->changePassword();
 		break;
 	case 'save-change-password':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->saveChangePassword();
 		break;
 
@@ -155,12 +162,20 @@ switch ($url) {
 		$ctr->history();
 		break;
 	case 'register':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->register();
 		break;
 	case 'save-register':
-		$ctr = new HomeController();
+		$ctr = new ClientAccountController();
 		$ctr->saveRegister();
+		break;
+	case 'register-partner':
+		$ctr = new ClientAccountController();
+		$ctr->registerPartner();
+		break;
+	case 'save-register-partner':
+		$ctr = new ClientAccountController();
+		$ctr->saveRegisterPartner();
 		break;
 
 
