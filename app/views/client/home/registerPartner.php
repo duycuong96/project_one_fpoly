@@ -20,8 +20,8 @@ include_once "./app/views/client/template/header.php";
       <div class="col-lg-7 ml-auto mr-auto">
         <div class="login-register-wrapper">
           <div class="login-register-tab-list nav">
-            <a href="<?= BASE_URL ?>login">
-              <h4 style="color: #fd7e14"> Đăng nhập &nbsp &nbsp &nbsp <a style="color: #303030" href="<?= BASE_URL ?>register">Đăng ký</a></h4>
+            <a href="#">
+              <h4 style="color: #fd7e14"> Đăng ký cộng tác viên</h4>
             </a>
           </div>
           <div class="tab-content">
@@ -31,7 +31,7 @@ include_once "./app/views/client/template/header.php";
                   <div class="alert alert-success" role="alert"><?= $_GET['err_success'] ?></div>
                 <?php endif ?>
                 <div class="login-form">
-                  <form action="<?= BASE_URL ?>save-register" method="post" enctype="multipart/form-data">
+                  <form action="<?= BASE_URL ?>save-register-partner" method="post" enctype="multipart/form-data">
                     <?php if (isset($_GET['err_name'])) : ?>
                       <div class="text-danger" role="alert"><?= $_GET['err_name'] ?></div>
                     <?php endif ?>
@@ -71,5 +71,5 @@ include_once "./app/views/client/template/header.php";
   </div>
 </div>
 <?php
-                                                                                                      include_once "./app/views/client/template/footer.php";
+                                                              include_once "./app/views/client/template/footer.php";
 ?>
