@@ -168,7 +168,6 @@ class ClientAccountController
   }
   public function resetPassword()
   {
-
   }
   public function register()
   {
@@ -186,6 +185,7 @@ class ClientAccountController
     $rePassword = isset($_POST['rePassword']) == true ? $_POST['rePassword'] : "";
     $password =  password_hash($pass, PASSWORD_DEFAULT);
     $role_id = 3;
+    $status = 1;
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     // dd($created_at);
     $avatar = $_FILES['avatar'];
@@ -196,7 +196,7 @@ class ClientAccountController
 
     if (isset($_SERVER['PHP_SELF'])) {
       $err_name = "";
-      if ($name = "" || strlen($name) < 2) {
+      if ($name == "" || strlen($name) < 2) {
         $err_name = 'Vui lòng điền họ và tên';
       }
 
@@ -207,23 +207,25 @@ class ClientAccountController
         $err_email = "Email nhập chưa đúng";
       }
 
-      $err_phone_number = '';
-      if ($phone_number = '') {
-        $err_phone_number = 'Vui lòng nhập số điện thoại';
-      } elseif (!is_int($phone_number)) {
-        $err_phone_number = "Vui lòng nhập đúng số điện thoại không '.' hoặc ',' ";
-      } elseif (strlen($phone_number) < 10) {
-        $err_phone_number = "Số điện thoại ở Việt Nam hiện tại có 10 số";
+
+      $err_phone_number = "";
+      $pattern = '/[0-9]/';
+      if ($phone_number == "") {
+        $phone_number = "Vui lòng nhập số điện thoại";
+      } elseif (!preg_match($pattern, $phone_number)) {
+        $phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
+      } elseif (strlen($phone_number) != 10) {
+        $phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
       }
       // pass
       $err_password = "";
       if ($pass == "" || strlen($pass) < 6) {
         $err_password = "Nhập mật khẩu ít nhất 6 kí tự";
       }
-
-      $err_rePassword = '';
-      if (strcmp($password, $rePassword) != 0) {
-        $err_rePassword = 'mật khẩu nhập không trùng khớp';
+      // dd($rePassword);
+      $err_rePassword = "";
+      if (strcmp($pass, $rePassword) != 0) {
+        $err_rePassword = "mật khẩu nhập không trùng khớp";
       }
       // ảng
       $err_file = "";
@@ -267,23 +269,134 @@ class ClientAccountController
         );
         die;
       }
-    }
-
-    $data = compact('name', 'email', 'password', 'role_id', 'phone_number');
-    $data['avatar'] = $filename;
-    $data['created_at'] = date_format(date_create(), 'Y-m-d H:i:s');
-    // dd($data);
-    $model = new User();
-    $model->insert($data);
-    if (isset($_SERVER['PHP_SELF'])) {
-      $err_success = "";
-      if ($name = "" || strlen($name) < 2) {
+      $data = compact('name', 'email', 'password', 'role_id', 'phone_number', 'status');
+      $data['avatar'] = $filename;
+      $data['created_at'] = date_format(date_create(), 'Y-m-d H:i:s');
+      // dd($data);
+      $model = new User();
+      $model->insert($data);
+      if (isset($_SERVER['PHP_SELF'])) {
+        $err_success = "";
         $err_success = 'Chúc mừng bạn đã đăng ký thành công!';
-      }
-      // kiểm tra và hiện validation
-      if ($err_email != "" || $err_password != "") {
+        // kiểm tra và hiện validation
         header(
           'location: ' . BASE_URL . '/register?'
+            . 'err_success=' . $err_success
+        );
+      }
+    }
+  }
+  public function registerPartner()
+  {
+    $maker = Maker::all();
+    $loca = Location::where(['show_location', '=', '1'])->get();
+    $cate = Category::all();
+    include_once './app/views/client/home/registerPartner.php';
+  }
+  public function saveRegisterPartner()
+  {
+    // dd(1);
+    $name = isset($_POST['name']) == true ? $_POST['name'] : "";
+    $email = isset($_POST['email']) == true ? $_POST['email'] : "";
+    $phone_number = isset($_POST['phone_number']) == true ? $_POST['phone_number'] : "";
+    $pass = isset($_POST['password']) == true ? $_POST['password'] : "";
+    $rePassword = isset($_POST['rePassword']) == true ? $_POST['rePassword'] : "";
+    $password =  password_hash($pass, PASSWORD_DEFAULT);
+    $role_id = 2;
+    $status = 1;
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    // dd($created_at);
+    $avatar = $_FILES['avatar'];
+    $filePath = "";
+
+    // dd($filename);
+
+
+    if (isset($_SERVER['PHP_SELF'])) {
+      $err_name = "";
+      if ($name == "" || strlen($name) < 2) {
+        $err_name = 'Vui lòng điền họ và tên';
+      }
+
+      $err_email = "";
+      if ($email == "") {
+        $err_email = "Vui lòng nhập địa chỉ Email";
+      } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $err_email = "Email nhập chưa đúng";
+      }
+
+      $err_phone_number = "";
+      $pattern = '/[0-9]/';
+      if ($phone_number == "") {
+        $phone_number = "Vui lòng nhập số điện thoại";
+      } elseif (!preg_match($pattern, $phone_number)) {
+        $phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
+      } elseif (strlen($phone_number) != 10) {
+        $phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
+      }
+      // pass
+      $err_password = "";
+      if ($pass == "" || strlen($pass) < 6) {
+        $err_password = "Nhập mật khẩu ít nhất 6 kí tự";
+      }
+
+      $err_rePassword = '';
+      if (strcmp($pass, $rePassword) != 0) {
+        $err_rePassword = 'mật khẩu nhập không trùng khớp';
+      }
+      // ảng
+      $err_file = "";
+
+      $allowed_image_extension = array(
+        "png",
+        "jpg",
+        "jpeg"
+      );
+      // pathinfo trả về thông tin về đường dẫn tệp
+      $file_extension = pathinfo($avatar["name"], PATHINFO_EXTENSION);
+
+      //  Kiểm tra xem một tập tin hoặc thư mục tồn tại
+      if (!file_exists($avatar["tmp_name"])) {
+        $err_file = "Vui lòng chọn hình ảnh để tải lên";
+      }
+      //  Kiểm tra biến tồn tại trong mảng
+      else if (!in_array($file_extension, $allowed_image_extension)) {
+        $err_file = "Tải lên hình ảnh khác. Chỉ cho phép JPG, PNG và JPEG.";
+      }
+      // move_uploaded_file Di chuyển tệp đã tải lên đến một vị trí mới
+      // upload ảnh
+      else {
+        if ($avatar['size'] > 0) {
+          $filename = $avatar['name'];
+          $filename = uniqid() . "-" . $filename;
+          move_uploaded_file($avatar['tmp_name'], 'public/assets/img/users/' . $filename);
+        }
+      }
+
+      // kiểm tra và hiện validation
+      if ($err_name != "" || $err_email != "" || $err_phone_number != "" || $err_rePassword != "" || $err_file != "") {
+        header(
+          'location: ' . BASE_URL . '/register-partner?'
+            . 'err_name=' . $err_name
+            . '&err_email=' . $err_email
+            . '&err_phone_number=' . $err_phone_number
+            . '&err_password=' . $err_password
+            . '&err_rePassword=' . $err_rePassword
+            . '&err_file=' . $err_file
+        );
+        die;
+      }
+      $data = compact('name', 'email', 'password', 'role_id', 'phone_number', 'status');
+      $data['avatar'] = $filename;
+      $data['created_at'] = date_format(date_create(), 'Y-m-d H:i:s');
+      // dd($data);
+      $model = new User();
+      $model->insert($data);
+      if (isset($_SERVER['PHP_SELF'])) {
+        $err_success = 'Chúc mừng bạn đã chính trợ thành 1 thành viên của Mego!';
+        // kiểm tra và hiện validation
+        header(
+          'location: ' . BASE_URL . '/register-partner?'
             . 'err_success=' . $err_success
         );
         die;
