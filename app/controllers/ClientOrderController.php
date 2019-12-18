@@ -238,8 +238,8 @@ class ClientOrderController
         $mail->addAddress($e);
       }
       $mail->isHTML(true);
-      $mail->Subject = "Mego";
-      $mail->Body    = $message;
+      $mail->Subject = "Mego - Đặt xe du lịch tự lái";
+      $mail->Body    = $body;
       $mail->send();
       header('location: ' . BASE_URL . 'checkout?id=' . $car_id
         . '&customer_address=' . $customer_address
