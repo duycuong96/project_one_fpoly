@@ -50,19 +50,16 @@ class ClientOrderController
     if (isset($_SERVER['PHP_SELF'])) {
       $err_check = "";
       if ($_SESSION['AUTH'] == null) {
-        $err_check = "Đăng nhập để có thể đặt xe được bạn nhé!";
+        $err_check = "Đăng nhập để có thể bình luận được bạn nhé!";
       }
       // pass
-      date_default_timezone_set('Asia/Ho_Chi_Minh');
-      $date = date('Y-m-d');
-      // dd($date_start);
       $err_date_start = "";
-      if ($date_start == "" || $date_start<= $date) {
-        $err_date_start = "Hãy chon ngày nhận xe và sau ngày hiện tại";
+      if ($date_start == "") {
+        $err_date_start = "Hãy chon ngày nhận xe";
       }
       $err_date_end = "";
-      if ($date_end == "" || $date_start >= $date_end) {
-        $err_date_end = "Hãy chon ngày trả xe và sau ngày đặt xe";
+      if ($date_end == "") {
+        $err_date_end = "Hãy chon ngày trả xe";
       }
       // $err_voucher = "";
       // if ($day < 5) {
@@ -157,7 +154,10 @@ class ClientOrderController
         die;
       }
     }
+
+    // $success = "";
     $success = "Đặt hàng thành công";
+
     // dd($voucher);
     $data = compact('customer_name', 'customer_email', 'customer_phone_number', 'customer_address', 'total_price', 'status', 'buyer_id', 'message', 'payment_method', 'date_start', 'date_end', 'discount', 'voucher_id');
     // dd($data);
@@ -244,11 +244,19 @@ class ClientOrderController
       $mail->Subject = "Mego - Đặt xe du lịch tự lái";
       $mail->Body    = $body;
       $mail->send();
-      header('location: ' . BASE_URL . 'checkout?id=' . $car_id
-        . '&customer_address=' . $customer_address
-        . '&date_start=' . $date_start
-        . '&date_end=' . $date_end
-        . '&voucher=' . $voucher);
+      // header('location: ' . BASE_URL . 'checkout?id=' . $car_id
+      //   . '&customer_address=' . $customer_address
+      //   . '&date_start=' . $date_start
+      //   . '&date_end=' . $date_end
+      //   . '&voucher=' . $voucher);
+      // echo '<script>window.location="";</script>';
+      echo '<script>'. 'window.location="' . BASE_URL . 'checkout?id=' . $car_id
+      . '&customer_address=' . $customer_address
+      . '&date_start=' . $date_start
+      . '&date_end=' . $date_end
+      . '&voucher=' . $voucher 
+      . '&success=' . $success 
+      . '";' .  '</script>';
     } catch (Exception $e) {
       header('location: ' . BASE_URL);
       die;
