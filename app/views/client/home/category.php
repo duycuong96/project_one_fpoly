@@ -6,8 +6,11 @@ include_once "./app/views/client/template/nav.php";
   <div class="grid-list-product-wrapper tab-content">
     <div id="new-product" class="product-grid product-view tab-pane active">
       <div class="row">
+        <?php if (isset($_GET['err_cars'])) : ?>
+          <div class="text-danger" role="alert"><?= $_GET['err_cars'] ?></div>
+        <?php endif ?>
         <?php
-        foreach ($cars as $car) { ?>
+                                              foreach ($cars as $car) { ?>
           <div class="product-width col-md-6 col-xl-6 col-lg-6">
             <div class="product-wrapper mb-35">
               <div class="product-img">
@@ -16,7 +19,9 @@ include_once "./app/views/client/template/nav.php";
                 </a>
                 <div class="product-item-dec">
                   <ul>
-                    <li><h5><?= $car->name ?></h5></li>
+                    <li>
+                      <h5><?= $car->name ?></h5>
+                    </li>
                   </ul>
                 </div>
                 <div class="product-action">
@@ -77,5 +82,5 @@ include_once "./app/views/client/template/nav.php";
 </div>
 </div>
 <?php
-include_once "./app/views/client/template/footer.php"
+                                                                                  include_once "./app/views/client/template/footer.php"
 ?>
