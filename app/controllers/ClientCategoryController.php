@@ -79,13 +79,16 @@ class ClientCategoryController
     $nameCategory = 'xe ở ' . $category->name;
 
     $cars = Car::where(['location_id', '=', $id])->get();
-    if (!$cars) {
-      include_once './app/views/error.php';
+    $err_cars = "Chưa có xe";
+    if (!$category) {
+      header('location: ' . BASE_URL . 'error');
+      die;
     }
+
+      include_once './app/views/client/home/category.php';
     // dd($makers);
     // echo "<pre>";
     // dd($car);
-    include_once './app/views/client/home/category.php';
   }
   // chi tiết xe
   public function detail()
