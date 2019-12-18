@@ -1,7 +1,7 @@
 <?php
 include_once "./app/views/client/template/header.php";
 ?>
-<div class="breadcrumb-area pt-255 pb-170" style="background-image: url(assets/img/banner/banner-4.jpg)">
+<div class="breadcrumb-area pt-255 pb-170" style="background-image: url(public/assets/img/banner/banner-4.jpg)">
   <div class="container-fluid">
     <div class="breadcrumb-content text-center">
       <h2>Cart page</h2>
