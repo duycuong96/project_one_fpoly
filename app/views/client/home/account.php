@@ -35,7 +35,7 @@ include_once "./app/views/client/template/header.php";
       </div>
       <div class="col-md-8">
         <div class="product-details-content">
-          <form action="<?= BASE_URL . 'save-account' ?>" method="post">
+          <form action="<?= BASE_URL . 'save-account' ?>" method="post" enctype="multipart/form-data">
             <div class="checkbox-form">
               <h3>Thay đổi thông tin</h3>
               <div class="row">
@@ -51,6 +51,13 @@ include_once "./app/views/client/template/header.php";
                   <div class="checkout-form-list">
                     <label>Email <span class="required">*</span></label>
                     <input type="text" name="email" value="<?= $user->email ?>" placeholder="" />
+                    <?php if (isset($_GET['err_email'])) : ?>
+                      <div class="text-danger" role="alert"><?= $_GET['err_email'] ?></div>
+                    <?php endif ?>
+                  </div>
+                  <div class="checkout-form-list">
+                    <label>Avatar <span class="required">*</span></label>
+                    <input type="file" name="avatar" />
                     <?php if (isset($_GET['err_email'])) : ?>
                       <div class="text-danger" role="alert"><?= $_GET['err_email'] ?></div>
                     <?php endif ?>
@@ -78,5 +85,5 @@ include_once "./app/views/client/template/header.php";
 </div>
 
 <?php
-include_once "./app/views/client/template/footer.php";
+                                                                                  include_once "./app/views/client/template/footer.php";
 ?>
