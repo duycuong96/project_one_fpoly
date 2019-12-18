@@ -567,6 +567,7 @@ class ClientAccountController
         die;
       }
     }
+    $success =  "Đổi mật khẩu thành công";
     if (password_verify($passwordNow, $pass_sql)) {
       // echo 'thanh cong';
       $data = compact('password');
@@ -575,11 +576,8 @@ class ClientAccountController
       $model = User::where(['id', '=', $id])->first();
       // dd($model);
       $model->update($data);
-      header("Location: " . BASE_URL . 'account');
+      header("Location: " . BASE_URL . 'change-password?success='. $success);
       // dd($model);
-      include_once './app/views/client/home/changePassword.php';
-    } else {
-      echo 'that bai';
     }
   }
 }
