@@ -37,13 +37,15 @@ include_once "./app/views/client/template/header.php";
         <div class="product-details-content">
           <form action="<?= BASE_URL ?>save-change-password" method="POST">
             <div class="checkbox-form">
+              <?php if (isset($_GET['success'])) : ?>
+                <h3 class="text-danger" role="alert"><?= $_GET['success'] ?></h3>
+              <?php endif ?>
               <h3>Đổi mật khẩu</h3>
+              <?php if (isset($_GET['err_password_now'])) : ?>
+                <div class="text-danger" role="alert"><?= $_GET['err_password_now'] ?></div>
+              <?php endif ?>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="checkout-form-list">
-                    <label>Email <span class="required">*</span></label>
-                    <input type="text" name="email" value="<?= $user->email ?>" placeholder="" />
-                  </div>
                   <div class="checkout-form-list">
                     <label>Nhập lại mật hiện tại <span class="required">*</span></label>
                     <input type="password" name="passwordNow" placeholder="" />
@@ -81,5 +83,5 @@ include_once "./app/views/client/template/header.php";
 </div>
 
 <?php
-include_once "./app/views/client/template/footer.php";
+                                                          include_once "./app/views/client/template/footer.php";
 ?>
