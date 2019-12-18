@@ -41,9 +41,8 @@ class ClientCategoryController
     $cars = Car::where(['cate_id', '=', $id])->get();
     $category = Category::where(['id', '=', $id])->first();
     $nameCategory = $category->name;
-    if (!$category) {
-      header('location: ' . BASE_URL . 'error');
-      die;
+    if (!$cars) {
+      include_once './app/views/error.php';
     }
     // dd($cars);
     // echo "<pre>";
@@ -61,7 +60,7 @@ class ClientCategoryController
     $nameCategory = 'xe của hãng ' . $category->name;
 
     $cars = Car::where(['maker_id', '=', $id])->get();
-    if (!$category) {
+    if (!$cars) {
       include_once './app/views/error.php';
     }
     // dd($makers);
@@ -80,11 +79,9 @@ class ClientCategoryController
     $nameCategory = 'xe ở ' . $category->name;
 
     $cars = Car::where(['location_id', '=', $id])->get();
-    $err_cars = "";
-    if (!$category) {
-      header('location: ' . BASE_URL . 'error');
-    } 
-
+    if (!$cars) {
+      include_once './app/views/error.php';
+    }
     // dd($makers);
     // echo "<pre>";
     // dd($car);
@@ -109,10 +106,8 @@ class ClientCategoryController
     $listLoca = Car::where(['location_id', '=', $id])->get();
     // dd($detail);
 
-
     if (!$detail) {
-      header('location: ' . BASE_URL . 'error');
-      die;
+      include_once './app/views/error.php';
     }
     include_once './app/views/client/home/detail.php';
   }
