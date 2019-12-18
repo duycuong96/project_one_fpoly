@@ -48,6 +48,10 @@ class ClientOrderController
     // dd($day);
 
     if (isset($_SERVER['PHP_SELF'])) {
+      $err_check = "";
+      if ($_SESSION['AUTH'] == null) {
+        $err_check = "Đăng nhập để có thể bình luận được bạn nhé!";
+      }
       // pass
       $err_date_start = "";
       if ($date_start == "") {
@@ -66,11 +70,12 @@ class ClientOrderController
 
 
       // kiểm tra và hiện validation
-      if ($err_date_start != "" || $err_date_end != "") {
+      if ($err_date_start != "" || $err_date_end != "" || $err_check != "") {
         header(
           'location: ' . BASE_URL . 'detail?id=' . $id
             . '&err_date_start=' . $err_date_start
             . '&err_date_end=' . $err_date_end
+            . '&err_check=' . $err_check
           // . '&err_voucher=' . $err_voucher
         );
         die;

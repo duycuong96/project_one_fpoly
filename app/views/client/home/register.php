@@ -28,7 +28,7 @@ include_once "./app/views/client/template/header.php";
             <div id="lg1" class="tab-pane active">
               <div class="login-form-container">
                 <?php if (isset($_GET['err_success'])) : ?>
-                  <div class="text-danger" role="alert"><?= $_GET['err_success'] ?></div>
+                  <div class="alert alert-success" role="alert"><?= $_GET['err_success'] ?></div>
                 <?php endif ?>
                 <div class="login-form">
                   <form action="<?= BASE_URL ?>save-register" method="post" enctype="multipart/form-data">
@@ -71,5 +71,5 @@ include_once "./app/views/client/template/header.php";
   </div>
 </div>
 <?php
-include_once "./app/views/client/template/footer.php";
+                                                                                                      include_once "./app/views/client/template/footer.php";
 ?>

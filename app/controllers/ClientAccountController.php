@@ -211,11 +211,11 @@ class ClientAccountController
       $err_phone_number = "";
       $pattern = '/[0-9]/';
       if ($phone_number == "") {
-        $phone_number = "Vui lòng nhập số điện thoại";
+        $err_phone_number = "Vui lòng nhập số điện thoại";
       } elseif (!preg_match($pattern, $phone_number)) {
-        $phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
+        $err_phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
       } elseif (strlen($phone_number) != 10) {
-        $phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
+        $err_phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
       }
       // pass
       $err_password = "";
@@ -328,11 +328,11 @@ class ClientAccountController
       $err_phone_number = "";
       $pattern = '/[0-9]/';
       if ($phone_number == "") {
-        $phone_number = "Vui lòng nhập số điện thoại";
+        $err_phone_number = "Vui lòng nhập số điện thoại";
       } elseif (!preg_match($pattern, $phone_number)) {
-        $phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
+        $err_phone_number = "Số điện thoại là số và không có các ký tự ',' hoặc '.'";
       } elseif (strlen($phone_number) != 10) {
-        $phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
+        $err_phone_number = "Số điện thoại hiện tại ở Việt Nam chỉ có 10 số";
       }
       // pass
       $err_password = "";
