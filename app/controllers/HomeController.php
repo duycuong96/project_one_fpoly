@@ -109,7 +109,7 @@ class HomeController
 			// dd($_SESSION['AUTH']);
 			$err_checkout = "";
 			if ($_SESSION['AUTH'] == null) {
-				$err_checkout = "Đăng nhập để có thể bình luận được bạn nhé!";
+				$err_checkout = "Đăng nhập để có thể đặt xe được bạn nhé!";
 			}
 			$err_title = "";
 			if ($title == "" || strlen($title) < 2) {

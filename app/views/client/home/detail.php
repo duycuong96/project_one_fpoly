@@ -30,19 +30,19 @@ include_once "./app/views/client/template/header.php";
             <div class="col-md-6">
               <h2><?= $detail->name ?></h2>
               <?php
-              for ($i = 1; $i <= 5; $i++) {
-                if ($detail->rating >= $i) {
-                  echo "<img width='20px' src='assets/img/icon-img/starFull.png' alt=''>";
-                } else if (!is_int($detail->rating)) {
-                  echo "<img width='20px' src='assets/img/icon-img/star1.png' alt=''>";
-                  if ($i < 5) {
-                    for ($j = $i; $j < 5; $j++) {
-                      echo "<img width='20px' src='assets/img/icon-img/star0.png' alt=''>";
-                    }
-                    break;
-                  }
-                }
-              }
+                                      for ($i = 1; $i <= 5; $i++) {
+                                        if ($detail->rating >= $i) {
+                                          echo "<img width='20px' src='assets/img/icon-img/starFull.png' alt=''>";
+                                        } else if (!is_int($detail->rating)) {
+                                          echo "<img width='20px' src='assets/img/icon-img/star1.png' alt=''>";
+                                          if ($i < 5) {
+                                            for ($j = $i; $j < 5; $j++) {
+                                              echo "<img width='20px' src='assets/img/icon-img/star0.png' alt=''>";
+                                            }
+                                            break;
+                                          }
+                                        }
+                                      }
               ?>
               <div class="product-price">
                 <span>$ <?= $detail->price ?></span>
@@ -134,7 +134,7 @@ include_once "./app/views/client/template/header.php";
         <div class="product-details-content">
           <div class="comments">
             <?php if ($comments != null) {
-              foreach ($comments as $comment) { ?>
+                                                                      foreach ($comments as $comment) { ?>
                 <div class="row">
                   <div class="col-md-2">
                     <img width="100%" style="border-radius: 50%" class="img-comment" src="<?= AVATAR_URL . $comment->avatar ?>" alt="">
@@ -144,21 +144,21 @@ include_once "./app/views/client/template/header.php";
                       <h4 class="pd-sub-title"><?= $comment->getUserName() ?></h4>
                       <div class="quick-view-rating">
                         <?php
-                            for ($i = 1; $i <= 5; $i++) {
-                              if ($comment->rating >= $i) {
-                                echo "<i class='fa fa-star reting-color'></i>";
-                              } else if (!is_int($comment->rating)) {
-                                echo "<i class='fa fa-star-half-o reting-color'></i>";
-                                if ($i < 5) {
-                                  for ($j = $i; $j < 5; $j++) {
-                                    echo "<i class='fa fa-star-o reting-color'></i>";   # code...
-                                  }
+                                                                                          for ($i = 1; $i <= 5; $i++) {
+                                                                                            if ($comment->rating >= $i) {
+                                                                                              echo "<i class='fa fa-star reting-color'></i>";
+                                                                                            } else if (!is_int($comment->rating)) {
+                                                                                              echo "<i class='fa fa-star-half-o reting-color'></i>";
+                                                                                              if ($i < 5) {
+                                                                                                for ($j = $i; $j < 5; $j++) {
+                                                                                                  echo "<i class='fa fa-star-o reting-color'></i>";   # code...
+                                                                                                }
 
-                                  break;
-                                }
-                              }
-                            }
-                            ?>
+                                                                                                break;
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                        ?>
                       </div>
                       <b><?= $comment->title ?></b>
                       <p><?= $comment->content ?></p>
@@ -166,7 +166,7 @@ include_once "./app/views/client/template/header.php";
                   </div>
                 </div>
               <?php }
-              } else { ?>
+                                                                                      } else { ?>
               <div class="alert alert-secondary" role="alert">
                 Chưa có nhận xét về chiếc xe này. Hãy là người đầu tiên nhận xét về chiếc xe này nhé!
               </div>
@@ -180,6 +180,9 @@ include_once "./app/views/client/template/header.php";
           <div>
             <form action="<?= BASE_URL . 'checkout' ?>" method="get">
               <div class="form-group">
+                <?php if (isset($_GET['err_check'])) : ?>
+                  <div class="alert alert-danger" role="alert"><?= $_GET['err_check'] ?></div>
+                <?php endif ?>
                 <button class="btn-lg btn-warning btn-block " type="submit">ĐẶT XE</button>
                 <input type="hidden" name="id" value="<?= $detail->id ?>">
               </div>
@@ -219,5 +222,5 @@ include_once "./app/views/client/template/header.php";
 </div>
 </div>
 <?php
-include_once "./app/views/client/template/footer.php";
+                                                                                      include_once "./app/views/client/template/footer.php";
 ?>
