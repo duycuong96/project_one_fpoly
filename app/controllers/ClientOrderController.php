@@ -50,16 +50,19 @@ class ClientOrderController
     if (isset($_SERVER['PHP_SELF'])) {
       $err_check = "";
       if ($_SESSION['AUTH'] == null) {
-        $err_check = "Đăng nhập để có thể bình luận được bạn nhé!";
+        $err_check = "Đăng nhập để có thể đặt xe được bạn nhé!";
       }
       // pass
+      date_default_timezone_set('Asia/Ho_Chi_Minh');
+      $date = date('Y-m-d');
+      // dd($date_start);
       $err_date_start = "";
-      if ($date_start == "") {
-        $err_date_start = "Hãy chon ngày nhận xe";
+      if ($date_start == "" || $date_start<= $date) {
+        $err_date_start = "Hãy chon ngày nhận xe và sau ngày hiện tại";
       }
       $err_date_end = "";
-      if ($date_end == "") {
-        $err_date_end = "Hãy chon ngày trả xe";
+      if ($date_end == "" || $date_start >= $date_end) {
+        $err_date_end = "Hãy chon ngày trả xe và sau ngày đặt xe";
       }
       // $err_voucher = "";
       // if ($day < 5) {
