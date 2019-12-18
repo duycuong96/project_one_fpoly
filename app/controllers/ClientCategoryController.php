@@ -86,9 +86,7 @@ class ClientCategoryController
     }
 
       include_once './app/views/client/home/category.php';
-    // dd($makers);
-    // echo "<pre>";
-    // dd($car);
+
   }
   // chi tiết xe
   public function detail()
