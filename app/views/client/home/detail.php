@@ -181,7 +181,7 @@ include_once "./app/views/client/template/header.php";
             <form action="<?= BASE_URL . 'checkout' ?>" method="get">
               <div class="form-group">
                 <?php if (isset($_GET['err_check'])) : ?>
-                  <div class="alert alert-danger" role="alert"><?= $_GET['err_check'] ?></div>
+                  <div class="text-danger" role="alert"><?= $_GET['err_check'] ?></div>
                 <?php endif ?>
                 <button class="btn-lg btn-warning btn-block " type="submit">ĐẶT XE</button>
                 <input type="hidden" name="id" value="<?= $detail->id ?>">
