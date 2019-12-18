@@ -433,6 +433,7 @@ class ClientAccountController
     $name = isset($_POST['name']) == true ? $_POST['name'] : "";
     $email = isset($_POST['email']) == true ? $_POST['email'] : "";
     $phone_number = isset($_POST['phone_number']) == true ? $_POST['phone_number'] : "";
+    $avatar = isset($_FILES['avatar']) == true ? $_FILES['avatar'] : "";
     // dd($id);
     if (isset($_SERVER['PHP_SELF'])) {
       // pass
@@ -449,6 +450,36 @@ class ClientAccountController
         $err_email = "Cập nhật Email nhập chưa đúng";
       }
 
+      // ảnh
+      $err_file = "";
+
+      $allowed_image_extension = array(
+        "png",
+        "jpg",
+        "jpeg"
+      );
+
+      // pathinfo trả về thông tin về đường dẫn tệp
+      $file_extension = pathinfo($avatar["name"], PATHINFO_EXTENSION);
+
+      //  Kiểm tra xem một tập tin hoặc thư mục tồn tại
+      if (!file_exists($avatar["tmp_name"])) {
+        $err_file = "Vui lòng chọn hình ảnh để tải lên";
+      }
+      //  Kiểm tra biến tồn tại trong mảng
+      else if (!in_array($file_extension, $allowed_image_extension)) {
+        $err_file = "Tải lên hình ảnh khác. Chỉ cho phép JPG, PNG và JPEG.";
+      }
+      // move_uploaded_file Di chuyển tệp đã tải lên đến một vị trí mới
+      // upload ảnh
+      else {
+        if ($avatar['size'] > 0) {
+          $filename = $avatar['name'];
+          $filename = uniqid() . "-" . $filename;
+          move_uploaded_file($avatar['tmp_name'], 'public/assets/img/users/' . $filename);
+        }
+      }
+		
       $err_phone_number = "";
       $pattern = '/[0-9]/';
       if ($phone_number == "") {
@@ -461,17 +492,19 @@ class ClientAccountController
 
 
       // kiểm tra và hiện validation
-      if ($err_name != "" || $err_email != "" || $err_phone_number != "") {
+      if ($err_name != "" || $err_email != "" || $err_phone_number != "" || $err_file != "") {
         header(
           'location: ' . BASE_URL . '/account?'
             . 'err_name=' . $err_name
             . '&err_email=' . $err_email
             . '&err_phone_number=' . $err_phone_number
+            . '&err_file=' . $err_file
         );
         die;
       }
     }
     $data = compact('name', 'email', 'phone_number');
+    $data['avatar'] = $filename;
     $model = new User();
     $model = User::where(['id', '=', $id])->first();
     // dd($model);
