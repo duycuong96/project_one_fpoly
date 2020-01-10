@@ -126,7 +126,7 @@ class UserController
 		$id = isset($_POST['id']) == true ? $_POST['id']: "";
 		$name = isset($_POST['name']) == true ? $_POST['name']: "";
 		$email = isset($_POST['email']) == true ? $_POST['email']: "";
-		$password = isset($_POST['password']) == true ? $_POST['password']: "";
+		// $password = isset($_POST['password']) == true ? $_POST['password']: "";
 		$role_id = isset($_POST['role_id']) == true ? $_POST['role_id']: "";
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
 		// dd($id);
@@ -196,9 +196,9 @@ class UserController
 		}
 
 		// mã hóa mật khẩu
-		$hashpassword = password_hash($password, PASSWORD_DEFAULT);
+		// $hashpassword = password_hash($password, PASSWORD_DEFAULT);
 		$data = compact('name', 'email', 'role_id', 'status');
-		$data['password'] = $hashpassword;
+		// $data['password'] = $hashpassword;
 		$data['avatar'] = $filename;
 		$data['updated_at'] = date_format(date_create(), 'Y-m-d H:i:s');
 		// var_dump($data);die;

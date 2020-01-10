@@ -53,10 +53,8 @@
               <ul>
                 <li><a href="">Giới thiệu</a></li>
                 <li><a href="">Liên hệ</a></li>
-                <li><a href="">Bảng giá</a></li>
-                <li><a href="">Chính sách</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Hướng dẫn</a></li>
+                <li><a href="http://localhost/project/project_one/register-partner">Đăng ký đối tác</a></li>
+
 
               </ul>
             </div>

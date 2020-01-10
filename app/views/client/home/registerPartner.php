@@ -21,7 +21,7 @@ include_once "./app/views/client/template/header.php";
         <div class="login-register-wrapper">
           <div class="login-register-tab-list nav">
             <a href="#">
-              <h4 style="color: #fd7e14"> Đăng ký cộng tác viên</h4>
+              <h4 style="color: #fd7e14"> Đăng ký đối tác</h4>
             </a>
           </div>
           <div class="tab-content">
