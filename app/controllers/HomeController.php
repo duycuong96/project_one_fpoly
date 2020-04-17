@@ -408,8 +408,8 @@ class HomeController
 			$mail->isSMTP();
 			$mail->Host       = 'smtp.gmail.com';
 			$mail->SMTPAuth   = true;
-			$mail->Username = 'noiconsong@gmail.com';
-			$mail->Password = 'cuong16051996';
+			$mail->Username = 'trangtrang5111998@gmail.com';
+			$mail->Password = 'xjppcunvgbdqlkyc';
 			$mail->SMTPSecure = 'tls';
 			$mail->Port = 587;
 
