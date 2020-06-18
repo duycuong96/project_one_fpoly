@@ -19,7 +19,7 @@ class AdminController{
                                         month(created_date) month_date, 
                                         sum(total_price) total_price 
                                         FROM orders 
-                                        WHERE year(created_date)=2019 
+                                        WHERE year(created_date)=2019
                                         GROUP BY month(created_date)')
                                         ->get();
         // var_dump($chartOrder);die;

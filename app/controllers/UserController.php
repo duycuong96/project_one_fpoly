@@ -126,7 +126,7 @@ class UserController
 		$id = isset($_POST['id']) == true ? $_POST['id']: "";
 		$name = isset($_POST['name']) == true ? $_POST['name']: "";
 		$email = isset($_POST['email']) == true ? $_POST['email']: "";
-		$password = isset($_POST['password']) == true ? $_POST['password']: "";
+		// $password = isset($_POST['password']) == true ? $_POST['password']: "";
 		$role_id = isset($_POST['role_id']) == true ? $_POST['role_id']: "";
 		$status = isset($_POST['status']) == true ? $_POST['status']: "";
 		// dd($id);
@@ -151,11 +151,7 @@ class UserController
 			} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				$err_email = "Email nhập chưa đúng";
 			}
-			// pass
-			$err_password = "";
-			if($password == "" || strlen($password) < 6 ){
-				$err_password = "Nhập mật khẩu ít nhất 6 kí tự";
-			}
+
 
 			// ảnh
 			$err_file = "";
@@ -188,22 +184,21 @@ class UserController
 			}
 			
 		// kiểm tra và hiện validation
-		if($err_name != "" || $err_email != "" || $err_password != "" || $err_file != ""){
+		if($err_name != "" || $err_email != "" || $err_file != ""){
 			header(
 				'location: ' . ADMIN_URL . '/account/edit?id=' . $id
 					. '&err_name=' . $err_name
 					. '&err_email=' . $err_email
 					. '&err_file=' . $err_file
-					. '&err_password=' . $err_password
 			);
 			die;
 		}
 		}
 
 		// mã hóa mật khẩu
-		$hashpassword = password_hash($password, PASSWORD_DEFAULT);
+		// $hashpassword = password_hash($password, PASSWORD_DEFAULT);
 		$data = compact('name', 'email', 'role_id', 'status');
-		$data['password'] = $hashpassword;
+		// $data['password'] = $hashpassword;
 		$data['avatar'] = $filename;
 		$data['updated_at'] = date_format(date_create(), 'Y-m-d H:i:s');
 		// var_dump($data);die;

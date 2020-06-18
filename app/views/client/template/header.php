@@ -6,29 +6,29 @@
 
 <head>
   <meta charset="utf-8">
-  <base href="<?= BASE_VIEW ?>">
+  <base href="<?= BASE_URL ?>">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Mego</title>
   <meta name="description" content="Live Preview Of Oswan eCommerce HTML5 Template">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/icon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="public/assets/img/logo/icon.png">
   <link href="https://thichchiase.com/demo/date-range-picker/Date%20range%20picker%20sample_files/datepicker.css" rel="stylesheet" />
 
   <!-- all css here -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="assets/css/chosen.min.css">
-  <link rel="stylesheet" href="assets/css/jquery-ui.css">
-  <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-  <link rel="stylesheet" href="assets/css/themify-icons.css">
-  <link rel="stylesheet" href="assets/css/icofont.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/bundle.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="public/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/assets/css/animate.css">
+  <link rel="stylesheet" href="public/assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="public/assets/css/chosen.min.css">
+  <link rel="stylesheet" href="public/assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="public/assets/css/meanmenu.min.css">
+  <link rel="stylesheet" href="public/assets/css/themify-icons.css">
+  <link rel="stylesheet" href="public/assets/css/icofont.css">
+  <link rel="stylesheet" href="public/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="public/assets/css/bundle.css">
+  <link rel="stylesheet" href="public/assets/css/style.css">
+  <link rel="stylesheet" href="public/assets/css/responsive.css">
+  <script src="public/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
           <div class="row">
             <div class="col-lg-4 col-md-4 col-4">
               <div class="logo-small-device">
-                <a href="<?= BASE_URL ?>"><img alt="" src="assets/img/logo/megologo.png"></a>
+                <a href="<?= BASE_URL ?>"><img alt="" src="public/assets/img/logo/megologo.png"></a>
               </div>
             </div>
             <div class="col-lg-8 col-md-8 col-8">
@@ -50,12 +50,12 @@
                 </div>
                 <div class="menu-wrapper text-center">
                   <button class="menu-toggle menu-sticky-none">
-                    <img class="s-open" alt="" src="assets/img/icon-img/menu-2.png">
-                    <img class="s-close" alt="" src="assets/img/icon-img/menu-close-2.png">
+                    <img class="s-open" alt="" src="public/assets/img/icon-img/menu-2.png">
+                    <img class="s-close" alt="" src="public/assets/img/icon-img/menu-close-2.png">
                   </button>
                   <button class="menu-toggle menu-for-sticky">
-                    <img class="s-open" alt="" src="assets/img/icon-img/menu.png">
-                    <img class="s-close" alt="" src="assets/img/icon-img/menu-close.png">
+                    <img class="s-open" alt="" src="public/assets/img/icon-img/menu.png">
+                    <img class="s-close" alt="" src="public/assets/img/icon-img/menu-close.png">
                   </button>
                   <div class="main-menu">
                     <nav>
@@ -102,7 +102,7 @@
                   <ul>
                     <li class="single-shopping-cart">
                       <div class="shopping-cart-img">
-                        <a href="#"><img alt="" src="assets/img/cart/cart-1.jpg"></a>
+                        <a href="#"><img alt="" src="public/assets/img/cart/cart-1.jpg"></a>
                       </div>
                       <div class="shopping-cart-title">
                         <h3><a href="#">Gloriori GSX 250 R </a></h3>
@@ -115,7 +115,7 @@
                     </li>
                     <li class="single-shopping-cart">
                       <div class="shopping-cart-img">
-                        <a href="#"><img alt="" src="assets/img/cart/cart-2.jpg"></a>
+                        <a href="#"><img alt="" src="public/assets/img/cart/cart-2.jpg"></a>
                       </div>
                       <div class="shopping-cart-title">
                         <h3><a href="#">Demonissi Gori</a></h3>
@@ -128,7 +128,7 @@
                     </li>
                     <li class="single-shopping-cart">
                       <div class="shopping-cart-img">
-                        <a href="#"><img alt="" src="assets/img/cart/cart-3.jpg"></a>
+                        <a href="#"><img alt="" src="public/assets/img/cart/cart-3.jpg"></a>
                       </div>
                       <div class="shopping-cart-title">
                         <h3><a href="#">Demonissi Gori</a></h3>

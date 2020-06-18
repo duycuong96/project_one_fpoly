@@ -130,8 +130,8 @@ class LoginController
                     $mail->isSMTP();
                     $mail->Host       = 'smtp.gmail.com';
                     $mail->SMTPAuth   = true;
-                    $mail->Username = 'noiconsong@gmail.com';
-                    $mail->Password = 'qkxrjoenwrpshmhk';
+                    $mail->Username = 'trangtrang5111998@gmail.com';
+                    $mail->Password = 'xjppcunvgbdqlkyc';
                     $mail->SMTPSecure = 'tls';
                     $mail->Port = 587;
 

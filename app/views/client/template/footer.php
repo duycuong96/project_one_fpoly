@@ -3,8 +3,8 @@
     <div class="newsletter-wrapper-all theme-bg-2">
       <div class="row">
         <div class="col-lg-5 col-12 col-md-12">
-          <div class="newsletter-img bg-img" style="background-image: url(assets/img/banner/newsletter-bg.png)">
-            <img alt="image" src="assets/img/team/newsletter-img.png">
+          <div class="newsletter-img bg-img" style="background-image: url(./public/assets/img/banner/newsletter-bg.png)">
+            <img alt="image" src="./public/assets/img/team/newsletter-img.png">
           </div>
         </div>
         <div class="col-lg-7 col-12 col-md-12">
@@ -36,7 +36,7 @@
           <div class="footer-widget mb-30">
             <div class="footer-logo">
               <a href="index.html">
-                <img src="assets/img/logo/megologo.png" alt="">
+                <img src="./public/assets/img/logo/megologo.png" alt="">
               </a>
             </div>
             <div class="footer-about">
@@ -53,10 +53,8 @@
               <ul>
                 <li><a href="">Giới thiệu</a></li>
                 <li><a href="">Liên hệ</a></li>
-                <li><a href="">Bảng giá</a></li>
-                <li><a href="">Chính sách</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Hướng dẫn</a></li>
+                <li><a href="http://localhost/project/project_one/register-partner">Đăng ký đối tác</a></li>
+
 
               </ul>
             </div>
@@ -109,7 +107,7 @@
         </div>
         <div class="col-md-4 col-12">
           <div class="footer-payment-method">
-            <a href="#"><img alt="" src="assets/img/icon-img/payment.png"></a>
+            <a href="#"><img alt="" src="./public/assets/img/icon-img/payment.png"></a>
           </div>
         </div>
       </div>
@@ -132,17 +130,17 @@
 
 <!-- all js here -->
 <script src="https://thichchiase.com/demo/date-range-picker/Date%20range%20picker%20sample_files/bootstrap-datepicker.js"></script>
-<script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
-<script src="assets/js/popper.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/isotope.pkgd.min.js"></script>
-<script src="assets/js/imagesloaded.pkgd.min.js"></script>
-<script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/waypoints.min.js"></script>
-<script src="assets/js/ajax-mail.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="./public/assets/js/vendor/jquery-1.12.0.min.js"></script>
+<script src="./public/assets/js/popper.js"></script>
+<script src="./public/assets/js/bootstrap.min.js"></script>
+<script src="./public/assets/js/isotope.pkgd.min.js"></script>
+<script src="./public/assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="./public/assets/js/jquery.counterup.min.js"></script>
+<script src="./public/assets/js/waypoints.min.js"></script>
+<script src="./public/assets/js/ajax-mail.js"></script>
+<script src="./public/assets/js/owl.carousel.min.js"></script>
+<script src="./public/assets/js/plugins.js"></script>
+<script src="./public/assets/js/main.js"></script>
 </body>
 
 <!-- Mirrored from preview.freethemescloud.com/oswan/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2019 16:08:50 GMT -->
